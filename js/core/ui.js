@@ -491,7 +491,7 @@ export function loadingBlock(msg = 'Loading…') {
 }
 
 export function errorBlock(err) {
-  return html`<div class="callout callout-critical">${icon('alert')}<div><strong>Something went wrong loading this page.</strong><p>${err && err.message ? err.message : String(err)}</p><p>If you opened the file directly from disk, serve the <code>docs/</code> folder with a local web server instead (for example <code>python3 -m http.server</code>).</p></div></div>`;
+  return html`<div class="callout callout-critical">${icon('alert')}<div><strong>Something went wrong loading this page.</strong><p>${err && err.message ? err.message : String(err)}</p><p>If you opened the file directly from disk, serve this folder with a local web server instead (for example <code>python3 -m http.server</code>).</p></div></div>`;
 }
 
 export { esc };

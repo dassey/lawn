@@ -4,7 +4,7 @@
    - Weather/geocoding (other origins) are never cached here; the app keeps
      its own short-lived weather cache.
    Bump VERSION whenever files change so old caches are cleared. */
-const VERSION = 'v1-2026-09-29';
+const VERSION = 'v2-2026-10-03';
 const CACHE = `kc-almanac-${VERSION}`;
 
 const CORE = [
