@@ -1,0 +1,277 @@
+[
+  {
+    "id": "crabgrass", "group": "weed", "name": "Crabgrass", "aka": ["large and smooth crabgrass"], "type": "Summer annual grass",
+    "months": [4, 5, 6, 7, 8, 9],
+    "id_tips": "Light-green, wide-bladed grass that sprawls flat in thin spots along drives and walks. Seedlings appear from late April; finger-like seed heads in August; dies at the first frost and leaves bare spots.",
+    "when": "Prevent at redbud bloom (by April 15). Kill escapes while young (June–July). Overseed the gaps in September.",
+    "cultural": "Thick, tall turf (4 in tall in summer) shades out seedlings; overseed thin areas every fall; skip spring and summer nitrogen.",
+    "control": "**Prevent:** dithiopyr (Hi-Yield with Dimension) or prodiamine (LESCO Stonewall, Barricade), watered in. **Late?** Dithiopyr also kills crabgrass up to about 4 weeks after it emerges. **Escapes:** quinclorac (Ortho Weed B-gon + Crabgrass Control, Drive XLR8) or Tenacity plus surfactant on young plants. Mature August crabgrass: let frost kill it.",
+    "products": ["dimension-granular", "lesco-stonewall", "barricade-4fl", "weedbgon-crabgrass", "drive-xlr8", "tenacity"],
+    "note": "Crabgrass germinates once soil at 1 in holds ~55°F; the first seedlings appear after a week averaging 57–63°F (Fidanza 1996).",
+    "sources": ["kstate-lawn-calendar", "mu-g6705", "cardina-2011", "fidanza-1996"]
+  },
+  {
+    "id": "nutsedge", "group": "weed", "name": "Yellow nutsedge", "aka": ["nutgrass"], "type": "Perennial sedge",
+    "months": [5, 6, 7, 8],
+    "id_tips": "Shiny, yellow-green, V-shaped leaves in threes on a triangular stem (\"sedges have edges\"). It grows faster than the lawn, so it pokes up a few days after mowing, and loves wet spots.",
+    "when": "Late May–June, while plants are young (before 5 leaves).",
+    "cultural": "Fix drainage and stop overwatering. Pulling it snaps off the tubers (nutlets), which resprout.",
+    "control": "Halosulfuron (SedgeHammer) or sulfentrazone (Ortho Nutsedge Killer); a second application 6–10 weeks later if needed. Don't mow 2 days before or after SedgeHammer.",
+    "products": ["sedgehammer", "ortho-nutsedge"], "sources": ["product-label"]
+  },
+  {
+    "id": "dandelion", "group": "weed", "name": "Dandelion", "type": "Perennial broadleaf",
+    "months": [3, 4, 5, 9, 10, 11],
+    "id_tips": "Rosette of jagged leaves, yellow flowers and puffball seed heads; deep taproot.",
+    "when": "Best: late September–November. Spring spraying during bloom is less effective.",
+    "cultural": "Thick turf; mulch-mow fall leaves (up to 80% fewer dandelions in a Michigan State study). Dig small numbers with a weeding fork, getting most of the root.",
+    "control": "Broadleaf herbicide (SpeedZone EW) on a day ≥50°F with no rain for 24 h; spot-spray rather than blanket.",
+    "products": ["speedzone-ew"], "sources": ["kstate-lawn-calendar", "kowalewski-2009"]
+  },
+  {
+    "id": "clover", "group": "weed", "name": "White clover", "type": "Perennial broadleaf",
+    "months": [5, 6, 9, 10],
+    "id_tips": "Three round leaflets, often with a pale \"V\"; white ball-shaped flowers; creeping stems that root as they go.",
+    "when": "Fall (late September–November) if you want it gone.",
+    "cultural": "Clover fixes its own nitrogen and signals a hungry lawn; a normal fall feeding program thins it. Many people keep some for the bees. Just mow off the flowers before using any insecticide.",
+    "control": "Triclopyr (Ortho Weed B Gon Chickweed, Clover & Oxalis) or SpeedZone EW in fall.",
+    "products": ["weedbgon-ccox", "speedzone-ew"], "sources": ["product-label"]
+  },
+  {
+    "id": "henbit", "group": "weed", "name": "Henbit & purple deadnettle", "type": "Winter annual broadleaf",
+    "months": [3, 4, 10, 11],
+    "id_tips": "Square stems, scalloped leaves and small purple flowers in March–April. It sprouts in fall and dies by late May.",
+    "when": "Fall: a pre-emergent on unseeded areas in September, or spray young plants in October–November.",
+    "cultural": "Thick fall turf prevents it. Spring spraying of flowering henbit is mostly wasted, since it's already dying.",
+    "control": "SpeedZone EW or triclopyr in fall; K-State suggests a fall pre-emergent where you aren't seeding.",
+    "products": ["speedzone-ew", "weedbgon-ccox", "dimension-granular"], "sources": ["kstate-lawn-calendar"]
+  },
+  {
+    "id": "chickweed", "group": "weed", "name": "Chickweed", "aka": ["common and mouse-ear chickweed"], "type": "Winter annual / perennial broadleaf",
+    "months": [3, 4, 10, 11],
+    "id_tips": "Low mats of small, pointed, paired leaves and tiny white star flowers in early spring; common in shade and new seedings.",
+    "when": "Fall, or mild (≥50°F) days in March.",
+    "cultural": "Improve density; hand-pull mats in beds.",
+    "control": "Triclopyr (Ortho Chickweed, Clover & Oxalis) or SpeedZone EW.",
+    "products": ["weedbgon-ccox", "speedzone-ew"], "sources": ["product-label"]
+  },
+  {
+    "id": "ground-ivy", "group": "weed", "name": "Ground ivy (creeping Charlie)", "type": "Perennial broadleaf",
+    "months": [4, 5, 9, 10, 11],
+    "id_tips": "Creeping square stems with round scalloped leaves, a minty smell when mowed, and purple flowers in April. Loves shade and damp spots.",
+    "when": "Fall is best (October, around the first light frost), then again in spring.",
+    "cultural": "More light and a thicker lawn; better drainage.",
+    "control": "Triclopyr products, repeated; hard to kill in one shot.",
+    "products": ["weedbgon-ccox"], "sources": ["product-label"]
+  },
+  {
+    "id": "wild-violet", "group": "weed", "name": "Wild violet", "type": "Perennial broadleaf",
+    "months": [4, 5, 9, 10],
+    "id_tips": "Heart-shaped glossy leaves with purple or white flowers in April; the waxy leaves shed herbicide.",
+    "when": "Fall, with repeat applications.",
+    "cultural": "Dig small patches; tolerate them in shady edges (they're native and host fritillary butterflies).",
+    "control": "Triclopyr in fall, repeated.",
+    "products": ["weedbgon-ccox"], "sources": ["product-label"]
+  },
+  {
+    "id": "nimblewill", "group": "weed", "name": "Nimblewill", "type": "Perennial warm-season grass",
+    "months": [5, 6, 7, 8, 9],
+    "id_tips": "Wiry, short, blue-green grass in patches. It greens late in spring and turns tan with the first frost.",
+    "when": "Summer.",
+    "cultural": "Thicken the lawn; it thrives in thin, shaded, wet areas.",
+    "control": "Mesotrione (Tenacity plus surfactant), 2–3 applications 2–3 weeks apart; or spot-kill with glyphosate in August and reseed.",
+    "products": ["tenacity", "glyphosate-41"], "sources": ["product-label"]
+  },
+  {
+    "id": "bermudagrass", "group": "weed", "name": "Bermudagrass (wiregrass)", "type": "Perennial warm-season grass",
+    "months": [6, 7, 8],
+    "id_tips": "Fine, wiry grass that runs by above- and below-ground stems into fescue and beds. Tan from the first frost until May; seed heads look like little bird feet.",
+    "when": "August, while it's actively growing, then seed in September.",
+    "cultural": "Edge beds deeply; it creeps in from neighbors and alleys.",
+    "control": "Spot-spray glyphosate in early August and again about a month later (one spray rarely kills it), then seed 7 days later (MU G6700). In flower beds, fluazifop (Ortho Grass B Gon) kills it without harming broadleaf ornamentals.",
+    "products": ["glyphosate-41", "grass-b-gon"], "sources": ["mu-g6700"]
+  },
+  {
+    "id": "zoysia", "group": "weed", "name": "Zoysia patches", "type": "Perennial warm-season grass",
+    "months": [7, 8],
+    "id_tips": "Dense, stiff, tan patches in a fescue lawn from October to May that spread slowly outward.",
+    "when": "August, same as bermudagrass, or learn to live with it.",
+    "control": "Glyphosate spot-kill in August, a second spray, then reseed.",
+    "products": ["glyphosate-41"], "sources": ["mu-g6700"]
+  },
+  {
+    "id": "wild-onion", "group": "weed", "name": "Wild onion & wild garlic", "type": "Perennial (bulb)",
+    "months": [3, 4, 11, 12],
+    "id_tips": "Clumps of round leaves (hollow in wild garlic, solid in wild onion) that grow faster than the grass in late winter; strong onion smell.",
+    "when": "November and again in February–March.",
+    "cultural": "Dig clumps, bulbs and all, when the soil is moist.",
+    "control": "A broadleaf product labeled for wild onion; crush or mow the waxy leaves first so it sticks. It takes repeat applications.",
+    "sources": ["product-label"]
+  },
+  {
+    "id": "spurge", "group": "weed", "name": "Prostrate spurge", "type": "Summer annual broadleaf",
+    "months": [6, 7, 8],
+    "id_tips": "Flat mats of tiny paired leaves (often with a red spot) and milky sap; thrives in hot, thin, compacted spots and sidewalk cracks.",
+    "when": "Pull before it seeds (June–August).",
+    "cultural": "Thicken turf; relieve compaction with core aeration.",
+    "control": "Hand-pull young mats; a broadleaf product labeled for spurge on young plants.",
+    "sources": ["product-label"]
+  },
+  {
+    "id": "plantain", "group": "weed", "name": "Plantain (broadleaf & buckhorn)", "type": "Perennial broadleaf",
+    "months": [5, 6, 9, 10],
+    "id_tips": "Broadleaf: wide oval leaves with ribs in a rosette. Buckhorn: narrow ribbed leaves. Both mark compacted soil.",
+    "when": "Fall.",
+    "cultural": "Core aerate to relieve compaction.",
+    "control": "SpeedZone EW or a similar 2,4-D product in fall.",
+    "products": ["speedzone-ew"], "sources": ["product-label"]
+  },
+  {
+    "id": "oxalis", "group": "weed", "name": "Yellow woodsorrel (oxalis)", "type": "Perennial broadleaf",
+    "months": [5, 6, 7, 8],
+    "id_tips": "Clover-like heart-shaped leaflets, small yellow flowers and seed pods that pop.",
+    "when": "Late spring–summer on young plants, or fall.",
+    "control": "Triclopyr (Ortho Chickweed, Clover & Oxalis).",
+    "products": ["weedbgon-ccox"], "sources": ["product-label"]
+  },
+  {
+    "id": "poa-annua", "group": "weed", "name": "Annual bluegrass (Poa annua)", "type": "Winter annual grass",
+    "months": [3, 4, 5],
+    "id_tips": "Light-green clumps with whitish seed heads in April–May that die in summer heat, leaving holes.",
+    "when": "Prevent in early September on areas you aren't seeding.",
+    "cultural": "Overseed in fall to fill the voids it leaves.",
+    "control": "A fall pre-emergent (prodiamine or dithiopyr) on unseeded areas; no simple homeowner fix once it's up.",
+    "products": ["lesco-stonewall", "dimension-granular"], "sources": ["kstate-lawn-calendar"]
+  },
+  {
+    "id": "brown-patch", "group": "disease", "name": "Brown patch", "aka": ["Rhizoctonia large patch of tall fescue"], "type": "Fungal disease",
+    "months": [6, 7, 8],
+    "symptoms": "Circular tan patches from 6 in to several feet across; leaves with tan lesions and dark-brown borders; sometimes a grayish \"smoke ring\" at the patch edge on humid mornings.",
+    "when": "Nights ≥65°F with dew and humidity (K-State homeowner guide; K-State's commercial guide uses 68°F), usually July–August.",
+    "cultural": "No spring or summer nitrogen: in K-State plots, spring-fed turf had 48–66% brown patch vs 2–23% for fall-only. Water only in the early morning, mow when dry, and don't overseed at excessive rates. A little bluegrass in the mix helped in New Jersey research.",
+    "control": "Usually recovers in fall without spraying. For lawns hit hard every year: preventive azoxystrobin (Scotts DiseaseEx) from late June, rotating with propiconazole (BioAdvanced Fungus Control), per label intervals.",
+    "products": ["diseaseex", "bioadvanced-fungus"],
+    "sources": ["kstate-brown-patch", "fry-2025", "kstate-turf-bp-blog", "park-2017"]
+  },
+  {
+    "id": "gray-leaf-spot", "group": "disease", "name": "Gray leaf spot", "type": "Fungal disease",
+    "months": [8, 9],
+    "symptoms": "Gray-brown oval leaf spots with dark borders and twisted, dying leaf tips during hot, humid late-summer weather; often worst on young seedlings and ryegrass-heavy stands.",
+    "when": "Hot, humid stretches in August–September.",
+    "cultural": "Avoid ryegrass-heavy mixes, don't push nitrogen in late summer, water only in the morning.",
+    "control": "Preventive fungicides only where it recurs; ask MU Extension to confirm the diagnosis first.",
+    "products": ["diseaseex"]
+  },
+  {
+    "id": "dollar-spot", "group": "disease", "name": "Dollar spot", "type": "Fungal disease",
+    "months": [5, 6, 9],
+    "symptoms": "Silver-dollar-size straw-colored spots that merge; hourglass-shaped tan lesions with reddish-brown borders on blades; cobwebby threads on dewy mornings.",
+    "cultural": "It signals low nitrogen and long leaf wetness. A normal fall feeding program and morning-only watering usually fix it.",
+    "control": "Fungicide rarely needed on home lawns."
+  },
+  {
+    "id": "rust", "group": "disease", "name": "Rust", "type": "Fungal disease",
+    "months": [8, 9, 10],
+    "symptoms": "Orange dust that rubs off on shoes and the mower; yellowed, thin turf in late summer; worst on slow-growing, under-fed lawns.",
+    "cultural": "Fall nitrogen speeds growth, so you mow off the infected leaves. Keep mowing regularly.",
+    "control": "Fungicide rarely needed."
+  },
+  {
+    "id": "red-thread", "group": "disease", "name": "Red thread", "type": "Fungal disease",
+    "months": [4, 5, 10, 11],
+    "symptoms": "Pink-red threads on leaf tips and tan patches in cool, wet weather.",
+    "cultural": "Low nitrogen favors it; the fall feeding program usually solves it.",
+    "control": "Cosmetic; no spray needed."
+  },
+  {
+    "id": "pythium", "group": "disease", "name": "Pythium blight", "type": "Water mold",
+    "months": [7, 8],
+    "symptoms": "Greasy, dark, water-soaked streaks following drainage paths during very hot, humid, wet spells (nights near 70°F or warmer); white cottony growth on dewy mornings; can kill turf quickly.",
+    "cultural": "Fix drainage; avoid evening watering and summer nitrogen.",
+    "control": "Needs a specific fungicide; get a diagnosis from MU Extension."
+  },
+  {
+    "id": "fairy-ring", "group": "disease", "name": "Fairy ring", "type": "Soil fungi",
+    "months": [5, 6, 7, 8, 9, 10],
+    "symptoms": "Dark-green rings or arcs, sometimes with mushrooms or a ring of dead grass, fed by decaying organic matter (old stumps, buried wood).",
+    "cultural": "Mask with regular fall feeding; core aerate and deep-water the ring.",
+    "control": "No easy cure; it's mostly cosmetic."
+  },
+  {
+    "id": "slime-mold", "group": "disease", "name": "Slime mold", "type": "Harmless",
+    "months": [6, 7, 8, 9],
+    "symptoms": "Gray, white or yellow powdery or slimy growth on grass blades after wet weather.",
+    "control": "Mow or hose it off; it doesn't hurt the grass."
+  },
+  {
+    "id": "grubs", "group": "insect", "name": "White grubs", "aka": ["masked chafer", "Japanese beetle larvae", "May/June beetle larvae"], "type": "Beetle larvae",
+    "months": [7, 8, 9],
+    "symptoms": "Irregular brown patches in late summer that roll up like carpet because the roots are eaten; skunks, raccoons or birds digging.",
+    "threshold": "5–10 grubs per sq ft (MU). Cut 1-sq-ft flaps 2–3 in deep at the edge of damage in 3–4 spots and count.",
+    "control": "**Prevent** (only if you had damage): chlorantraniliprole (Scotts GrubEx1) in May, or imidacloprid May–June, watered in. **Cure** active damage (late July–September): trichlorfon (BioAdvanced 24 Hour Grub Killer Plus), watered in with ½ in within 24 hours.",
+    "products": ["grubex1", "imidacloprid-grub", "dylox-24hr"],
+    "note": "Grub control won't get rid of moles; they mostly eat earthworms.",
+    "sources": ["mu-g6705", "kstate-lawn-calendar"]
+  },
+  {
+    "id": "sod-webworm", "group": "insect", "name": "Sod webworm", "type": "Caterpillar",
+    "months": [6, 7, 8],
+    "symptoms": "Small ragged brown spots, chewed blades, green pellet droppings; buff moths zig-zag over the lawn at dusk.",
+    "threshold": "Soap flush: pour 2 Tbsp dish soap in 1 gallon of water over 1 sq yd; treat only if many caterpillars come up (roughly 15 or more).",
+    "control": "Bt for young larvae; a lawn insecticide labeled for sod webworms for heavy infestations. Healthy fescue usually outgrows the damage.",
+    "products": ["bt"]
+  },
+  {
+    "id": "armyworm", "group": "insect", "name": "Fall armyworm", "type": "Caterpillar",
+    "months": [8, 9, 10],
+    "symptoms": "Patches brown out almost overnight in late summer and fall, especially new seedings; green-to-brown striped caterpillars with an inverted \"Y\" on the head.",
+    "threshold": "Soap flush; roughly 3 or more per sq ft.",
+    "control": "A lawn insecticide labeled for armyworms, applied in the evening. Established fescue usually regrows; new seedings may need reseeding."
+  },
+  {
+    "id": "cicada-killer", "group": "insect", "name": "Cicada killer wasps", "type": "Solitary wasp",
+    "months": [7, 8],
+    "symptoms": "Huge wasps digging holes with dirt piles in bare, sunny spots in July–August. Males buzz you but can't sting; females rarely sting.",
+    "control": "Tolerate them (they're gone by September). Thicken or mulch bare spots to discourage nesting."
+  },
+  {
+    "id": "moles", "group": "other", "name": "Moles", "type": "Mammal",
+    "months": [3, 4, 5, 9, 10],
+    "symptoms": "Raised tunnels and volcano-shaped mounds, most active in moist spring and fall soil.",
+    "control": "Trapping is the only reliable method (scissor or harpoon trap on an active runway). Grub control doesn't work; moles mostly eat earthworms. Repellents and home remedies are unreliable.",
+    "products": ["mole-trap"]
+  },
+  {
+    "id": "voles", "group": "other", "name": "Voles", "type": "Mammal",
+    "months": [2, 3, 11, 12],
+    "symptoms": "Surface runways (2-in-wide paths) in the grass after snow melts; gnawed bark at the base of shrubs and young trees.",
+    "control": "Lawn damage is usually cosmetic: rake it and it fills in. Protect trunks with hardware cloth; snap traps with peanut butter under a cover.",
+    "products": ["hardware-cloth"]
+  },
+  {
+    "id": "rabbits", "group": "other", "name": "Rabbits", "type": "Mammal",
+    "months": [3, 4, 5, 6, 11, 12, 1, 2],
+    "symptoms": "Beans, lettuce and tulips chewed to the ground; clean 45° cuts on twigs; girdled young trunks in winter.",
+    "control": "A 2-ft fence of 1-in mesh (bottom buried 3–6 in) around the garden; hardware-cloth trunk guards in November; repellents need regular reapplying.",
+    "products": ["rabbit-fence", "hardware-cloth", "deer-repellent"]
+  },
+  {
+    "id": "dog-spots", "group": "other", "name": "Dog urine spots", "type": "Nitrogen burn",
+    "months": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+    "symptoms": "Round dead spots ringed by dark-green grass.",
+    "control": "Soak the spot with water soon after; reseed dead patches in September."
+  },
+  {
+    "id": "dull-blade", "group": "other", "name": "Dull mower blade or scalping", "type": "Mowing damage",
+    "months": [4, 5, 6, 7, 8, 9, 10],
+    "symptoms": "Tan, frayed leaf tips a day after mowing (dull blade), or yellow-brown stripes over bumps (scalping).",
+    "control": "Sharpen the blade (about every 25 hours of mowing) and raise the deck."
+  },
+  {
+    "id": "drought-dormant", "group": "other", "name": "Drought dormancy (brown summer lawn)", "type": "Weather",
+    "months": [7, 8],
+    "symptoms": "Straw-colored lawn after weeks of heat and little rain, often starting on slopes and near pavement.",
+    "control": "Tug test: dormant grass holds firm with white, firm crowns; dead grass pulls out. Keep traffic off; after ~3 weeks without ½ in of rain in the heat, give ½–1 in every 2–3 weeks to keep crowns alive. It greens up 1–2 weeks after soaking fall rains.",
+    "sources": ["unl-g2191", "mu-mg10", "hong-2021"]
+  }
+]

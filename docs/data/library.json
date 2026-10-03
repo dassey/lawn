@@ -1,0 +1,101 @@
+{
+  "researchIntro": "Recent and landmark studies in plain English, with the caveats that matter for a rain-fed KC lawn. Several were done by K-State, a couple of hours west in a similar climate; those are flagged. Every citation was checked against its DOI.",
+  "local": [
+    {
+      "name": "MU Extension county offices",
+      "what": "Soil tests (call ahead; the MU lab's regular test is $15 in 2026, plus any county handling fee), lawn and garden questions, and classes. Jackson, Clay, Platte and Cass counties each have an office; on the Kansas side, K-State Research and Extension county offices do the same.",
+      "where": "Find your county's office on the MU Extension site",
+      "url": "https://extension.missouri.edu/counties"
+    },
+    {
+      "name": "Master Gardeners of Greater KC: garden hotline",
+      "what": "Free answers from trained volunteers. The 24-hour voicemail is answered in season; their site lists in-person help hours. Email mggkc.hotline@gmail.com. Soil-test drop-off info is on their site.",
+      "phone": "816-833-8733 (833-TREE)", "where": "Greater Kansas City",
+      "url": "https://mggkc.org/public-education/hotline/"
+    },
+    {
+      "name": "Kansas City Community Gardens",
+      "what": "Income-based memberships with low-cost transplants (spring cool-season sale; \"Tomato Days\" in late April), seeds, classes and garden plots.",
+      "where": "6917 Kensington Ave, Kansas City, MO 64132",
+      "url": "https://kccg.org/"
+    },
+    {
+      "name": "MDC tree seedlings (George O. White State Forest Nursery)",
+      "what": "Inexpensive bare-root native trees and shrubs. Order Sep 1–Apr 15 by mail (Apr 30 online); shipping or pickup mid-February to mid-May.",
+      "phone": "573-674-3229",
+      "url": "https://mdc.mo.gov/trees-plants/tree-seedlings/order-seedlings"
+    },
+    {
+      "name": "Callery pear buyback (MDC & partners)",
+      "what": "Cut down a Bradford/Callery pear, register with a photo, and pick up a free native tree. The 2026 event included a KC-area pickup site; watch for 2027 dates in early spring.",
+      "url": "https://mdc.mo.gov/newsroom/register-april-16-callery-pear-buyback-program-kansas-city-region"
+    },
+    {
+      "name": "Missouri 811",
+      "what": "Free utility locates before you dig. Missouri law requires at least 2 working days' notice; Missouri 811 says allow 3.",
+      "phone": "811",
+      "url": "https://missouri-811.org/homeowners/"
+    },
+    {
+      "name": "CoCoRaHS Missouri",
+      "what": "Volunteer rain and snow reporting with a standard 4-inch gauge. Your reports help forecasters, and neighbors' reports help you.",
+      "url": "https://www.cocorahs.org/state.aspx?state=mo"
+    },
+    {
+      "name": "Grow Native!",
+      "what": "Missouri Prairie Foundation's native plant program: plant database, care calendar and a directory of nurseries that sell natives.",
+      "url": "https://grownative.org/"
+    }
+  ],
+  "suppliers": [
+    { "name": "Soil Service Garden Center", "what": "Local tall fescue blends (**KC Endurance**, **KC Marathon** with 10% bluegrass), fertilizer, plants.", "where": "7130 Troost Ave, KC MO · (816) 444-3403", "url": "https://www.soilservice.com/" },
+    { "name": "Grass Pad", "what": "**Heat Wave** fescue blends, fertilizer, mulch.", "where": "Olathe, Lee's Summit, Kansas City (Barry Rd), Bonner Springs and Stilwell", "url": "https://grasspad.com/our-locations/" },
+    { "name": "Family Tree Nursery", "what": "Trees, shrubs, perennials, natives; knowledgeable staff.", "where": "Overland Park, Shawnee and Liberty", "url": "https://familytreenursery.com/" },
+    { "name": "SiteOne Landscape Supply", "what": "**LESCO** fertilizer (28-0-12, urea), certified seed (Kansas Excalibur), pro herbicides such as Stonewall prodiamine and Tenacity. Call the branch; some items are by request.", "where": "KC metro branches", "url": "https://www.siteone.com/" },
+    { "name": "Missouri Organic Recycling", "what": "Bulk compost, mulch and soil blends, with delivery.", "where": "Four KC-metro yards, plus delivery", "url": "https://www.missouriorganic.com/" },
+    { "name": "Planters Seed & Spice Co.", "what": "Historic River Market seed store: bulk vegetable and grass seed, onion sets, seed potatoes.", "where": "513 Walnut St, KC MO · (816) 842-3651", "url": "https://www.plantersseed.com/" },
+    { "name": "Merriam Feed + Seed", "what": "Grass seed by the pound, feed-store basics.", "where": "9309 Johnson Dr, Merriam KS", "url": "https://www.merriamfeed.com/lawn-garden" },
+    { "name": "Baker Creek Heirloom Seeds", "what": "Missouri-based heirloom vegetable seed (mail order).", "where": "Mansfield, MO", "url": "https://www.rareseeds.com/" },
+    { "name": "Johnny's Selected Seeds", "what": "Hybrid and organic vegetable seed, Agribon row cover, seed-starting gear (mail order).", "where": "Online", "url": "https://www.johnnyseeds.com/" },
+    { "name": "DoMyOwn", "what": "Pro lawn products (Tenacity, Prodiamine 65 WDG, Dimension 2EW, SedgeHammer) in homeowner sizes.", "where": "Online", "url": "https://www.domyown.com/" },
+    { "name": "Home Depot / Lowe's / Ace", "what": "Scotts, Ortho, BioAdvanced, Pennington, Preen, spreaders, sprinklers and timers; aerator rental.", "where": "Metro-wide" }
+  ],
+  "myths": [
+    { "myth": "Water the lawn a little every day in summer.", "fact": "Daily sprinkles grow shallow roots and disease. Soak ½–1 in only when needed (the 3-week rule), early in the morning." },
+    { "myth": "A brown lawn in August is dead.", "fact": "Tall fescue goes dormant and recovers; in K-State trials it came back after 60–83 days with no water. Tug-test it before you panic." },
+    { "myth": "Spring is the time to fertilize.", "fact": "For tall fescue it's fall. In K-State plots, spring and May nitrogen went with 48–66% brown patch vs 2–23% for a September-only feeding." },
+    { "myth": "A spring weed-and-feed takes care of everything.", "fact": "Broadleaf weeds die best in fall, crabgrass preventer needs precise timing, and the lawn doesn't need April nitrogen. Combo products do each job at the wrong time." },
+    { "myth": "Add sand to loosen clay.", "fact": "Sand plus clay makes a concrete-like mix. Compost and core aeration are the fix." },
+    { "myth": "Gypsum breaks up clay.", "fact": "Only in sodium-affected soils, which KC's generally aren't. Spend the money on compost instead." },
+    { "myth": "Grub control gets rid of moles.", "fact": "Moles eat mostly earthworms. Trapping is the reliable fix." },
+    { "myth": "Japanese beetle traps protect my roses.", "fact": "Traps attract far more beetles than they catch (University of Kentucky research; MU agrees). Hand-pick instead." },
+    { "myth": "Blossom-end rot means the soil needs calcium (or Epsom salt).", "fact": "Usually it's uneven watering; K-State says low soil calcium is rare in Kansas. Mulch, water evenly, and test before adding anything." },
+    { "myth": "Rhizomatous tall fescue will fill in bare spots.", "fact": "K-State measured RTF rhizomes at about 3 mm vs 80+ mm for bluegrass. Reseed bare spots." },
+    { "myth": "No Mow May is proven to help bees.", "fact": "The study behind it was retracted in 2022. Mowing every 2–3 weeks and planting flowers does help (Lerman 2018)." },
+    { "myth": "Lime makes grass greener.", "fact": "Only if the soil is acidic. MU says to lime lawns only at pH 5.8 or lower, so test first." },
+    { "myth": "Bag the clippings to prevent thatch.", "fact": "Clippings break down fast and return nitrogen; tall fescue rarely builds thatch." },
+    { "myth": "Seed in spring and put down crabgrass preventer at the same time.", "fact": "Most preventers stop grass seed too. Seed in September; in spring use only mesotrione (Tenacity) or siduron at seeding." },
+    { "myth": "\"Endophyte-enhanced\" seed survives drought better.", "fact": "A 2024 study found no consistent drought benefit. Choose cultivars with good NTEP data instead." },
+    { "myth": "KY-31 is just as good and cheaper.", "fact": "It's a 1943 pasture grass: coarse and clumpy. It scored 4.4 in NTEP's 2018 test vs 6.3–6.4 for the best turf types." },
+    { "myth": "Roundup = glyphosate.", "fact": "Many consumer Roundup products no longer contain glyphosate, or contain only a little. Read the active ingredient on the label, not the brand name." },
+    { "myth": "Mulch piled around a tree protects it.", "fact": "Mulch against the trunk rots bark and invites rodents and girdling roots. Make a flat donut, 2–3 in deep." }
+  ],
+  "creditsIntro": "Several features were inspired by these public GitHub projects. We borrowed ideas only; all code on this site is original. Thank you to their authors.",
+  "credits": [
+    { "name": "racoutlaw/gardening-guide (Plant by Frost)", "url": "https://github.com/racoutlaw/gardening-guide", "idea": "Planting windows tied to frost dates, so setting your own frost dates shifts the whole plan; a \"My garden\" star list.", "license": "No license file" },
+    { "name": "baditaflorin/urban-farm-year", "url": "https://github.com/baditaflorin/urban-farm-year", "idea": "Static, offline-friendly GitHub Pages planner; versioned local-storage envelope; JSON backup/restore; Open-Meteo weather.", "license": "MIT" },
+    { "name": "gofjhmakit/gardentoolkit", "url": "https://github.com/gofjhmakit/gardentoolkit", "idea": "iCal export; companion notes labeled by evidence level.", "license": "MIT" },
+    { "name": "gabrielcsapo/backyard-garden (Gardeneus)", "url": "https://github.com/gabrielcsapo/backyard-garden", "idea": "Gantt-style planting timeline, weekly checklists, crop-rotation warnings within 3 years, harvest totals.", "license": "MIT (per package.json)" },
+    { "name": "alexwboles/gardenplan-ai", "url": "https://github.com/alexwboles/gardenplan-ai", "idea": "No-build, no-dependency app that saves to localStorage; an upcoming-tasks list.", "license": "No license file" },
+    { "name": "cmanorome/pd-application-calendar", "url": "https://github.com/cmanorome/pd-application-calendar", "idea": "A 12-month lawn product application calendar with rates and .ics export.", "license": "No license file" },
+    { "name": "lujoh/amper_garden_planner", "url": "https://github.com/lujoh/amper_garden_planner", "idea": "Organizing garden information by lifecycle stage: plan, plant, water, care, harvest.", "license": "MIT" },
+    { "name": "pz/garden-planner", "url": "https://github.com/pz/garden-planner", "idea": "A garden planner running on GitHub Pages, with frost dates collected up front.", "license": "No license file" }
+  ],
+  "dataCredits": [
+    "Weather, soil temperature and evapotranspiration: [Open-Meteo](https://open-meteo.com/) (free, no key).",
+    "Climate normals and freeze probabilities: NOAA NCEI U.S. Climate Normals 1991–2020, Kansas City International Airport (USW00003947).",
+    "Planting dates: University of Missouri Extension G6201. Vegetable varieties: K-State Research and Extension L41.",
+    "Lawn cultivar data: National Turfgrass Evaluation Program (NTEP) 2018 National Tall Fescue Test.",
+    "Heading font: Fraunces by the Fraunces Project Authors (SIL Open Font License 1.1). Icons drawn for this site."
+  ]
+}

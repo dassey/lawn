@@ -1,0 +1,151 @@
+{
+  "intro": "A rain-fed tall fescue lawn in Kansas City does its growing in spring and fall and rests in summer. Do most of the work in September (aerate, overseed, feed), prevent crabgrass at redbud bloom, mow tall, and accept some summer browning. The plan below follows University of Missouri and K-State Extension, backed by recent turf research.",
+  "principles": [
+    {
+      "title": "Feed in fall, not spring", "icon": "sprout",
+      "text": "Put your 3–4 lb of yearly nitrogen down in September, mid-October and November. MU calls September \"the most important time to fertilize.\" Spring and May nitrogen feed crabgrass and brown patch: in K-State's 2023 plots, turf fed in spring and May had 48–66% brown patch, versus 2–23% for a single September feeding.",
+      "sources": ["mu-g6705", "fry-2025"]
+    },
+    {
+      "title": "Accept summer dormancy", "icon": "sun",
+      "text": "Without a sprinkler system, tall fescue browns in hot, dry spells. That's survival mode, and it greens up again in fall. In K-State rain-out shelter trials, tall fescue recovered from 60–83 days of drought with zero water. Your job: mow high, stay off it, and soak ½–1 in after about 3 weeks of hot, dry weather.",
+      "sources": ["mu-g6705", "hong-2021", "unl-g2191"]
+    },
+    {
+      "title": "Mow tall, mow sharp", "icon": "mower",
+      "text": "3–3.5 inches in spring and fall, 4 inches in summer. Never remove more than a third of the blade, and sharpen twice a season. Tall grass means deeper roots and fewer weeds.",
+      "sources": ["mu-g6705"]
+    },
+    {
+      "title": "Seed every September", "icon": "seed",
+      "text": "Tall fescue is a bunch grass, so it doesn't spread to fill bare spots (in K-State trials, 12-in voids stayed open while bluegrass closed them). Overseed thin areas every September with a 3+ cultivar blend that includes about 10% bluegrass.",
+      "sources": ["stjohn-2009", "mu-g6700"]
+    },
+    {
+      "title": "Stop crabgrass at redbud bloom", "icon": "flower",
+      "text": "One application of dithiopyr or prodiamine when redbuds are in full bloom (MU: by April 15) stops crabgrass all season. Skip spots you'll seed; mesotrione (Tenacity) is the seed-safe option.",
+      "sources": ["kstate-lawn-calendar", "mu-g6705", "cardina-2011"]
+    },
+    {
+      "title": "Kill broadleaf weeds in fall", "icon": "spray",
+      "text": "Dandelions, clover and ground ivy pull sugars down to their roots in fall, so herbicides work best from late September to November. K-State: in November, spray broadleaf weeds \"even if they are small.\"",
+      "sources": ["kstate-lawn-calendar", "mu-g6705"]
+    }
+  ],
+  "nSchedule": [
+    { "m": 1, "n": 0 }, { "m": 2, "n": 0 }, { "m": 3, "n": 0 },
+    { "m": 4, "n": 0.5, "optional": true }, { "m": 5, "n": 0 }, { "m": 6, "n": 0 },
+    { "m": 7, "n": 0 }, { "m": 8, "n": 0 }, { "m": 9, "n": 1 },
+    { "m": 10, "n": 1 }, { "m": 11, "n": 1 }, { "m": 12, "n": 0 }
+  ],
+  "nNote": "About 3 lb N a year (4 max): September (MU's most important feeding; 1–1.5 lb), mid-October (MU), and a quick-release November feeding (K-State). The faded April bar is optional, only for a pale lawn that missed its fall feedings. Research found tall fescue lawns acceptable at 1.5–2.5 lb, so a 2-lb \"low input\" program (Sep + Nov) is fine too.",
+  "mowing": [
+    { "m": 1, "h": 0 }, { "m": 2, "h": 0 }, { "m": 3, "h": 3 }, { "m": 4, "h": 3.5 },
+    { "m": 5, "h": 3.5 }, { "m": 6, "h": 4 }, { "m": 7, "h": 4 }, { "m": 8, "h": 4 },
+    { "m": 9, "h": 3.5 }, { "m": 10, "h": 3.5 }, { "m": 11, "h": 3 }, { "m": 12, "h": 0 }
+  ],
+  "mowNote": "MU's ranges for tall fescue: 2–3.5 in spring, 3–4 in summer, 2.5–3.5 in fall. This plan stays near the top, because a rain-fed lawn needs the deeper roots. Drop to about 2.5 in once before overseeding in September.",
+  "keyDates": [
+    { "when": "Redbud full bloom (~Apr 1–15)", "what": "Crabgrass preventer (dithiopyr or prodiamine), watered in", "why": "Crabgrass sprouts once soil holds ~55°F. Bloom order tracks soil warming better than the calendar (Cardina 2011)." },
+    { "when": "May 1", "what": "Last day for lawn nitrogen until September", "why": "MU: nitrogen after May 1 \"will encourage development of foliar diseases\" such as brown patch." },
+    { "when": "May, only if grubs last year", "what": "Grub preventer (chlorantraniliprole)", "why": "Prevents the next generation. Skip it if you've never had damage." },
+    { "when": "Early June", "what": "Raise the mower to 4 in", "why": "Tall grass shades soil, holds moisture and crowds out crabgrass." },
+    { "when": "July–August", "what": "Survival rule: ½–1 in only after ~3 weeks without ½ in of rain in the heat", "why": "Dormant turf survives only 3–4 weeks when it stays above 80°F (UNL)." },
+    { "when": "Labor Day ± 1 week", "what": "Core aerate, overseed, first fall feeding (1–1.5 lb N)", "why": "Seed sown the week of Labor Day fills in best (MU G6700)." },
+    { "when": "Mid-October", "what": "Second feeding (1 lb N); last call for seeding (Oct 10–15)", "why": "MU: \"mid-October is a good time\" for the second application." },
+    { "when": "Early–mid November", "what": "Quick-release N (urea) and a broadleaf spray", "why": "Feeds roots for an early spring green-up (K-State). Much later than mid-November, it mostly leaches (Mangiafico 2006)." }
+  ],
+  "water": {
+    "short": "Tall fescue survives a normal KC summer on rain alone. It goes brown (dormant) in hot, dry spells, and that's normal. **Water only** in three cases: (1) new seed, (2) wilting grass in June, or (3) after about **3 weeks without ½ in of rain in the heat**. Then soak ½–1 in early in the morning. Light daily sprinkling does more harm than good.",
+    "tunaCan": [
+      "Set 4–6 empty tuna or cat-food cans (straight sides) around the sprinkler's pattern.",
+      "Run the sprinkler for 30 minutes, then measure the water depth in each can with a ruler and average them.",
+      "Double that number to get inches per hour. Most oscillating sprinklers put down roughly ¼–½ in per hour.",
+      "Run time = inches you want ÷ inches per hour. On clay, split long runs into cycles 30 minutes apart; MU notes few Missouri lawn soils absorb more than ½ in per hour."
+    ],
+    "facts": [
+      { "text": "MU: \"Except in cases of extreme prolonged drought, tall fescue and Kentucky bluegrass do not need water to stay alive during the summer; however, their appearance suffers.\" Tall fescue's deep roots keep it green longer than other rain-fed cool-season grasses.", "sources": ["mu-g6705"] },
+      { "text": "Dormant turf survives about 4–5 weeks, but only 3–4 weeks when temperatures stay above 80°F. **¼–½ in every 2–3 weeks** hydrates crowns without greening the lawn (UNL). MU's lawn manual is more generous: **at least 1 in every 2–3 weeks** to prevent turf loss.", "sources": ["unl-g2191", "mu-mg10"] },
+      { "text": "Under rain-out shelters in Manhattan, KS, tall fescue fully recovered from 60–83-day droughts even with zero water, while Kentucky bluegrass sod did not.", "sources": ["hong-2021"] },
+      { "text": "Cool-season lawns stay acceptable on roughly 59–74% of full evapotranspiration. The Today page estimates lawn use at 0.8 × reference ET from the weather model, a conservative figure.", "sources": ["braun-2022a", "fao-56"] },
+      { "text": "1 in of water on 1,000 sq ft is about 620 gallons. Water between 4 and 10 a.m.; evening watering keeps grass wet overnight and invites brown patch.", "sources": ["mu-g6705", "kstate-brown-patch"] }
+    ]
+  },
+  "seed": {
+    "blend": {
+      "title": "Buy a 90/10 tall fescue–bluegrass blend",
+      "text": "For a rain-fed KC lawn: about **90% turf-type tall fescue** (3 or more cultivars) plus **10% Kentucky bluegrass**.",
+      "points": [
+        "**Why tall fescue:** the deepest roots of the cool-season lawn grasses; it recovers from long droughts (K-State).",
+        "**Why ~10% bluegrass:** it's the only lawn grass here that spreads by rhizomes to fill gaps. 90:10 mixtures held up as well as straight fescue under limited water (Purdue) and had less brown patch (Rutgers).",
+        "**Why not more bluegrass:** bluegrass sod didn't recover from long drought in K-State's shelters, and in MU's 5-year test it competed less well where not irrigated.",
+        "**3+ cultivars:** a blend spreads the risk of disease and weather.",
+        "**Tag checks:** cultivar names listed (not \"variety not stated\"), germination ≥85%, weed seed ≤0.1% (0% is common), tested in the last 9–12 months. Use the checker below."
+      ]
+    },
+    "cultivarsIntro": "NTEP runs independent multi-year cultivar trials. Its **non-irrigated Manhattan, KS** site is the closest match to a rain-fed KC lawn. Scores are on a 1–9 scale; at that site, entries within about 1 point of the top are statistical ties, so treat this as a short list rather than a ranking.",
+    "cultivars": [
+      { "name": "Titan GLX", "why": "Top at non-irrigated Manhattan, KS (5.5); 6.3 across the transition zone (NTEP 2018 test, 2019–23)." },
+      { "name": "Xanadu", "why": "Top at non-irrigated Manhattan, KS (5.5); 6.4 at Columbia, MO." },
+      { "name": "Hellcat GLR", "why": "5.4 at non-irrigated Manhattan, KS." },
+      { "name": "Triad", "why": "5.3 at non-irrigated Manhattan, KS; also a top performer with no irrigation in Italy (Novello 2025)." },
+      { "name": "Spyder 2LS", "why": "6.4 at Columbia, MO; 6.3 transition-zone mean; top non-irrigated performer in Italy under its breeder code ZRC-1." },
+      { "name": "Raptor LS", "why": "Top non-irrigated performer in Italy under its breeder code PPG-TF336." },
+      { "name": "Titanium G-LS", "why": "6.3 transition-zone mean; 6.3 at Columbia, MO." },
+      { "name": "Daybreak", "why": "Highest transition-zone mean in the 2018 test (6.4)." },
+      { "name": "TWCA-qualified cultivars", "why": "Aquavita, Rebel V, Rebel Xpedition, Thunderstruck, GLX Aced, Lifeguard, RainDance and others passed the Turfgrass Water Conservation Alliance drought test." }
+    ],
+    "cultivarSources": ["ntep-tf18", "novello-2025", "twca", "umn-trial-explorer", "ntep-tf24"],
+    "avoid": [
+      "**Kentucky 31, \"variety not stated\" or forage types:** coarse, clumpy and pale. MU restricts forage types to roadsides; KY-31 scored 4.4 in NTEP's 2018 test vs 6.3–6.4 for the best turf types.",
+      "**Annual ryegrass** in any amount. MU: \"not a suitable turfgrass species in Missouri.\"",
+      "**Ryegrass-heavy \"quick\" mixes.** Perennial ryegrass often dies out in a Missouri summer; keep it at 10% or less.",
+      "**Paying extra for \"rhizomatous\" tall fescue (RTF) to fill bare spots.** K-State measured RTF rhizomes at ~3 mm vs 80+ mm for bluegrass, and RTF didn't close voids faster.",
+      "**Heavily coated seed judged by bag weight.** Coating can be a big share of the weight; compare the tag's pure live seed, not the bag size.",
+      "**\"Endophyte-enhanced\" as a drought promise.** A 2024 study found no consistent drought benefit (endophytes may still help against some insects)."
+    ],
+    "rates": [
+      { "what": "Overseed a thin lawn", "rate": "4–5 lb / 1,000 sq ft (K-State: 3–5)" },
+      { "what": "Bare soil / new lawn, turf-type tall fescue", "rate": "7–9 lb / 1,000 sq ft (MU)" },
+      { "what": "Spring seeding (backup plan only)", "rate": "≈10 lb / 1,000 sq ft (MU G6700)" },
+      { "what": "Forage type (KY-31), if you must", "rate": "10 lb / 1,000 sq ft (MU)" },
+      { "what": "How", "rate": "Half one direction, half crosswise" }
+    ]
+  },
+  "mowTips": [
+    "**Height:** 3–3.5 inches in spring and fall, 4 inches in summer (MU's range for tall fescue: 2–3.5 in spring, 3–4 in summer, 2.5–3.5 in fall).",
+    "**The ⅓ rule:** never cut off more than a third of the blade at once. In May that may mean mowing every 4–5 days.",
+    "**Sharp blade:** dull blades shred tips (tan, frayed ends) and invite disease. Sharpen in spring and again in early summer.",
+    "**Leave the clippings.** They recycle nitrogen and don't cause thatch.",
+    "**Don't mow dormant or wilted grass**, and skip the afternoon heat; tire tracks on drought-stressed grass leave brown trails.",
+    "**Before overseeding**, mow down to about 2.5 in and bag the clippings so seed reaches the soil.",
+    "**New seedlings:** first mow at 3 in when they reach about 4 in, with a sharp blade on dry grass.",
+    "**Shade:** MU says to use the taller summer heights year-round in shade."
+  ],
+  "soil": {
+    "howTo": [
+      "Test every 2–3 years, before buying lime or phosphorus. Sample in fall or winter to beat the spring rush at MU's lab.",
+      "Use a soil probe or trowel: take 10–15 small cores across the lawn (separate samples for the vegetable garden and beds). Skip odd spots such as downspouts and the dog's corner.",
+      "Depth: ask when you call. One KC-area office asks for 6–7 in; for an established lawn, ask whether they want only the top 3–4 in.",
+      "Mix in a clean plastic bucket, air-dry, and bag about 1½ cups. Label it \"lawn: tall fescue\" (or \"vegetable garden\") so the recommendations fit.",
+      "Your county MU Extension office takes samples (call ahead); the MU lab's regular test is $15 (2026) plus any county handling fee. Results take about 2 weeks."
+    ],
+    "sources": ["mu-soil-lab", "mu-county", "mggkc"],
+    "notes": [
+      { "title": "KC clay soils", "text": "Many KC-area yards sit on heavy silty clay: it holds nutrients well but drains slowly and compacts. Fix it from the top with yearly core aeration plus a ¼-in compost topdressing. **Never add sand to clay**; it makes a concrete-like mix." },
+      { "title": "pH & lime", "text": "MU reports salt pH (\"pHs\"), which typically reads about half a unit lower than a water-pH meter. Lime a lawn only if the test says pH 5.8 or lower, at no more than 50 lb per 1,000 sq ft per application, ideally in fall or early winter." },
+      { "title": "Phosphorus", "text": "Established lawns rarely need phosphorus, and many test adequate or high. Use a fertilizer with a 0 in the middle (38-0-4, 28-0-12) unless your test says otherwise; save phosphorus starter fertilizer for seeding." },
+      { "title": "The gypsum myth", "text": "Gypsum doesn't loosen typical Missouri clay; it helps only sodium-affected soils. Spend the money on compost and core aeration instead." }
+    ]
+  },
+  "more": [
+    { "title": "Leaves: mow them in", "icon": "leaf", "text": "Mulch-mow fall leaves into the lawn as long as you can see grass through the shreds. A Michigan State study found it cut dandelions by up to 80% and improved spring green-up. Don't let leaves mat down on new seedlings.", "sources": ["kowalewski-2009"] },
+    { "title": "Shade", "icon": "sun", "text": "Tall fescue handles light shade (about 4–6 hours of sun); keep it at summer height year-round. Under dense trees, a fine-fescue shade mix, native sedges or a mulched bed beats thin grass. Note that Tenacity can't be used on mixes with more than 20% fine fescue.", "sources": ["mu-g6705", "braun-2023"] },
+    { "title": "Dog spots", "icon": "drop", "text": "Urine burn is a nitrogen overdose: a dead center ringed by dark-green grass. Soak the spot with water soon after, and reseed dead patches in September." },
+    { "title": "Pollinators without \"No Mow May\"", "icon": "bee", "text": "The study that launched No Mow May was retracted in 2022. Mowing every 2–3 weeks at 4 in, leaving some clover in the lawn, and planting flowers in beds feeds bees without a scalped, weedy June lawn.", "sources": ["deltoro-2020", "lerman-2018", "hemmings-2022"] },
+    { "title": "Compaction beats thatch", "icon": "soil", "text": "Tall fescue rarely builds thatch; compacted clay is the real problem. Core aerate yearly in September with two passes, never on bone-dry or soggy soil." },
+    { "title": "Dormant or dead?", "icon": "eye", "text": "Tug a handful of brown grass. Dormant grass holds firm and the crowns are white and firm inside; dead grass pulls out easily. Dormant fescue greens up 1–2 weeks after a soaking rain." },
+    { "title": "Kids, pets & pollinators", "icon": "shield", "text": "Keep everyone off treated areas until the spray has dried or granules are watered in, and follow each label's re-entry time. Mow off flowering clover before any insecticide. Permethrin clothing spray is toxic to cats while wet.", "sources": ["product-label"] },
+    { "title": "Mushrooms & slime mold", "icon": "info", "text": "Harmless signs of wet weather and decaying roots or buried wood. Mow or rake them off; no fungicide needed." }
+  ]
+}

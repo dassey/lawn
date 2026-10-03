@@ -1,0 +1,180 @@
+{
+  "rotationRule": "**Rotate by family:** don't plant the same family in the same bed more than once every 3 years. Tomatoes, peppers, eggplant and potatoes are one family, and early blight and Septoria overwinter in the soil. The planner flags repeats from the last two years.",
+  "families": [
+    { "id": "nightshade", "name": "Nightshades", "latin": "Solanaceae", "color": "#c0392b", "members": "tomato, pepper, jalapeño, eggplant, potato", "note": "Rotate 3 years: early blight and Septoria carry over in soil and debris." },
+    { "id": "cucurbit", "name": "Cucurbits", "latin": "Cucurbitaceae", "color": "#d68910", "members": "squash, zucchini, cucumber, melons, pumpkin", "note": "Rotating helps with squash bugs and vine borers, which overwinter nearby." },
+    { "id": "brassica", "name": "Brassicas", "latin": "Brassicaceae", "color": "#27ae60", "members": "broccoli, cabbage, kale, collards, cauliflower, radish, turnip, kohlrabi", "note": "Pests and soil diseases build up when brassicas stay in one bed." },
+    { "id": "legume", "name": "Legumes", "latin": "Fabaceae", "color": "#8e44ad", "members": "peas, green beans, pole beans, southern peas", "note": "Good to follow heavy feeders." },
+    { "id": "allium", "name": "Onion family", "latin": "Amaryllidaceae", "color": "#7f8c8d", "members": "onion, garlic, chives", "note": "Rotate to limit thrips and bulb rots." },
+    { "id": "umbel", "name": "Carrot family", "latin": "Apiaceae", "color": "#e67e22", "members": "carrot, parsley, cilantro, dill" },
+    { "id": "goosefoot", "name": "Beet family", "latin": "Amaranthaceae", "color": "#c2185b", "members": "beet, spinach, Swiss chard" },
+    { "id": "aster", "name": "Lettuce family", "latin": "Asteraceae", "color": "#16a085", "members": "lettuce" },
+    { "id": "grass", "name": "Grasses", "latin": "Poaceae", "color": "#b7950b", "members": "sweet corn" },
+    { "id": "mallow", "name": "Mallows", "latin": "Malvaceae", "color": "#6d4c41", "members": "okra" },
+    { "id": "morning-glory", "name": "Morning glory family", "latin": "Convolvulaceae", "color": "#5d6d7e", "members": "sweet potato" },
+    { "id": "mint", "name": "Mint family", "latin": "Lamiaceae", "color": "#2e86c1", "members": "basil, thyme, oregano, sage, mint" },
+    { "id": "rose", "name": "Rose family", "latin": "Rosaceae", "color": "#a93226", "members": "strawberries, blackberries" },
+    { "id": "perennial", "name": "Perennial vegetables", "latin": "Asparagaceae / Polygonaceae", "color": "#145a32", "members": "asparagus, rhubarb", "note": "Permanent beds; don't rotate." }
+  ],
+  "seedStart": {
+    "tips": [
+      "**Light is everything:** a 4-ft LED shop light hung 2–3 in above the seedlings, on a $10 outlet timer for 14–16 hours a day. A sunny window alone grows leggy plants.",
+      "**Warmth to sprout:** a seedling heat mat (75–85°F) speeds peppers, eggplant and tomatoes; turn it off once they're up.",
+      "**Seed-starting mix**, not garden soil or potting soil with fertilizer chunks. Keep it moist, not soggy.",
+      "**Air:** a small fan on low for an hour or two a day grows stockier stems and helps prevent damping-off.",
+      "**Feed** at half strength every 1–2 weeks after the first true leaves; pot tomatoes up into 4-in pots, burying the stem deeper.",
+      "**Label** every pot with variety and sowing date."
+    ],
+    "hardenOff": [
+      "Start 7–10 days before transplant day.",
+      "Days 1–2: 1–2 hours outdoors in shade, out of the wind.",
+      "Days 3–5: add morning sun; bring them in at night.",
+      "Days 6–8: full sun most of the day; leave out on nights above 50°F (55°F for peppers).",
+      "Transplant on a cloudy afternoon and water in well."
+    ]
+  },
+  "guides": [
+    {
+      "title": "Beating KC clay", "icon": "soil",
+      "points": [
+        "Raised beds 8–12 in tall warm up and drain faster in April. Fill them with a topsoil–compost blend (local yards like Missouri Organic sell one).",
+        "In-ground beds: work in 2–3 in of compost every year, but only when a squeezed handful crumbles. Wet clay makes clods that last all season.",
+        "Never add sand to clay; it sets up like concrete.",
+        "Top beds with compost or shredded leaves every fall, and keep them mulched in summer."
+      ]
+    },
+    {
+      "title": "Watering without a sprinkler system", "icon": "drop",
+      "points": [
+        "Soaker hose or drip line under the mulch, on a hose timer, is the easiest system.",
+        "About 1 in of water per week total (rain + watering); tomatoes and melons want up to 1.5 inches a week in July.",
+        "Water deeply twice a week in the morning, at the base, rather than a little every day.",
+        "Mulch 2–3 in with straw or shredded leaves once soil warms (late May). It halves watering and prevents blossom-end rot."
+      ]
+    },
+    {
+      "title": "Feeding", "icon": "sprout",
+      "points": [
+        "Get a soil test first; many established gardens are already high in phosphorus.",
+        "No test? About 3 lb of 10-10-10 per 100 sq ft, worked in before planting (MU default).",
+        "Side-dress heavy feeders (tomatoes, peppers, corn, squash) when fruit sets or corn is knee-high.",
+        "Go easy on nitrogen for tomatoes and sweet potatoes: big plants, little harvest."
+      ],
+      "sources": ["mu-g6461"]
+    },
+    {
+      "title": "Succession & the fall garden", "icon": "calendar",
+      "points": [
+        "Sow lettuce, radishes and beans every 2–3 weeks through their windows for a steady harvest.",
+        "Plant a second squash and cucumber round in late June–early July to dodge the first wave of pests.",
+        "The fall garden (planted late July–August) is often better than spring for broccoli, cabbage, carrots, lettuce and spinach, because they mature in cool weather.",
+        "Shade new fall seedlings from afternoon sun for their first week."
+      ],
+      "sources": ["mu-g6201"]
+    },
+    {
+      "title": "KC summer heat", "icon": "flame",
+      "points": [
+        "Tomatoes stop setting fruit when nights stay above ~75°F and resume in September. Keep them watered; don't pull them.",
+        "Heat-set tomatoes (Florida 91, Sun Leaper, Sunmaster) keep producing through hot spells.",
+        "Lettuce bolts in heat, so grow heat-tolerant Muir or Jericho and finish harvesting by early June.",
+        "Okra, sweet potatoes, peppers and southern peas love July."
+      ],
+      "sources": ["kstate-l41"]
+    },
+    {
+      "title": "Critters", "icon": "yard",
+      "points": [
+        "Rabbits: a 2-ft fence of 1-in mesh with the bottom buried 3–6 in.",
+        "Squirrels steal ripening tomatoes, so pick at first blush and ripen them indoors.",
+        "Deer: only a tall (7–8 ft) fence is reliable; repellents buy time.",
+        "Raccoons and birds love sweet corn and melons: harvest promptly, and use netting if needed."
+      ]
+    }
+  ],
+  "pests": [
+    {
+      "id": "squash-vine-borer", "name": "Squash vine borer", "crops": "zucchini, summer squash, pumpkins",
+      "signs": "A vigorous plant suddenly wilts in late June–July; sawdust-like frass at the base of the stem; red-and-black clearwing moths hovering around plants in June.",
+      "fix": "Keep row cover on until flowering (then remove for pollination). Border the patch with Blue Hubbard squash as a trap crop. Grow butternut or Tromboncino (C. moschata), which are far less affected, and plant a second round in early July. If you spray, use a product whose label lists squash vine borer, on the lower stems every 7 days while moths fly; once larvae are inside, sprays don't work (MU IPM). An infested stem can be slit lengthwise to remove the grub, then buried in moist soil.",
+      "products": ["row-cover"], "sources": ["mu-ipm-svb", "mu-ipm-trapcrop"]
+    },
+    {
+      "id": "squash-bug", "name": "Squash bugs", "crops": "squash, pumpkins, melons",
+      "signs": "Gray shield-shaped bugs and bronze egg clusters under leaves; leaves wilt, yellow and blacken.",
+      "fix": "Crush egg clusters every few days. Lay a board by the plants and destroy the bugs hiding under it each morning. A Blue Hubbard trap-crop border draws them away; treat young nymphs early (permethrin is labeled for squash bugs, so spray late in the day away from flowers).",
+      "products": ["bonide-eight", "row-cover"], "sources": ["lincoln-trap-crop"]
+    },
+    {
+      "id": "cucumber-beetle", "name": "Cucumber beetles", "crops": "cucumbers, melons, squash",
+      "signs": "Yellow beetles with black stripes or spots chewing seedlings and flowers. They spread bacterial wilt (sudden vine collapse).",
+      "fix": "Row cover until bloom; a trap-crop border; remove wilted plants.",
+      "products": ["row-cover", "bonide-eight"], "sources": ["lincoln-trap-crop"]
+    },
+    {
+      "id": "hornworm", "name": "Tomato hornworm", "crops": "tomato, pepper, eggplant",
+      "signs": "Leaves stripped overnight in July; big dark droppings on lower leaves.",
+      "fix": "Hand-pick (they're easy to spot at dusk); Bt while they're small. Leave any covered in white cocoons, since parasitic wasps are finishing them.",
+      "products": ["bt"]
+    },
+    {
+      "id": "cabbageworm", "name": "Cabbageworms & loopers", "crops": "broccoli, cabbage, kale, collards",
+      "signs": "White butterflies over the patch; velvety green caterpillars; ragged holes.",
+      "fix": "Row cover from planting day; Bt every 5–7 days while caterpillars feed.",
+      "products": ["bt", "row-cover"]
+    },
+    {
+      "id": "early-blight", "name": "Early blight & Septoria leaf spot", "crops": "tomato, potato",
+      "signs": "Early blight: brown spots with target-like rings on lower leaves, yellowing upward from June on. Septoria: many small spots with gray centers.",
+      "fix": "Remove spotted leaves, mulch to stop soil splash, water at the base in the morning, cage or stake for airflow, and rotate on a 3-year cycle. If it's severe, a protectant (chlorothalonil or copper) every 7–10 days per label.",
+      "products": ["daconil", "copper", "straw-mulch"]
+    },
+    {
+      "id": "blossom-end-rot", "name": "Blossom-end rot", "crops": "tomato, pepper, watermelon",
+      "signs": "A leathery dark patch on the blossom end of the fruit, often on the first fruits.",
+      "fix": "Mulch and water evenly, and don't overdo nitrogen. K-State says low soil calcium is rare in Kansas, and the usual cause is moisture swings that block uptake. MU's tomato guide frames it as calcium plus moisture swings. Only add calcium if a soil test calls for it.",
+      "products": ["straw-mulch", "soaker-drip"], "sources": ["kstate-ber", "mu-g6461"]
+    },
+    {
+      "id": "flea-beetles", "name": "Flea beetles", "crops": "eggplant, radish, arugula, potato, brassicas",
+      "signs": "Tiny black beetles that jump when disturbed; leaves peppered with shot holes in spring.",
+      "fix": "Row cover at planting; most plants outgrow the damage once the weather warms."
+    },
+    {
+      "id": "colorado-potato-beetle", "name": "Colorado potato beetle", "crops": "potato, eggplant",
+      "signs": "Yellow-and-black striped beetles, and red humpbacked larvae eating leaves.",
+      "fix": "Hand-pick adults and orange egg clusters; spinosad for young larvae.",
+      "products": ["spinosad"]
+    },
+    {
+      "id": "japanese-beetle", "name": "Japanese beetles", "crops": "beans, grapes, raspberries, roses, basil",
+      "signs": "Metallic green-and-copper beetles skeletonizing leaves in June–July.",
+      "fix": "Knock them into soapy water in the cool morning. Don't use traps; they attract more beetles than they catch.",
+      "sources": ["uky-japanese-beetle", "mu-japanese-beetle"]
+    },
+    {
+      "id": "aphids", "name": "Aphids", "crops": "many",
+      "signs": "Clusters on new growth and leaf undersides; sticky leaves; curled tips.",
+      "fix": "Hose them off; insecticidal soap for heavy clusters. Lady beetles and lacewings usually catch up if you don't use broad-spectrum sprays.",
+      "products": ["insecticidal-soap"]
+    },
+    {
+      "id": "spider-mites", "name": "Spider mites", "crops": "beans, tomatoes, cucumbers",
+      "signs": "Fine webbing and pale-stippled leaves in hot, dry weather.",
+      "fix": "Spray the undersides of leaves with water; insecticidal soap. Worst on drought-stressed, dusty plants.",
+      "products": ["insecticidal-soap"]
+    }
+  ],
+  "companions": [
+    { "pair": "Blue Hubbard squash border around cucurbits", "evidence": "extension", "note": "It works: Lincoln University and MU IPM show a trap-crop border draws squash bugs, cucumber beetles and vine borers away from the main crop, so you treat only the border." },
+    { "pair": "Row cover on cucurbits and brassicas until bloom", "evidence": "practice", "note": "A physical barrier is the most reliable \"companion\" there is. Remove it from squash and cucumbers when they flower." },
+    { "pair": "3-year crop rotation", "evidence": "extension", "note": "Cuts carry-over of soil-borne problems such as tomato early blight." },
+    { "pair": "Flowering borders (dill, alyssum, zinnias, native flowers)", "evidence": "practice", "note": "Flowers feed parasitic wasps, hoverflies and lady beetles that eat pests. How much actual pest control you get varies." },
+    { "pair": "Marigolds against root-knot nematodes", "evidence": "practice", "note": "Only a dense planting of French marigolds grown as a cover crop for a season suppresses nematodes. A few marigolds between tomatoes do little." },
+    { "pair": "Radish or Chinese cabbage as a flea-beetle trap", "evidence": "practice", "note": "These attract flea beetles and can spare nearby eggplant and greens; plant them a little earlier." },
+    { "pair": "Three Sisters (corn, beans, squash)", "evidence": "practice", "note": "A productive traditional planting, but it needs lots of room; the beans add little nitrogen in the first year." },
+    { "pair": "Basil with tomatoes", "evidence": "folklore", "note": "No solid evidence it repels pests or improves flavor. Still a fine neighbor, and handy for dinner." },
+    { "pair": "Nasturtiums as an aphid trap", "evidence": "folklore", "note": "They do attract aphids; whether that protects nearby plants is inconsistent." },
+    { "pair": "Onions or garlic to repel pests", "evidence": "folklore", "note": "Little evidence. Plant alliums where they fit your rotation instead." }
+  ]
+}

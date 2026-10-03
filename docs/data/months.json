@@ -1,0 +1,106 @@
+{
+  "months": [
+    {
+      "m": 1, "headline": "Plan & rest", "accent": "yard",
+      "bottomLine": "Rest the lawn, order seed, and get a soil test in before the spring rush.",
+      "summary": "Stay off frozen grass, use lawn-safe ice melt near turf, prune oaks while it's safe, and plan the year: seed order, soil test and mower tune-up.",
+      "frost": "Hard freezes most weeks"
+    },
+    {
+      "m": 2, "headline": "Prep", "accent": "yard",
+      "bottomLine": "Tune up the mower, start broccoli and cabbage indoors, and cut back ornamental grasses late in the month.",
+      "summary": "Prune summer-flowering shrubs and dormant trees, set up grow lights, and clean the rain barrel. The lawn needs nothing yet; skip the early-spring fertilizer.",
+      "frost": "Hard freezes still common"
+    },
+    {
+      "m": 3, "headline": "Wake up", "accent": "lawn",
+      "bottomLine": "Clean up gently, plant peas, potatoes and onions, and have crabgrass preventer ready for redbud bloom.",
+      "summary": "Rake out winter debris, start tomatoes and peppers indoors, and sow cool-season crops as soon as the soil crumbles. Wait for highs in the 50s before a big bed cleanup. Stop pruning oaks by mid-March.",
+      "frost": "Median last hard freeze ~Apr 1"
+    },
+    {
+      "m": 4, "headline": "Pre-emergent month", "accent": "lawn",
+      "bottomLine": "Crabgrass preventer by redbud bloom (by April 15), start mowing at 3–3.5 in, and keep planting cool crops.",
+      "summary": "One application of prodiamine or dithiopyr stops crabgrass all season. Skip it where you seeded. Divide summer perennials, harden off transplants, and put up the rabbit fence.",
+      "frost": "Median last frost Apr 13 (KCI)"
+    },
+    {
+      "m": 5, "headline": "Big planting month", "accent": "veg",
+      "bottomLine": "Plant tomatoes, peppers and melons after about May 10. No lawn fertilizer from here until September.",
+      "summary": "Warm crops go in as soil hits 60–65°F. Mulch the garden, lay soaker hose, and prune spring-flowering shrubs after bloom. Apply grub preventer only if you had grubs last year.",
+      "frost": "Light frost possible to ~May 7"
+    },
+    {
+      "m": 6, "headline": "Mow high", "accent": "lawn",
+      "bottomLine": "Raise the mower to 4 in, protect squash from vine borers, and harvest garlic and peas.",
+      "summary": "Watch for brown patch as nights warm, hand-pick Japanese beetles (no traps), scout tomatoes for early blight, and start fall broccoli mid-month.",
+      "frost": "~7 days ≥90°F"
+    },
+    {
+      "m": 7, "headline": "Survival mode", "accent": "veg",
+      "bottomLine": "Let the lawn rest: mow high, stay off it, water only by the 3-week rule, and sow the fall garden late in the month.",
+      "summary": "Tall fescue browns in heat and drought, and that's normal. Soak ½–1 in only after about 3 weeks without ½ in of rain in the heat. Check for grubs if patches peel back like carpet. Pick vegetables often.",
+      "frost": "Hottest month, ~13 days ≥90°F"
+    },
+    {
+      "m": 8, "headline": "Get ready", "accent": "lawn",
+      "bottomLine": "Buy fall grass seed, kill bermuda patches, plant fall greens, and wake a dormant lawn late in the month.",
+      "summary": "Read seed tags and buy a 90/10 tall fescue–bluegrass blend, spot-spray bermudagrass so it's dead by seeding time, sow lettuce and spinach, and order spring bulbs.",
+      "frost": "~12 days ≥90°F"
+    },
+    {
+      "m": 9, "headline": "The most important lawn month", "accent": "lawn",
+      "bottomLine": "Aerate, overseed, feed. The most important lawn month.",
+      "summary": "Core aerate and overseed around Labor Day, feed 1–1.5 lb N, and start fall broadleaf weed control once new grass has been mowed 3 times. Divide perennials, plant trees and shrubs, and dig sweet potatoes.",
+      "frost": "Earliest frost 1 year in 10: ~Sep 29 (36°F)"
+    },
+    {
+      "m": 10, "headline": "Second feeding & garlic", "accent": "veg",
+      "bottomLine": "Feed the lawn again (1 lb N) in mid-October, mulch-mow the leaves, and plant garlic and spring bulbs.",
+      "summary": "October 10–15 is the practical cutoff for seeding. First mow new grass at 3 in. Sow a cover crop on empty beds, pull frosted vines, and drain the hoses before the first hard freeze.",
+      "frost": "Median first frost Oct 24 (KCI)"
+    },
+    {
+      "m": 11, "headline": "Winterize", "accent": "yard",
+      "bottomLine": "Final lawn feeding (quick-release N) and a broadleaf spray, then winterize the mower, hoses and young tree trunks.",
+      "summary": "Winterizer nitrogen feeds roots for an early spring green-up. Spray dandelions and clover on a 50°F day, put hardware-cloth guards on young trees, and cut invasive bush honeysuckle while it's still green.",
+      "frost": "Median hard freeze Nov 1"
+    },
+    {
+      "m": 12, "headline": "Rest & review", "accent": "yard",
+      "bottomLine": "Stay off frozen grass, review your journal, and plan next year's garden rotation.",
+      "summary": "Mound mulch over rose crowns, check the garlic mulch, service tools, and put a soil probe, rain gauge or hose timer on your wish list.",
+      "frost": "Frozen ground common"
+    }
+  ],
+  "seasons": [
+    {
+      "id": "winter", "name": "Winter", "span": "Dec–Feb",
+      "lawn": "Stay off frozen turf, get a soil test, sharpen the mower blade, plan the nitrogen budget.",
+      "beds": "Leave stems and seed heads for birds and bees. Prune dormant trees and summer-flowering shrubs.",
+      "veg": "Order seed, plan rotation, start onions (January) and broccoli/cabbage (February) under lights.",
+      "yard": "Prune oaks (safe window), check trunk guards, clean tools and the rain barrel."
+    },
+    {
+      "id": "spring", "name": "Spring", "span": "Mar–May",
+      "lawn": "Crabgrass preventer at redbud bloom; little or no nitrogen; mow at 3–3.5 in.",
+      "beds": "Cut back grasses, clean up once highs hold in the 50s, mulch 2–3 in, divide summer and fall bloomers.",
+      "veg": "Cool crops from mid-March; warm crops from about May 10; mulch and drip lines in late May.",
+      "yard": "Ticks and chiggers arrive; mosquito control starts; treat ash for EAB if you're protecting one."
+    },
+    {
+      "id": "summer", "name": "Summer", "span": "Jun–Aug",
+      "lawn": "Mow at 4 in; survival watering only (3-week rule); watch for grubs and brown patch.",
+      "beds": "Water new plantings weekly, deadhead, hand-pick Japanese beetles, pinch mums until July 4.",
+      "veg": "Harvest often; fight squash vine borers; sow the fall garden late July–August.",
+      "yard": "Water young trees in dry spells; dump standing water weekly."
+    },
+    {
+      "id": "fall", "name": "Fall", "span": "Sep–Nov",
+      "lawn": "Aerate and overseed around Labor Day; feed in Sep, Oct and Nov; broadleaf weed control.",
+      "beds": "Plant perennials, shrubs, trees and bulbs; divide perennials; leave the leaves in beds.",
+      "veg": "Plant garlic in October, sow cover crops, clean up diseased vines, harvest cold-hardy greens.",
+      "yard": "Mulch-mow leaves, drain hoses, winterize the mower, guard young trunks."
+    }
+  ]
+}

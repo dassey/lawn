@@ -1,0 +1,21 @@
+{
+  "name": "KC Lawn & Garden Almanac",
+  "short_name": "Lawn Almanac",
+  "description": "Month-by-month lawn, flower bed and vegetable garden plan for the Kansas City area — rain-fed tall fescue, live weather alerts, checklists and calculators.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f4ee",
+  "theme_color": "#3f7d3a",
+  "icons": [
+    { "src": "assets/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Calendar", "url": "./calendar.html" },
+    { "name": "Veggie garden", "url": "./garden.html" },
+    { "name": "Journal", "url": "./journal.html" }
+  ]
+}

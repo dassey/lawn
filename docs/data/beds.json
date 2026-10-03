@@ -1,0 +1,50 @@
+{
+  "intro": "Around Kansas City, flower beds have to survive heavy clay, 100°F summers and near-zero winters. Native plants and a few proven workhorses make that easy. Timing (what to cut when, what to leave standing) matters more than any product.",
+  "principles": [
+    { "title": "Leave the leaves (and the stems)", "icon": "leaf", "text": "Leave stems and seed heads over winter: birds eat the seeds, and native bees nest in hollow stems. In spring, cut to 8–24 in of stubble instead of to the ground.", "sources": ["grow-native"] },
+    { "title": "Wait for the 50s", "icon": "thermo", "text": "Clean up beds once daytime highs hold in the 50s, not on the first warm day in March; many beneficial insects are still overwintering in the debris.", "sources": ["grow-native"] },
+    { "title": "Mulch 2–3 in, never against stems", "icon": "shield", "text": "Shredded hardwood or leaves hold moisture on clay and block weeds. Keep mulch 2–3 in away from stems and trunks." },
+    { "title": "Water deeply, weekly, the first year", "icon": "drop", "text": "New plants need about 1 in a week at the base (a soaker hose on a timer) through their first summer. Established natives rarely need watering." },
+    { "title": "Plant in fall", "icon": "calendar", "text": "Mid-September to November: warm soil, cool air and fall rain grow roots before summer stress." },
+    { "title": "Right plant, right place", "icon": "flower", "text": "Clay- and heat-tolerant plants (see the plant finder) save more water and work than any product. Group plants by sun and moisture needs." }
+  ],
+  "pruneRule": "**The rule:** shrubs that bloom before about mid-June flower on last year's wood, so prune them right after they bloom. Shrubs that bloom in summer flower on new wood, so prune them in late winter. **Oaks:** winter only (never mid-March through June or July). When in doubt, prune right after it blooms.",
+  "trees": [
+    { "id": "eab", "icon": "bug", "title": "Emerald ash borer (EAB)", "text": "EAB is in the Kansas City area and kills nearly every untreated ash. If you have a healthy ash worth saving and it's under 20 in across (measured 4.5 ft up), you can treat it yourself each spring with an **imidacloprid soil drench** around pear and crabapple bloom (late March–mid April); it works best under 15 in. Bigger trees need an arborist's trunk injection, typically every 2–3 years. Otherwise, plan to remove and replace an ash before it dies and turns brittle.", "sources": ["mdc-eab-guide"] },
+    { "id": "oak-wilt", "icon": "scissors", "title": "Oak wilt: prune oaks in winter", "text": "Fresh wounds attract the sap beetles that spread oak wilt. Prune oaks only from November to early March. MDC says avoid pruning or damaging oaks mid-March through June; MU says the risk lasts to mid-July. If an oak gets wounded during the risk window, cover the wound right away.", "sources": ["mdc-oak-wilt", "mu-oak-wilt"] },
+    { "id": "pine-wilt", "icon": "yard", "title": "Pine wilt", "text": "Scots and Austrian pines that turn brown all at once in late summer or fall likely have pine wilt. There's no cure. Cut the tree to the ground by April 1 (May 1 at the latest) and chip or burn it right away so the beetles can't carry it to other pines, and don't keep the wood. Replant with a non-pine evergreen.", "sources": ["kstate-pine-wilt"] },
+    { "id": "bagworms", "icon": "bug", "title": "Bagworms", "text": "Cone-shaped \"bags\" on junipers, arborvitae and spruce. Hand-pick bags from fall through early spring, since each can hold hundreds of eggs. In late May–June, spray Bt or spinosad while new bags are under ½ in; big bags have to be picked." },
+    { "id": "water-trees", "icon": "drop", "title": "Watering new trees", "text": "For the first 2–3 years, give new trees a slow soak about once a week when it doesn't rain: roughly 10 gallons per inch of trunk diameter. A slow-drip tree bag makes it easy. Established trees need water only in severe drought: soak under the canopy every 2–3 weeks." },
+    { "id": "planting", "icon": "shovel", "title": "Planting a tree right", "text": "Call 811 first. Dig 2–3 times as wide as the root ball but no deeper; the root flare should sit at or slightly above grade. Remove burlap, twine and wire from the top, backfill with the native soil (no amendments in the hole), water well, and mulch 2–3 in deep in a wide ring.", "sources": ["mo-one-call"] },
+    { "id": "mulch-volcano", "icon": "leaf", "title": "No mulch volcanoes", "text": "Mulch piled against a trunk rots bark and invites girdling roots and rodents. Pull it back into a donut, 2–3 in deep and a few inches from the trunk." },
+    { "id": "guards", "icon": "shield", "title": "Rabbits, voles & deer", "text": "Wrap young trunks with ¼-in hardware cloth (18–24 in tall) each November. For deer, fencing works best; repellents such as Liquid Fence need reapplying after rain." }
+  ],
+  "invasivesIntro": "These plants escape from yards into Missouri woods and roadsides and crowd out natives. Remove them and plant a native instead. The MDC and Grow Native! sites have photos for identification.",
+  "invasives": [
+    { "name": "Bush honeysuckle", "latin": "Lonicera maackii", "why": "Leafs out first and drops leaves last, shading out everything beneath it; birds spread the red berries. It's all over KC-area woodlots.", "remove": "Easy to spot in November while it's still green. Pull small plants; cut larger stems at the base and immediately paint the stump with glyphosate or triclopyr. Fall is best.", "instead": "Spicebush, American hazelnut, gray dogwood, serviceberry, black chokeberry" },
+    { "name": "Callery (Bradford) pear", "latin": "Pyrus calleryana", "why": "Brittle branches split in storms, and cross-pollinated seedlings form thorny thickets along highways. The KC-area Callery pear buyback (MDC and partners) has traded a free native tree for each one cut down.", "remove": "Cut it down and treat the stump so it doesn't resprout. Check MDC for the next buyback before you cut.", "instead": "Serviceberry, redbud, American plum, blackhaw viburnum" },
+    { "name": "Wintercreeper", "latin": "Euonymus fortunei", "why": "Evergreen groundcover and vine that climbs trees and carpets woodlands.", "remove": "Pull and bag it, and keep at it; spot-spray regrowth in late fall when natives are dormant.", "instead": "Pennsylvania sedge, wild ginger, golden groundsel, native Virginia creeper" },
+    { "name": "Burning bush", "latin": "Euonymus alatus", "why": "A popular red-fall shrub that seeds into woods.", "remove": "Dig it out, or cut it and treat the stump.", "instead": "Fragrant sumac 'Gro-Low', Virginia sweetspire, blackhaw viburnum" },
+    { "name": "Japanese honeysuckle", "latin": "Lonicera japonica", "why": "A vine that smothers shrubs and young trees.", "remove": "Pull runners; cut climbing vines at the base.", "instead": "Coral honeysuckle (Lonicera sempervirens), crossvine" },
+    { "name": "English ivy", "latin": "Hedera helix", "why": "Climbs and smothers trees; carpets shade.", "remove": "Cut vines at chest height on trunks, then pull the groundcover.", "instead": "Wild ginger, sedges, golden groundsel" },
+    { "name": "Autumn olive", "latin": "Elaeagnus umbellata", "why": "A fast-spreading shrub with bird-spread berries that invades fields and edges.", "remove": "Pull seedlings; cut and treat stumps of larger shrubs.", "instead": "American plum, gray dogwood, elderberry" }
+  ],
+  "invasiveSources": ["grow-native"],
+  "bulbs": [
+    { "name": "Daffodils", "depth": "6 in", "note": "Deer-, rabbit- and squirrel-proof (poisonous to them). Leave the foliage about 6 weeks after bloom." },
+    { "name": "Tulips", "depth": "6–8 in", "note": "Deer and squirrels love them; plant deep or treat them as annuals. Species tulips come back better." },
+    { "name": "Alliums (ornamental onions)", "depth": "3× bulb height", "note": "Critter-resistant pollinator magnets." },
+    { "name": "Crocus", "depth": "3–4 in", "note": "Plant them in the lawn for February–March color; mow once the foliage yellows." },
+    { "name": "Grape hyacinth", "depth": "3 in", "note": "Tough and spreading; its fall leaves are normal." },
+    { "name": "Hyacinths", "depth": "6 in", "note": "Very fragrant; best the first year." },
+    { "name": "Rule of thumb", "depth": "3× bulb height", "note": "Pointy end up, when soil drops below 60°F (late October–November). Water after planting." }
+  ],
+  "mulch": [
+    "**2–3 in deep** of shredded hardwood, pine bark fines or shredded leaves. More than 3–4 in on clay keeps the soil too wet.",
+    "**Keep it off stems and trunks:** a donut, not a volcano.",
+    "**Top up, don't pile on.** Freshen to 2–3 in each spring; old mulch becomes soil.",
+    "**Vegetables:** straw (not hay, which is full of weed seed) or shredded leaves, after the soil warms in late May.",
+    "**Plain beats fancy.** Shredded wood and leaves feed the soil as they break down; rubber mulch doesn't.",
+    "**Free mulch:** shred fall leaves with the mower. Many tree services give away wood chips, and Missouri Organic sells bulk mulch and compost."
+  ]
+}

@@ -1,0 +1,618 @@
+[
+  {
+    "id": "tomato", "name": "Tomato", "aka": ["tomatoes"], "family": "nightshade", "season": "warm", "difficulty": "medium",
+    "indoor": { "weeks": [6, 8], "note": "Start mid-March; pot up into 4-in pots." },
+    "spring": { "central": ["05-10", "05-20"], "north": ["05-15", "05-30"], "method": "Transplants" },
+    "harvest": { "spring": ["07-01", "10-20"] },
+    "soilTemp": "60°F+ (MU)", "spacing": "24–36 in apart in cages; rows 4 ft apart", "perSqFt": 0.25,
+    "depth": "Plant deep; bury the stem up to the top few leaves", "dtm": "60–85 days from transplant",
+    "kcNote": "MU G6201 says May 10–20 for Central Missouri; MU's tomato guide says May 5–20, and \"several days to a week earlier\" if you can cover plants on a frosty night.",
+    "varieties": [
+      { "name": "Celebrity", "note": "hybrid, determinate; a disease-resistant standard", "pick": true },
+      { "name": "Big Beef", "note": "hybrid, indeterminate; big, reliable slicer", "pick": true },
+      { "name": "Jet Star", "note": "hybrid, indeterminate; K-State's longtime top pick" },
+      { "name": "Mountain Fresh Plus", "note": "hybrid, determinate" },
+      { "name": "Florida 91", "note": "heat-set: keeps fruiting in hot spells", "pick": true },
+      { "name": "Sun Leaper / Sunmaster", "note": "heat-set types" },
+      { "name": "Juliet", "note": "grape type; crack resistant" },
+      { "name": "Sun Gold", "note": "orange cherry, very sweet" },
+      { "name": "Supersweet 100", "note": "red cherry" },
+      { "name": "Plum Crimson / Roma VF", "note": "paste tomatoes" },
+      { "name": "Cherokee Purple, Black Krim, Mortgage Lifter", "note": "heirlooms: great flavor, less disease resistance" }
+    ],
+    "pests": ["Early blight", "Septoria leaf spot", "Hornworms", "Blossom-end rot", "Stink bugs", "Squirrels"],
+    "tips": [
+      "Use tall, sturdy cages (Texas Tomato Cage or 6×6-in concrete-wire cages); flimsy cone cages collapse.",
+      "Mulch with straw once soil is warm; water deeply and evenly at the base.",
+      "Pull the lowest leaves that touch soil; remove spotted leaves promptly.",
+      "Fruit set stops when nights stay above ~75°F and resumes in September. Don't pull the plants.",
+      "Rotate: no tomatoes, peppers, eggplant or potatoes in the same bed for 3 years."
+    ],
+    "harvestCue": "Pick at first blush (\"breaker\" stage) and ripen on the counter. You'll lose fewer to squirrels and cracking.",
+    "sources": ["mu-g6201", "mu-g6461", "kstate-l41"]
+  },
+  {
+    "id": "pepper", "name": "Bell & sweet peppers", "aka": ["bell pepper", "sweet pepper"], "family": "nightshade", "season": "warm", "difficulty": "easy",
+    "indoor": { "weeks": [8, 10], "note": "Start early March on a heat mat (80°F soil)." },
+    "spring": { "central": ["05-10", "05-30"], "north": ["05-15", "05-30"], "method": "Transplants" },
+    "harvest": { "spring": ["07-10", "10-20"] },
+    "soilTemp": "65°F+", "spacing": "18 in", "perSqFt": 1, "depth": "Same depth as the pot", "dtm": "65–80 days from transplant (green); +2–3 weeks for red",
+    "kcNote": "Peppers love KC heat and set their heaviest crop in September as nights cool.",
+    "varieties": [
+      { "name": "Revolution", "note": "hybrid bell, green to red", "pick": true },
+      { "name": "King Arthur", "note": "hybrid bell" },
+      { "name": "Aristotle", "note": "hybrid bell" },
+      { "name": "Big Bertha", "note": "large hybrid bell" },
+      { "name": "Carmen", "note": "sweet Italian bull's-horn" },
+      { "name": "Gypsy", "note": "early sweet hybrid" },
+      { "name": "Lunchbox", "note": "snack pepper" }
+    ],
+    "pests": ["Blossom-end rot", "Sunscald", "Aphids"],
+    "tips": ["Stake or cage heavy plants.", "Mulch and water evenly.", "Don't overfeed with nitrogen: leafy plants, few peppers."],
+    "harvestCue": "Pick green when full size and firm, or leave to turn red, yellow or orange for sweeter flavor.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "jalapeno", "name": "Jalapeños & hot peppers", "aka": ["chile", "hot pepper", "serrano", "habanero"], "family": "nightshade", "season": "warm", "difficulty": "easy",
+    "indoor": { "weeks": [8, 10], "note": "Start early March on a heat mat (80°F soil)." },
+    "spring": { "central": ["05-10", "05-30"], "north": ["05-15", "05-30"], "method": "Transplants" },
+    "harvest": { "spring": ["07-10", "10-20"] },
+    "soilTemp": "65°F+", "spacing": "18 in", "perSqFt": 1, "depth": "Same depth as the pot", "dtm": "65–80 days from transplant",
+    "kcNote": "K-State-tested jalapeños: El Jefe, TAM (mild), Ixtapa, Telica, Delicias (mild) and Dulce.",
+    "varieties": [
+      { "name": "El Jefe", "note": "jalapeño; big, productive", "pick": true },
+      { "name": "TAM Jalapeño", "note": "mild jalapeño", "pick": true },
+      { "name": "Ixtapa / Telica", "note": "jalapeños" },
+      { "name": "Delicias / Dulce", "note": "mild jalapeños" },
+      { "name": "Serrano / Serrano del Sol", "note": "hotter, small" },
+      { "name": "Anaheim, Ancho Masivo, Biggie Chile", "note": "mild chiles for roasting and stuffing" },
+      { "name": "Habanero, Caribbean Red, Hot Paper Lantern", "note": "very hot; need a long season" },
+      { "name": "Hot Large Red Cayenne, Thai Hot, Kung Pao", "note": "drying peppers" }
+    ],
+    "pests": ["Aphids", "Sunscald"],
+    "tips": ["Heat develops as fruit ripens; red jalapeños are sweeter and hotter.", "Wear gloves when handling hot peppers."],
+    "harvestCue": "Jalapeños: pick glossy green at 3 in, or wait for red. Corking (tan lines) is normal.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "eggplant", "name": "Eggplant", "family": "nightshade", "season": "warm", "difficulty": "medium",
+    "indoor": { "weeks": [8, 10], "note": "Start early March on a heat mat." },
+    "spring": { "central": ["05-10", "05-25"], "north": ["05-15", "05-25"], "method": "Transplants" },
+    "harvest": { "spring": ["07-10", "10-15"] },
+    "soilTemp": "65°F+", "spacing": "18–24 in", "perSqFt": 1, "depth": "Same depth as the pot", "dtm": "60–80 days from transplant",
+    "varieties": [
+      { "name": "Dusky", "note": "hybrid, classic oval", "pick": true },
+      { "name": "Epic", "note": "hybrid" },
+      { "name": "Black Beauty", "note": "classic open-pollinated" },
+      { "name": "Ichiban / Orient Express", "note": "slender Asian types, early", "pick": true },
+      { "name": "Fairy Tale, Hansel, Gretel", "note": "small-fruited, great in pots" }
+    ],
+    "pests": ["Flea beetles", "Colorado potato beetle"],
+    "tips": ["Row cover at planting stops flea beetles until plants are big.", "Loves heat; mulch and water evenly."],
+    "harvestCue": "Pick when glossy. Dull skin means seedy and bitter.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "potato", "name": "Potato", "aka": ["irish potato"], "family": "nightshade", "season": "cool", "difficulty": "easy",
+    "spring": { "central": ["03-20", "04-10"], "north": ["04-01", "04-15"], "method": "Seed potato pieces" },
+    "harvest": { "spring": ["06-15", "07-31"] },
+    "soilTemp": "45°F+ and workable", "spacing": "12 in apart; rows 30–36 in", "perSqFt": 1, "depth": "4 in; hill soil or straw as they grow", "dtm": "70–100 days",
+    "kcNote": "The St. Patrick's Day tradition works in a warm spring; late March–early April is safer on cold clay.",
+    "varieties": [
+      { "name": "Red Norland", "note": "early red", "pick": true },
+      { "name": "LaRouge / LaSoda", "note": "reds" },
+      { "name": "Norkotah", "note": "\"best of russet varieties for Kansas\" (K-State)", "pick": true },
+      { "name": "Kennebec / Superior / Irish Cobbler", "note": "whites" },
+      { "name": "Purple Viking", "note": "purple skin, white flesh" }
+    ],
+    "pests": ["Colorado potato beetle", "Flea beetles", "Early blight"],
+    "tips": ["Cut seed potatoes to about 2-oz pieces with 1–2 eyes; let them dry a day or two.", "Hill soil or straw over stems as they grow; tubers exposed to light turn green and bitter.", "Hand-pick Colorado potato beetles; spinosad for larvae."],
+    "harvestCue": "New potatoes about 2 weeks after flowering; main crop 2 weeks after vines die back.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "peas", "name": "Peas", "aka": ["snap peas", "snow peas", "english peas"], "family": "legume", "season": "cool", "difficulty": "easy",
+    "spring": { "central": ["03-15", "04-10"], "north": ["03-25", "04-10"], "method": "Seed" },
+    "harvest": { "spring": ["05-20", "06-25"] },
+    "soilTemp": "40°F+; soil workable", "spacing": "2 in apart; trellis 4–5 ft", "perSqFt": 8, "depth": "1 in", "dtm": "55–70 days",
+    "kcNote": "June heat ends the pea harvest, so plant as early as the soil can be worked.",
+    "varieties": [
+      { "name": "Sugar Ann / Sugar Sprint", "note": "short snap peas", "pick": true },
+      { "name": "Super Sugar Snap", "note": "tall snap pea (trellis)" },
+      { "name": "Green Arrow / Little Marvel", "note": "shelling peas", "pick": true },
+      { "name": "Mammoth Melting Sugar / Dwarf Grey Sugar", "note": "snow peas" }
+    ],
+    "pests": ["Aphids", "Rabbits"],
+    "tips": ["Pea inoculant can help on new ground.", "Pick every 2–3 days; old pods stop the vines producing."],
+    "harvestCue": "Snap peas when pods are round and sweet; shelling peas when pods are full but still bright green.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "bush-beans", "name": "Green beans (bush)", "aka": ["snap beans", "bush beans"], "family": "legume", "season": "warm", "difficulty": "easy",
+    "spring": { "central": ["04-15", "05-20"], "north": ["04-25", "05-30"], "method": "Seed" },
+    "fall": { "central": ["07-25", "08-10"], "north": ["07-25", "08-05"], "method": "Seed" },
+    "harvest": { "spring": ["06-15", "08-10"], "fall": ["09-20", "10-25"] },
+    "soilTemp": "~60°F (beans rot in cold, wet soil)", "spacing": "3–4 in apart; rows 18–24 in", "perSqFt": 9, "depth": "1 in", "dtm": "50–60 days",
+    "varieties": [
+      { "name": "Provider", "note": "tolerates cool soil; early", "pick": true },
+      { "name": "Contender", "note": "early and reliable" },
+      { "name": "Jade", "note": "long slender pods" },
+      { "name": "Xera", "note": "heat tolerant", "pick": true },
+      { "name": "Derby / Strike / Tendercrop", "note": "classic bush snaps" },
+      { "name": "Royal Burgundy", "note": "purple; easy to spot" },
+      { "name": "Carson / Eureka / Goldmine", "note": "yellow wax" }
+    ],
+    "pests": ["Mexican bean beetle", "Japanese beetles", "Rabbits", "Spider mites"],
+    "tips": ["Sow every 3 weeks until mid-June for a steady supply; the fall crop from late July is often excellent.", "Pick every 2–3 days."],
+    "harvestCue": "Pick pods when they snap cleanly and before seeds bulge.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "pole-beans", "name": "Pole beans", "family": "legume", "season": "warm", "difficulty": "easy",
+    "spring": { "central": ["05-01", "05-20"], "north": ["05-10", "05-20"], "method": "Seed" },
+    "harvest": { "spring": ["07-01", "10-10"] },
+    "soilTemp": "~60°F", "spacing": "4–6 in along a 6–8 ft trellis", "perSqFt": 8, "depth": "1 in", "dtm": "60–70 days",
+    "varieties": [
+      { "name": "Kentucky Wonder", "note": "classic, productive", "pick": true },
+      { "name": "Kentucky Blue", "note": "sweet, stringless" },
+      { "name": "Purple King", "note": "purple pods" },
+      { "name": "Carminat / Northeaster", "note": "flat Romano types" }
+    ],
+    "pests": ["Japanese beetles", "Spider mites"],
+    "tips": ["More beans per square foot than bush types, all summer if you keep picking."],
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "cowpeas", "name": "Southern peas (cowpeas)", "aka": ["black-eyed peas", "purple hull"], "family": "legume", "season": "warm", "difficulty": "easy",
+    "spring": { "central": ["04-25", "05-15"], "north": ["05-01", "05-15"], "method": "Seed" },
+    "harvest": { "spring": ["07-15", "09-30"] },
+    "soilTemp": "65°F+", "spacing": "3–4 in; rows 30 in", "perSqFt": 4, "depth": "1 in", "dtm": "60–90 days",
+    "kcNote": "Thrive in the July heat and dry spells that stop green beans.",
+    "varieties": [
+      { "name": "Pinkeye Purple Hull", "note": "popular, productive" },
+      { "name": "California Blackeye #5", "note": "classic black-eyed pea" }
+    ],
+    "tips": ["No extra nitrogen needed.", "Pick as fresh shelling peas or let them dry on the vine."],
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "sweet-corn", "name": "Sweet corn", "aka": ["corn"], "family": "grass", "season": "warm", "difficulty": "medium",
+    "spring": { "central": ["04-25", "08-01"], "north": ["05-01", "07-20"], "method": "Seed (plant in succession)" },
+    "harvest": { "spring": ["07-05", "10-10"] },
+    "soilTemp": "50°F+ (60°F+ for supersweet sh2)", "spacing": "8–12 in apart in blocks of 4+ short rows", "perSqFt": 1, "depth": "1–1.5 in", "dtm": "70–90 days",
+    "kcNote": "Plant every 2 weeks for a steady supply. Raccoons and squirrels love it, so harvest promptly.",
+    "varieties": [
+      { "name": "Bodacious (se)", "note": "yellow, sweet", "pick": true },
+      { "name": "Incredible (se)", "note": "yellow" },
+      { "name": "Ambrosia (se)", "note": "bicolor", "pick": true },
+      { "name": "Silver Queen (su)", "note": "classic white, late" },
+      { "name": "How Sweet It Is / Candy Store (sh2)", "note": "supersweets; isolate from other corn" }
+    ],
+    "pests": ["Corn earworm", "Raccoons", "Squirrels"],
+    "tips": ["Plant in blocks, not single rows, for pollination.", "MU: isolate all sweet corn 250 ft or 14 days' maturity from field corn; isolate SH2 from other sweet corn.", "SH2 seed germinates poorly in cool soil; plant it later."],
+    "harvestCue": "About 3 weeks after silking, when silks are brown and a kernel squirts milky juice.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "cucumber", "name": "Cucumber", "aka": ["cucumbers", "pickles"], "family": "cucurbit", "season": "warm", "difficulty": "medium",
+    "spring": { "central": ["05-05", "05-30"], "north": ["05-10", "05-30"], "method": "Seed" },
+    "harvest": { "spring": ["06-25", "09-15"] },
+    "soilTemp": "65°F+", "spacing": "12 in on a trellis; 3 ft on the ground", "perSqFt": 2, "depth": "1 in", "dtm": "50–65 days",
+    "varieties": [
+      { "name": "Sweet Success", "note": "hybrid slicer, burpless", "pick": true },
+      { "name": "Diva", "note": "thin-skinned slicer" },
+      { "name": "General Lee / Dasher II", "note": "hybrid slicers" },
+      { "name": "Marketer", "note": "classic slicer" },
+      { "name": "Bush Pickle / Pioneer", "note": "picklers" },
+      { "name": "Salad Bush / Spacemaster", "note": "compact for small gardens and pots" },
+      { "name": "Suyo Long", "note": "long Asian type, heat tolerant" }
+    ],
+    "pests": ["Cucumber beetles (spread bacterial wilt)", "Squash bugs", "Powdery mildew"],
+    "tips": ["Trellising saves space and reduces disease.", "Row cover until flowers appear keeps cucumber beetles off young plants.", "Sow a second round in late June–early July."],
+    "harvestCue": "Pick slicers at 6–8 in and picklers at 2–4 in, daily in peak season.",
+    "sources": ["mu-g6201", "kstate-l41", "lincoln-trap-crop"]
+  },
+  {
+    "id": "summer-squash", "name": "Zucchini & summer squash", "aka": ["zucchini", "yellow squash"], "family": "cucurbit", "season": "warm", "difficulty": "medium",
+    "spring": { "central": ["05-10", "05-30"], "north": ["05-15", "05-30"], "method": "Seed" },
+    "harvest": { "spring": ["06-25", "09-30"] },
+    "soilTemp": "65°F+", "spacing": "24–36 in", "perSqFt": 0.15, "depth": "1 in", "dtm": "45–60 days",
+    "kcNote": "Squash vine borers are the #1 enemy here. Plan for them (row cover, trap crop, resistant types, second planting).",
+    "varieties": [
+      { "name": "Goldbar / GoldRush", "note": "hybrid yellow and gold zucchini" },
+      { "name": "Early Prolific Straightneck / Yellow Crookneck", "note": "yellow summer squash" },
+      { "name": "Sunburst / Flying Saucer", "note": "pattypan" },
+      { "name": "Zucchini (several)", "note": "green zucchini" },
+      { "name": "Tromboncino", "note": "vining Italian squash (C. moschata): shrugs off vine borers", "pick": true }
+    ],
+    "pests": ["Squash vine borer", "Squash bugs", "Cucumber beetles", "Powdery mildew"],
+    "tips": ["Border the patch with Blue Hubbard squash as a trap crop.", "Row cover until flowering, then remove for pollination.", "A second sowing in late June–early July dodges the first borer wave."],
+    "harvestCue": "Pick zucchini at 6–8 in, every day or two.",
+    "sources": ["mu-g6201", "kstate-l41", "mu-ipm-svb", "mu-ipm-trapcrop"]
+  },
+  {
+    "id": "winter-squash", "name": "Winter squash", "aka": ["butternut", "acorn squash", "spaghetti squash"], "family": "cucurbit", "season": "warm", "difficulty": "medium",
+    "spring": { "central": ["05-10", "05-30"], "north": ["05-15", "05-30"], "method": "Seed" },
+    "harvest": { "spring": ["08-20", "10-15"] },
+    "soilTemp": "65°F+", "spacing": "3–4 ft (vines run 10+ ft)", "perSqFt": 0.1, "depth": "1 in", "dtm": "85–110 days",
+    "varieties": [
+      { "name": "Butternut", "note": "C. moschata: the best choice where vine borers are bad", "pick": true },
+      { "name": "Table Queen / Royal Acorn / Ebony Acorn", "note": "acorn types" },
+      { "name": "Delicata / Spaghetti", "note": "compact and tasty" },
+      { "name": "Sunshine", "note": "hybrid kabocha" },
+      { "name": "Cushaw (striped, white, golden)", "note": "old southern types; borer tolerant" }
+    ],
+    "pests": ["Squash vine borer", "Squash bugs"],
+    "harvestCue": "When the rind resists a thumbnail and the stem turns corky. Cure 1–2 weeks warm, then store cool and dry.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "pumpkin", "name": "Pumpkin", "family": "cucurbit", "season": "warm", "difficulty": "medium",
+    "spring": { "central": ["05-15", "05-25"], "north": ["05-20", "05-30"], "method": "Seed" },
+    "harvest": { "spring": ["09-01", "10-20"] },
+    "soilTemp": "65°F+", "spacing": "Hills 6–8 ft apart", "perSqFt": 0.05, "depth": "1 in", "dtm": "90–120 days",
+    "kcNote": "MU's window gives September pumpkins; many KC growers plant into early June so they stay fresh through Halloween.",
+    "varieties": [
+      { "name": "Howden / Connecticut Field", "note": "classic jack-o'-lanterns" },
+      { "name": "Autumn Gold / Magic Lantern", "note": "medium carvers", "pick": true },
+      { "name": "Baby Pam / Sugar Pie", "note": "pie pumpkins" },
+      { "name": "Jack Be Little / Munchkin", "note": "miniatures" },
+      { "name": "Cinderella / Fairytale / Lumina", "note": "specialty" },
+      { "name": "Atlantic Giant", "note": "for contests" }
+    ],
+    "pests": ["Squash vine borer", "Squash bugs", "Powdery mildew"],
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "watermelon", "name": "Watermelon", "family": "cucurbit", "season": "warm", "difficulty": "medium",
+    "spring": { "central": ["05-01", "05-20"], "north": ["05-10", "05-20"], "method": "Seed" },
+    "harvest": { "spring": ["07-25", "09-15"] },
+    "soilTemp": "70°F+", "spacing": "Hills 6 ft apart", "perSqFt": 0.05, "depth": "1 in", "dtm": "75–90 days",
+    "kcNote": "Needs 80–90 frost-free, hot days. Black plastic mulch warms clay soil; small icebox types ripen fastest.",
+    "varieties": [
+      { "name": "Crimson Sweet", "note": "round, striped; a classic", "pick": true },
+      { "name": "Sangria", "note": "hybrid, elongated" },
+      { "name": "Allsweet / Sweet Princess", "note": "elongated" },
+      { "name": "Royal Jubilee", "note": "round, striped" },
+      { "name": "Sugar Baby", "note": "icebox, early", "pick": true },
+      { "name": "Mini Love / Yellow Doll", "note": "hybrid icebox (Yellow Doll: yellow flesh)" }
+    ],
+    "pests": ["Cucumber beetles", "Aphids", "Raccoons and coyotes"],
+    "tips": ["Seedless types need a seeded variety nearby as a pollinizer.", "Cut back watering as fruit ripens for sweeter melons."],
+    "harvestCue": "The tendril nearest the fruit dries, the belly spot turns creamy yellow, and the rind loses its shine.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "cantaloupe", "name": "Cantaloupe (muskmelon)", "aka": ["melon", "muskmelon"], "family": "cucurbit", "season": "warm", "difficulty": "medium",
+    "spring": { "central": ["05-01", "05-20"], "north": ["05-10", "05-20"], "method": "Seed" },
+    "harvest": { "spring": ["07-20", "09-10"] },
+    "soilTemp": "70°F+", "spacing": "Hills 4–6 ft apart", "perSqFt": 0.1, "depth": "1 in", "dtm": "75–90 days",
+    "varieties": [
+      { "name": "Ambrosia", "note": "hybrid; great flavor", "pick": true },
+      { "name": "Athena", "note": "hybrid; disease tolerant", "pick": true },
+      { "name": "Superstar / Park's Whopper", "note": "large hybrids" },
+      { "name": "Sugar Cube / Tasty Bite", "note": "small, sweet" },
+      { "name": "Earli Dew", "note": "green-fleshed honeydew type" }
+    ],
+    "pests": ["Cucumber beetles (bacterial wilt)", "Powdery mildew"],
+    "harvestCue": "Ripe at \"full slip\": it separates from the vine with light pressure and smells sweet.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "okra", "name": "Okra", "family": "mallow", "season": "warm", "difficulty": "easy",
+    "spring": { "central": ["05-01", "05-25"], "north": ["05-10", "05-25"], "method": "Seed (soak overnight)" },
+    "harvest": { "spring": ["07-01", "10-15"] },
+    "soilTemp": "65–70°F+", "spacing": "12–18 in", "perSqFt": 1, "depth": "¾–1 in", "dtm": "55–65 days",
+    "kcNote": "One of the easiest crops in a KC summer: loves heat and shrugs off dry spells.",
+    "varieties": [
+      { "name": "Clemson Spineless", "note": "the standard", "pick": true },
+      { "name": "Annie Oakley II", "note": "compact hybrid" },
+      { "name": "Cajun Delight", "note": "hybrid, early", "pick": true },
+      { "name": "Emerald", "note": "round pods" },
+      { "name": "Red Burgundy", "note": "red pods, ornamental" }
+    ],
+    "harvestCue": "Pick pods at 3–4 in every 1–2 days; they turn woody fast. Wear gloves.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "sweet-potato", "name": "Sweet potato", "family": "morning-glory", "season": "warm", "difficulty": "easy",
+    "spring": { "central": ["05-10", "06-10"], "north": ["05-15", "06-05"], "method": "Slips" },
+    "harvest": { "spring": ["09-20", "10-15"] },
+    "soilTemp": "65°F+", "spacing": "12–18 in on ridges 8–10 in high", "perSqFt": 1, "depth": "Bury slips to the top leaves", "dtm": "90–110 days",
+    "kcNote": "Does well on clay when planted on raised ridges. Dig before soil cools below 50°F.",
+    "varieties": [
+      { "name": "Beauregard", "note": "the standard orange", "pick": true },
+      { "name": "Georgia Jet", "note": "fast, good for shorter seasons" },
+      { "name": "NC Japanese", "note": "purple skin, white flesh" }
+    ],
+    "tips": ["Go light on nitrogen, which grows vines instead of roots.", "Cure 7–10 days at 80–85°F and high humidity, then store at 55–60°F (never refrigerate)."],
+    "harvestCue": "Late September to early October, before frost or 50°F soil; dig gently.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "onion", "name": "Onion", "aka": ["onions"], "family": "allium", "season": "cool", "difficulty": "easy",
+    "indoor": { "weeks": [8, 10], "note": "Optional: start seed mid–late January." },
+    "spring": { "central": ["03-15", "04-15"], "north": ["03-25", "04-15"], "method": "Sets or plants" },
+    "harvest": { "spring": ["06-20", "07-31"] },
+    "soilTemp": "Workable soil", "spacing": "4 in", "perSqFt": 9, "depth": "1 in (sets); plants 1–2 in", "dtm": "Green onions 3–4 weeks; bulbs 90–110 days",
+    "kcNote": "Buy intermediate-day plants (Candy, Super Star); they suit KC's latitude.",
+    "varieties": [
+      { "name": "Candy", "note": "hybrid, sweet yellow", "pick": true },
+      { "name": "Super Star", "note": "hybrid, sweet white", "pick": true },
+      { "name": "Redwing / Red Burgundy", "note": "reds" },
+      { "name": "Texas Grano 1015Y / Granex", "note": "sweet onions" },
+      { "name": "Walla Walla / Yellow & White Sweet Spanish", "note": "big bulbs" }
+    ],
+    "pests": ["Thrips"],
+    "tips": ["Keep weeded; onions hate competition.", "Stop watering when tops start to fall over."],
+    "harvestCue": "When most tops flop over, pull and cure 2 weeks in a dry, airy spot.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "garlic", "name": "Garlic", "family": "allium", "season": "cool", "difficulty": "easy",
+    "fall": { "central": ["10-01", "10-31"], "method": "Cloves (not in MU G6201; MU IPM timing)" },
+    "harvest": { "fall": ["06-15", "07-10"] },
+    "soilTemp": "Below ~60°F; 2–4 weeks before the ground freezes", "spacing": "6 in apart; rows 12–18 in", "perSqFt": 4, "depth": "2–3 in, pointy end up", "dtm": "~8–9 months (overwinters)",
+    "kcNote": "MU IPM: \"October is an ideal month to plant garlic in Missouri.\" Hardneck types handle KC winters best.",
+    "varieties": [
+      { "name": "Music", "note": "hardneck porcelain; big cloves", "pick": true },
+      { "name": "Chesnok Red", "note": "hardneck purple stripe; great roasted", "pick": true },
+      { "name": "Purple Glazer", "note": "hardneck purple stripe" }
+    ],
+    "tips": ["Buy seed garlic, not supermarket bulbs.", "Mulch with 3–4 in of straw after the ground cools.", "Cut the scapes in early June for bigger bulbs (and eat them).", "Water in spring if dry; stop about 2 weeks before harvest."],
+    "harvestCue": "When the lower 3–5 leaves have browned (mid-June to early July). Dig, don't pull; cure 2–3 weeks in shade.",
+    "sources": ["mu-ipm-garlic", "kstate-l41"]
+  },
+  {
+    "id": "lettuce", "name": "Lettuce", "family": "aster", "season": "cool", "difficulty": "easy",
+    "spring": { "central": ["03-15", "05-10"], "north": ["04-01", "05-15"], "method": "Seed (leaf types)" },
+    "fall": { "central": ["08-01", "08-20"], "north": ["08-01", "08-15"], "method": "Seed" },
+    "harvest": { "spring": ["04-25", "06-15"], "fall": ["09-20", "11-20"] },
+    "soilTemp": "40°F+; won't sprout above ~80°F", "spacing": "Leaf 6–8 in; heads 10–12 in", "perSqFt": 4, "depth": "⅛–¼ in (needs light)", "dtm": "Leaf 45–55 days; romaine ~70",
+    "kcNote": "MU Central windows: leaf 3/15–5/10 and 8/1–20; romaine 3/15–4/20; butterhead 3/15–4/20 and 8/1–10.",
+    "varieties": [
+      { "name": "Muir", "note": "Batavian; very heat tolerant", "pick": true },
+      { "name": "Jericho", "note": "heat-tolerant romaine", "pick": true },
+      { "name": "Buttercrunch", "note": "butterhead" },
+      { "name": "Salad Bowl / Red Salad Bowl", "note": "oakleaf" },
+      { "name": "Red Sails / New Red Fire", "note": "red leaf" },
+      { "name": "Black Seeded Simpson", "note": "fast green leaf" },
+      { "name": "Paris Island Cos", "note": "romaine" }
+    ],
+    "pests": ["Rabbits", "Slugs", "Aphids"],
+    "tips": ["Sow a short row every 2–3 weeks.", "It bolts and turns bitter in June heat; harvest it all by then.", "Fall lettuce: sow in the evening and shade the row until it's up."],
+    "harvestCue": "Cut outer leaves as needed, or the whole head when full.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "spinach", "name": "Spinach", "family": "goosefoot", "season": "cool", "difficulty": "medium",
+    "spring": { "central": ["03-20", "04-20"], "north": ["04-01", "04-20"], "method": "Seed" },
+    "fall": { "central": ["08-01", "08-20"], "north": ["07-20", "08-10"], "method": "Seed" },
+    "harvest": { "spring": ["04-25", "06-05"], "fall": ["09-20", "12-01"] },
+    "soilTemp": "40°F+", "spacing": "3–4 in", "perSqFt": 9, "depth": "½ in", "dtm": "40–50 days",
+    "varieties": [
+      { "name": "Tyee", "note": "hybrid savoy; slow to bolt", "pick": true },
+      { "name": "Space", "note": "hybrid smooth-leaf" },
+      { "name": "Long Standing Bloomsdale", "note": "heirloom savoy" }
+    ],
+    "tips": ["Bolts as days lengthen and heat arrives; fall crops are often better and can overwinter under straw or row cover."],
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "swiss-chard", "name": "Swiss chard", "family": "goosefoot", "season": "cool", "difficulty": "easy",
+    "spring": { "central": ["04-01", "05-30"], "north": ["04-15", "05-20"], "method": "Seed" },
+    "harvest": { "spring": ["05-20", "11-15"] },
+    "soilTemp": "50°F+", "spacing": "8–12 in", "perSqFt": 4, "depth": "½ in", "dtm": "50–60 days",
+    "kcNote": "Unlike spinach, chard keeps producing through the summer heat and into fall.",
+    "varieties": [{ "name": "Bright Lights / Fordhook Giant", "note": "common, reliable" }],
+    "tips": ["Harvest outer leaves and it keeps coming."],
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "carrot", "name": "Carrot", "family": "umbel", "season": "cool", "difficulty": "medium",
+    "spring": { "central": ["03-15", "04-05"], "north": ["03-25", "04-10"], "method": "Seed" },
+    "fall": { "central": ["07-25", "07-30"], "north": ["07-20", "07-30"], "method": "Seed" },
+    "harvest": { "spring": ["06-01", "07-20"], "fall": ["10-10", "12-10"] },
+    "soilTemp": "45°F+", "spacing": "2–3 in", "perSqFt": 16, "depth": "¼ in; keep moist until up (1–3 weeks)", "dtm": "70–80 days",
+    "kcNote": "On clay, grow shorter Nantes and Chantenay types, ideally in raised beds. Fall carrots sweeten in cold weather.",
+    "varieties": [
+      { "name": "Scarlet Nantes", "note": "sweet, medium length", "pick": true },
+      { "name": "Royal Chantenay / Red Cored Chantenay", "note": "short and stout: good for clay", "pick": true },
+      { "name": "Tendersweet", "note": "long; needs deep loose soil" },
+      { "name": "Napoli / Mokum", "note": "hybrid Nantes types" },
+      { "name": "Purple Haze", "note": "purple outside; fall planting best" }
+    ],
+    "tips": ["A board laid over the row keeps the seedbed moist until sprouts appear; then remove it.", "Thin to 2–3 in apart or roots twist."],
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "beet", "name": "Beet", "aka": ["beets"], "family": "goosefoot", "season": "cool", "difficulty": "easy",
+    "spring": { "central": ["03-15", "04-15"], "north": ["04-01", "04-15"], "method": "Seed" },
+    "fall": { "central": ["08-01", "08-10"], "north": ["07-25", "08-01"], "method": "Seed" },
+    "harvest": { "spring": ["05-20", "07-01"], "fall": ["09-25", "11-20"] },
+    "soilTemp": "50°F+", "spacing": "3–4 in", "perSqFt": 9, "depth": "½ in", "dtm": "50–60 days",
+    "varieties": [
+      { "name": "Detroit Dark Red / Early Wonder", "note": "classic reds", "pick": true },
+      { "name": "Red Ace", "note": "hybrid" },
+      { "name": "Chioggia", "note": "candy-striped" },
+      { "name": "Touchstone Gold / Boldor", "note": "golden" },
+      { "name": "Cylindra", "note": "cylinder shape, easy slicing" }
+    ],
+    "tips": ["Each \"seed\" is a cluster, so thin seedlings to 3 in (eat the thinnings).", "Greens are edible too."],
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "radish", "name": "Radish", "family": "brassica", "season": "cool", "difficulty": "easy",
+    "spring": { "central": ["03-15", "05-01"], "north": ["03-25", "05-01"], "method": "Seed" },
+    "fall": { "central": ["08-01", "08-25"], "north": ["08-01", "08-20"], "method": "Seed" },
+    "harvest": { "spring": ["04-15", "05-31"], "fall": ["09-01", "10-31"] },
+    "soilTemp": "40°F+", "spacing": "2 in", "perSqFt": 16, "depth": "½ in", "dtm": "25–30 days",
+    "kcNote": "The fastest crop: great for kids, and a flea-beetle magnet that can protect nearby greens.",
+    "varieties": [{ "name": "Cherry Belle / French Breakfast / Easter Egg", "note": "common, quick types" }],
+    "tips": ["Sow small amounts every 10–14 days.", "They get hot and pithy in warm weather, so pick promptly."],
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "turnip", "name": "Turnip", "family": "brassica", "season": "cool", "difficulty": "easy",
+    "spring": { "central": ["03-20", "05-01"], "north": ["03-25", "05-01"], "method": "Seed" },
+    "fall": { "central": ["07-20", "08-15"], "north": ["07-20", "08-05"], "method": "Seed" },
+    "harvest": { "spring": ["05-10", "06-15"], "fall": ["09-15", "11-30"] },
+    "soilTemp": "40°F+", "spacing": "3–4 in", "perSqFt": 9, "depth": "½ in", "dtm": "40–60 days",
+    "varieties": [{ "name": "Purple Top White Globe / Hakurei", "note": "classic and salad turnips" }],
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "kohlrabi", "name": "Kohlrabi", "family": "brassica", "season": "cool", "difficulty": "easy",
+    "spring": { "central": ["03-25", "04-15"], "north": ["04-01", "04-15"], "method": "Seed" },
+    "fall": { "central": ["07-25", "08-05"], "north": ["07-20", "07-25"], "method": "Seed" },
+    "harvest": { "spring": ["05-20", "06-25"], "fall": ["09-25", "11-15"] },
+    "soilTemp": "45°F+", "spacing": "6 in", "perSqFt": 4, "depth": "½ in", "dtm": "45–60 days",
+    "harvestCue": "Pick bulbs at 2–3 in wide, before they turn woody.",
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "broccoli", "name": "Broccoli", "family": "brassica", "season": "cool", "difficulty": "medium",
+    "indoor": { "weeks": [5, 6], "note": "Start early February." },
+    "spring": { "central": ["03-20", "04-10"], "north": ["03-25", "04-05"], "method": "Transplants" },
+    "fall": { "central": ["07-25", "08-05"], "north": ["07-25", "07-30"], "method": "Transplants", "indoorWeeks": [5, 6] },
+    "harvest": { "spring": ["05-25", "06-30"], "fall": ["10-01", "11-30"] },
+    "soilTemp": "45°F+", "spacing": "18 in", "perSqFt": 1, "depth": "Same depth as the pot", "dtm": "55–70 days from transplant",
+    "kcNote": "Fall broccoli is usually better here, because heads mature in cool weather instead of racing summer heat.",
+    "varieties": [
+      { "name": "Packman", "note": "early hybrid, big heads", "pick": true },
+      { "name": "Premium Crop", "note": "hybrid" },
+      { "name": "Green Comet", "note": "early hybrid" },
+      { "name": "Diplomat / Gypsy / Imperial", "note": "heat-tolerant hybrids" },
+      { "name": "Marathon", "note": "late; best for fall" }
+    ],
+    "pests": ["Cabbageworms", "Aphids", "Flea beetles"],
+    "tips": ["Row cover from day one blocks cabbage butterflies.", "After the main head, side shoots keep coming for weeks."],
+    "harvestCue": "Cut while buds are tight and dark green, before any yellow shows.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "cabbage", "name": "Cabbage", "family": "brassica", "season": "cool", "difficulty": "medium",
+    "indoor": { "weeks": [5, 6], "note": "Start early February." },
+    "spring": { "central": ["03-20", "04-20"], "north": ["04-01", "04-20"], "method": "Transplants" },
+    "fall": { "central": ["07-20", "08-05"], "north": ["07-20", "07-30"], "method": "Transplants", "indoorWeeks": [5, 6] },
+    "harvest": { "spring": ["06-01", "07-15"], "fall": ["10-01", "11-30"] },
+    "soilTemp": "45°F+", "spacing": "12–18 in", "perSqFt": 1, "depth": "Same depth as the pot", "dtm": "60–80 days from transplant",
+    "varieties": [
+      { "name": "Early Discovery / Gonzales / Stone Head", "note": "extra-early hybrids", "pick": true },
+      { "name": "Bravo / Blue Dynasty", "note": "midseason" },
+      { "name": "Ruby Ball / Red Rookie / Integro", "note": "red" }
+    ],
+    "pests": ["Cabbageworms", "Aphids", "Flea beetles"],
+    "harvestCue": "When heads are firm. Heavy rain on mature heads can split them.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "cauliflower", "name": "Cauliflower", "family": "brassica", "season": "cool", "difficulty": "hard",
+    "indoor": { "weeks": [5, 6], "note": "Start early February." },
+    "spring": { "central": ["03-20", "04-20"], "north": ["04-01", "04-20"], "method": "Transplants" },
+    "fall": { "central": ["07-20", "08-05"], "north": ["07-20", "07-30"], "method": "Transplants", "indoorWeeks": [5, 6] },
+    "harvest": { "spring": ["06-01", "07-01"], "fall": ["10-01", "11-20"] },
+    "soilTemp": "45°F+", "spacing": "18 in", "perSqFt": 1, "depth": "Same depth as the pot", "dtm": "55–80 days from transplant",
+    "kcNote": "Fussy about heat and stress. The fall crop is the more reliable one.",
+    "varieties": [{ "name": "Snow Crown", "note": "widely grown early hybrid" }],
+    "tips": ["Tie outer leaves over the head (\"blanching\") when it's egg-sized to keep it white."],
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "brussels", "name": "Brussels sprouts", "family": "brassica", "season": "cool", "difficulty": "hard",
+    "indoor": { "weeks": [5, 6], "note": "For fall, start mid-June." },
+    "spring": { "central": ["03-20", "04-10"], "north": ["03-25", "04-05"], "method": "Transplants" },
+    "fall": { "central": ["07-25", "07-30"], "north": ["07-20", "07-30"], "method": "Transplants", "indoorWeeks": [5, 6] },
+    "harvest": { "spring": ["06-20", "07-15"], "fall": ["10-15", "12-15"] },
+    "soilTemp": "45°F+", "spacing": "18–24 in", "perSqFt": 0.5, "depth": "Same depth as the pot", "dtm": "90–100 days from transplant",
+    "kcNote": "Much better as a fall crop; frost sweetens the sprouts.",
+    "varieties": [{ "name": "Jade Cross / Long Island Improved", "note": "common types" }],
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "kale", "name": "Kale & collards", "aka": ["collards", "collard greens"], "family": "brassica", "season": "cool", "difficulty": "easy",
+    "indoor": { "weeks": [4, 6], "note": "Or direct-sow." },
+    "spring": { "central": ["03-20", "04-05"], "north": ["03-25", "04-05"], "method": "Seed or transplants" },
+    "fall": { "central": ["08-01", "08-20"], "method": "Transplants (garden practice; MU lists spring dates only)" },
+    "harvest": { "spring": ["05-10", "07-15"], "fall": ["10-01", "12-20"] },
+    "soilTemp": "45°F+", "spacing": "12–18 in", "perSqFt": 1, "depth": "½ in", "dtm": "50–65 days",
+    "kcNote": "Frost sweetens kale and collards; fall plantings produce into December. Collards also tolerate summer heat (MU: collards 3/15–4/10).",
+    "varieties": [
+      { "name": "Winterbor / Redbor", "note": "curly hybrids; very cold hardy", "pick": true },
+      { "name": "Red Russian", "note": "tender, flat leaves" },
+      { "name": "Toscano (Lacinato)", "note": "\"dinosaur\" kale", "pick": true }
+    ],
+    "pests": ["Cabbageworms", "Aphids", "Harlequin bugs"],
+    "harvestCue": "Pick the lower leaves; the plant keeps growing from the top.",
+    "sources": ["mu-g6201", "kstate-l41"]
+  },
+  {
+    "id": "asparagus", "name": "Asparagus", "family": "perennial", "season": "perennial", "difficulty": "medium",
+    "spring": { "central": ["04-01", "04-20"], "north": ["04-05", "04-25"], "method": "1-year-old crowns" },
+    "harvest": { "spring": ["04-10", "05-31"] },
+    "soilTemp": "50°F+", "spacing": "12–18 in apart in a trench 6–8 in deep", "perSqFt": 0.5, "depth": "Crowns 6 in deep; cover gradually", "dtm": "Light harvest in year 2; full 6–8 week harvest from year 3",
+    "kcNote": "A 15–20-year investment: choose a sunny, weed-free spot at the edge of the garden.",
+    "varieties": [{ "name": "Jersey Knight / Jersey Supreme / Millennium", "note": "all-male hybrids (more spears, no seedlings)" }],
+    "tips": ["Stop cutting when spears get pencil-thin; let the ferns grow to feed the roots.", "Cut ferns down after they brown in late fall."],
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "rhubarb", "name": "Rhubarb", "family": "perennial", "season": "perennial", "difficulty": "easy",
+    "spring": { "central": ["04-01", "04-20"], "north": ["04-10", "04-25"], "method": "Crowns" },
+    "harvest": { "spring": ["04-20", "06-15"] },
+    "spacing": "3 ft", "perSqFt": 0.1, "depth": "Crown buds 1–2 in below the surface", "dtm": "Light harvest from year 2",
+    "kcNote": "Likes afternoon shade in KC summers and good drainage. **Leaves are poisonous; eat the stalks only.**",
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "strawberry", "name": "Strawberries", "family": "rose", "season": "perennial", "difficulty": "medium",
+    "spring": { "central": ["03-25", "04-25"], "method": "Bare-root plants (garden practice)" },
+    "harvest": { "spring": ["05-15", "06-15"] },
+    "spacing": "18 in (June-bearing matted rows); 12 in (day-neutral)", "perSqFt": 1, "depth": "Crown right at soil level", "dtm": "June-bearers fruit the second spring",
+    "kcNote": "Not in MU's vegetable calendar; plant in early spring like other perennials. Remove first-year June-bearer flowers for stronger plants.",
+    "varieties": [{ "name": "June-bearing and day-neutral types", "note": "ask local nurseries which ones do well in the KC area" }],
+    "tips": ["Straw mulch keeps berries clean.", "Net against birds; use an iron phosphate slug bait if slugs are bad."]
+  },
+  {
+    "id": "blackberry", "name": "Blackberries (thornless)", "family": "rose", "season": "perennial", "difficulty": "easy",
+    "spring": { "central": ["03-15", "04-30"], "method": "Bare-root or potted plants (garden practice)" },
+    "harvest": { "spring": ["06-20", "07-31"] },
+    "spacing": "3–4 ft in rows 8 ft apart; a trellis helps", "perSqFt": 0.1, "dtm": "Fruit on second-year canes",
+    "kcNote": "Thornless erect types from the University of Arkansas breeding program do well in the KC area.",
+    "varieties": [{ "name": "Natchez / Ouachita / Prime-Ark Freedom", "note": "thornless Arkansas releases" }],
+    "tips": ["Right after harvest, cut the canes that fruited to the ground.", "In summer, tip new canes at about 4 ft for more fruiting branches."]
+  },
+  {
+    "id": "basil", "name": "Basil", "family": "mint", "season": "herb", "difficulty": "easy",
+    "indoor": { "weeks": [6, 8], "note": "Or buy plants." },
+    "spring": { "central": ["05-10", "06-15"], "method": "Transplants after warm nights (garden practice)" },
+    "harvest": { "spring": ["06-15", "10-10"] },
+    "soilTemp": "65°F+; nights above 50°F", "spacing": "12 in", "perSqFt": 4, "dtm": "30 days from transplant",
+    "varieties": [{ "name": "Genovese / Thai / lemon basil", "note": "common types" }],
+    "tips": ["Pinch off flower spikes to keep leaves coming.", "Frost kills it; harvest everything before the first cold night."]
+  },
+  {
+    "id": "cilantro", "name": "Cilantro & dill", "aka": ["dill", "coriander"], "family": "umbel", "season": "herb", "difficulty": "easy",
+    "spring": { "central": ["03-25", "04-30"], "method": "Seed (garden practice)" },
+    "fall": { "central": ["08-20", "09-15"], "method": "Seed" },
+    "harvest": { "spring": ["05-01", "06-10"], "fall": ["09-20", "11-15"] },
+    "spacing": "2–4 in", "perSqFt": 9, "depth": "¼–½ in", "dtm": "40–50 days",
+    "kcNote": "Cool-season herbs that bolt in June heat. Grow cilantro in spring and fall, not summer. Dill feeds swallowtail caterpillars.",
+    "tips": ["Sow every 3 weeks; let a few flower for beneficial insects."]
+  },
+  {
+    "id": "parsley", "name": "Parsley", "family": "umbel", "season": "herb", "difficulty": "easy",
+    "spring": { "central": ["04-01", "04-20"], "north": ["04-10", "04-20"], "method": "Seed or plants" },
+    "harvest": { "spring": ["06-01", "11-30"] },
+    "spacing": "8 in", "perSqFt": 4, "depth": "¼ in (soak seed overnight; slow to sprout)", "dtm": "70–90 days from seed",
+    "kcNote": "A biennial that often survives KC winters; it feeds swallowtail caterpillars, so plant extra.",
+    "sources": ["mu-g6201"]
+  },
+  {
+    "id": "perennial-herbs", "name": "Perennial herbs", "aka": ["thyme", "oregano", "chives", "sage", "rosemary", "mint"], "family": "mint", "season": "herb", "difficulty": "easy",
+    "spring": { "central": ["04-20", "05-31"], "method": "Plants (garden practice)" },
+    "harvest": { "spring": ["05-15", "11-15"] },
+    "spacing": "12–18 in", "perSqFt": 1, "dtm": "Harvest lightly the first year",
+    "kcNote": "Thyme, oregano, sage and chives are hardy here and like well-drained soil (raised beds on clay). Rosemary is tender, so pot it and bring it in for winter. Keep mint in a pot; it spreads aggressively."
+  }
+]

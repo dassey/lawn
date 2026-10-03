@@ -1,0 +1,31 @@
+{
+  "station": "Kansas City International Airport (KCI) · NOAA 1991–2020 normals",
+  "monthly": [
+    { "m": 1, "hi": 38.4, "lo": 19.5, "precip": 1.16, "days90": 0 },
+    { "m": 2, "hi": 43.6, "lo": 23.6, "precip": 1.48, "days90": 0 },
+    { "m": 3, "hi": 55.4, "lo": 33.6, "precip": 2.36, "days90": 0 },
+    { "m": 4, "hi": 65.5, "lo": 43.7, "precip": 4.05, "days90": 0.2 },
+    { "m": 5, "hi": 75.0, "lo": 54.3, "precip": 5.32, "days90": 0.8 },
+    { "m": 6, "hi": 84.2, "lo": 64.0, "precip": 5.25, "days90": 7.1 },
+    { "m": 7, "hi": 88.3, "lo": 68.1, "precip": 4.58, "days90": 13.1 },
+    { "m": 8, "hi": 87.1, "lo": 66.3, "precip": 4.24, "days90": 11.6 },
+    { "m": 9, "hi": 79.2, "lo": 57.5, "precip": 4.04, "days90": 3.3 },
+    { "m": 10, "hi": 67.2, "lo": 45.6, "precip": 3.25, "days90": 0.2 },
+    { "m": 11, "hi": 53.5, "lo": 33.6, "precip": 2.00, "days90": 0 },
+    { "m": 12, "hi": 42.3, "lo": 23.9, "precip": 1.57, "days90": 0 }
+  ],
+  "annual": { "hi": 65.0, "lo": 44.5, "mean": 54.7, "precip": 39.30, "days90": 36.3, "days100": 2.7, "snow": 18.2 },
+  "rainNote": "May and June are the wettest months, which is also when brown patch gets going. July and August still average more than 4 in, but it comes in bursts, and a dry August can bring well under half that. That stretch is when a rain-fed lawn needs watching.",
+  "heatNote": "Every day above 90°F stresses cool-season grass. That's why this plan mows at 4 in, skips summer fertilizer, and watches the 3-week dry-spell rule. About 2.7 days a year reach 100°F.",
+  "frost": {
+    "station": "KCI, NOAA 1991–2020",
+    "table": [
+      { "t": "36°F (frost in low spots)", "springMedian": "Apr 24", "spring10": "May 7", "fallMedian": "Oct 14", "fall10": "Sep 29" },
+      { "t": "32°F (killing frost)", "springMedian": "Apr 13", "spring10": "Apr 29", "fallMedian": "Oct 24", "fall10": "Oct 9" },
+      { "t": "28°F (hard freeze)", "springMedian": "Apr 1", "spring10": "Apr 18", "fallMedian": "Nov 1", "fall10": "Oct 19" }
+    ],
+    "note": "\"1-in-10 late\" means 1 year in 10 the last freeze comes on or after that date; \"1-in-10 early\" means 1 year in 10 the first freeze comes on or before it. KCI sits in open country northwest of downtown and runs cooler than the urban core. The Downtown Airport station (used by Garden.org) has a median first fall frost of Nov 2, about 9 days later. Most metro yards fall in between, and low spots frost first.",
+    "springNote": "Half of years see the last 32°F freeze by April 13 (KCI), but 1 year in 10 it comes after April 29, and a light 36°F frost can come as late as about May 7. That's why tomatoes and peppers wait for about May 10.",
+    "fallNote": "The first 32°F freeze comes by about October 24 in half of years (1 in 10 before October 9), and a hard 28°F freeze by about November 1. Pick or cover tender crops when frost is forecast; the Today page alerts you."
+  }
+}

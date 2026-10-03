@@ -1,0 +1,3783 @@
+[
+ {
+  "id": "lawn-winter-stay-off",
+  "title": "Stay off frozen or soggy grass",
+  "category": "lawn",
+  "subcategory": "maintenance",
+  "months": [
+   12,
+   1,
+   2
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "frost",
+   "text": "Frost on the grass or soil that squishes"
+  },
+  "summary": "Walking on frozen grass crushes the crowns (footprints turn brown in spring), and traffic on wet clay compacts it.",
+  "details": "Route foot traffic, the dog and the wheelbarrow along paths until the frost burns off and the soil firms up.",
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "winter"
+  ]
+ },
+ {
+  "id": "lawn-winter-ice-melt",
+  "title": "Use lawn-safe ice melt near grass and beds",
+  "category": "lawn",
+  "subcategory": "maintenance",
+  "months": [
+   12,
+   1,
+   2,
+   3
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Rock salt (sodium chloride) burns lawn edges and harms soil; calcium chloride or CMA-based melts are gentler.",
+  "details": "Shovel first, use as little melt as possible, and don't pile salty snow on the lawn or beds. In spring, water edges along drives and walks deeply to flush salt.",
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "winter"
+  ]
+ },
+ {
+  "id": "lawn-jan-plan",
+  "title": "Plan the year's lawn program and budget",
+  "category": "lawn",
+  "subcategory": "planning",
+  "months": [
+   1
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "calc": "fertilizer",
+  "summary": "Pick products and amounts now: tall fescue needs 3–4 lb N/1,000 sq ft a year, most of it September–November.",
+  "details": "Measure your lawn (Tools → Lawn area), choose your yearly nitrogen target in Settings, and build a shopping list on the Products page. Buying fall fertilizer during spring or fall sales saves real money.",
+  "howTo": [
+   "Measure the lawn once and save it in Settings.",
+   "Pick a spring crabgrass preventer (dithiopyr or prodiamine) and a fall fertilizer.",
+   "Plan seed for September if you have thin spots (4–5 lb per 1,000 sq ft)."
+  ],
+  "products": [
+   "dimension-granular",
+   "scotts-turf-builder",
+   "lesco-28-0-12",
+   "kc-marathon"
+  ],
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "planning"
+  ]
+ },
+ {
+  "id": "yard-jan-soil-test",
+  "title": "Take soil samples for an MU soil test",
+  "category": "yard",
+  "subcategory": "soil",
+  "months": [
+   1,
+   2
+  ],
+  "window": {
+   "start": "01-05",
+   "end": "02-28"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Every 2–3 years, test lawn and garden separately, and do it before spring, when the MU lab gets swamped.",
+  "details": "A soil test is the only way to know whether you need lime or phosphorus. Many KC lawns need neither. Results include exact rates per 1,000 sq ft for your lawn or garden. Your county MU Extension office takes samples (call ahead); the MU lab's regular test costs $15 (2026).",
+  "howTo": [
+   "Use a soil probe or trowel. Take 10–15 small cores across the lawn (a separate sample for the vegetable garden and flower beds).",
+   "Depth: ask when you call. One KC-area office asks for 6–7 in; for an established lawn, ask whether they want just the top 3–4 in.",
+   "Skip odd spots (under downspouts, the dog's corner, fresh fertilizer). Mix in a clean plastic bucket and let it air-dry.",
+   "Bag about 1½ cups, label it (\"lawn: tall fescue\" or \"vegetable garden\"), and call your county MU Extension office to drop it off, or mail it to the MU lab.",
+   "When results arrive, log pH, P, K and organic matter in the journal (Lawn guide → Soil)."
+  ],
+  "products": [
+   "soil-test",
+   "soil-probe"
+  ],
+  "noIrrigationNote": "Sample when soil isn't frozen or soggy.",
+  "sources": [
+   "mu-soil-lab",
+   "mu-county",
+   "mggkc"
+  ],
+  "evidence": "extension",
+  "logType": "soil",
+  "tags": [
+   "soil"
+  ]
+ },
+ {
+  "id": "yard-jan-mower",
+  "title": "Sharpen the blade and service the mower",
+  "category": "yard",
+  "subcategory": "maintenance",
+  "months": [
+   1,
+   2
+  ],
+  "window": {
+   "start": "01-15",
+   "end": "02-28"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Beat the spring rush at repair shops: new or sharpened blade, oil, air filter and spark plug.",
+  "howTo": [
+   "Disconnect the spark plug wire before working on the blade.",
+   "Sharpen or replace the blade and balance it on a nail.",
+   "Change the oil, air filter and spark plug; use fresh fuel with stabilizer."
+  ],
+  "products": [
+   "sharpening"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "tools"
+  ]
+ },
+ {
+  "id": "yard-winter-oaks",
+  "title": "Prune oaks only now (November to early March)",
+  "category": "yard",
+  "subcategory": "prune",
+  "months": [
+   11,
+   12,
+   1,
+   2,
+   3
+  ],
+  "window": {
+   "start": "11-01",
+   "end": "03-10"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "date",
+   "text": "Before mid-March"
+  },
+  "summary": "Oak wilt spreads through fresh wounds. MDC: \"Avoid pruning or damaging oaks from mid-March through June\"; MU says the risk runs to mid-July.",
+  "details": "Winter is also the easiest time to see a tree's structure. Remove dead, crossing and rubbing branches. If an oak is wounded during the risk period (storm, mower), cover the wound right away.",
+  "howTo": [
+   "Make cuts just outside the branch collar; don't leave stubs.",
+   "Hire an ISA-certified arborist for anything you can't reach from the ground.",
+   "Finish before mid-March."
+  ],
+  "sources": [
+   "mdc-oak-wilt",
+   "mu-oak-wilt"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "trees",
+   "winter"
+  ]
+ },
+ {
+  "id": "beds-winter-leave-stems",
+  "title": "Leave stems and seed heads standing",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   11,
+   12,
+   1,
+   2
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Seed heads feed goldfinches and juncos; hollow stems shelter native bees over winter.",
+  "details": "Grow Native! recommends leaving the garden standing through winter and cleaning up in spring. When you do cut, leave 8–24 in of stubble so stem-nesting bees have homes.",
+  "sources": [
+   "grow-native"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "pollinators",
+   "winter"
+  ]
+ },
+ {
+  "id": "beds-winter-heave",
+  "title": "Check for frost-heaved perennials",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   1,
+   2,
+   3
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Freeze–thaw cycles push fall plantings out of the ground; press them back in and top with mulch.",
+  "evidence": "practice",
+  "tags": [
+   "winter"
+  ]
+ },
+ {
+  "id": "veg-jan-order-seed",
+  "title": "Order vegetable seed and supplies",
+  "category": "veg",
+  "subcategory": "planning",
+  "months": [
+   1
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Popular varieties sell out. Use the Kansas/Missouri-tested variety lists on the Veggies page.",
+  "details": "Order onion plants, seed potatoes and sweet potato slips for spring delivery. Local options: Planters Seed & Spice (River Market), Baker Creek (Mansfield, MO), and Kansas City Community Gardens' low-cost transplant sales for members.",
+  "products": [
+   "seed-start"
+  ],
+  "sources": [
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "planning"
+  ]
+ },
+ {
+  "id": "veg-jan-onion-seed",
+  "title": "Start onion seed indoors (optional)",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   1
+  ],
+  "window": {
+   "start": "01-15",
+   "end": "01-31"
+  },
+  "shift": "spring",
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "Onions take 8–10 weeks from seed to transplant. Or skip this and buy sets or plants in March.",
+  "details": "Choose intermediate-day types such as Candy or Super Star; they suit KC's latitude. Trim seedlings to about 4 in to keep them sturdy.",
+  "products": [
+   "seed-start"
+  ],
+  "sources": [
+   "kstate-l41"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "seed starting"
+  ]
+ },
+ {
+  "id": "veg-winter-rotation",
+  "title": "Plan the garden layout and crop rotation",
+  "category": "veg",
+  "subcategory": "planning",
+  "months": [
+   12,
+   1,
+   2
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Don't plant tomatoes, peppers, eggplant or potatoes where any of them grew in the last 2 years; it limits early blight.",
+  "details": "Use the Beds & rotation planner on the Veggies page: list your beds, record what grew where, and it flags families repeated within 3 years.",
+  "evidence": "extension",
+  "tags": [
+   "planning"
+  ]
+ },
+ {
+  "id": "yard-winter-seedlings",
+  "title": "Order native tree and shrub seedlings from MDC",
+  "category": "yard",
+  "subcategory": "plant",
+  "months": [
+   9,
+   10,
+   11,
+   12,
+   1,
+   2,
+   3,
+   4
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "The MDC George O. White State Forest Nursery sells bare-root native seedlings cheaply. Orders run Sep 1–Apr 15 (mail) or Apr 30 (online), shipping mid-February to mid-May.",
+  "details": "Great for hedgerows, wildlife plantings and replacing ash or Callery pear. Popular species sell out early.",
+  "evidence": "practice",
+  "tags": [
+   "trees",
+   "natives"
+  ]
+ },
+ {
+  "id": "veg-feb-brassicas",
+  "title": "Start broccoli, cabbage and kale indoors",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   2
+  ],
+  "window": {
+   "start": "02-01",
+   "end": "02-20"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "About 6 weeks before the March 20–April 10 transplant window.",
+  "howTo": [
+   "Sow ¼ in deep in seed-starting mix; 70–75°F to sprout.",
+   "Once up, grow cool (60–65°F) under an LED shop light 2–3 in above the leaves, 14–16 hours a day.",
+   "Feed at half strength after the first true leaves; harden off for a week before planting out."
+  ],
+  "products": [
+   "seed-start"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "seed starting"
+  ]
+ },
+ {
+  "id": "beds-feb-grasses",
+  "title": "Cut back ornamental grasses",
+  "category": "beds",
+  "subcategory": "prune",
+  "months": [
+   2,
+   3
+  ],
+  "window": {
+   "start": "02-15",
+   "end": "03-25"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "growth",
+   "text": "Before new green shoots appear"
+  },
+  "summary": "Cut to a few inches \"just before new spring growth has begun\" (MOBOT). For bee habitat, Grow Native! suggests 8–24 in of stubble.",
+  "howTo": [
+   "Wrap the clump with a bungee or rope first; the cut top comes off in one bundle.",
+   "Cut with hedge shears or an electric hedge trimmer.",
+   "Divide overgrown clumps now or in late summer."
+  ],
+  "sources": [
+   "mobot-grasses",
+   "grow-native"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "pruning"
+  ]
+ },
+ {
+  "id": "beds-feb-summer-shrubs",
+  "title": "Prune summer-flowering shrubs",
+  "category": "beds",
+  "subcategory": "prune",
+  "months": [
+   2,
+   3
+  ],
+  "window": {
+   "start": "02-01",
+   "end": "03-31"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Panicle and smooth hydrangeas, butterfly bush, rose of Sharon, summer spirea and beautyberry bloom on new wood; prune them now.",
+  "details": "**Don't** prune spring bloomers (forsythia, lilac, azalea, bigleaf hydrangea) now or you'll cut off this year's flowers. Prune them right after they bloom. See the pruning guide on the Beds page.",
+  "evidence": "practice",
+  "tags": [
+   "pruning"
+  ]
+ },
+ {
+  "id": "yard-feb-trees",
+  "title": "Prune dormant deciduous and fruit trees",
+  "category": "yard",
+  "subcategory": "prune",
+  "months": [
+   2,
+   3
+  ],
+  "window": {
+   "start": "02-01",
+   "end": "03-15"
+  },
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "Remove dead, crossing and damaged branches while you can see the structure; prune apples and pears before bud break.",
+  "details": "Maples may drip sap when pruned in late winter; that's harmless. Oaks: finish by mid-March (oak wilt). Never top trees.",
+  "sources": [
+   "mdc-oak-wilt"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "trees",
+   "pruning"
+  ]
+ },
+ {
+  "id": "yard-feb-rain-barrel",
+  "title": "Clean and reconnect the rain barrel",
+  "category": "yard",
+  "subcategory": "water",
+  "months": [
+   2,
+   3
+  ],
+  "window": {
+   "start": "02-20",
+   "end": "03-31"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Check the screen and downspout diverter, and add a Mosquito Dunk once it holds water.",
+  "details": "Missouri law protects your right to collect rainwater \"anytime and anywhere on their own property, including land within city limits\" (RSMo 640.648).",
+  "products": [
+   "rain-barrel",
+   "mosquito-dunks"
+  ],
+  "sources": [
+   "rsmo-640-648"
+  ],
+  "evidence": "law",
+  "tags": [
+   "water"
+  ]
+ },
+ {
+  "id": "yard-winter-bagworm-bags",
+  "title": "Hand-pick bagworm bags from evergreens",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   11,
+   12,
+   1,
+   2,
+   3,
+   4
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Each bag on a juniper, arborvitae or spruce holds hundreds of eggs that hatch in late May. Pull them off and trash them.",
+  "evidence": "practice",
+  "tags": [
+   "pests",
+   "trees"
+  ]
+ },
+ {
+  "id": "yard-winter-pine-wilt",
+  "title": "Remove pine-wilt-killed pines by April 1",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   12,
+   1,
+   2,
+   3
+  ],
+  "window": {
+   "start": "12-01",
+   "end": "03-31"
+  },
+  "priority": "optional",
+  "effort": "high",
+  "trigger": {
+   "type": "date",
+   "text": "Before the beetles emerge (~May 1)"
+  },
+  "summary": "Scots and Austrian pines that browned all at once last summer or fall likely had pine wilt. Cut them to the ground by April 1 (May 1 at the latest) and chip or burn them right away.",
+  "details": "There's no cure. The pine sawyer beetles that spread it emerge around May 1. Don't keep the wood for firewood. Replant with a non-pine evergreen.",
+  "sources": [
+   "kstate-pine-wilt"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "trees"
+  ]
+ },
+ {
+  "id": "lawn-mar-cleanup",
+  "title": "Light spring cleanup of the lawn",
+  "category": "lawn",
+  "subcategory": "maintenance",
+  "months": [
+   3
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Rake out matted spots, pick up sticks, and mow or rake off heavy dead growth. Tall fescue rarely needs dethatching.",
+  "details": "Wait until the soil is firm. Raking wet clay tears up turf.",
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "spring"
+  ]
+ },
+ {
+  "id": "lawn-mar-no-fert",
+  "title": "Skip the early-spring fertilizer",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   3
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "K-State: \"Avoid early spring fertilization, which may promote weed or disease issues.\" Your fall feedings already power the spring green-up.",
+  "details": "That includes most spring \"weed & feed\" combos. If the lawn is pale in April and you skipped fall feeding, see the optional light April feeding.",
+  "sources": [
+   "kstate-lawn-calendar",
+   "mu-g6705",
+   "fry-2025"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "fertilizer"
+  ]
+ },
+ {
+  "id": "lawn-mar-winter-weeds",
+  "title": "Spot-spray henbit and chickweed (optional)",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-15",
+   "end": "04-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "trigger": {
+   "type": "airTemp",
+   "text": "Days ≥50°F, no rain for 24 h"
+  },
+  "summary": "Spring spraying of these winter annuals is less effective (they die in May anyway). Fall is the time to stop them.",
+  "products": [
+   "weedbgon-ccox",
+   "speedzone-ew"
+  ],
+  "conflicts": [
+   "lawn-mar-spring-seed"
+  ],
+  "conflictNote": "Broadleaf herbicides need a gap before seeding (MU: about 3 weeks to a month) and several mowings of new grass before they go on it.",
+  "safety": "Keep drift away from vegetables, grapes, redbuds and roses. Spray on calm days.",
+  "sources": [
+   "kstate-lawn-calendar"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "weeds"
+  ]
+ },
+ {
+  "id": "lawn-mar-spring-seed",
+  "title": "Patch bare spots with spring seeding (backup plan)",
+  "category": "lawn",
+  "subcategory": "renovation",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-01",
+   "end": "04-10"
+  },
+  "priority": "optional",
+  "effort": "high",
+  "calc": "seed",
+  "summary": "Fall is far better; MU calls spring seeding \"extremely difficult.\" If you must, seed early and use a seed-safe weed preventer.",
+  "details": "Use a mesotrione product at seeding (Tenacity, or Scotts Triple Action Built For Seeding). K-State says siduron and mesotrione are the only crabgrass preventers safe at seeding, and research shows mesotrione protects spring seedings well. Expect summer to thin new seedlings; plan to reseed in September.",
+  "howTo": [
+   "Rough up the soil with a rake, or core aerate.",
+   "Seed at the higher spring rate (MU: about 10 lb/1,000 sq ft of tall fescue on bare soil).",
+   "Apply Triple Action Built For Seeding, or Tenacity at the at-seeding rate with no surfactant.",
+   "Keep the top ½ in moist until up; mow at 3 in when it reaches 4 in."
+  ],
+  "rate": "Bare spots: ~10 lb/1,000 sq ft in spring (MU G6700)",
+  "products": [
+   "scotts-triple-action",
+   "tenacity",
+   "kc-marathon"
+  ],
+  "conflicts": [
+   "lawn-apr-preemergent"
+  ],
+  "conflictNote": "Regular crabgrass preventers (prodiamine, dithiopyr, pendimethalin) stop grass seed too. Only Tenacity (mesotrione) or siduron are safe at seeding (K-State MF736).",
+  "noIrrigationNote": "April averages about 4 in of rain, which usually carries spring seed; seed right before a rainy stretch.",
+  "hoseTimerNote": "Run 3 short cycles a day (5–10 min) until the seedlings are up.",
+  "sources": [
+   "mu-g6700",
+   "kstate-mf736",
+   "sousek-2014",
+   "purdue-seeding-delays"
+  ],
+  "evidence": "extension",
+  "logType": "seed",
+  "tags": [
+   "seeding",
+   "spring"
+  ]
+ },
+ {
+  "id": "beds-mar-cleanup",
+  "title": "Spring bed cleanup once highs hold in the 50s",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-15",
+   "end": "04-20"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "airTemp",
+   "text": "Daytime highs consistently in the 50s"
+  },
+  "summary": "Cut back last year's perennials (to 8–24 in stubble for natives), pull winter weeds, and compost or chop the debris.",
+  "details": "Many bees and butterflies overwinter in stems and leaf litter, so don't rush it. Leaves can stay in the beds as mulch.",
+  "sources": [
+   "grow-native"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "spring",
+   "pollinators"
+  ]
+ },
+ {
+  "id": "beds-mar-roses",
+  "title": "Prune roses when forsythia blooms",
+  "category": "beds",
+  "subcategory": "prune",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-20",
+   "end": "04-15"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "bloom",
+   "text": "Forsythia in bloom"
+  },
+  "summary": "Cut Knock Out-type roses back by ⅓–½; remove dead canes to the base.",
+  "details": "**Rose rosette** is common around KC: witches'-broom clusters, red rubbery shoots, and excessive thorns. There's no cure. Remove the whole plant, roots and all, and bag it.",
+  "evidence": "practice",
+  "tags": [
+   "pruning"
+  ]
+ },
+ {
+  "id": "beds-mar-mulch",
+  "title": "Edge beds and top up mulch to 2–3 in",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   3,
+   4,
+   5
+  ],
+  "window": {
+   "start": "03-20",
+   "end": "05-15"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "calc": "mulch",
+  "summary": "A crisp edge and 2–3 in of shredded mulch hold moisture on clay and block weeds. Keep mulch off stems and trunks.",
+  "products": [
+   "shredded-mulch",
+   "compost"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "mulch"
+  ]
+ },
+ {
+  "id": "beds-mar-preen",
+  "title": "Apply a bed weed preventer after cleanup",
+  "category": "beds",
+  "subcategory": "weed",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-25",
+   "end": "04-30"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Preen (trifluralin) stops weed seeds in established flower beds for 8–12 weeks; reapply in early summer.",
+  "details": "Don't use it where you're sowing flower seeds. In the vegetable garden use Preen Natural (corn gluten) only around transplants or established seedlings.",
+  "products": [
+   "preen-garden",
+   "preen-natural"
+  ],
+  "sources": [
+   "product-label"
+  ],
+  "evidence": "label",
+  "tags": [
+   "weeds"
+  ]
+ },
+ {
+  "id": "veg-mar-peas",
+  "title": "Sow peas",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-15",
+   "end": "04-10"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil workable (a squeezed handful crumbles)"
+  },
+  "summary": "Snap, snow and shelling peas; give them a 4–5 ft trellis. June heat ends the harvest, so early planting matters.",
+  "products": [
+   "row-cover"
+  ],
+  "sources": [
+   "mu-g6201",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "cool season"
+  ]
+ },
+ {
+  "id": "veg-mar-onions",
+  "title": "Plant onion sets or transplants",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-15",
+   "end": "04-15"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Set onion plants 4 in apart. Candy, Super Star and Redwing are Kansas-tested.",
+  "sources": [
+   "mu-g6201",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "cool season"
+  ]
+ },
+ {
+  "id": "veg-mar-potatoes",
+  "title": "Plant seed potatoes",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-20",
+   "end": "04-10"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Cut seed potatoes into 2-oz pieces with 1–2 eyes, let them dry a day, and plant 4 in deep, 12 in apart.",
+  "howTo": [
+   "Hill soil or straw over the stems as they grow; tubers exposed to light turn green and bitter.",
+   "Red Norland and LaRouge for early reds; Norkotah is K-State's best russet for Kansas."
+  ],
+  "sources": [
+   "mu-g6201",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "cool season"
+  ]
+ },
+ {
+  "id": "veg-mar-cool-sow",
+  "title": "Sow lettuce, spinach, carrots, beets and radishes",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-15",
+   "end": "04-20"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Lettuce 3/15–5/10, spinach 3/20–4/20, carrots 3/15–4/5, beets 3/15–4/15, radishes 3/15–5/1 (MU Central). Sow every 2–3 weeks for a steady harvest.",
+  "details": "Lettuce seed needs light; barely cover it. Carrots do best in loose soil. On clay, use raised beds and short Nantes or Chantenay types.",
+  "products": [
+   "row-cover"
+  ],
+  "sources": [
+   "mu-g6201"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "cool season"
+  ]
+ },
+ {
+  "id": "veg-mar-brassica-transplant",
+  "title": "Transplant broccoli, cabbage and kale",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-20",
+   "end": "04-10"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Broccoli 3/20–4/10, cabbage 3/20–4/20, kale 3/20–4/5 (MU Central). Harden off first.",
+  "details": "Cover with row cover right away. It adds a few degrees on frosty nights and keeps cabbage butterflies from laying eggs.",
+  "products": [
+   "row-cover",
+   "bt"
+  ],
+  "sources": [
+   "mu-g6201",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "cool season"
+  ]
+ },
+ {
+  "id": "veg-mar-perennials",
+  "title": "Plant asparagus, rhubarb and strawberries",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-25",
+   "end": "04-20"
+  },
+  "shift": "spring",
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "Asparagus crowns 4/1–4/20 and rhubarb 4/1–4/20 (MU Central). Pick a sunny, weed-free spot; these beds last 10–20 years.",
+  "sources": [
+   "mu-g6201"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "perennials"
+  ]
+ },
+ {
+  "id": "veg-mar-start-peppers",
+  "title": "Start peppers and jalapeños indoors",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   3
+  ],
+  "window": {
+   "start": "03-01",
+   "end": "03-15"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Peppers need 8–10 weeks inside and warm soil to sprout. Use a heat mat (80°F).",
+  "details": "Kansas-tested jalapeños: El Jefe, TAM Jalapeño (mild), Ixtapa, Telica. Bells: Revolution, King Arthur, Aristotle.",
+  "products": [
+   "seed-start"
+  ],
+  "sources": [
+   "kstate-l41"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "seed starting"
+  ]
+ },
+ {
+  "id": "veg-mar-start-tomatoes",
+  "title": "Start tomatoes indoors",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   3
+  ],
+  "window": {
+   "start": "03-12",
+   "end": "03-28"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "6–8 weeks before the May 10–20 transplant window. Pot up into 4-in pots, burying stems deeper.",
+  "details": "Top picks: Celebrity and Big Beef (disease resistant), Jet Star, Florida 91 or Sun Leaper (heat-set), Juliet and Sun Gold (small fruit).",
+  "products": [
+   "seed-start"
+  ],
+  "sources": [
+   "kstate-l41",
+   "mu-g6461"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "seed starting"
+  ]
+ },
+ {
+  "id": "veg-mar-soil",
+  "title": "Prep garden beds (don't work wet clay)",
+  "category": "veg",
+  "subcategory": "soil",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-01",
+   "end": "04-15"
+  },
+  "priority": "recommended",
+  "effort": "high",
+  "calc": "garden-fert",
+  "summary": "Work in 2–3 in of compost and a pre-plant fertilizer, but only when a squeezed handful of soil crumbles.",
+  "details": "Working wet clay makes clods that last all season. Raised beds 8–12 in tall warm and drain faster in April. With no soil test, MU's default is about 3 lb of 10-10-10 per 100 sq ft.",
+  "products": [
+   "compost",
+   "fert-10-10-10",
+   "espoma-garden-tone"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "soil"
+  ]
+ },
+ {
+  "id": "yard-spring-moles",
+  "title": "Trap moles when you see fresh tunnels",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   3,
+   4,
+   5,
+   9,
+   10
+  ],
+  "priority": "optional",
+  "effort": "medium",
+  "trigger": {
+   "type": "pest",
+   "text": "Fresh raised tunnels after rain"
+  },
+  "summary": "Trapping is the only reliable fix. Grub control won't get rid of moles; they eat mostly earthworms.",
+  "howTo": [
+   "Flatten short sections of tunnel; the ones pushed back up within a day are active runways.",
+   "Set a scissor or harpoon trap on the active runway per its directions.",
+   "Check daily and move traps after 2–3 days without a catch."
+  ],
+  "products": [
+   "mole-trap"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "critters"
+  ]
+ },
+ {
+  "id": "yard-spring-row-cover",
+  "title": "Keep row cover ready for frost nights",
+  "category": "yard",
+  "subcategory": "weather",
+  "months": [
+   3,
+   4,
+   5
+  ],
+  "window": {
+   "start": "03-15",
+   "end": "05-10"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "trigger": {
+   "type": "frost",
+   "text": "Forecast low ≤ 34°F"
+  },
+  "summary": "Agribon AG-19 gives 2–4°F of frost protection. The Today page warns you when frost is in the forecast.",
+  "products": [
+   "row-cover"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "frost"
+  ]
+ },
+ {
+  "id": "lawn-apr-preemergent",
+  "title": "Apply crabgrass pre-emergent",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-25",
+   "end": "04-15"
+  },
+  "priority": "critical",
+  "effort": "medium",
+  "trigger": {
+   "type": "bloom",
+   "text": "Redbuds in full bloom; soil nearing 55°F"
+  },
+  "summary": "One application of prodiamine or dithiopyr, watered in, stops crabgrass all season. MU: by April 15; K-State: at redbud full bloom.",
+  "details": "Crabgrass starts sprouting once soil at 1 in stays around 55°F for several days, and the first seedlings follow a week averaging 57–63°F (Fidanza 1996). Degree-day models miss by weeks, but bloom order tracks it well (Cardina 2011), which is why redbud bloom works as the cue. **Dithiopyr** also kills crabgrass up to about 4 weeks after it emerges, so it's the safer choice if you're late. **Prodiamine** lasts longest.",
+  "howTo": [
+   "Mark areas you seeded this spring or plan to seed; skip them.",
+   "Set the spreader to half the label rate and walk the lawn twice at right angles; start with the edges along drives and walks, where crabgrass shows up first.",
+   "Water it in with about ¼ in within a few days (or apply right before a forecast rain).",
+   "Log it here. The weather alerts stop nagging you once it's checked off."
+  ],
+  "rate": "Label rate. Hi-Yield Dimension granules: 2.4–3.2 lb per 1,000 sq ft. Barricade 4FL: up to 0.5–1.1 fl oz per 1,000 sq ft per year for tall fescue.",
+  "products": [
+   "dimension-granular",
+   "lesco-stonewall",
+   "barricade-4fl",
+   "prodiamine-65wdg",
+   "dimension-2ew"
+  ],
+  "conflicts": [
+   "lawn-mar-spring-seed",
+   "lawn-sep-overseed"
+  ],
+  "conflictNote": "Crabgrass preventers stop grass seed too. Purdue: \"Do not use preemergence herbicides on new seedlings or before seeding an area.\" Skip spots you seeded this spring (Tenacity is the seed-safe option there), and check the label's reseeding wait before fall seeding: about 10 weeks for Hi-Yield dithiopyr granules, 3 months for Dimension 2EW, and 4–6 months for prodiamine depending on rate. An early-April application at a typical rate has usually run its course by mid-September; heavier prodiamine rates may not have.",
+  "noIrrigationNote": "Rain is what activates it. Apply just before a forecast ¼–½ in rain; if a week passes dry, water it in with a hose-end sprinkler.",
+  "sources": [
+   "kstate-lawn-calendar",
+   "mu-g6705",
+   "kstate-crabgrass-blog",
+   "cardina-2011",
+   "fidanza-1996",
+   "purdue-seeding-delays"
+  ],
+  "evidence": "extension",
+  "logType": "weed",
+  "tags": [
+   "weeds",
+   "crabgrass"
+  ]
+ },
+ {
+  "id": "lawn-apr-mow",
+  "title": "Start mowing at 3–3.5 in (the ⅓ rule)",
+  "category": "lawn",
+  "subcategory": "mow",
+  "months": [
+   4
+  ],
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "growth",
+   "text": "Grass reaches about 4–5 in"
+  },
+  "summary": "Never remove more than a third of the blade; in fast spring growth that can mean every 4–5 days. Leave the clippings.",
+  "details": "MU's spring range for tall fescue is 2–3.5 in; staying toward the top builds deeper roots before summer and shades out crabgrass. Clippings return nitrogen and don't cause thatch.",
+  "products": [
+   "sharpening"
+  ],
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "logType": "mow",
+  "tags": [
+   "mowing"
+  ]
+ },
+ {
+  "id": "lawn-apr-light-feed",
+  "title": "Optional light spring feeding (only if pale)",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   4
+  ],
+  "window": {
+   "start": "04-01",
+   "end": "04-20"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "calc": "fertilizer",
+  "nitrogen": 0.5,
+  "summary": "½ lb N/1,000 of a slow-release product in early–mid April, but only if the lawn is pale and wasn't fed well last fall.",
+  "details": "MU: \"Two or three fertilizer applications in the fall may eliminate the need for a spring application.\" In K-State plots, spring and May nitrogen went hand in hand with heavy brown patch. If you use a pre-emergent-plus-fertilizer product, that is your spring feeding.",
+  "rate": "0.5 lb N per 1,000 sq ft (Milorganite ≈ 8 lb/1,000)",
+  "products": [
+   "milorganite",
+   "scotts-turf-builder"
+  ],
+  "sources": [
+   "mu-g6705",
+   "kstate-lawn-calendar",
+   "fry-2025"
+  ],
+  "evidence": "extension",
+  "logType": "fertilize",
+  "tags": [
+   "fertilizer"
+  ]
+ },
+ {
+  "id": "beds-apr-divide",
+  "title": "Divide summer and fall bloomers as they emerge",
+  "category": "beds",
+  "subcategory": "plant",
+  "months": [
+   4
+  ],
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Hostas, daylilies, asters, sedum and black-eyed Susans divide best in early spring. Leave spring bloomers and peonies for fall.",
+  "details": "Dig the clump, split it with a spade or two forks, replant at the same depth, and water well.",
+  "sources": [
+   "mobot-grasses"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "perennials"
+  ]
+ },
+ {
+  "id": "beds-apr-plant",
+  "title": "Plant container shrubs and perennials",
+  "category": "beds",
+  "subcategory": "plant",
+  "months": [
+   4,
+   5
+  ],
+  "window": {
+   "start": "04-10",
+   "end": "05-31"
+  },
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "Spring planting works, but plants need weekly deep watering all summer. Fall planting is easier on them.",
+  "noIrrigationNote": "New plants need about 1 in/week at the base the first summer. A soaker hose on a timer makes that easy.",
+  "products": [
+   "soaker-drip",
+   "hose-timer"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "planting"
+  ]
+ },
+ {
+  "id": "beds-apr-haircut",
+  "title": "Give late bloomers a \"spring haircut\"",
+  "category": "beds",
+  "subcategory": "prune",
+  "months": [
+   4,
+   5
+  ],
+  "window": {
+   "start": "04-25",
+   "end": "05-07"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Trim asters, goldenrods and other flowers that bloom after mid-July by 25–75% so they grow compact and don't flop (Grow Native!).",
+  "sources": [
+   "grow-native"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "pruning",
+   "natives"
+  ]
+ },
+ {
+  "id": "veg-apr-beans-corn",
+  "title": "Sow bush beans and sweet corn",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   4,
+   5
+  ],
+  "window": {
+   "start": "04-15",
+   "end": "05-20"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Beans: soil ~60°F; corn: 50°F+ (60°F+ for supersweet)"
+  },
+  "summary": "Bush beans 4/15–5/20; sweet corn 4/25 through 8/1 in succession (MU Central). Plant corn in blocks of 4+ rows for pollination.",
+  "details": "Beans rot in cold, wet soil, so the later end of the window is safer on clay. Isolate supersweet (sh2) corn from other corn by 250 ft or 14 days' maturity (MU).",
+  "sources": [
+   "mu-g6201",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm season"
+  ]
+ },
+ {
+  "id": "veg-apr-harden",
+  "title": "Harden off transplants (7–10 days)",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   4,
+   5
+  ],
+  "window": {
+   "start": "04-28",
+   "end": "05-12"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Ease indoor seedlings into sun and wind over a week so they don't scorch or stall.",
+  "howTo": [
+   "Days 1–2: 1–2 hours outside in shade, out of wind.",
+   "Days 3–5: add morning sun; bring in at night.",
+   "Days 6–8: full sun most of the day; leave out on nights above 50°F.",
+   "Transplant on a cloudy afternoon and water in."
+  ],
+  "evidence": "practice",
+  "tags": [
+   "seed starting"
+  ]
+ },
+ {
+  "id": "veg-apr-cabbageworms",
+  "title": "Watch broccoli and kale for cabbageworms",
+  "category": "veg",
+  "subcategory": "pest",
+  "months": [
+   4,
+   5,
+   6
+  ],
+  "window": {
+   "start": "04-15",
+   "end": "06-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "trigger": {
+   "type": "pest",
+   "text": "White butterflies fluttering over brassicas"
+  },
+  "summary": "Velvety green caterpillars chew holes in leaves. Row cover prevents them; Bt kills them safely.",
+  "products": [
+   "bt",
+   "row-cover"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "pests"
+  ]
+ },
+ {
+  "id": "veg-apr-rabbits",
+  "title": "Put up the rabbit fence",
+  "category": "veg",
+  "subcategory": "pest",
+  "months": [
+   4
+  ],
+  "window": {
+   "start": "04-01",
+   "end": "04-20"
+  },
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "A 2-ft fence of 1-in mesh, bottom buried 3–6 in, protects beans, peas, lettuce and young transplants.",
+  "products": [
+   "rabbit-fence"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "critters"
+  ]
+ },
+ {
+  "id": "yard-apr-eab",
+  "title": "Protect a valuable ash tree from emerald ash borer",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   3,
+   4
+  ],
+  "window": {
+   "start": "03-25",
+   "end": "04-20"
+  },
+  "priority": "optional",
+  "effort": "medium",
+  "trigger": {
+   "type": "bloom",
+   "text": "Around pear and crabapple bloom"
+  },
+  "summary": "EAB is in the Kansas City area. Healthy ash under 20 in diameter (most effective under 15 in) can get a DIY imidacloprid soil drench each spring; bigger trees need an arborist trunk injection.",
+  "howTo": [
+   "Measure trunk diameter at 4.5 ft (circumference ÷ 3.14).",
+   "Under 20 in: mix the drench per label (1 fl oz per inch of circumference) in a bucket and pour at the trunk base.",
+   "Over 20 in, or already losing more than ⅓ of the canopy: call an ISA-certified arborist, or plan removal before the tree turns brittle."
+  ],
+  "products": [
+   "tree-imidacloprid"
+  ],
+  "safety": "Imidacloprid is highly toxic to bees. Never use it on flowering plants (ash is wind-pollinated) and follow the label.",
+  "sources": [
+   "mdc-eab-guide"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "trees",
+   "pests"
+  ]
+ },
+ {
+  "id": "yard-tick-season",
+  "title": "Treat yard clothes for ticks and chiggers",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   4,
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Permethrin-treated clothes and shoes are the best defense in Missouri. Use DEET or picaridin on skin, and check for ticks after yard work.",
+  "products": [
+   "sawyer-permethrin"
+  ],
+  "safety": "Permethrin goes on clothing only, never skin, and is toxic to cats until it dries.",
+  "evidence": "label",
+  "sources": [
+   "product-label"
+  ],
+  "tags": [
+   "safety"
+  ]
+ },
+ {
+  "id": "yard-call-811",
+  "title": "Call 811 before digging deep",
+  "category": "yard",
+  "subcategory": "safety",
+  "months": [
+   3,
+   4,
+   9,
+   10
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Planting trees, setting fence posts or deep edging? Missouri law requires notice at least 2 working days ahead; Missouri 811 says allow 3. It's free.",
+  "sources": [
+   "mo-one-call"
+  ],
+  "evidence": "law",
+  "tags": [
+   "safety"
+  ]
+ },
+ {
+  "id": "lawn-may-no-n",
+  "title": "Hold the lawn fertilizer until September",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   5
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "MU: \"Do not apply nitrogen fertilizer… past May 1 as it will encourage development of foliar diseases.\" K-State feeds in May only if you water or rain keeps the lawn from going dormant.",
+  "details": "For a rain-fed lawn, skipping May–August nitrogen is the cheapest brown patch control there is. In K-State's 2023 plots, fall-only feeding had 2–23% brown patch versus 48–66% with spring and May feeding.",
+  "sources": [
+   "mu-g6705",
+   "kstate-lawn-calendar",
+   "fry-2025",
+   "kstate-turf-bp-blog"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "fertilizer",
+   "brown patch"
+  ]
+ },
+ {
+  "id": "lawn-may-mow",
+  "title": "Mow at 3.5 in",
+  "category": "lawn",
+  "subcategory": "mow",
+  "months": [
+   5
+  ],
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Peak growth month: mow often enough to follow the ⅓ rule, with a sharp blade, when the grass is dry.",
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "logType": "mow",
+  "tags": [
+   "mowing"
+  ]
+ },
+ {
+  "id": "lawn-may-grub-prevent",
+  "title": "Grub preventer (only if you had grub damage)",
+  "category": "lawn",
+  "subcategory": "pest",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-01",
+   "end": "06-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Chlorantraniliprole (Scotts GrubEx1) in May, or imidacloprid May–June (K-State), watered in. Skip it if you've never had grub damage; most lawns don't need it.",
+  "products": [
+   "grubex1",
+   "imidacloprid-grub"
+  ],
+  "safety": "Imidacloprid is highly toxic to bees: mow off flowering clover and dandelions first. Chlorantraniliprole is the lower-risk choice for pollinators.",
+  "noIrrigationNote": "Apply just before a ½ in rain, or water it in with a hose-end sprinkler.",
+  "sources": [
+   "kstate-lawn-calendar"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "grubs"
+  ]
+ },
+ {
+  "id": "lawn-may-nutsedge",
+  "title": "Spot-treat yellow nutsedge while it's young",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-20",
+   "end": "06-30"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "trigger": {
+   "type": "growth",
+   "text": "Before plants have 5 leaves"
+  },
+  "summary": "Shiny, yellow-green, V-shaped grass-like weed that outgrows the lawn. Pulling leaves tubers that resprout.",
+  "products": [
+   "sedgehammer",
+   "ortho-nutsedge"
+  ],
+  "sources": [
+   "product-label"
+  ],
+  "evidence": "label",
+  "tags": [
+   "weeds"
+  ]
+ },
+ {
+  "id": "beds-may-annuals",
+  "title": "Plant annuals and tender bulbs",
+  "category": "beds",
+  "subcategory": "plant",
+  "months": [
+   5
+  ],
+  "window": {
+   "start": "05-05",
+   "end": "05-31"
+  },
+  "shift": "spring",
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "After about May 5, once frost risk has passed: zinnias, lantana, salvias, cannas, caladiums (shade).",
+  "evidence": "practice",
+  "tags": [
+   "planting"
+  ]
+ },
+ {
+  "id": "beds-may-spring-shrubs",
+  "title": "Prune spring-flowering shrubs right after bloom",
+  "category": "beds",
+  "subcategory": "prune",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-01",
+   "end": "06-15"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Forsythia, lilac, spirea, azalea, viburnum and weigela bloom on last year's wood. Prune within a few weeks after flowering.",
+  "details": "Remove a third of the oldest stems at the base rather than shearing into balls.",
+  "evidence": "practice",
+  "tags": [
+   "pruning"
+  ]
+ },
+ {
+  "id": "beds-may-bulb-foliage",
+  "title": "Deadhead spring bulbs; leave the leaves",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   4,
+   5
+  ],
+  "window": {
+   "start": "04-20",
+   "end": "05-31"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Bulb leaves recharge next year's flowers. Let them yellow naturally (about 6 weeks) before cutting.",
+  "evidence": "practice",
+  "tags": [
+   "bulbs"
+  ]
+ },
+ {
+  "id": "yard-may-bagworms",
+  "title": "Spray bagworms while bags are under ½ in",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-25",
+   "end": "06-30"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "pest",
+   "text": "Tiny new bags on junipers and arborvitae"
+  },
+  "summary": "Bt or spinosad works on young larvae; big bags later in summer have to be hand-picked.",
+  "products": [
+   "bt",
+   "spinosad"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "pests",
+   "trees"
+  ]
+ },
+ {
+  "id": "veg-may-tomatoes-peppers",
+  "title": "Transplant tomatoes, peppers and jalapeños",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   5
+  ],
+  "window": {
+   "start": "05-10",
+   "end": "05-30"
+  },
+  "shift": "spring",
+  "priority": "critical",
+  "effort": "medium",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil ≥60°F (tomatoes), ≥65°F (peppers); nights above 50°F"
+  },
+  "summary": "Tomatoes 5/10–20, peppers 5/10–30 (MU Central). MU's tomato guide says May 5–20, or a week earlier if you can cover them on a frosty night.",
+  "howTo": [
+   "Plant tomatoes deep, burying the stem up to the top few leaves; roots form along it.",
+   "Set cages now (Texas Tomato Cage or 6×6-in concrete-wire cages); flimsy cone cages collapse by July.",
+   "Mix a handful of Tomato-tone or 10-10-10 into each hole; water in well.",
+   "Mulch with 2–3 in of straw once the soil is warm (late May); lay soaker hose underneath."
+  ],
+  "products": [
+   "tomato-cage",
+   "espoma-tomato-tone",
+   "straw-mulch",
+   "soaker-drip"
+  ],
+  "noIrrigationNote": "Plan on about 1–1.5 in of water a week in July. A soaker hose under mulch on a hose timer is the easiest setup without a sprinkler system.",
+  "sources": [
+   "mu-g6201",
+   "mu-g6461",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "logType": "plant",
+  "tags": [
+   "warm season",
+   "tomatoes"
+  ]
+ },
+ {
+  "id": "veg-may-melons",
+  "title": "Sow watermelon and cantaloupe",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   5
+  ],
+  "window": {
+   "start": "05-01",
+   "end": "05-20"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil ≥65–70°F"
+  },
+  "summary": "Watermelon and cantaloupe 5/1–20 (MU Central). They need 80–90 frost-free days and lots of room; hills 6 ft apart.",
+  "details": "Watermelons: Crimson Sweet, Sangria, Royal Jubilee; icebox Sugar Baby, Mini Love, Yellow Doll. Cantaloupe: Ambrosia, Athena, Superstar. Black plastic mulch warms clay soil and speeds them up.",
+  "products": [
+   "row-cover"
+  ],
+  "sources": [
+   "mu-g6201",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm season"
+  ]
+ },
+ {
+  "id": "veg-may-squash-cukes-okra",
+  "title": "Sow squash, cucumbers and okra",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   5
+  ],
+  "window": {
+   "start": "05-05",
+   "end": "05-30"
+  },
+  "shift": "spring",
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil ≥65°F"
+  },
+  "summary": "Cucumbers 5/5–30, summer and winter squash 5/10–30, okra 5/1–25 (MU Central). Soak okra seed overnight.",
+  "details": "Plant a border of Blue Hubbard squash as a trap crop for squash bugs, vine borers and cucumber beetles. Butternut and Tromboncino (C. moschata) hold up best against vine borers.",
+  "products": [
+   "row-cover"
+  ],
+  "sources": [
+   "mu-g6201",
+   "kstate-l41",
+   "mu-ipm-trapcrop",
+   "lincoln-trap-crop"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm season"
+  ]
+ },
+ {
+  "id": "veg-may-sweet-potatoes",
+  "title": "Plant sweet potato slips",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-10",
+   "end": "06-10"
+  },
+  "shift": "spring",
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Beauregard or Georgia Jet on ridges 8–10 in high, 12–18 in apart. They do well on clay when ridged.",
+  "sources": [
+   "mu-g6201",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm season"
+  ]
+ },
+ {
+  "id": "veg-may-herbs",
+  "title": "Plant basil and tender herbs",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   5
+  ],
+  "window": {
+   "start": "05-10",
+   "end": "05-31"
+  },
+  "shift": "spring",
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Basil hates cold; wait for warm nights. Rosemary is tender here, so pot it and bring it in for winter.",
+  "evidence": "practice",
+  "tags": [
+   "herbs"
+  ]
+ },
+ {
+  "id": "veg-may-mulch",
+  "title": "Mulch the garden and lay soaker hose",
+  "category": "veg",
+  "subcategory": "water",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-20",
+   "end": "06-10"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "2–3 in of straw or shredded leaves once soil is warm. It halves watering, stops soil splash onto tomato leaves, and prevents blossom-end rot.",
+  "noIrrigationNote": "Soaker hose or drip line under the mulch on a hose timer: about 1 in per week total, more in July.",
+  "hoseTimerNote": "Run the soaker 45–90 minutes twice a week, early morning; check that the top 6 in is moist.",
+  "products": [
+   "straw-mulch",
+   "soaker-drip",
+   "hose-timer"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "water",
+   "mulch"
+  ]
+ },
+ {
+  "id": "yard-mosquitoes",
+  "title": "Dump standing water weekly; dunk the rain barrel",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Mosquitoes can go from egg to adult in about a week in summer heat. Tip saucers, toys and tarps; use Mosquito Dunks where water must stay.",
+  "products": [
+   "mosquito-dunks"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "pests"
+  ]
+ },
+ {
+  "id": "lawn-jun-mow-4",
+  "title": "Raise the mower to 4 in for summer",
+  "category": "lawn",
+  "subcategory": "mow",
+  "months": [
+   6,
+   7,
+   8
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Top of MU's 3–4 in summer range. Tall grass shades the soil, keeps roots deeper and crowds out crabgrass.",
+  "details": "Mow only when it's growing. Don't mow dormant or wilted grass, and skip the afternoon heat. K-State: \"Raise mowing height to upper end of the recommended range.\"",
+  "sources": [
+   "mu-g6705",
+   "kstate-lawn-calendar"
+  ],
+  "evidence": "extension",
+  "logType": "mow",
+  "tags": [
+   "mowing",
+   "summer"
+  ]
+ },
+ {
+  "id": "lawn-jun-second-pre",
+  "title": "Second crabgrass preventer (only for short-lived products)",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   6
+  ],
+  "window": {
+   "start": "06-01",
+   "end": "06-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "K-State: apply a second round by June 15, unless your April product was Dimension (dithiopyr) or Barricade (prodiamine), which last all season.",
+  "sources": [
+   "kstate-lawn-calendar"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "weeds",
+   "crabgrass"
+  ]
+ },
+ {
+  "id": "lawn-jun-wilt",
+  "title": "Wilt watch: one deep soak, not daily sprinkles",
+  "category": "lawn",
+  "subcategory": "water",
+  "months": [
+   6
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "calc": "water",
+  "trigger": {
+   "type": "weather",
+   "text": "Blue-gray color; footprints that stay"
+  },
+  "summary": "If the lawn wilts in June, give it about 1 in early in the morning, once. Light, frequent watering grows shallow roots.",
+  "noIrrigationNote": "Hose-end sprinkler: do the tuna-can test once so you know how long 1 in takes; split it into two runs on clay.",
+  "hoseTimerNote": "Two early-morning runs (4–10 a.m.), 30 minutes apart, sized by your tuna-can test.",
+  "products": [
+   "oscillating-sprinkler",
+   "hose-timer"
+  ],
+  "sources": [
+   "mu-g6705",
+   "mu-mg10"
+  ],
+  "evidence": "extension",
+  "logType": "water",
+  "tags": [
+   "water",
+   "summer"
+  ]
+ },
+ {
+  "id": "beds-summer-water",
+  "title": "Water new plantings deeply once a week",
+  "category": "beds",
+  "subcategory": "water",
+  "months": [
+   6,
+   7,
+   8
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "First-year perennials, shrubs and trees need about 1 in per week at the base when it doesn't rain. Established natives rarely need it.",
+  "products": [
+   "soaker-drip",
+   "hose-timer"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "water"
+  ]
+ },
+ {
+  "id": "beds-jun-pinch",
+  "title": "Pinch mums and asters until July 4",
+  "category": "beds",
+  "subcategory": "prune",
+  "months": [
+   6,
+   7
+  ],
+  "window": {
+   "start": "06-01",
+   "end": "07-04"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Pinch the tips every 2–3 weeks for bushy plants covered in fall flowers. Stop by early July or you'll cut off the buds.",
+  "evidence": "practice",
+  "tags": [
+   "pruning"
+  ]
+ },
+ {
+  "id": "yard-jun-japanese-beetles",
+  "title": "Hand-pick Japanese beetles (no traps)",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   6,
+   7
+  ],
+  "window": {
+   "start": "06-10",
+   "end": "07-31"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "pest",
+   "text": "Metallic green beetles on roses, linden, grapes, beans"
+  },
+  "summary": "Knock them into a cup of soapy water in the cool morning. Traps attract far more beetles than they catch (UK, MU).",
+  "sources": [
+   "mu-japanese-beetle",
+   "uky-japanese-beetle",
+   "mdc-japanese-beetle"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "pests"
+  ]
+ },
+ {
+  "id": "veg-jun-harvest-cool",
+  "title": "Harvest peas, lettuce and garlic scapes",
+  "category": "veg",
+  "subcategory": "harvest",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-20",
+   "end": "06-20"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Pick peas every 2–3 days; cut garlic scapes when they curl (sauté them). Lettuce turns bitter once heat hits, so harvest it all.",
+  "evidence": "practice",
+  "logType": "harvest",
+  "tags": [
+   "harvest"
+  ]
+ },
+ {
+  "id": "veg-jun-garlic-harvest",
+  "title": "Harvest garlic",
+  "category": "veg",
+  "subcategory": "harvest",
+  "months": [
+   6,
+   7
+  ],
+  "window": {
+   "start": "06-15",
+   "end": "07-10"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "harvest",
+   "text": "Lower 3–5 leaves brown"
+  },
+  "summary": "Dig (don't pull) when the lower 3–5 leaves have browned; each green leaf left is one wrapper layer on the bulb.",
+  "howTo": [
+   "Loosen the soil with a fork and lift the bulbs.",
+   "Cure 2–3 weeks in shade with good airflow, tops on.",
+   "Trim roots and stems; save the biggest heads to plant in October."
+  ],
+  "sources": [
+   "mu-ipm-garlic"
+  ],
+  "evidence": "extension",
+  "logType": "harvest",
+  "tags": [
+   "harvest",
+   "garlic"
+  ]
+ },
+ {
+  "id": "veg-jun-svb",
+  "title": "Protect squash from squash vine borers",
+  "category": "veg",
+  "subcategory": "pest",
+  "months": [
+   6,
+   7
+  ],
+  "window": {
+   "start": "06-05",
+   "end": "07-31"
+  },
+  "priority": "critical",
+  "effort": "medium",
+  "trigger": {
+   "type": "pest",
+   "text": "Red-and-black clearwing moths around squash (~June)"
+  },
+  "summary": "Borers lay eggs at the base of squash plants around June in mid-Missouri. Once a larva is inside the stem, sprays don't work.",
+  "howTo": [
+   "Keep row cover over young plants until they flower, then remove it so bees can pollinate.",
+   "If you spray, use an insecticide whose label lists squash vine borer, applied to the lower stems every 7 days while moths fly (MU IPM), late in the day away from open flowers.",
+   "Border the patch with Blue Hubbard squash as a trap crop (MU IPM / Lincoln University).",
+   "Grow butternut or Tromboncino (C. moschata); they're far less affected.",
+   "Sow a second round in late June–early July to dodge the first wave.",
+   "Sudden wilting plus sawdust-like frass at the base means a borer is inside: slit the stem lengthwise, remove the grub, and bury the stem in moist soil."
+  ],
+  "products": [
+   "row-cover"
+  ],
+  "sources": [
+   "mu-ipm-svb",
+   "mu-ipm-trapcrop",
+   "lincoln-trap-crop"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "pests",
+   "squash"
+  ]
+ },
+ {
+  "id": "veg-summer-blight",
+  "title": "Scout tomatoes for early blight and Septoria",
+  "category": "veg",
+  "subcategory": "disease",
+  "months": [
+   6,
+   7,
+   8
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "pest",
+   "text": "Spots on the lowest leaves"
+  },
+  "summary": "Brown target-ring spots (early blight) or small gray-centered spots (Septoria) start low and climb. Pull spotted leaves and keep leaves dry.",
+  "details": "Mulch to stop soil splash, water at the base in the morning, and stake or cage for airflow. If it's severe, a protectant (chlorothalonil or copper) every 7–10 days slows it; follow the label's days-to-harvest. Rotate beds on a 3-year cycle.",
+  "products": [
+   "daconil",
+   "copper",
+   "straw-mulch"
+  ],
+  "sources": [
+   "product-label"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "tomatoes",
+   "disease"
+  ]
+ },
+ {
+  "id": "veg-jun-fall-brassica-start",
+  "title": "Start fall broccoli and cabbage",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   6
+  ],
+  "window": {
+   "start": "06-10",
+   "end": "06-25"
+  },
+  "shift": "fall",
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Start seed in a bright, cool spot or under lights for late-July transplanting. Fall broccoli usually beats spring broccoli here.",
+  "products": [
+   "seed-start"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "fall garden",
+   "seed starting"
+  ]
+ },
+ {
+  "id": "veg-jun-sidedress",
+  "title": "Side-dress heavy feeders",
+  "category": "veg",
+  "subcategory": "fertilize",
+  "months": [
+   6,
+   7
+  ],
+  "window": {
+   "start": "06-10",
+   "end": "07-10"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Feed tomatoes and peppers when the first fruits set, and sweet corn at knee-high. A small handful of Tomato-tone or 10-10-10 per plant, watered in.",
+  "details": "Too much nitrogen gives big plants and few fruit, so go light.",
+  "products": [
+   "espoma-tomato-tone",
+   "fert-10-10-10"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "fertilizer"
+  ]
+ },
+ {
+  "id": "veg-jun-pumpkins",
+  "title": "Plant pumpkins for Halloween",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-15",
+   "end": "06-10"
+  },
+  "shift": "spring",
+  "priority": "optional",
+  "effort": "low",
+  "summary": "MU's window is 5/15–25; many KC gardeners plant into early June so pumpkins ripen in late September and stay fresh for October.",
+  "sources": [
+   "mu-g6201"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm season"
+  ]
+ },
+ {
+  "id": "yard-jun-sharpen",
+  "title": "Sharpen the mower blade again",
+  "category": "yard",
+  "subcategory": "maintenance",
+  "months": [
+   6,
+   7
+  ],
+  "window": {
+   "start": "06-15",
+   "end": "07-10"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Dull blades shred leaf tips (tan, frayed ends a day after mowing) and raise disease risk. Sharpen about every 25 hours of mowing.",
+  "products": [
+   "sharpening"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "tools"
+  ]
+ },
+ {
+  "id": "lawn-jul-survival",
+  "title": "Summer survival mode: mow high, stay off, water by the 3-week rule",
+  "category": "lawn",
+  "subcategory": "water",
+  "months": [
+   7,
+   8
+  ],
+  "priority": "critical",
+  "effort": "low",
+  "calc": "water",
+  "trigger": {
+   "type": "weather",
+   "text": "~3 weeks without ½ in of rain in 90°F heat"
+  },
+  "summary": "Tall fescue browns and goes dormant in hot, dry spells. That's survival, not death. Soak ½–1 in only after about 3 weeks without ½ in of rain in the heat.",
+  "details": "MU: \"Except in cases of extreme prolonged drought, tall fescue and Kentucky bluegrass do not need water to stay alive during the summer.\" UNL: dormant turf survives 4–5 weeks, but \"if temperatures are continually greater than 80°F, survival is greatly reduced after three to four weeks.\" In K-State rain-out shelter trials, tall fescue recovered from 60–83 days of drought with zero water. The Today page tracks days since a soaking rain for you.",
+  "howTo": [
+   "Mow at 4 in, and only when the grass is growing. Never mow dormant or wilted turf, or in afternoon heat.",
+   "Keep foot traffic and tires off dry grass; tracks turn into brown stripes.",
+   "Water rule: after ~3 weeks without ½ in of rain and highs around 90°F, soak ½–1 in early in the morning (4–10 a.m.), in two runs 30 minutes apart on clay.",
+   "Already dormant? Give ½–1 in every 2–3 weeks through a long hot drought (UNL: ¼–½ in keeps crowns hydrated; MU's manual: at least 1 in prevents turf loss). Don't water it green and let it brown again repeatedly.",
+   "No fertilizer and no weed killers on drought-stressed grass."
+  ],
+  "noIrrigationNote": "Use a hose-end oscillating sprinkler and measure with a tuna can. 1 in over 1,000 sq ft is about 620 gallons, so water the parts of the lawn you care most about first.",
+  "hoseTimerNote": "Set two back-to-back early-morning runs (for example 5:00 and 5:45 a.m.) sized by your tuna-can test; move the sprinkler between zones on consecutive days.",
+  "products": [
+   "oscillating-sprinkler",
+   "hose-timer",
+   "rain-gauge"
+  ],
+  "sources": [
+   "mu-g6705",
+   "unl-g2191",
+   "mu-mg10",
+   "hong-2021",
+   "braun-2022a"
+  ],
+  "evidence": "extension",
+  "logType": "water",
+  "tags": [
+   "water",
+   "summer",
+   "drought"
+  ]
+ },
+ {
+  "id": "lawn-summer-brown-patch",
+  "title": "Brown patch watch",
+  "category": "lawn",
+  "subcategory": "disease",
+  "months": [
+   6,
+   7,
+   8
+  ],
+  "window": {
+   "start": "06-20",
+   "end": "08-31"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "weather",
+   "text": "Nights ≥65°F with dew and humidity"
+  },
+  "summary": "Tan patches from inches to feet across, leaf lesions with dark borders, sometimes a gray \"smoke ring\" at dawn. Most tall fescue recovers in fall.",
+  "details": "Prevent it with the cultural basics: no spring/summer nitrogen, water only in the early morning, mow when dry, and don't overseed at excessive rates. If it wipes out your lawn every summer, a preventive fungicide from late June (azoxystrobin, then rotate to propiconazole) helps. K-State's best-looking plots combined high nitrogen with fungicide.",
+  "products": [
+   "diseaseex",
+   "bioadvanced-fungus"
+  ],
+  "sources": [
+   "kstate-brown-patch",
+   "fry-2025",
+   "park-2017"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "disease",
+   "brown patch"
+  ]
+ },
+ {
+  "id": "lawn-jul-grubs",
+  "title": "Check for grubs where turf peels back like carpet",
+  "category": "lawn",
+  "subcategory": "pest",
+  "months": [
+   7,
+   8,
+   9
+  ],
+  "window": {
+   "start": "07-20",
+   "end": "09-10"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "pest",
+   "text": "Brown patches that roll up; skunks or birds digging"
+  },
+  "summary": "Cut a few 1-sq-ft flaps 2–3 in deep at the edge of damage. Treat only if you find 5–10 or more grubs per sq ft (MU).",
+  "howTo": [
+   "Count grubs in 3–4 spots.",
+   "At the threshold, apply a trichlorfon (Dylox) product, then water it in with ½ in within 24 hours.",
+   "Below threshold: water and reseed in September; healthy fescue regrows roots."
+  ],
+  "products": [
+   "dylox-24hr"
+  ],
+  "noIrrigationNote": "Dylox must be watered in within 24 hours to reach the root zone. Time it before a soaking rain or run the hose-end sprinkler.",
+  "sources": [
+   "mu-g6705",
+   "kstate-lawn-calendar"
+  ],
+  "evidence": "extension",
+  "logType": "pest",
+  "tags": [
+   "grubs"
+  ]
+ },
+ {
+  "id": "lawn-summer-crabgrass-post",
+  "title": "Spot-kill crabgrass that got through",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   6,
+   7,
+   8
+  ],
+  "window": {
+   "start": "06-15",
+   "end": "08-10"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Young crabgrass (before it tillers) dies easily with quinclorac or Tenacity + surfactant. Big August crabgrass: let frost kill it and overseed the gaps in September.",
+  "products": [
+   "weedbgon-crabgrass",
+   "drive-xlr8",
+   "tenacity"
+  ],
+  "safety": "Quinclorac and Tenacity leave residues that injure vegetables (Drive XLR8: no tomatoes for 24 months). Keep them well away from the garden, and don't use treated clippings as garden mulch.",
+  "sources": [
+   "product-label"
+  ],
+  "evidence": "label",
+  "tags": [
+   "weeds",
+   "crabgrass"
+  ]
+ },
+ {
+  "id": "beds-summer-deadhead",
+  "title": "Deadhead and tidy",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   7,
+   8
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Deadhead annuals and rebloomers (catmint, salvia, coreopsis). Leave native seed heads (coneflower, black-eyed Susan) for the goldfinches.",
+  "sources": [
+   "grow-native"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "maintenance"
+  ]
+ },
+ {
+  "id": "veg-summer-harvest",
+  "title": "Peak harvest: pick often",
+  "category": "veg",
+  "subcategory": "harvest",
+  "months": [
+   7,
+   8
+  ],
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Okra every 1–2 days (under 4 in), cucumbers and zucchini daily, beans every 2–3 days, tomatoes at first blush (ripen on the counter; no squirrel or crack losses).",
+  "evidence": "practice",
+  "logType": "harvest",
+  "tags": [
+   "harvest"
+  ]
+ },
+ {
+  "id": "veg-summer-ber",
+  "title": "Prevent blossom-end rot with even moisture",
+  "category": "veg",
+  "subcategory": "water",
+  "months": [
+   6,
+   7,
+   8
+  ],
+  "window": {
+   "start": "06-15",
+   "end": "08-15"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "The leathery dark spot on tomato bottoms usually comes from moisture swings that block calcium uptake. K-State: low soil calcium is \"rare in Kansas.\"",
+  "details": "Mulch, water deeply and evenly, and go easy on nitrogen. MU's tomato guide frames it as calcium plus moisture swings, so only add calcium or lime if a soil test calls for it. Pick off affected fruit; later fruit is usually fine.",
+  "products": [
+   "straw-mulch",
+   "soaker-drip"
+  ],
+  "sources": [
+   "kstate-ber",
+   "mu-g6461"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "tomatoes"
+  ]
+ },
+ {
+  "id": "veg-summer-hornworms",
+  "title": "Hand-pick tomato hornworms",
+  "category": "veg",
+  "subcategory": "pest",
+  "months": [
+   7,
+   8,
+   9
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "trigger": {
+   "type": "pest",
+   "text": "Stripped leaves and big black droppings"
+  },
+  "summary": "Big green caterpillars eat tomato leaves overnight. Pick them off, or use Bt while they're small. Leave any covered in white cocoons; parasitic wasps are handling it.",
+  "products": [
+   "bt"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "pests",
+   "tomatoes"
+  ]
+ },
+ {
+  "id": "veg-summer-tomato-set",
+  "title": "Hot nights stop tomato fruit set; don't pull the plants",
+  "category": "veg",
+  "subcategory": "maintenance",
+  "months": [
+   7,
+   8
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "When nights stay above about 75°F, blossoms drop. Plants set fruit again when nights cool in September. Keep them watered and mulched.",
+  "details": "Next year, add a heat-set variety (Florida 91, Sun Leaper, Sunmaster) for more summer fruit.",
+  "sources": [
+   "kstate-l41"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "tomatoes"
+  ]
+ },
+ {
+  "id": "veg-jul-fall-garden",
+  "title": "Plant the fall garden",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   7,
+   8
+  ],
+  "window": {
+   "start": "07-20",
+   "end": "08-10"
+  },
+  "shift": "fall",
+  "priority": "critical",
+  "effort": "medium",
+  "summary": "Carrots 7/25–30, broccoli transplants 7/25–8/5, cabbage and cauliflower 7/20–8/5, bush beans 7/25–8/10, beets 8/1–10, turnips 7/20–8/15 (MU Central).",
+  "details": "Fall crops mature in cool weather and often beat spring crops. Shade new seedlings for the first week, and keep the seedbed moist. A board over carrot rows keeps moisture in until they sprout.",
+  "noIrrigationNote": "Late-July seedbeds dry out fast. Soaker hose or a watering can daily until they're up.",
+  "products": [
+   "row-cover",
+   "soaker-drip"
+  ],
+  "sources": [
+   "mu-g6201"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "fall garden"
+  ]
+ },
+ {
+  "id": "yard-summer-trees",
+  "title": "Water young trees during dry spells",
+  "category": "yard",
+  "subcategory": "water",
+  "months": [
+   6,
+   7,
+   8,
+   9
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Trees planted in the last 2–3 years need a slow, deep soak about weekly without rain, roughly 10 gallons per inch of trunk diameter. A slow-drip bag makes it easy.",
+  "evidence": "practice",
+  "tags": [
+   "trees",
+   "water"
+  ]
+ },
+ {
+  "id": "lawn-aug-buy-seed",
+  "title": "Buy your fall grass seed (read the tag)",
+  "category": "lawn",
+  "subcategory": "renovation",
+  "months": [
+   8
+  ],
+  "window": {
+   "start": "08-05",
+   "end": "08-31"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "calc": "seed",
+  "summary": "Buy a 90/10 turf-type tall fescue–Kentucky bluegrass blend: 3+ named fescue cultivars, ≥85% germination, ~0% weed seed, tested in the last 9–12 months.",
+  "details": "Use the seed tag checker on the Lawn page. Avoid Kentucky 31 or \"variety not stated\" (forage types), annual ryegrass, and ryegrass-heavy mixes. Local 90/10 option: Soil Service KC Marathon. Straight fescue: KC Endurance, LESCO Kansas Excalibur or Grass Pad Heat Wave.",
+  "products": [
+   "kc-marathon",
+   "kc-endurance",
+   "grasspad-heat-wave",
+   "lesco-kansas-excalibur",
+   "black-beauty-ultra",
+   "diy-ntep-blend"
+  ],
+  "sources": [
+   "mu-mg10",
+   "ntep-tf18",
+   "powlen-2022",
+   "park-2017"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "seeding"
+  ]
+ },
+ {
+  "id": "lawn-aug-soil-test",
+  "title": "Soil test before a renovation (if none in 3 years)",
+  "category": "lawn",
+  "subcategory": "soil",
+  "months": [
+   8
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Know your pH and phosphorus before you seed so the starter fertilizer and any lime match what the soil actually needs.",
+  "products": [
+   "soil-test",
+   "soil-probe"
+  ],
+  "sources": [
+   "mu-soil-lab",
+   "mu-county"
+  ],
+  "evidence": "extension",
+  "logType": "soil",
+  "tags": [
+   "soil"
+  ]
+ },
+ {
+  "id": "lawn-aug-bermuda",
+  "title": "Kill bermudagrass or zoysia patches before seeding",
+  "category": "lawn",
+  "subcategory": "renovation",
+  "months": [
+   8,
+   9
+  ],
+  "window": {
+   "start": "08-01",
+   "end": "09-05"
+  },
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "Spot-spray patches with glyphosate in early August and again about a month later (a single spray rarely kills bermuda), then seed after 7 days (MU G6700).",
+  "details": "Glyphosate kills every plant it touches, so use a dedicated sprayer and a cardboard shield. Read the active ingredient: many consumer \"Roundup\" products no longer contain glyphosate.",
+  "products": [
+   "glyphosate-41",
+   "sprayer"
+  ],
+  "sources": [
+   "mu-g6700"
+  ],
+  "evidence": "extension",
+  "logType": "weed",
+  "tags": [
+   "renovation",
+   "weeds"
+  ]
+ },
+ {
+  "id": "lawn-aug-wake",
+  "title": "Wake a dormant lawn for fall (late August)",
+  "category": "lawn",
+  "subcategory": "water",
+  "months": [
+   8,
+   9
+  ],
+  "window": {
+   "start": "08-20",
+   "end": "09-05"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "If August was dry, about 1 in of water over a week gets the lawn growing before you aerate and seed. Core aeration also needs moist soil.",
+  "noIrrigationNote": "If you can't water, schedule aeration and seeding right after the first soaking rain of September.",
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "logType": "water",
+  "tags": [
+   "water",
+   "renovation"
+  ]
+ },
+ {
+  "id": "lawn-fall-armyworm",
+  "title": "Fall armyworm watch on new seedings",
+  "category": "lawn",
+  "subcategory": "pest",
+  "months": [
+   8,
+   9,
+   10
+  ],
+  "window": {
+   "start": "08-15",
+   "end": "10-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "trigger": {
+   "type": "pest",
+   "text": "Patches brown out almost overnight"
+  },
+  "summary": "In some years armyworm caterpillars chew new seedlings to the ground. Soap-flush a suspect area (2 Tbsp dish soap in a gallon of water) and treat if 3 or more come up per sq ft.",
+  "details": "Established fescue usually regrows; new seedings may need reseeding. Use a lawn insecticide labeled for armyworms, applied in the evening.",
+  "evidence": "practice",
+  "tags": [
+   "pests"
+  ]
+ },
+ {
+  "id": "beds-aug-stop-fert",
+  "title": "Stop fertilizing trees and shrubs",
+  "category": "beds",
+  "subcategory": "fertilize",
+  "months": [
+   8
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Late-season feeding pushes soft growth that freezes. Let woody plants harden off.",
+  "evidence": "practice",
+  "tags": [
+   "fertilizer"
+  ]
+ },
+ {
+  "id": "beds-aug-bulbs",
+  "title": "Order spring bulbs",
+  "category": "beds",
+  "subcategory": "planning",
+  "months": [
+   8,
+   9
+  ],
+  "window": {
+   "start": "08-01",
+   "end": "09-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Daffodils and alliums are critter-proof; tulips are deer and squirrel candy (plant deep or treat them as annuals).",
+  "evidence": "practice",
+  "tags": [
+   "bulbs"
+  ]
+ },
+ {
+  "id": "veg-aug-fall-greens",
+  "title": "Sow fall lettuce and spinach; transplant kale",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   8
+  ],
+  "window": {
+   "start": "08-01",
+   "end": "08-20"
+  },
+  "shift": "fall",
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Leaf lettuce 8/1–20, spinach 8/1–20, radishes 8/1–25 (MU Central). Kale transplants now give harvests into December.",
+  "details": "Lettuce won't sprout in hot soil (above ~80°F). Sow in the evening, water, and shade the row until it's up.",
+  "sources": [
+   "mu-g6201"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "fall garden"
+  ]
+ },
+ {
+  "id": "veg-aug-melons",
+  "title": "Harvest watermelons at peak",
+  "category": "veg",
+  "subcategory": "harvest",
+  "months": [
+   7,
+   8,
+   9
+  ],
+  "window": {
+   "start": "07-25",
+   "end": "09-10"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "trigger": {
+   "type": "harvest",
+   "text": "Nearest tendril dry; creamy-yellow belly spot"
+  },
+  "summary": "Ripe when the tendril nearest the fruit dries, the ground spot turns creamy yellow, and the rind loses its shine. Cantaloupe slips off the vine with light pressure.",
+  "evidence": "practice",
+  "logType": "harvest",
+  "tags": [
+   "harvest"
+  ]
+ },
+ {
+  "id": "veg-fall-winter-squash",
+  "title": "Harvest winter squash and pumpkins",
+  "category": "veg",
+  "subcategory": "harvest",
+  "months": [
+   8,
+   9,
+   10
+  ],
+  "window": {
+   "start": "08-25",
+   "end": "10-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "trigger": {
+   "type": "harvest",
+   "text": "Rind resists a thumbnail; stem corky"
+  },
+  "summary": "Cut with 2 in of stem, cure 1–2 weeks somewhere warm, and store cool and dry. Harvest everything before a hard freeze.",
+  "evidence": "practice",
+  "logType": "harvest",
+  "tags": [
+   "harvest"
+  ]
+ },
+ {
+  "id": "veg-fall-order-garlic",
+  "title": "Order seed garlic",
+  "category": "veg",
+  "subcategory": "planning",
+  "months": [
+   8,
+   9
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Buy seed garlic (Music, Chesnok Red, Purple Glazer; Kansas-tested hardnecks), not supermarket bulbs, which may be treated or diseased.",
+  "sources": [
+   "kstate-l41",
+   "mu-ipm-garlic"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "garlic"
+  ]
+ },
+ {
+  "id": "lawn-sep-overseed",
+  "title": "Core aerate and overseed",
+  "category": "lawn",
+  "subcategory": "renovation",
+  "months": [
+   8,
+   9,
+   10
+  ],
+  "window": {
+   "start": "08-25",
+   "end": "10-10"
+  },
+  "priority": "critical",
+  "effort": "high",
+  "calc": "seed",
+  "trigger": {
+   "type": "date",
+   "text": "Best within a week of Labor Day; MU window Aug 25–Oct 10"
+  },
+  "summary": "The single biggest thing you can do for a thick fescue lawn. MU: the best window is Aug 25–Oct 10, and lawns seeded “within a week of Labor Day” fill in best, so the earlier the better.",
+  "details": "Tall fescue is a bunch grass. It doesn't spread to fill bare spots (in K-State trials, 12-in voids stayed open), so yearly overseeding is how a rain-fed fescue lawn stays thick. A 90/10 blend with Kentucky bluegrass adds some spreading.",
+  "howTo": [
+   "Mow to about 2.5 in and bag the clippings.",
+   "Make sure the soil is moist (after a ½ in rain or watering), then core aerate with 2 passes on clay.",
+   "Spread seed half in one direction and half crosswise (MU): 4–5 lb/1,000 sq ft to thicken, 7–9 lb for bare soil.",
+   "Apply starter fertilizer the same day. Use Triple Action Built For Seeding if crabgrass and weeds were bad.",
+   "Keep the top ½ in moist until seedlings are up (tall fescue 7–14 days; bluegrass 2–3 weeks), then water deeper and less often.",
+   "No broadleaf weed killer until the new grass has been mowed about 3 times (K-State MF736)."
+  ],
+  "rate": "Overseed 4–5 lb/1,000 sq ft (K-State: 3–5); bare soil 7–9 lb/1,000 (MU MG10)",
+  "products": [
+   "kc-marathon",
+   "kc-endurance",
+   "grasspad-heat-wave",
+   "scotts-starter",
+   "scotts-triple-action",
+   "aerator-rental",
+   "hose-timer",
+   "oscillating-sprinkler"
+  ],
+  "conflicts": [
+   "lawn-apr-preemergent",
+   "lawn-sep-broadleaf"
+  ],
+  "conflictNote": "Check your spring crabgrass preventer's reseeding interval first: about 10 weeks for Hi-Yield dithiopyr granules, 3 months for Dimension 2EW, 4–6 months for prodiamine. Keep broadleaf herbicides off new seedlings until they've been mowed about 3 times.",
+  "noIrrigationNote": "This is the one job where a hose and sprinkler really matter: 2–3 light waterings a day until germination. If you can't water, seed just before a rainy forecast week (the Today page flags good seeding weather).",
+  "hoseTimerNote": "Set 3 short cycles a day (about 7 a.m., noon and 4 p.m.), 5–10 minutes each, until the grass is up. Then switch to every 2–3 days, deeper.",
+  "sources": [
+   "mu-g6700",
+   "mu-mg10",
+   "kstate-mf736",
+   "kstate-lawn-calendar",
+   "stjohn-2009",
+   "powlen-2022"
+  ],
+  "evidence": "extension",
+  "logType": "seed",
+  "tags": [
+   "seeding",
+   "fall"
+  ]
+ },
+ {
+  "id": "lawn-sep-fertilize",
+  "title": "Fertilize: the most important feeding of the year",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   9
+  ],
+  "window": {
+   "start": "09-01",
+   "end": "09-30"
+  },
+  "priority": "critical",
+  "effort": "low",
+  "calc": "fertilizer",
+  "nitrogen": 1,
+  "summary": "MU: \"This is the most important time to fertilize\": 1–1.5 lb N per 1,000 sq ft. If you seeded, the starter fertilizer counts for those areas.",
+  "details": "Fall nitrogen builds roots and density with little brown patch risk. \"If only one fertilization per year is desired, September is an excellent time for it\" (MU).",
+  "rate": "1 lb N/1,000 sq ft ≈ 2.6 lb of 38-0-4 (Scotts Turf Builder) or 3.6 lb of 28-0-12 (LESCO) per 1,000 sq ft",
+  "products": [
+   "scotts-turf-builder",
+   "lesco-28-0-12",
+   "milorganite"
+  ],
+  "noIrrigationNote": "Apply before a forecast rain, or water in lightly.",
+  "sources": [
+   "mu-g6705",
+   "kstate-lawn-calendar"
+  ],
+  "evidence": "extension",
+  "logType": "fertilize",
+  "tags": [
+   "fertilizer",
+   "fall"
+  ]
+ },
+ {
+  "id": "lawn-sep-broadleaf",
+  "title": "Spray perennial broadleaf weeds (fall is best)",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   9,
+   10,
+   11
+  ],
+  "window": {
+   "start": "09-20",
+   "end": "11-20"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "airTemp",
+   "text": "≥50°F, no rain for 24 h, calm"
+  },
+  "summary": "Dandelions, clover, ground ivy and violets are moving sugar down to their roots in fall, so herbicides work best now. K-State: in November, spray \"even if they are small.\"",
+  "details": "SpeedZone EW (fast, broad spectrum) or a triclopyr product for ground ivy and violets. Spot-spray rather than blanket the lawn. Keep it off new seedings until they've been mowed about 3 times.",
+  "products": [
+   "speedzone-ew",
+   "weedbgon-ccox",
+   "sprayer"
+  ],
+  "conflicts": [
+   "lawn-sep-overseed"
+  ],
+  "conflictNote": "Most broadleaf products need new grass mowed 2–4 times before use (Purdue), and MU says to wait about a month after spraying before seeding.",
+  "safety": "Keep drift away from tomatoes, grapes, redbuds and roses; follow the label's re-entry time for kids and pets.",
+  "sources": [
+   "kstate-lawn-calendar",
+   "mu-g6705",
+   "purdue-seeding-delays"
+  ],
+  "evidence": "extension",
+  "logType": "weed",
+  "tags": [
+   "weeds",
+   "fall"
+  ]
+ },
+ {
+  "id": "lawn-sep-fall-pre",
+  "title": "Fall pre-emergent for henbit and chickweed (unseeded areas only)",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   9
+  ],
+  "window": {
+   "start": "09-01",
+   "end": "09-20"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "K-State suggests a fall pre-emergent where you are not seeding, to stop henbit, chickweed and little barley before they sprout.",
+  "products": [
+   "dimension-granular",
+   "lesco-stonewall"
+  ],
+  "conflicts": [
+   "lawn-sep-overseed"
+  ],
+  "conflictNote": "It will also stop grass seed. Never use it on areas you are overseeding.",
+  "sources": [
+   "kstate-lawn-calendar"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "weeds"
+  ]
+ },
+ {
+  "id": "beds-fall-divide",
+  "title": "Divide and move perennials and grasses",
+  "category": "beds",
+  "subcategory": "plant",
+  "months": [
+   9,
+   10
+  ],
+  "window": {
+   "start": "09-01",
+   "end": "10-20"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Late summer to fall, when plants aren't blooming and heat has eased, is a good time to divide crowded perennials, peonies and ornamental grasses.",
+  "details": "Water divisions well, and mulch after the ground cools. Share the extras.",
+  "sources": [
+   "mobot-grasses",
+   "grow-native"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "perennials"
+  ]
+ },
+ {
+  "id": "beds-fall-plant",
+  "title": "Plant trees, shrubs and native perennials (fall is best)",
+  "category": "beds",
+  "subcategory": "plant",
+  "months": [
+   9,
+   10,
+   11
+  ],
+  "window": {
+   "start": "09-15",
+   "end": "11-15"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "summary": "Warm soil, cool air and fall rain grow roots before summer stress. Water weekly until the ground freezes.",
+  "howTo": [
+   "Dig 2–3× as wide as the root ball but no deeper; set the root flare at or just above grade.",
+   "Backfill with the native soil (no amendments in the hole), water well.",
+   "Mulch 2–3 inches deep in a wide ring, pulled back from the trunk."
+  ],
+  "products": [
+   "shredded-mulch"
+  ],
+  "sources": [
+   "grow-native",
+   "mo-one-call"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "planting",
+   "trees"
+  ]
+ },
+ {
+  "id": "veg-sep-sweet-potato",
+  "title": "Dig sweet potatoes before soil drops below 50°F",
+  "category": "veg",
+  "subcategory": "harvest",
+  "months": [
+   9,
+   10
+  ],
+  "window": {
+   "start": "09-20",
+   "end": "10-10"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Before soil cools below 50°F or frost"
+  },
+  "summary": "Dig gently (they bruise), cure 7–10 days at 80–85°F and high humidity, then store at 55–60°F. Never refrigerate them.",
+  "evidence": "practice",
+  "logType": "harvest",
+  "tags": [
+   "harvest"
+  ]
+ },
+ {
+  "id": "lawn-oct-fertilize",
+  "title": "Second fall feeding: 1 lb N",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   10
+  ],
+  "window": {
+   "start": "10-08",
+   "end": "10-25"
+  },
+  "priority": "critical",
+  "effort": "low",
+  "calc": "fertilizer",
+  "nitrogen": 1,
+  "summary": "MU: \"When a second application is desired, mid-October is a good time for it.\" New seedings get it 4–6 weeks after the starter fertilizer.",
+  "rate": "1 lb N/1,000 sq ft",
+  "products": [
+   "scotts-turf-builder",
+   "lesco-28-0-12",
+   "milorganite"
+  ],
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "logType": "fertilize",
+  "tags": [
+   "fertilizer",
+   "fall"
+  ]
+ },
+ {
+  "id": "lawn-oct-first-mow",
+  "title": "First mow of new seedlings at 3 in",
+  "category": "lawn",
+  "subcategory": "mow",
+  "months": [
+   10
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "growth",
+   "text": "New grass reaches ~4 in"
+  },
+  "summary": "Sharp blade, dry grass, no sharp turns on soft soil. Keep mowing new grass through fall.",
+  "evidence": "practice",
+  "logType": "mow",
+  "tags": [
+   "mowing",
+   "seeding"
+  ]
+ },
+ {
+  "id": "lawn-fall-leaves",
+  "title": "Mulch-mow the leaves",
+  "category": "lawn",
+  "subcategory": "maintenance",
+  "months": [
+   10,
+   11
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Mow leaves into the lawn while you can still see grass through the shreds. In a Michigan State study it cut dandelions by up to 80%. Don't let leaves mat down on new seedlings.",
+  "details": "Heavy leaf fall: mulch-mow twice or bag the excess for beds and compost.",
+  "sources": [
+   "kowalewski-2009",
+   "mu-g6705"
+  ],
+  "evidence": "peer-reviewed",
+  "tags": [
+   "leaves",
+   "fall"
+  ]
+ },
+ {
+  "id": "lawn-oct-lime",
+  "title": "Lime, but only if your soil test says so",
+  "category": "lawn",
+  "subcategory": "soil",
+  "months": [
+   10,
+   11,
+   12
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "calc": "lime",
+  "summary": "MU: lime established lawns only at pH 5.8 or lower, at up to 50 lb/1,000 sq ft per application; fall or early winter is best.",
+  "products": [
+   "lime-pelletized",
+   "spreader"
+  ],
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "soil"
+  ]
+ },
+ {
+  "id": "lawn-oct-seed-cutoff",
+  "title": "Last call for fall seeding (about Oct 10–15)",
+  "category": "lawn",
+  "subcategory": "renovation",
+  "months": [
+   10
+  ],
+  "window": {
+   "start": "10-05",
+   "end": "10-15"
+  },
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "MU says seeding is \"still possible until Oct. 15,\" but the earlier the better. After that, seedlings may not establish before winter.",
+  "details": "Missed it? Dormant seeding in late November–February (the seed waits for spring) is a fallback, but it rules out a regular crabgrass preventer on those spots.",
+  "products": [
+   "kc-marathon",
+   "scotts-starter"
+  ],
+  "sources": [
+   "mu-mg10",
+   "mu-g6700"
+  ],
+  "evidence": "extension",
+  "logType": "seed",
+  "tags": [
+   "seeding"
+  ]
+ },
+ {
+  "id": "beds-fall-bulbs",
+  "title": "Plant spring bulbs",
+  "category": "beds",
+  "subcategory": "plant",
+  "months": [
+   10,
+   11
+  ],
+  "window": {
+   "start": "10-15",
+   "end": "11-30"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil below 60°F"
+  },
+  "summary": "Plant 3× as deep as the bulb is tall, pointy end up: daffodils ~6 in, tulips 6–8 in, crocus 3–4 in.",
+  "evidence": "practice",
+  "tags": [
+   "bulbs"
+  ]
+ },
+ {
+  "id": "beds-fall-mums",
+  "title": "Plant fall mums and pansies",
+  "category": "beds",
+  "subcategory": "plant",
+  "months": [
+   9,
+   10
+  ],
+  "window": {
+   "start": "09-15",
+   "end": "10-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Plant mums early so roots establish if you want them to return. Pansies bloom in fall and again in spring.",
+  "evidence": "practice",
+  "tags": [
+   "planting"
+  ]
+ },
+ {
+  "id": "beds-fall-leave-leaves",
+  "title": "Leave the leaves in the beds",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   10,
+   11
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Leaf litter in beds is free mulch and winter habitat for fireflies, bees and butterfly pupae. Shred them if they mat.",
+  "sources": [
+   "grow-native"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "pollinators",
+   "leaves"
+  ]
+ },
+ {
+  "id": "veg-oct-garlic",
+  "title": "Plant garlic",
+  "category": "veg",
+  "subcategory": "plant",
+  "months": [
+   10
+  ],
+  "window": {
+   "start": "10-01",
+   "end": "10-31"
+  },
+  "shift": "fall",
+  "priority": "critical",
+  "effort": "medium",
+  "calc": "garden-fert",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil cooling below ~60°F; 2–4 weeks before the ground freezes"
+  },
+  "summary": "MU IPM: \"October is an ideal month to plant garlic in Missouri.\" Cloves 2–3 in deep, 6 in apart, pointy end up.",
+  "howTo": [
+   "Work in compost and a balanced fertilizer (MU default without a soil test: about 3 lb of 10-10-10 per 100 sq ft).",
+   "Break bulbs into cloves the day you plant; plant the biggest.",
+   "Space 6 in apart in rows 12–18 in apart, 2–3 in deep.",
+   "After the ground cools, mulch with 3–4 in of straw.",
+   "Harvest next June to early July (see the June task)."
+  ],
+  "products": [
+   "fert-10-10-10",
+   "espoma-garden-tone",
+   "straw-mulch"
+  ],
+  "sources": [
+   "mu-ipm-garlic",
+   "kstate-l41"
+  ],
+  "evidence": "extension",
+  "logType": "plant",
+  "tags": [
+   "garlic",
+   "fall garden"
+  ]
+ },
+ {
+  "id": "veg-fall-cleanup",
+  "title": "Pull frosted vines; bag diseased plants",
+  "category": "veg",
+  "subcategory": "maintenance",
+  "months": [
+   10,
+   11
+  ],
+  "window": {
+   "start": "10-25",
+   "end": "11-25"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "trigger": {
+   "type": "frost",
+   "text": "After the first frost"
+  },
+  "summary": "Remove tomato, pepper and squash plants after frost. Bag or trash leaves with early blight or Septoria; don't compost them.",
+  "details": "Squash vine borers overwinter in the soil. Turning the soil in fall and spring exposes the cocoons.",
+  "evidence": "practice",
+  "tags": [
+   "cleanup"
+  ]
+ },
+ {
+  "id": "veg-fall-cover-crop",
+  "title": "Sow a cover crop on empty beds",
+  "category": "veg",
+  "subcategory": "soil",
+  "months": [
+   9,
+   10
+  ],
+  "window": {
+   "start": "09-15",
+   "end": "10-20"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Cereal rye by mid-October (or rye plus crimson clover by early October) protects clay from crusting and adds organic matter.",
+  "details": "Cut it down 2–3 weeks before spring planting and let it break down, or chop and cover with mulch. Too busy? A 3-in layer of shredded leaves also works.",
+  "evidence": "practice",
+  "tags": [
+   "soil"
+  ]
+ },
+ {
+  "id": "yard-fall-hoses",
+  "title": "Drain and store hoses; winterize the rain barrel",
+  "category": "yard",
+  "subcategory": "maintenance",
+  "months": [
+   10,
+   11
+  ],
+  "window": {
+   "start": "10-20",
+   "end": "11-15"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "trigger": {
+   "type": "frost",
+   "text": "Before the first hard freeze (~28°F)"
+  },
+  "summary": "Disconnect hoses (frost-free faucets can't drain with a hose attached), drain the rain barrel, and bring in timers, drip kits and the rain gauge tube.",
+  "products": [
+   "hose-timer",
+   "rain-barrel"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "winter prep"
+  ]
+ },
+ {
+  "id": "yard-fall-compost",
+  "title": "Shred leaves for compost and leaf mold",
+  "category": "yard",
+  "subcategory": "soil",
+  "months": [
+   10,
+   11
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Shredded leaves plus a little green material make compost by spring; a wire bin of leaves alone becomes leaf mold in a year. Free mulch.",
+  "evidence": "practice",
+  "tags": [
+   "leaves",
+   "soil"
+  ]
+ },
+ {
+  "id": "lawn-nov-fertilize",
+  "title": "Final \"winterizer\" feeding: 1 lb N",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   11
+  ],
+  "window": {
+   "start": "11-01",
+   "end": "11-20"
+  },
+  "priority": "critical",
+  "effort": "low",
+  "calc": "fertilizer",
+  "nitrogen": 1,
+  "trigger": {
+   "type": "growth",
+   "text": "Top growth has slowed but grass is still green"
+  },
+  "summary": "K-State: a high-nitrogen November feeding \"is taken up by the roots but is not used until the following spring, when it supports an earlier spring green up.\"",
+  "details": "Quick-release urea is the classic choice. Apply by about mid-November; later applications mostly leach away (research found mid-October to mid-December feedings gave the same color).",
+  "rate": "1 lb N/1,000 sq ft ≈ 2.2 lb urea (46-0-0) per 1,000 sq ft",
+  "products": [
+   "urea-46",
+   "scotts-winterguard",
+   "lesco-28-0-12"
+  ],
+  "noIrrigationNote": "Apply urea right before a rain or water it in with about ¼ in to prevent loss.",
+  "sources": [
+   "kstate-lawn-calendar",
+   "mu-g6705",
+   "mangiafico-2006"
+  ],
+  "evidence": "extension",
+  "logType": "fertilize",
+  "tags": [
+   "fertilizer",
+   "fall"
+  ]
+ },
+ {
+  "id": "lawn-nov-final-mow",
+  "title": "Final mow at about 3 in",
+  "category": "lawn",
+  "subcategory": "mow",
+  "months": [
+   11
+  ],
+  "window": {
+   "start": "11-10",
+   "end": "11-30"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Keep mowing until the grass stops growing. Mulch the last leaves on the final mow.",
+  "sources": [
+   "mu-g6705"
+  ],
+  "evidence": "extension",
+  "logType": "mow",
+  "tags": [
+   "mowing"
+  ]
+ },
+ {
+  "id": "yard-nov-mower",
+  "title": "Winterize the mower",
+  "category": "yard",
+  "subcategory": "maintenance",
+  "months": [
+   11,
+   12
+  ],
+  "window": {
+   "start": "11-15",
+   "end": "12-15"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Run the tank dry or add fuel stabilizer, change the oil, scrape the deck, and sharpen the blade now so it's ready in spring.",
+  "products": [
+   "sharpening"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "tools",
+   "winter prep"
+  ]
+ },
+ {
+  "id": "yard-nov-trunk-guards",
+  "title": "Put hardware-cloth guards on young trunks",
+  "category": "yard",
+  "subcategory": "pest",
+  "months": [
+   11
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "summary": "Rabbits and voles girdle young trees and shrubs under snow. Wrap ¼-in hardware cloth 18–24 in tall, 1–2 in from the trunk; remove in spring.",
+  "products": [
+   "hardware-cloth"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "critters",
+   "trees"
+  ]
+ },
+ {
+  "id": "beds-nov-evergreens",
+  "title": "Water evergreens before the ground freezes",
+  "category": "beds",
+  "subcategory": "water",
+  "months": [
+   11
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "If fall was dry, deep-water evergreens and new plantings before freeze-up to prevent winter burn.",
+  "evidence": "practice",
+  "tags": [
+   "water",
+   "winter prep"
+  ]
+ },
+ {
+  "id": "beds-nov-mulch",
+  "title": "Mulch new perennials after the first hard freeze",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   11,
+   12
+  ],
+  "window": {
+   "start": "11-15",
+   "end": "12-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "A few inches of shredded leaves or straw helps fall-planted perennials survive freeze–thaw heaving.",
+  "evidence": "practice",
+  "tags": [
+   "mulch",
+   "winter prep"
+  ]
+ },
+ {
+  "id": "veg-fall-greens-harvest",
+  "title": "Harvest kale, cabbage and spinach through light freezes",
+  "category": "veg",
+  "subcategory": "harvest",
+  "months": [
+   10,
+   11,
+   12
+  ],
+  "window": {
+   "start": "10-20",
+   "end": "12-10"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Frost sweetens kale and collards. Row cover stretches the season; harvest before lows in the teens.",
+  "products": [
+   "row-cover"
+  ],
+  "evidence": "practice",
+  "logType": "harvest",
+  "tags": [
+   "harvest",
+   "fall garden"
+  ]
+ },
+ {
+  "id": "veg-nov-beds",
+  "title": "Top beds with compost; clean and store cages",
+  "category": "veg",
+  "subcategory": "soil",
+  "months": [
+   11
+  ],
+  "priority": "optional",
+  "effort": "medium",
+  "summary": "2–3 in of compost or shredded leaves on empty beds feeds the soil over winter. Clean and stack tomato cages and stakes.",
+  "products": [
+   "compost"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "soil",
+   "cleanup"
+  ]
+ },
+ {
+  "id": "yard-fall-honeysuckle",
+  "title": "Cut and treat invasive bush honeysuckle",
+  "category": "yard",
+  "subcategory": "weed",
+  "months": [
+   10,
+   11,
+   12
+  ],
+  "window": {
+   "start": "10-20",
+   "end": "12-31"
+  },
+  "priority": "optional",
+  "effort": "high",
+  "trigger": {
+   "type": "growth",
+   "text": "Still green after native shrubs drop their leaves"
+  },
+  "summary": "Bush honeysuckle is easy to spot in November. Pull small plants; cut bigger stems near the ground and immediately paint the stumps with glyphosate or triclopyr.",
+  "details": "Replace it with native spicebush, gray dogwood, hazelnut or serviceberry (see Beds → Invasives).",
+  "products": [
+   "glyphosate-41"
+  ],
+  "sources": [
+   "grow-native"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "invasives"
+  ]
+ },
+ {
+  "id": "lawn-dec-review",
+  "title": "Review the year in your journal",
+  "category": "lawn",
+  "subcategory": "planning",
+  "months": [
+   12
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "What worked, what didn't, how much nitrogen and water went down, and what you harvested. Download a backup of your data while you're there.",
+  "evidence": "practice",
+  "tags": [
+   "planning"
+  ]
+ },
+ {
+  "id": "beds-dec-roses",
+  "title": "Mound mulch over rose crowns",
+  "category": "beds",
+  "subcategory": "maintenance",
+  "months": [
+   11,
+   12
+  ],
+  "window": {
+   "start": "11-20",
+   "end": "12-15"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "summary": "A mound of soil or mulch over the base protects grafted and tender roses; pull it back in spring.",
+  "evidence": "practice",
+  "tags": [
+   "winter prep"
+  ]
+ },
+ {
+  "id": "veg-winter-garlic-mulch",
+  "title": "Check the garlic mulch",
+  "category": "veg",
+  "subcategory": "maintenance",
+  "months": [
+   12,
+   1,
+   2
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "Top up blown-away straw; a few green garlic tips poking up in winter is normal.",
+  "evidence": "practice",
+  "tags": [
+   "garlic",
+   "winter"
+  ]
+ },
+ {
+  "id": "yard-dec-wishlist",
+  "title": "Wish list: rain gauge, soil probe, hose timer, soil thermometer",
+  "category": "yard",
+  "subcategory": "planning",
+  "months": [
+   12
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "summary": "The measuring tools that make this plan work: a 4-in rain gauge, soil thermometer, soil probe and hose timer.",
+  "products": [
+   "rain-gauge",
+   "soil-thermometer",
+   "soil-probe",
+   "hose-timer"
+  ],
+  "evidence": "practice",
+  "tags": [
+   "tools"
+  ]
+ }
+]
