@@ -11,7 +11,7 @@ body { padding: 0 !important; font-size: 11pt; }
 
 .site-header, .tabbar, .site-footer, .toolbar, .month-grid, .month-nav .btn, .subnav, .skip-link,
 .task-expand, .task-actions, .task-note, .no-print, dialog, .toasts, .btn, .icon-btn, .chips, .seg, .tabs,
-.hero-stats, .g-tip, .cart-fab { display: none !important; }
+.hero-stats, .g-tip, .cart-fab, .week-tools { display: none !important; }
 
 .container { max-width: none; padding: 0; }
 .card, .task, .table-wrap, details.acc { box-shadow: none !important; border-color: #999 !important; break-inside: avoid; }
@@ -23,6 +23,8 @@ body { padding: 0 !important; font-size: 11pt; }
 .check-box { border: 1.5pt solid #000 !important; background: #fff !important; }
 .check input:checked + .check-box { background: #fff !important; color: #000 !important; }
 .hero { background: none !important; border: 1px solid #999; }
+.wk-day { box-shadow: none !important; break-inside: avoid; }
+.task-why { background: none !important; border: 1px solid #bbb; }
 a { color: #000; text-decoration: none; }
 .print-month { break-after: page; }
 .print-month:last-child { break-after: auto; }

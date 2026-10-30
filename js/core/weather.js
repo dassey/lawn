@@ -1,17 +1,23 @@
 // Live conditions from Open-Meteo (free, no API key): 6 weeks of recent
-// weather + 7-day forecast + modeled soil temperature. Your own rain-gauge
-// and watering entries in the journal override/augment the model.
+// weather + 7-day forecast + modeled soil temperature, plus hourly
+// temperature, rain and wind for the week planner. Your own rain-gauge and
+// watering entries in the journal override/augment the model.
 import { store, isDone } from './store.js';
 import { toISO, fromISO, addDays, diffDays, realToday, fmtDate } from './dates.js';
 
-const CACHE_KEY = 'kcAlmanac.wx.v1';
+const CACHE_KEY = 'kcAlmanac.wx.v2';
+const OLD_KEYS = ['kcAlmanac.wx.v1'];
 const TTL = 90 * 60 * 1000;
 export const TURF_KC = 0.8; // cool-season turf water use ≈ 0.8 × reference ET (FAO-56 style)
 
 export async function fetchWeather(loc, { force = false } = {}) {
   const key = `${Number(loc.lat).toFixed(3)},${Number(loc.lon).toFixed(3)}`;
   let cached = null;
-  try { cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null'); } catch { /* ignore */ }
+  let legacy = null; // pre-hourly cache: only used as an offline fallback
+  try {
+    cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    if (!cached) legacy = JSON.parse(localStorage.getItem(OLD_KEYS[0]) || 'null');
+  } catch { /* ignore */ }
   if (!force && cached && cached.key === key && Date.now() - cached.at < TTL) {
     return { data: cached.data, at: cached.at, cached: true };
   }
@@ -19,7 +25,7 @@ export async function fetchWeather(loc, { force = false } = {}) {
     latitude: loc.lat,
     longitude: loc.lon,
     daily: 'weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum,precipitation_probability_max,wind_speed_10m_max,et0_fao_evapotranspiration',
-    hourly: 'soil_temperature_6cm',
+    hourly: 'soil_temperature_6cm,temperature_2m,precipitation,wind_speed_10m',
     past_days: '42',
     forecast_days: '8',
     timezone: 'auto',
@@ -32,10 +38,14 @@ export async function fetchWeather(loc, { force = false } = {}) {
     if (!r.ok) throw new Error(`Weather service returned HTTP ${r.status}`);
     const data = await r.json();
     if (!data.daily) throw new Error('Unexpected weather response');
-    try { localStorage.setItem(CACHE_KEY, JSON.stringify({ key, at: Date.now(), data })); } catch { /* quota */ }
+    try {
+      for (const k of OLD_KEYS) localStorage.removeItem(k);
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ key, at: Date.now(), data }));
+    } catch { /* quota */ }
     return { data, at: Date.now(), cached: false };
   } catch (err) {
-    if (cached && cached.key === key) return { data: cached.data, at: cached.at, cached: true, stale: true, error: err };
+    const fallback = cached || legacy;
+    if (fallback && fallback.key === key) return { data: fallback.data, at: fallback.at, cached: true, stale: true, error: err };
     throw err;
   }
 }
@@ -51,14 +61,20 @@ export function analyze(raw, { date = realToday(), journal = store.state.journal
   const etToIn = /mm/i.test(u.et0_fao_evapotranspiration || 'mm') ? 1 / 25.4 : 1;
   const rainToIn = /mm/i.test(u.precipitation_sum || 'inch') ? 1 / 25.4 : 1;
 
-  // soil temperature daily means from hourly
+  // soil temperature daily means, and hour-by-hour weather, from hourly
   const soilByDay = {};
+  const hoursByDay = {};
+  const hu = raw.hourly_units || {};
+  const hRainToIn = /mm/i.test(hu.precipitation || 'inch') ? 1 / 25.4 : 1;
   if (raw.hourly && raw.hourly.time) {
-    raw.hourly.time.forEach((t, i) => {
-      const v = raw.hourly.soil_temperature_6cm?.[i];
-      if (v == null) return;
+    const H = raw.hourly;
+    H.time.forEach((t, i) => {
       const k = t.slice(0, 10);
-      (soilByDay[k] ||= []).push(v);
+      const v = H.soil_temperature_6cm?.[i];
+      if (v != null) (soilByDay[k] ||= []).push(v);
+      if (H.temperature_2m?.[i] != null) {
+        (hoursByDay[k] ||= []).push({ h: Number(t.slice(11, 13)), t: H.temperature_2m[i], p: (H.precipitation?.[i] ?? 0) * hRainToIn, w: H.wind_speed_10m?.[i] });
+      }
     });
   }
   // journal overrides
@@ -90,6 +106,7 @@ export function analyze(raw, { date = realToday(), journal = store.state.journal
       et0: (d.et0_fao_evapotranspiration?.[i] ?? 0) * etToIn,
       code: d.weather_code?.[i],
       soil: soilArr ? soilArr.reduce((a, b) => a + b, 0) / soilArr.length : null,
+      hours: t >= todayISO ? hoursByDay[t] || [] : [],
       isToday: t === todayISO,
       past: t < todayISO,
       future: t > todayISO,

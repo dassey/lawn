@@ -285,6 +285,9 @@ export function openSettings() {
             ${sw('showOptional', 'Show optional tasks')}
             ${sw('weather', 'Live weather & alerts', 'Free Open-Meteo forecast; your location is sent only to Open-Meteo.')}
           </div>
+          <div class="field" style="margin-top:12px"><span class="toolbar-label" style="min-width:0">Week planner: yard work on</span>
+            ${seg('yardDays', [['any', 'Any day'], ['weekends', 'Weekends']])}
+          </div>
           <div class="field" style="margin-top:12px"><span class="toolbar-label" style="min-width:0">Theme</span>
             ${seg('theme', [['auto', 'Auto'], ['light', 'Light'], ['dark', 'Dark']])}
           </div>

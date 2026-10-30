@@ -102,6 +102,11 @@ export function sourceItems(ids, S) {
   return html`<ul class="source-list">${list.map((s) => html`<li><span class="ev ev-${s.type}">${EVIDENCE[s.type] || s.type}</span><span>${s.url ? html`<a href="${s.url}" target="_blank" rel="noopener" title="${s.title}">${s.short || s.title}</a>` : s.short || s.title}<a class="src-more" href="library.html#src-${s.id}" title="About this source" aria-label="About this source: ${s.short || s.title}">${icon('info')}</a></span></li>`)}</ul>`;
 }
 
+/** "Why this day" line from the week planner. */
+function whyLine(w) {
+  return html`<p class="task-why ${w.forced ? 'is-forced' : ''}">${icon(w.icon || 'sparkle')}<span>${w.text}</span></p>`;
+}
+
 export function taskCard(t, ctx) {
   const s = ctx.settings || store.settings;
   const year = ctx.year;
@@ -143,6 +148,7 @@ export function taskCard(t, ctx) {
           ${t.custom ? html`<span class="badge badge-outline">My task</span>` : ''}
           ${effortDots(t.effort)}
         </div>
+        ${ctx.why && ctx.why[t.id] && !done ? whyLine(ctx.why[t.id]) : ''}
         ${t.summary ? html`<p class="task-summary">${md(t.summary)}</p>` : ''}
         ${done && info ? html`<div class="done-stamp">${icon('check')} Done ${fmtDate(new Date(info.at))}</div>` : ''}
       </div>

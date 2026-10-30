@@ -4,7 +4,7 @@
    - Weather/geocoding (other origins) are never cached here; the app keeps
      its own short-lived weather cache.
    Bump VERSION whenever files change so old caches are cleared. */
-const VERSION = 'v2-2026-10-03';
+const VERSION = 'v3-2026-10-30';
 const CACHE = `kc-almanac-${VERSION}`;
 
 const CORE = [
@@ -17,7 +17,7 @@ const CORE = [
   'assets/apple-touch-icon.png', 'assets/fonts/fraunces-latin.woff2',
   'js/core/dom.js', 'js/core/icons.js', 'js/core/store.js', 'js/core/dates.js', 'js/core/data.js',
   'js/core/ui.js', 'js/core/windows.js', 'js/core/tasks.js', 'js/core/ics.js', 'js/core/logdlg.js',
-  'js/core/weather.js', 'js/core/wxcard.js', 'js/core/charts.js', 'js/core/calc.js',
+  'js/core/weather.js', 'js/core/wxcard.js', 'js/core/planner.js', 'js/core/charts.js', 'js/core/calc.js',
   'js/pages/today.js', 'js/pages/calendar.js', 'js/pages/lawn.js', 'js/pages/beds.js',
   'js/pages/garden.js', 'js/pages/tools.js', 'js/pages/products.js', 'js/pages/journal.js',
   'js/pages/library.js', 'js/pages/notfound.js',

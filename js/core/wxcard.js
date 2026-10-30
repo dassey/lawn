@@ -8,12 +8,13 @@ import { fetchWeather, analyze } from './weather.js';
 import { loadJSON } from './data.js';
 import { openLogDialog } from './logdlg.js';
 
-export async function mountWeatherCard(el, { compact = false, onAnalysis } = {}) {
+export async function mountWeatherCard(el, { compact = false, onAnalysis, onError } = {}) {
   const draw = async (force = false) => {
     const s = store.settings;
     if (!s.weather) {
       render(el, html`<div class="card-head"><h2>${icon('cloud')}Conditions</h2></div>
         <p class="subtle">Live weather is turned off. Turn it on in <button type="button" class="btn-link" data-action="settings">Settings</button> to get drought, frost, brown patch and planting alerts.</p>`);
+      onError?.('off');
       return;
     }
     if (!el.dataset.loaded) render(el, html`<div class="card-head"><h2>${icon('cloud')}Conditions</h2></div><div class="loading"><span class="spinner"></span>Checking the weather for ${s.location.name}…</div>`);
@@ -24,6 +25,7 @@ export async function mountWeatherCard(el, { compact = false, onAnalysis } = {})
       onAnalysis?.(a);
       drawCard(a, res, climate);
     } catch (err) {
+      onError?.(err);
       render(el, html`<div class="card-head"><h2>${icon('cloud')}Conditions</h2><button type="button" class="icon-btn" data-wx-refresh aria-label="Retry">${icon('refresh')}</button></div>
         <div class="callout callout-warn">${icon('alert')}<div><strong>Couldn't load live weather.</strong><p>${err.message || err}. The plan still works offline. You can log rain from your own gauge.</p></div></div>
         <p style="margin-top:10px"><button type="button" class="btn btn-sm" data-log-rain>${icon('rain')}Log rain gauge</button></p>`);

@@ -22,6 +22,8 @@ export const DEFAULT_SETTINGS = {
   showOptional: true,
   weather: true,
   theme: 'auto',              // auto | light | dark
+  todayView: 'plan',          // plan (by day, from the forecast) | list
+  yardDays: 'any',            // any | weekends: when the week planner schedules work
 };
 
 function defaults() {
