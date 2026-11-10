@@ -255,7 +255,7 @@ export async function setPlace(loc) {
   if (isHome(loc)) { resetPlace(); return { ok: true, local: null, message: 'Back to the Kansas City plan.' }; }
   const location = { name: loc.name, lat: loc.lat, lon: loc.lon, ...(loc.zip ? { zip: loc.zip } : {}) };
   if (Number(loc.lat) < 0) {
-    store.setSettings({ location });
+    store.setSettings({ location, local: null, region: store.settings.region === 'local' ? 'central' : store.settings.region });
     return { ok: false, local: null, message: `Weather is set to ${loc.name}, but the plan's seasons only shift within the northern hemisphere.` };
   }
   try {

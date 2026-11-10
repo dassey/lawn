@@ -3,8 +3,8 @@
 // temperature, rain and wind for the week planner. Your own rain-gauge and
 // watering entries in the journal override/augment the model.
 import { store, isDone } from './store.js';
-import { toISO, fromISO, addDays, diffDays, realToday, fmtDate, mmdd } from './dates.js';
-import { seasonShift } from './windows.js';
+import { toISO, fromISO, addDays, diffDays, realToday, fmtDate } from './dates.js';
+import { kcDateFor } from './windows.js';
 
 const CACHE_KEY = 'kcAlmanac.wx.v2';
 const OLD_KEYS = ['kcAlmanac.wx.v1'];
@@ -184,7 +184,7 @@ function buildAlerts(m, date, future, todayRow) {
   const A = [];
   // Seasonal gates are written for Kansas City; away from KC, test them
   // against the KC date that matches this point in the local season.
-  const eq = addDays(date, -seasonShift(mmdd(date)));
+  const eq = kcDateFor(date);
   const md = (eq.getMonth() + 1) * 100 + eq.getDate();
   const within = (a, b) => (a <= b ? md >= a && md <= b : md >= a || md <= b);
   const year = date.getFullYear();

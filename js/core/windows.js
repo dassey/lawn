@@ -58,6 +58,24 @@ export function seasonShift(mmddStr, s = store.settings) {
 const lastDay = (m) => new Date(2001, m, 0).getDate();
 const spanDays = (w) => (doyMMDD(w.end) - doyMMDD(w.start) + 365) % 365;
 
+/**
+ * The Kansas City date that lands on this local date once shifted: the
+ * inverse of seasonShift, for testing KC-written seasonal rules against
+ * today's date somewhere else.
+ */
+export function kcDateFor(date, s = store.settings) {
+  if (!frostSetting(s)) return date;
+  let best = date;
+  let miss = Infinity;
+  for (let k = -MAX_SHIFT; k <= MAX_SHIFT; k++) {
+    const cand = new Date(date.getFullYear(), date.getMonth(), date.getDate() - k);
+    const m = Math.abs(seasonShift(`${pad(cand.getMonth() + 1)}-${pad(cand.getDate())}`, s) - k);
+    if (m < miss) { miss = m; best = cand; }
+    if (!m) break;
+  }
+  return best;
+}
+
 /** Group months into runs of neighbours; a run may wrap from December into January. */
 function monthRuns(months) {
   const ms = [...new Set(months || [])].sort((a, b) => a - b);
