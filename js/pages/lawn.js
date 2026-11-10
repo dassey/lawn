@@ -10,6 +10,7 @@ import { barChart } from '../core/charts.js';
 import { sourceItems, EVIDENCE } from '../core/tasks.js';
 import { fetchWeather, analyze } from '../core/weather.js';
 import { openLogDialog } from '../core/logdlg.js';
+import { climateFor } from '../core/place.js';
 
 mountChrome('lawn');
 setTitle('Lawn guide');
@@ -32,6 +33,7 @@ const GROUPS = [
 
 async function main() {
   D = await loadData('lawn', 'issues', 'products', 'sources', 'climate');
+  D.climate = climateFor(D.climate);
   P = byId(D.products);
   S = byId(D.sources);
   const L = D.lawn;

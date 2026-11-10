@@ -9,6 +9,7 @@ import {
   taskCard, wireTasks, visibleTasks, sortTasks, taskMonths, datedWindows, revealTask, PRIORITY, CATS, CAT_ORDER,
 } from '../core/tasks.js';
 import { taskEvents, downloadICS } from '../core/ics.js';
+import { climateFor } from '../core/place.js';
 
 mountChrome('calendar');
 setTitle('Calendar');
@@ -67,6 +68,7 @@ function parseRoute() {
 
 async function main() {
   D = await loadData('tasks', 'products', 'sources', 'months', 'climate');
+  D.climate = climateFor(D.climate);
   P = byId(D.products);
   S = byId(D.sources);
   T = byId(D.tasks);

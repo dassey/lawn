@@ -1,6 +1,6 @@
 // Loads the JSON data files once per page. Bump DATA_VERSION when data changes
 // so browsers (and the service worker) pick up fresh copies.
-export const DATA_VERSION = '2026-10-30';
+export const DATA_VERSION = '2026-11-10';
 
 const cache = new Map();
 
