@@ -3,8 +3,9 @@
 import { html, raw, render, $, $$, on, esc, debounce } from './dom.js';
 import { icon, brandMark } from './icons.js';
 import { store, DEFAULT_LOCATION } from './store.js';
-import { previewDate, fromISO, fmtDate, toISO, fromMMDD, mmdd, today } from './dates.js';
+import { previewDate, fromISO, fmtDate, toISO, fromMMDD, mmdd, today, fmtMMDD } from './dates.js';
 import { loadData } from './data.js';
+import { activeLocal, setPlace, setPlaceByZip, resetPlace, isHome, setFlash, takeFlash, shiftWords, frostWords } from './place.js';
 
 export const NAV = [
   { id: 'today', href: 'index.html', label: 'Today', icon: 'home', tab: true },
@@ -34,7 +35,8 @@ export function applyTheme(t = store.settings.theme) {
 export function mountChrome(page) {
   applyTheme();
   const loc = store.settings.location || {};
-  const sub = loc.name && loc.name !== DEFAULT_LOCATION.name ? `${loc.name}` : 'Kansas City · Zone 6b';
+  const local = activeLocal();
+  const sub = local ? `${local.name} · Zone ${local.zone}` : loc.name && loc.name !== DEFAULT_LOCATION.name ? `${loc.name}` : 'Kansas City · Zone 6b';
 
   let header = $('#site-header');
   if (!header) {
@@ -69,6 +71,8 @@ export function mountChrome(page) {
     document.body.prepend(skip);
   }
 
+  mountLocBar(header);
+
   // Preview banner (?date=YYYY-MM-DD lets you see the plan for any day)
   const pd = previewDate();
   if (pd) {
@@ -76,7 +80,7 @@ export function mountChrome(page) {
     bar.className = 'callout callout-warn no-print';
     bar.style.cssText = 'border-radius:0;border-left:0;border-right:0;justify-content:center';
     render(bar, html`${icon('clock')}<span>Previewing the plan as of <strong>${fmtDate(fromISO(pd), { month: 'long', day: 'numeric', year: 'numeric' })}</strong>. <a href="${location.pathname.split('/').pop() || 'index.html'}">Back to today</a></span>`);
-    header.after(bar);
+    (header.nextElementSibling?.classList.contains('locbar') ? header.nextElementSibling : header).after(bar);
     document.addEventListener('click', (e) => {
       const a = e.target.closest && e.target.closest('a[href]');
       if (!a) return;
@@ -150,6 +154,56 @@ function registerSW() {
   if (local && !/[?&]sw=1/.test(location.search)) return; // keep dev reloads fresh
   if (location.protocol !== 'https:' && !local) return;
   navigator.serviceWorker.register('sw.js').catch(() => {});
+}
+
+/* ---------------- "Your area" bar ---------------- */
+/** Run a location change, then reload so every page picks up the new dates. */
+async function changePlace(run, setStatus) {
+  setStatus('Working out your local frost dates…');
+  let res;
+  try { res = await run(); } catch (err) { res = { ok: false, notFound: true, message: 'Something went wrong. Check your connection and try again.' }; }
+  if (res.notFound) { setStatus(res.message, true); return; }
+  setFlash(res.message);
+  location.reload();
+}
+
+function mountLocBar(header) {
+  const bar = document.createElement('div');
+  bar.className = 'locbar no-print';
+  const s = store.settings;
+  const L = activeLocal();
+  const home = isHome(s.location);
+  const name = L ? L.name : (s.location && s.location.name) || DEFAULT_LOCATION.name;
+  const warn = L && L.fit && L.fit.length;
+  render(bar, html`<div class="container locbar-inner">
+      <p class="loc-now">${icon('pin')}<span>Plan for <strong>${name}</strong>${L ? html` · Zone ${L.zone}${L.zoneEst ? ' (est.)' : ''}<span class="loc-extra"> · ${frostWords(L)}</span>` : home ? ' · Zone 6b' : html`<span class="loc-extra"> · weather only; dates are Kansas City's</span>`}${warn ? html` <a class="loc-warn" href="index.html#place">${icon('alert')}${L.fit.some((x) => x.level === 'high') ? 'Poor fit' : 'Partial fit'}</a>` : ''}</span></p>
+      <form class="loc-form" data-zip-form novalidate>
+        <label for="loc-zip">${home ? 'Somewhere else?' : 'Change'}</label>
+        <input id="loc-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="ZIP code" autocomplete="postal-code" value="${(!home && s.location.zip) || ''}">
+        <button type="submit" class="btn btn-sm btn-primary">Go</button>
+        ${home ? '' : html`<button type="button" class="btn btn-sm btn-ghost" data-loc-reset title="Back to the Kansas City plan">Reset</button>`}
+      </form>
+      <p class="loc-status" role="status" aria-live="polite" hidden></p>
+    </div>`);
+  header.after(bar);
+
+  const status = $('.loc-status', bar);
+  const setStatus = (msg, bad = false) => {
+    status.hidden = !msg;
+    status.textContent = msg || '';
+    status.classList.toggle('is-bad', bad);
+    $$('input, button', bar).forEach((el) => { el.disabled = !!msg && !bad; });
+  };
+  $('[data-zip-form]', bar).addEventListener('submit', (e) => {
+    e.preventDefault();
+    const zip = $('#loc-zip', bar).value.trim();
+    if (!/^\d{5}$/.test(zip)) { setStatus('Enter a 5-digit US ZIP code.', true); $('#loc-zip', bar).focus(); return; }
+    changePlace(() => setPlaceByZip(zip), setStatus);
+  });
+  on(bar, 'click', '[data-loc-reset]', () => { resetPlace(); setFlash('Back to the Kansas City plan.'); location.reload(); });
+
+  const flash = takeFlash();
+  if (flash) setTimeout(() => toast(flash, { timeout: 7000 }), 300);
 }
 
 /* ---------------- toasts ---------------- */
@@ -227,8 +281,9 @@ function openMore(page) {
 const REGION_HELP = {
   central: 'University of Missouri "Central" planting dates. They fit the Kansas City metro (the Missouri River runs along the North/Central line), with an average last frost around April 15.',
   north: 'MU "North" dates, about a week later in spring and earlier in fall. Use them if your yard is a cold, low spot or you want a safety margin.',
-  custom: 'Enter your own average frost dates and every planting window shifts to match. Useful if you live outside the KC area.',
+  custom: 'Enter your own average frost dates and every task and planting window shifts to match.',
 };
+const localHelp = (L) => L.frostFree ? `Estimated for ${L.name}, where freezes are rare. Dates shift as far as the plan stretches (6 weeks), so treat them as rough.` : `Frost dates estimated for ${L.name}: last spring frost about ${fmtMMDD(L.lastFrost)} (${shiftWords(L.dSpring)}), first fall frost about ${fmtMMDD(L.firstFrost)} (${shiftWords(L.dFall)}). Every task and planting window shifts to match.`;
 
 export function openSettings() {
   const dlg = makeDialog('settings-dlg');
@@ -253,8 +308,8 @@ export function openSettings() {
 
         <fieldset>
           <legend>Planting dates</legend>
-          ${seg('region', [['central', 'MU Central (KC)'], ['north', 'MU North (cautious)'], ['custom', 'My frost dates']])}
-          <p class="subtle" style="margin:8px 0 0">${REGION_HELP[s.region] || ''}</p>
+          ${seg('region', [...(s.local ? [['local', s.local.name]] : []), ['central', 'MU Central (KC)'], ['north', 'MU North (cautious)'], ['custom', 'My frost dates']])}
+          <p class="subtle" style="margin:8px 0 0">${s.region === 'local' && s.local ? localHelp(s.local) : REGION_HELP[s.region] || ''}</p>
           ${s.region === 'custom' ? html`<div class="field-row" style="margin-top:10px">
             <div class="field"><label for="s-lf">Average last spring frost</label><input id="s-lf" type="date" data-frost="lastFrost" value="${dateVal(s.lastFrost)}"></div>
             <div class="field"><label for="s-ff">Average first fall frost</label><input id="s-ff" type="date" data-frost="firstFrost" value="${dateVal(s.firstFrost)}"></div>
@@ -262,7 +317,8 @@ export function openSettings() {
         </fieldset>
 
         <fieldset>
-          <legend>Weather location</legend>
+          <legend>Your area</legend>
+          <p class="subtle" style="margin:0 0 8px">Sets the live weather and works out local frost dates, so the whole plan shifts to fit.</p>
           <div class="field"><label for="s-place">Find a town or ZIP</label>
             <div class="row" style="flex-wrap:nowrap"><input id="s-place" type="search" placeholder="e.g. Overland Park, KS" autocomplete="off"><button type="button" class="btn" data-geo-search>${icon('search')}<span class="sr-only">Search</span></button></div>
           </div>
@@ -328,7 +384,8 @@ export function openSettings() {
       render(list, html`<li class="subtle">Searching…</li>`);
       try {
         const zip = /^\d{5}$/.test(q);
-        const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=6&language=en&format=json${zip ? '&countryCode=US' : ''}`;
+        if (zip) { changePlace(() => setPlaceByZip(q), geoStatus); return; }
+        const url = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=6&language=en&format=json`;
         const r = await fetch(url);
         const j = await r.json();
         const res = (j.results || []);
@@ -340,27 +397,25 @@ export function openSettings() {
     };
     on(dlg, 'click', '[data-geo-search]', geoSearch);
     on(dlg, 'keydown', '#s-place', (e) => { if (e.key === 'Enter') { e.preventDefault(); geoSearch(); } });
+    const geoStatus = (msg) => render($('[data-geo-results]', dlg), html`<li class="subtle">${msg}</li>`);
     on(dlg, 'click', '[data-pick]', (e, b) => {
       const loc = JSON.parse(b.dataset.pick);
-      store.setSettings({ location: loc });
-      toast(`Weather location set to ${loc.name}`);
-      draw();
+      changePlace(() => setPlace(loc), geoStatus);
     });
     on(dlg, 'click', '[data-geo-me]', () => {
       if (!navigator.geolocation) { toast('Location is not available in this browser.'); return; }
       navigator.geolocation.getCurrentPosition(
         (pos) => {
-          store.setSettings({ location: { name: 'My location', lat: +pos.coords.latitude.toFixed(4), lon: +pos.coords.longitude.toFixed(4) } });
-          toast('Weather location set to your current position');
-          draw();
+          changePlace(() => setPlace({ name: 'My location', lat: +pos.coords.latitude.toFixed(4), lon: +pos.coords.longitude.toFixed(4) }), geoStatus);
         },
         () => toast('Could not get your location (permission denied?).'),
         { timeout: 10000 },
       );
     });
     on(dlg, 'click', '[data-geo-reset]', () => {
-      store.setSettings({ location: { ...DEFAULT_LOCATION } });
-      draw();
+      resetPlace();
+      setFlash('Back to the Kansas City plan.');
+      location.reload();
     });
     dlg.addEventListener('close', () => {
       // let pages re-render with new settings

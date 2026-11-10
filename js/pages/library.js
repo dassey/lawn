@@ -7,6 +7,7 @@ import { loadData, byId } from '../core/data.js';
 import { today, MON } from '../core/dates.js';
 import { lineChart, barChart } from '../core/charts.js';
 import { EVIDENCE } from '../core/tasks.js';
+import { climateFor } from '../core/place.js';
 
 mountChrome('library');
 setTitle('Library & sources');
@@ -22,7 +23,10 @@ let gq = '';
 async function main() {
   D = await loadData('sources', 'library', 'glossary', 'climate');
   const L = D.library;
-  const cl = D.climate;
+  const cl = climateFor(D.climate);
+  const where = cl.place || 'Kansas City';
+  const lo10 = Math.min(10, Math.floor(Math.min(...cl.monthly.map((x) => x.lo)) / 10) * 10);
+  const hi10 = Math.max(100, Math.ceil(Math.max(...cl.monthly.map((x) => x.hi)) / 10) * 10);
   const research = D.sources.filter((s) => s.type === 'peer-reviewed').sort((a, b) => (b.year || 0) - (a.year || 0));
   const guides = D.sources.filter((s) => s.type === 'extension');
 
@@ -34,7 +38,7 @@ async function main() {
     </section>
     <nav class="subnav" aria-label="On this page"><ul>
       <li><a href="#research">Latest research</a></li><li><a href="#guides">Extension guides</a></li><li><a href="#local">Local help</a></li>
-      <li><a href="#buy">Where to buy</a></li><li><a href="#climate">KC climate</a></li><li><a href="#myths">Myths</a></li>
+      <li><a href="#buy">Where to buy</a></li><li><a href="#climate">${cl.local ? 'Local' : 'KC'} climate</a></li><li><a href="#myths">Myths</a></li>
       <li><a href="#glossary">Glossary</a></li><li><a href="#credits">Credits</a></li><li><a href="#sources">All sources</a></li>
     </ul></nav>
 
@@ -81,16 +85,16 @@ async function main() {
     </section>
 
     <section class="section" id="climate">
-      <div class="section-head"><h2>Kansas City climate</h2><span class="subtle">${cl.station}</span></div>
+      <div class="section-head"><h2>${where} climate</h2><span class="subtle">${cl.station}</span></div>
       <div class="grid-2">
         <article class="card">
           <h3>${icon('thermo')}Average high &amp; low (°F)</h3>
-          ${lineChart({ labels: MON.map((m) => m[0]), series: [{ values: cl.monthly.map((x) => x.hi), cls: 'line-hi', dotCls: 'dot-hi', name: 'High' }, { values: cl.monthly.map((x) => x.lo), cls: 'line-lo', dotCls: 'dot-lo', name: 'Low' }], min: 10, max: 100, unit: '°', highlight: M, ariaLabel: 'Monthly normal highs and lows at Kansas City International Airport, 1991 to 2020.' })}
+          ${lineChart({ labels: MON.map((m) => m[0]), series: [{ values: cl.monthly.map((x) => x.hi), cls: 'line-hi', dotCls: 'dot-hi', name: 'High' }, { values: cl.monthly.map((x) => x.lo), cls: 'line-lo', dotCls: 'dot-lo', name: 'Low' }], min: lo10, max: hi10, unit: '°', highlight: M, ariaLabel: cl.local ? `Estimated monthly normal highs and lows for ${where}.` : 'Monthly normal highs and lows at Kansas City International Airport, 1991 to 2020.' })}
           <div class="chart-legend"><span><i style="background:var(--veg)"></i>High</span><span><i style="background:var(--yard)"></i>Low</span></div>
         </article>
         <article class="card">
           <h3>${icon('rain')}Rain by month (in) · ${fmtNum(cl.annual.precip, 2)} in a year</h3>
-          ${barChart({ labels: MON.map((m) => m[0]), values: cl.monthly.map((x) => x.precip), highlight: M, barClass: 'bar-rain', fmt: (v) => v.toFixed(1), max: 6, ariaLabel: 'Monthly normal precipitation: wettest in May and June, driest in January.' })}
+          ${barChart({ labels: MON.map((m) => m[0]), values: cl.monthly.map((x) => x.precip), highlight: M, barClass: 'bar-rain', fmt: (v) => v.toFixed(1), max: Math.max(6, Math.ceil(Math.max(...cl.monthly.map((x) => x.precip)))), ariaLabel: cl.local ? `Estimated monthly normal precipitation for ${where}.` : 'Monthly normal precipitation: wettest in May and June, driest in January.' })}
           <p class="subtle" style="margin:6px 0 0">${md(cl.rainNote)}</p>
         </article>
       </div>
@@ -105,7 +109,7 @@ async function main() {
         </article>
         <article class="card">
           <h3>${icon('flame')}Heat &amp; what it means</h3>
-          ${barChart({ labels: MON.map((m) => m[0]), values: cl.monthly.map((x) => x.days90), highlight: M, barClass: 'bar', fmt: (v) => (v >= 1 ? v.toFixed(0) : ''), max: 15, ariaLabel: 'Average days at or above 90 degrees: about 7 in June, 13 in July, 12 in August.' })}
+          ${barChart({ labels: MON.map((m) => m[0]), values: cl.monthly.map((x) => x.days90), highlight: M, barClass: 'bar', fmt: (v) => (v >= 1 ? v.toFixed(0) : ''), max: Math.max(15, Math.ceil(Math.max(...cl.monthly.map((x) => x.days90)))), ariaLabel: cl.local ? `Estimated average days at or above 90 degrees by month for ${where}.` : 'Average days at or above 90 degrees: about 7 in June, 13 in July, 12 in August.' })}
           <p class="subtle" style="margin:6px 0 0">Average days at or above 90°F (${fmtNum(cl.annual.days90, 1)} a year). ${md(cl.heatNote)}</p>
         </article>
       </div>

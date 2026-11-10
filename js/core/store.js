@@ -11,9 +11,10 @@ export const DEFAULT_SETTINGS = {
   lawnSqFt: 5000,
   bedSqFt: 300,
   vegSqFt: 128,
-  region: 'central',          // central | north | custom
+  region: 'central',          // central | north | custom | local (worked out from a ZIP)
   lastFrost: '04-15',         // used when region === 'custom'
   firstFrost: '10-25',
+  local: null,                // used when region === 'local': frost dates, zone and climate normals (see place.js)
   location: { ...DEFAULT_LOCATION },
   hoseTimer: false,           // owns a hose-end sprinkler + timer
   sprinklerRate: null,        // in/hr from the tuna-can test (Tools)
@@ -48,6 +49,7 @@ function migrate(s) {
   const out = { ...d, ...s };
   out.settings = { ...d.settings, ...(s.settings || {}) };
   out.settings.location = { ...d.settings.location, ...((s.settings || {}).location || {}) };
+  if (out.settings.region === 'local' && !out.settings.local) out.settings.region = 'central';
   out.garden = { ...d.garden, ...(s.garden || {}) };
   for (const k of ['done', 'notes', 'shopping']) if (!out[k] || typeof out[k] !== 'object' || Array.isArray(out[k])) out[k] = {};
   for (const k of ['journal', 'custom']) if (!Array.isArray(out[k])) out[k] = [];

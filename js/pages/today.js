@@ -10,7 +10,8 @@ import { today, fmtDate, monthName, season, diffDays, fromMMDD, shiftMMDD, fmtMM
 import {
   taskCard, wireTasks, visibleTasks, taskStatus, taskMonths, PRIORITY, CATS, CAT_ORDER, nitrogenForYear,
 } from '../core/tasks.js';
-import { regionShiftDays } from '../core/windows.js';
+import { regionShiftDays, frostSetting } from '../core/windows.js';
+import { climateFor, activeLocal, shiftWords } from '../core/place.js';
 import { mountWeatherCard } from '../core/wxcard.js';
 import { openLogDialog } from '../core/logdlg.js';
 import { planWeek, planEvents, fmtIn } from '../core/planner.js';
@@ -62,10 +63,25 @@ function frostLine() {
   return `Frost season · ${diffDays(NOW, nextLast)} days to the average last frost`;
 }
 
+/** Says what changed, and what didn't, when the plan is shifted away from KC. */
+function placeNote() {
+  const L = activeLocal();
+  if (!L) return '';
+  const bad = (L.fit || []).some((x) => x.level === 'high');
+  return html`<section class="section" id="place">
+    <div class="callout ${bad ? 'callout-warn' : ''}">${icon(bad ? 'alert' : 'pin')}<div>
+      <strong>Adjusted for ${L.name} · Zone ${L.zone}${L.zoneEst ? ' (estimated)' : ''}</strong>
+      <p>${L.frostFree ? 'Freezes are rare here, so dates are moved as far as the plan stretches (6 weeks).' : html`Your last spring frost comes about ${fmtMMDD(L.lastFrost)} (${shiftWords(L.dSpring)}) and your first fall frost about ${fmtMMDD(L.firstFrost)} (${shiftWords(L.dFall)}).`} Task dates, planting windows, the forecast and weather alerts all follow your area. The how-to text was written for Kansas City, so it still names KC stores and Missouri and Kansas Extension offices; your own state's Extension is the local authority.</p>
+      ${(L.fit || []).map((x) => html`<p><strong>${x.level === 'high' ? 'Poor fit: ' : 'Heads up: '}</strong>${x.text}</p>`)}
+    </div>
+  </section>`;
+}
+
 const ctx = () => ({ year: YEAR, P, S, T, settings: store.settings, date: NOW, showRelative: true, showCat: true });
 
 async function main() {
   D = await loadData('tasks', 'products', 'sources', 'months', 'climate');
+  D.climate = climateFor(D.climate);
   P = byId(D.products);
   S = byId(D.sources);
   T = byId(D.tasks);
@@ -83,6 +99,7 @@ async function main() {
         <div class="hero-stats" id="hero-stats"></div>
       </div>
     </section>
+    ${placeNote()}
 
     <div class="layout-main section">
       <div class="stack-lg">
@@ -205,7 +222,7 @@ function drawTasks() {
     </details>` : '');
 
   // hero stats
-  const monthTasks = all.filter((t) => (t.months || []).includes(M) || taskMonths(t, s).includes(M));
+  const monthTasks = all.filter((t) => (!frostSetting(s) && (t.months || []).includes(M)) || taskMonths(t, s).includes(M));
   const doneM = monthTasks.filter((t) => isDone(YEAR, t.id)).length;
   const keyLeft = monthTasks.filter((t) => t.priority === 'critical' && !isDone(YEAR, t.id)).length;
   const nit = nitrogenForYear(YEAR, D.tasks);
@@ -385,7 +402,7 @@ function drawQuick() {
 function drawFrost() {
   const cl = D.climate;
   const { last, first } = frostDates();
-  const region = { central: 'MU Central (KC metro)', north: 'MU North (cautious)', custom: 'your frost dates' }[store.settings.region];
+  const region = { central: 'MU Central (KC metro)', north: 'MU North (cautious)', custom: 'your frost dates', local: activeLocal()?.name }[store.settings.region];
   const f = cl.frost || {};
   const doy = (mmdd) => { const d = fromMMDD(mmdd, 2001); return (d - new Date(2001, 0, 1)) / 864e5; };
   const pos = (mmdd) => `${(doy(mmdd) / 365) * 100}%`;

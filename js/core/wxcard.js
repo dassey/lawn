@@ -6,6 +6,7 @@ import { store } from './store.js';
 import { fmtDate, realToday, previewDate } from './dates.js';
 import { fetchWeather, analyze } from './weather.js';
 import { loadJSON } from './data.js';
+import { climateFor } from './place.js';
 import { openLogDialog } from './logdlg.js';
 
 export async function mountWeatherCard(el, { compact = false, onAnalysis, onError } = {}) {
@@ -19,7 +20,7 @@ export async function mountWeatherCard(el, { compact = false, onAnalysis, onErro
     }
     if (!el.dataset.loaded) render(el, html`<div class="card-head"><h2>${icon('cloud')}Conditions</h2></div><div class="loading"><span class="spinner"></span>Checking the weather for ${s.location.name}…</div>`);
     try {
-      const [res, climate] = await Promise.all([fetchWeather(s.location, { force }), loadJSON('climate').catch(() => null)]);
+      const [res, climate] = await Promise.all([fetchWeather(s.location, { force }), loadJSON('climate').then(climateFor).catch(() => null)]);
       const a = analyze(res.data, { climate, date: realToday() });
       el.dataset.loaded = '1';
       onAnalysis?.(a);

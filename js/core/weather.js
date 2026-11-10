@@ -4,6 +4,7 @@
 // watering entries in the journal override/augment the model.
 import { store, isDone } from './store.js';
 import { toISO, fromISO, addDays, diffDays, realToday, fmtDate } from './dates.js';
+import { kcDateFor } from './windows.js';
 
 const CACHE_KEY = 'kcAlmanac.wx.v2';
 const OLD_KEYS = ['kcAlmanac.wx.v1'];
@@ -181,7 +182,10 @@ export function analyze(raw, { date = realToday(), journal = store.state.journal
 
 function buildAlerts(m, date, future, todayRow) {
   const A = [];
-  const md = (date.getMonth() + 1) * 100 + date.getDate();
+  // Seasonal gates are written for Kansas City; away from KC, test them
+  // against the KC date that matches this point in the local season.
+  const eq = kcDateFor(date);
+  const md = (eq.getMonth() + 1) * 100 + eq.getDate();
   const within = (a, b) => (a <= b ? md >= a && md <= b : md >= a || md <= b);
   const year = date.getFullYear();
   const dayName = (row) => (row ? (row.isToday ? 'today' : fmtDate(row.dt, { weekday: 'short', month: 'short', day: 'numeric' })) : '');

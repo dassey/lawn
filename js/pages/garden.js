@@ -6,7 +6,8 @@ import { icon } from '../core/icons.js';
 import { loadData, byId } from '../core/data.js';
 import { store, uid } from '../core/store.js';
 import { today, MON, monthName, fromMMDD, fmtMMDD, addDays, toISO, fmtDate, diffDays, doyMMDD, doy, mmdd, fromISO } from '../core/dates.js';
-import { cropWindow, cropHarvestWindow } from '../core/windows.js';
+import { cropWindow, cropHarvestWindow, frostSetting } from '../core/windows.js';
+import { frostWords } from '../core/place.js';
 import { sourceItems, EVIDENCE } from '../core/tasks.js';
 import { downloadICS, simpleEvents } from '../core/ics.js';
 import { openLogDialog } from '../core/logdlg.js';
@@ -113,8 +114,8 @@ function shell() {
 
 function draw() {
   const s = store.settings;
-  render($('#region-seg'), html`${[['central', 'MU Central (KC)'], ['north', 'MU North'], ['custom', 'My frost dates']].map(([v, l]) => html`<button type="button" data-region="${v}" aria-pressed="${String(s.region === v)}">${l}</button>`)}`);
-  render($('#region-note'), s.region === 'custom' ? html`Last frost ${fmtMMDD(s.lastFrost)} · first frost ${fmtMMDD(s.firstFrost)} <button type="button" class="btn btn-sm btn-ghost" data-action="settings">Edit</button>` : s.region === 'north' ? 'Cautious dates, about a week later in spring.' : 'Best fit for the Kansas City metro.');
+  render($('#region-seg'), html`${[...(s.local ? [['local', s.local.name]] : []), ['central', 'MU Central (KC)'], ['north', 'MU North'], ['custom', 'My frost dates']].map(([v, l]) => html`<button type="button" data-region="${v}" aria-pressed="${String(s.region === v)}">${l}</button>`)}`);
+  render($('#region-note'), s.region === 'local' && s.local ? `Shifted to your area: ${frostWords(s.local)}.` : s.region === 'custom' ? html`Last frost ${fmtMMDD(s.lastFrost)} · first frost ${fmtMMDD(s.firstFrost)} <button type="button" class="btn btn-sm btn-ghost" data-action="settings">Edit</button>` : s.region === 'north' ? 'Cautious dates, about a week later in spring.' : 'Best fit for the Kansas City metro.');
   $$('[data-tab]', app).forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === ui.tab)));
   drawPanelBody();
 }
@@ -320,7 +321,7 @@ function drawSeeds(p) {
       <div>
         <div class="row-between" style="margin-bottom:10px"><h2 style="margin:0">Seed-starting schedule · ${YEAR}</h2>
           <button type="button" class="btn btn-sm" data-ics-seeds>${icon('calendar')}Add to calendar</button></div>
-        <p class="subtle">Counted back from ${store.settings.region === 'custom' ? 'your frost dates' : 'MU planting dates'}. ★ = in your garden list.</p>
+        <p class="subtle">Counted back from ${frostSetting(store.settings) ? 'your frost dates' : 'MU planting dates'}. ★ = in your garden list.</p>
         <div class="table-wrap"><table>
           <thead><tr><th>Done</th><th>Crop</th><th>Sow indoors</th><th>Plant out</th></tr></thead>
           <tbody>${rows.map((r) => {
