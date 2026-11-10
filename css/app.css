@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KC Lawn & Garden Almanac — styles
+   Lawn & Garden Almanac — styles
    Mobile-first. Tokens on :root, dark mode via prefers-color-scheme and
    [data-theme]. No framework.
    ========================================================================== */
@@ -210,6 +210,9 @@ h4 { font-size: 0.95rem; font-weight: 650; }
 .locbar .loc-form input { width: 6.5rem; min-height: 34px; padding: 4px 10px; font-size: 16px; }
 .loc-status { flex-basis: 100%; margin: 0; color: var(--ink-2); }
 .loc-status.is-bad { color: var(--critical); }
+.locbar-inner.is-unset { padding-top: 10px; padding-bottom: 10px; }
+.locbar-inner.is-unset .loc-now { font-size: 0.95rem; color: var(--ink); }
+.locbar:has(.is-unset) { background: var(--brand-soft); border-bottom-color: var(--brand); }
 
 /* ---------- Header ---------- */
 .site-header {

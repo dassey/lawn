@@ -85,7 +85,7 @@ async function main() {
   on(app, 'input', '#jf-q', debounce((e) => { f.q = e.target.value; drawList(); }, 150));
 
   on(app, 'click', '[data-export]', () => {
-    download(`kc-lawn-almanac-backup-${toISO(new Date())}.json`, store.exportJSON(), 'application/json');
+    download(`lawn-almanac-backup-${toISO(new Date())}.json`, store.exportJSON(), 'application/json');
     toast('Backup downloaded');
   });
   on(app, 'click', '[data-csv]', () => {

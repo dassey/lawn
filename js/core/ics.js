@@ -45,7 +45,7 @@ export function taskEvents(tasks, year, settings) {
     ].filter(Boolean).join('\n\n');
     evs.push([
       'BEGIN:VEVENT',
-      `UID:${t.id}@kc-lawn-almanac`,
+      `UID:${t.id}@lawn-almanac`,
       `DTSTAMP:${stamp}`,
       `DTSTART;VALUE=DATE:${ymd(w.start)}`,
       `DTEND;VALUE=DATE:${ymd(end)}`,
@@ -61,11 +61,11 @@ export function taskEvents(tasks, year, settings) {
   return evs;
 }
 
-export function buildICS(events, name = 'KC Lawn & Garden Almanac') {
+export function buildICS(events, name = 'Lawn & Garden Almanac') {
   const lines = [
     'BEGIN:VCALENDAR',
     'VERSION:2.0',
-    'PRODID:-//KC Lawn & Garden Almanac//EN',
+    'PRODID:-//Lawn & Garden Almanac//EN',
     'CALSCALE:GREGORIAN',
     'METHOD:PUBLISH',
     `X-WR-CALNAME:${esc(name)}`,
@@ -87,7 +87,7 @@ export function simpleEvents(items) {
     end.setDate(end.getDate() + 1);
     return [
       'BEGIN:VEVENT',
-      `UID:${it.uid}@kc-lawn-almanac`,
+      `UID:${it.uid}@lawn-almanac`,
       `DTSTAMP:${stamp}`,
       `DTSTART;VALUE=DATE:${ymd(it.date)}`,
       `DTEND;VALUE=DATE:${ymd(end)}`,

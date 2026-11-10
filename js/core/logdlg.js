@@ -85,7 +85,7 @@ export async function openLogDialog(prefill = {}, { onSave } = {}) {
         ${f.has('height') ? html`<div class="field"><label for="lg-h">Mowing height</label><div class="input-affix"><input id="lg-h" type="number" step="0.25" min="1" max="6" name="height" value="${e.height ?? ''}"><span class="affix">inches</span></div></div>` : ''}
         ${f.has('cost') ? html`<div class="field"><label for="lg-cost">Cost</label><div class="input-affix"><input id="lg-cost" type="number" step="0.01" min="0" name="cost" value="${e.cost ?? ''}"><span class="affix">$</span></div></div>` : ''}
         ${f.has('soil') ? html`<div class="field-row">
-          <div class="field"><label for="lg-ph">pH (MU reports salt pH, "pHs")</label><input id="lg-ph" type="number" step="0.1" min="3" max="10" name="ph" value="${e.ph ?? ''}"></div>
+          <div class="field"><label for="lg-ph">pH (some labs report salt pH, "pHs")</label><input id="lg-ph" type="number" step="0.1" min="3" max="10" name="ph" value="${e.ph ?? ''}"></div>
           <div class="field"><label for="lg-p">Phosphorus (lb/acre)</label><input id="lg-p" type="number" step="1" min="0" name="p" value="${e.p ?? ''}"></div>
           <div class="field"><label for="lg-k">Potassium (lb/acre)</label><input id="lg-k" type="number" step="1" min="0" name="k" value="${e.k ?? ''}"></div>
           <div class="field"><label for="lg-om">Organic matter (%)</label><input id="lg-om" type="number" step="0.1" min="0" name="om" value="${e.om ?? ''}"></div>

@@ -5,6 +5,7 @@
 import { store, isDone } from './store.js';
 import { toISO, fromISO, addDays, diffDays, realToday, fmtDate } from './dates.js';
 import { kcDateFor } from './windows.js';
+import { grassId, grassOf, isWarm } from './grass.js';
 
 const CACHE_KEY = 'kcAlmanac.wx.v2';
 const OLD_KEYS = ['kcAlmanac.wx.v1'];
@@ -142,6 +143,8 @@ export function analyze(raw, { date = realToday(), journal = store.state.journal
     rain30: r2(sum(lastN(30), (x) => x.rain)),
     water14: r2(sum(lastN(14), (x) => x.water)),
     et14: r2(sum(lastN(14), (x) => x.et0)),
+    et7: r2(sum(lastN(7), (x) => x.et0)),
+    water7: r2(sum(lastN(7), (x) => x.water)),
     hot21: lastN(21).filter((x) => x.hi >= 90).length,
     hot7: lastN(7).filter((x) => x.hi >= 90).length,
     daysSinceSoak,
@@ -190,6 +193,10 @@ function buildAlerts(m, date, future, todayRow) {
   const year = date.getFullYear();
   const dayName = (row) => (row ? (row.isToday ? 'today' : fmtDate(row.dt, { weekday: 'short', month: 'short', day: 'numeric' })) : '');
   const f = (n, d = 1) => (n == null ? '—' : Number(n).toFixed(d));
+  const warm = isWarm();
+  const grass = grassId();
+  const irrigate = store.settings.watering === 'irrigate';
+  const toughInDrought = grass === 'bermuda' || grass === 'zoysia';
 
   // 1. New seed moisture
   if (m.seedDays != null && m.seedDays <= 28) {
@@ -199,18 +206,30 @@ function buildAlerts(m, date, future, todayRow) {
       title: rainSoon ? 'New seed: rain is covering watering' : 'Keep new seed moist',
       text: rainSoon
         ? `Seeded ${m.seedDays} days ago. Rain is in the forecast, so skip watering while the top ½ in stays damp.`
-        : `Seeded ${m.seedDays} days ago. Lightly water 2–3 times a day (5–10 minutes) so the top ½ in never dries out, until seedlings are up (tall fescue takes 7–14 days). Then water less often but deeper.`,
-      href: 'calendar.html#/task/lawn-sep-overseed',
+        : `Seeded ${m.seedDays} days ago. Lightly water 2–3 times a day (5–10 minutes) so the top ½ in never dries out, until seedlings are up (1–3 weeks, depending on the grass). Then water less often but deeper.`,
+      href: `calendar.html#/task/${warm ? 'lawn-warm-plant' : 'lawn-sep-overseed'}`,
     });
   }
 
   // 2. Lawn drought (May 15 – Oct 15)
-  if (within(515, 1015)) {
-    if (m.daysSinceSoak >= 21 && (m.hot21 >= 3 || md >= 601 && md <= 915)) {
+  if (within(515, 1015) && irrigate) {
+    const need = r2(m.et7 * TURF_KC - m.rain7 - m.water7);
+    if (need >= 0.3) {
+      A.push({
+        id: 'water-week', level: 'med', icon: 'drop',
+        title: `Water the lawn: about ${f(Math.min(need, 1.5), 1)} in this week`,
+        text: `The lawn used about ${f(m.et7 * TURF_KC, 1)} in of water in the last 7 days and got ${f(m.rain7 + m.water7, 2)} in from rain and watering. Make up the difference in one or two early-morning soakings, not daily sprinkles.`,
+        href: 'lawn.html#water',
+      });
+    } else {
+      A.push({ id: 'wet-ok', level: 'good', icon: 'drop', title: 'No watering needed this week', text: `Rain and your watering (${f(m.rain7 + m.water7, 2)} in) covered what the lawn used (~${f(m.et7 * TURF_KC, 1)} in).` });
+    }
+  } else if (within(515, 1015)) {
+    if (m.daysSinceSoak >= (toughInDrought ? 35 : 21) && (m.hot21 >= 3 || md >= 601 && md <= 915)) {
       A.push({
         id: 'soak', level: 'high', icon: 'drop',
         title: 'Lawn survival soak is due',
-        text: `${m.daysSinceSoak >= 42 ? '6+ weeks' : `${m.daysSinceSoak} days`} since ½ in of rain${m.hot21 ? `, with ${m.hot21} days of 90°F+ in the last 3 weeks` : ''}. Put down ½–1 in early in the morning (two cycles 30 minutes apart on clay). Already brown and dormant? Through a long hot drought, give it ½–1 in every 2–3 weeks to keep the crowns alive (UNL says ¼–½ in keeps crowns hydrated; MU's lawn manual says at least 1 in prevents turf loss).`,
+        text: `${m.daysSinceSoak >= 42 ? '6+ weeks' : `${m.daysSinceSoak} days`} since ½ in of rain${m.hot21 ? `, with ${m.hot21} days of 90°F+ in the last 3 weeks` : ''}. Put down ½–1 in early in the morning (two cycles 30 minutes apart on clay). ${toughInDrought ? `${grassOf().name} survives drought by going dormant, but after this long a soak protects the crowns.` : 'Already brown and dormant? Through a long hot drought, give it ½–1 in every 2–3 weeks to keep the crowns alive.'}`,
         href: 'lawn.html#water',
       });
     } else if (m.daysSinceSoak >= 12 && m.balance14 <= -1) {
@@ -226,12 +245,21 @@ function buildAlerts(m, date, future, todayRow) {
   }
 
   // 3. Brown patch weather
-  if (within(601, 925) && m.warmNightsNext5 >= 3) {
+  if (!warm && within(601, 925) && m.warmNightsNext5 >= 3) {
     A.push({
       id: 'brownpatch', level: 'med', icon: 'alert',
       title: 'Brown patch weather',
-      text: `${m.warmNightsNext5} of the next 5 nights stay at or above 65°F. Water only in the early morning, skip nitrogen, and mow when the grass is dry. Most tall fescue recovers in fall without spraying.`,
+      text: `${m.warmNightsNext5} of the next 5 nights stay at or above 65°F. Water only in the early morning, skip nitrogen, and mow when the grass is dry. Most lawns recover in fall without spraying.`,
       href: 'lawn.html#issue-brown-patch',
+    });
+  }
+
+  if (warm && grass !== 'bermuda' && (within(915, 1115) || within(401, 510)) && m.soil5 != null && m.soil5 >= 58 && m.soil5 <= 72 && m.wet3 >= 0.5) {
+    A.push({
+      id: 'largepatch', level: 'med', icon: 'alert',
+      title: 'Large patch weather',
+      text: `Soil is ${f(m.soil5, 0)}°F and wet, which is when large patch spreads. Skip nitrogen, water only if the lawn is dry, and mow when the grass is dry.`,
+      href: 'lawn.html#issue-large-patch',
     });
   }
 
@@ -271,7 +299,7 @@ function buildAlerts(m, date, future, todayRow) {
   }
 
   // 7. Fall seeding weather
-  if (within(820, 1015) && m.seedDays == null) {
+  if (!warm && within(820, 1015) && m.seedDays == null) {
     const maxHi5 = Math.max(...future.slice(0, 5).map((x) => x.hi ?? 0));
     if (m.rainNext5 >= 0.25 && maxHi5 <= 90) {
       A.push({ id: 'seed-window', level: 'good', icon: 'seed', title: 'Good week to seed', text: `About ${f(m.rainNext5, 2)} in of rain is forecast in the next 5 days. Seed just before it arrives so the rain does the watering.`, href: 'calendar.html#/task/lawn-sep-overseed' });
@@ -303,7 +331,7 @@ function buildAlerts(m, date, future, todayRow) {
 
   // 11. Hot nights → tomato blossom drop
   if (within(615, 831) && m.hotNightsNext5 >= 2) {
-    A.push({ id: 'tomato-nights', level: 'info', icon: 'veg', title: 'Hot nights: tomatoes may drop blossoms', text: 'This is normal in KC summers. Keep plants watered and mulched; they set fruit again when nights cool in September.' });
+    A.push({ id: 'tomato-nights', level: 'info', icon: 'veg', title: 'Hot nights: tomatoes may drop blossoms', text: 'This is normal in hot weather. Keep plants watered and mulched; they set fruit again when nights cool in September.' });
   }
 
   // 12. Garlic & bulbs

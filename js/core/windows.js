@@ -1,16 +1,20 @@
-// Task/crop timing windows. Data stores "MM-DD" windows (KC / MU Central);
-// the planting-region setting shifts them so the same data works for MU North
-// dates, for custom frost dates, or for the frost dates worked out from a ZIP.
+// Task/crop timing windows. Data stores "MM-DD" windows on one reference
+// calendar (last frost Apr 15, first frost Oct 25); they are shifted to the
+// frost dates worked out from the visitor's ZIP, or to dates they typed in.
 import { store } from './store.js';
 import {
-  windowFor, fromMMDD, shiftMMDD, diffDays, inRange, fmtRange, monthShort, monthName, monthsOfWindow, pad, doyMMDD,
+  windowFor, fromMMDD, shiftMMDD, diffDays, inRange, fmtRange, monthShort, monthName, monthsOfWindow, pad, doyMMDD, fmtMMDD,
 } from './dates.js';
 
 export const KC_LAST_FROST = '04-15';
 export const KC_FIRST_FROST = '10-25';
-export const MAX_SHIFT = 45; // days; past this the KC plan no longer fits anyway
-
-const clamp = (n) => Math.max(-MAX_SHIFT, Math.min(MAX_SHIFT, n));
+// How far the calendar stretches. Toward a longer season (earlier spring,
+// later fall) it can move further than toward a shorter one, where spring and
+// fall work would otherwise collide in midsummer.
+export const MAX_SHIFT = 75;
+const SHORT_SHIFT = 45;
+const clampSpring = (n) => Math.max(-MAX_SHIFT, Math.min(SHORT_SHIFT, n));
+const clampFall = (n) => Math.max(-SHORT_SHIFT, Math.min(MAX_SHIFT, n));
 
 /** Frost dates in use when the plan follows them (custom, or local from a ZIP). */
 export function frostSetting(s = store.settings) {
@@ -24,8 +28,8 @@ export function regionShiftDays(kind, s = store.settings) {
   if (s.region === 'north') return kind === 'spring' ? 7 : -5;
   const f = frostSetting(s);
   if (f) {
-    if (kind === 'spring') return clamp(diffDays(fromMMDD(KC_LAST_FROST, 2001), fromMMDD(f.last, 2001)));
-    if (kind === 'fall') return clamp(diffDays(fromMMDD(KC_FIRST_FROST, 2001), fromMMDD(f.first, 2001)));
+    if (kind === 'spring') return clampSpring(diffDays(fromMMDD(KC_LAST_FROST, 2001), fromMMDD(f.last, 2001)));
+    if (kind === 'fall') return clampFall(diffDays(fromMMDD(KC_FIRST_FROST, 2001), fromMMDD(f.first, 2001)));
   }
   return 0;
 }
@@ -74,6 +78,55 @@ export function kcDateFor(date, s = store.settings) {
     if (!m) break;
   }
   return best;
+}
+
+/* ---- dates inside prose ----
+   Data text holds reference-calendar dates as tokens, e.g. {{d:10-10}},
+   {{r:08-25:10-10}}, {{m:9}}, {{p:mid:10}}. localizeText swaps each for the
+   local date, so the how-to text agrees with the shifted task windows. */
+const PART_DAY = { early: '05', mid: '15', late: '25' };
+const cap = (x) => x.charAt(0).toUpperCase() + x.slice(1);
+const moved = (mmddStr, s) => shiftMMDD(mmddStr, seasonShift(mmddStr, s)) || mmddStr;
+const monthNum = (mmddStr) => Number(mmddStr.slice(0, 2));
+
+function token(kind, a, b, s) {
+  switch (kind) {
+    case 'd': return fmtMMDD(moved(a, s));
+    case 'r': {
+      const w = shiftWindow({ start: a, end: b }, s);
+      return fmtRange(fromMMDD(w.start, 2001), windowFor(w.start, w.end, 2001).end);
+    }
+    case 'm': return monthName(monthNum(moved(`${pad(a)}-15`, s)));
+    case 'ms': return monthShort(monthNum(moved(`${pad(a)}-15`, s)));
+    case 'mr': case 'mrs': {
+      const name = kind === 'mr' ? monthName : monthShort;
+      const x = monthNum(moved(`${pad(a)}-15`, s));
+      const y = monthNum(moved(`${pad(b)}-15`, s));
+      return x === y ? name(x) : `${name(x)}–${name(y)}`;
+    }
+    case 'p': case 'P': {
+      const d = moved(`${pad(b)}-${PART_DAY[a] || '15'}`, s);
+      const day = Number(d.slice(3));
+      const part = day <= 10 ? 'early ' : day <= 20 ? 'mid-' : 'late ';
+      const out = `${part}${monthName(monthNum(d))}`;
+      return kind === 'P' ? cap(out) : out;
+    }
+    default: return null;
+  }
+}
+
+export function localizeText(str, s = store.settings) {
+  if (typeof str !== 'string' || !str.includes('{{')) return str;
+  return str.replace(/\{\{(d|r|ms|mrs|mr|m|p|P):([^:}]+)(?::([^:}]+))?\}\}/g, (all, kind, a, b) => {
+    try { return token(kind, a, b, s) ?? all; } catch { return all; }
+  });
+}
+
+/** localizeText over every string in a parsed JSON value (in place). */
+export function localizeData(v, s = store.settings) {
+  if (Array.isArray(v)) { for (let i = 0; i < v.length; i++) v[i] = typeof v[i] === 'string' ? localizeText(v[i], s) : localizeData(v[i], s); return v; }
+  if (v && typeof v === 'object') { for (const k of Object.keys(v)) v[k] = typeof v[k] === 'string' ? localizeText(v[k], s) : localizeData(v[k], s); }
+  return v;
 }
 
 /** Group months into runs of neighbours; a run may wrap from December into January. */
@@ -127,11 +180,16 @@ export function mmddWindows(t, s = store.settings) {
     return [{ start: shiftMMDD(w.start, n), end: shiftMMDD(w.end, n) }];
   }
   if (t.custom) return [w];
+  return [shiftWindow(w, s)];
+}
+
+/** Move an untagged reference window to the local calendar. */
+export function shiftWindow(w, s = store.settings) {
   const a = seasonShift(w.start, s);
-  const out = { start: shiftMMDD(w.start, a), end: shiftMMDD(w.end, seasonShift(w.end, s)) };
+  const out = { start: shiftMMDD(w.start, a) || w.start, end: shiftMMDD(w.end, seasonShift(w.end, s)) || w.end };
   // Opposite shifts at each end can fold a short window inside out; if so, move it whole.
-  if (spanDays(out) > spanDays(w) + 2 * MAX_SHIFT) out.end = shiftMMDD(w.end, a);
-  return [out];
+  if (spanDays(out) > spanDays(w) + 2 * MAX_SHIFT) out.end = shiftMMDD(w.end, a) || w.end;
+  return out;
 }
 
 export function taskMonths(t, s = store.settings) {
