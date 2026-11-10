@@ -36,7 +36,7 @@ async function prepare(name) {
     const grass = grassId(s);
     data = clone(base.concat(warm))
       .filter((t) => grassMatch(t.grass, s))
-      .filter((t) => !(t.cold && local && !local.cold));
+      .filter((t) => !(t.cold && local && local.cold === false));
     for (const t of data) if (t.nitrogenBy && t.nitrogenBy[grass] != null) t.nitrogen = t.nitrogenBy[grass];
   } else if (name === 'lawn') {
     data = clone(await loadRaw(isWarm(s) ? 'lawn-warm' : 'lawn'));

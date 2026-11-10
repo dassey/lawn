@@ -10,7 +10,7 @@ import { today, fmtDate, monthName, season, diffDays, fromMMDD, shiftMMDD, fmtMM
 import {
   taskCard, wireTasks, visibleTasks, taskStatus, taskMonths, PRIORITY, CATS, CAT_ORDER, nitrogenForYear, monthBrief,
 } from '../core/tasks.js';
-import { regionShiftDays, frostSetting } from '../core/windows.js';
+import { regionShiftDays, frostSetting, datedWindows } from '../core/windows.js';
 import { climateFor, activeLocal } from '../core/place.js';
 import { grassOf, isWarm } from '../core/grass.js';
 import { mountWeatherCard } from '../core/wxcard.js';
@@ -365,12 +365,11 @@ function drawPlan(plan, inCat) {
 function drawNitro(nit) {
   const s = store.settings;
   const pct = Math.min(100, (nit.n / (s.nTarget || 3)) * 100);
-  const plan = [
-    ['lawn-apr-light-feed', 'Apr', '½ (optional)'],
-    ['lawn-sep-fertilize', 'Sep', '1'],
-    ['lawn-oct-fertilize', 'Oct', '1'],
-    ['lawn-nov-fertilize', 'Nov', '1'],
-  ];
+  // This lawn's own feedings, in local calendar order.
+  const plan = D.tasks.filter((t) => t.category === 'lawn' && t.nitrogen)
+    .map((t) => ({ t, at: datedWindows(t, YEAR, s)[0].start }))
+    .sort((x, y) => x.at - y.at)
+    .map(({ t, at }) => [t.id, fmtDate(at, { month: 'short' }), `${t.nitrogen === 0.5 ? '½' : fmtNum(t.nitrogen)}${t.priority === 'optional' ? ' (optional)' : ''}`]);
   render($('#nitro'), html`
     <div class="card-head"><h2>${icon('sprout')}Lawn nitrogen · ${YEAR}</h2></div>
     <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="${s.nTarget}" aria-valuenow="${nit.n}" aria-label="Nitrogen applied this year"><i style="width:${pct}%"></i></div>
