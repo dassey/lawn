@@ -2,10 +2,13 @@
 // footer, settings dialog, site-wide search, toasts, theme, service worker.
 import { html, raw, render, $, $$, on, esc, debounce } from './dom.js';
 import { icon, brandMark } from './icons.js';
-import { store, DEFAULT_LOCATION } from './store.js';
+import { store } from './store.js';
 import { previewDate, fromISO, fmtDate, toISO, fromMMDD, mmdd, today, fmtMMDD } from './dates.js';
 import { loadData } from './data.js';
-import { activeLocal, setPlace, setPlaceByZip, resetPlace, isHome, setFlash, takeFlash, shiftWords, frostWords } from './place.js';
+import { activeLocal, setPlace, setPlaceByZip, setFlash, takeFlash, frostWords } from './place.js';
+import { GRASSES, GRASS_ORDER, grassId, grassOf } from './grass.js';
+
+export const SITE = 'Lawn & Garden Almanac';
 
 export const NAV = [
   { id: 'today', href: 'index.html', label: 'Today', icon: 'home', tab: true },
@@ -36,7 +39,7 @@ export function mountChrome(page) {
   applyTheme();
   const loc = store.settings.location || {};
   const local = activeLocal();
-  const sub = local ? `${local.name} · Zone ${local.zone}` : loc.name && loc.name !== DEFAULT_LOCATION.name ? `${loc.name}` : 'Kansas City · Zone 6b';
+  const sub = local ? `${local.name} · Zone ${local.zone}` : loc.name ? `${loc.name}` : 'Fitted to your ZIP code';
 
   let header = $('#site-header');
   if (!header) {
@@ -47,10 +50,10 @@ export function mountChrome(page) {
   header.className = 'site-header';
   render(header, html`
     <div class="container header-inner">
-      <a class="brand" href="index.html" aria-label="KC Lawn and Garden Almanac, home">
+      <a class="brand" href="index.html" aria-label="Lawn and Garden Almanac, home">
         ${brandMark()}
         <span class="brand-text">
-          <span class="brand-name"><span class="long">KC Lawn &amp; Garden Almanac</span><span class="short">KC Lawn Almanac</span></span>
+          <span class="brand-name"><span class="long">Lawn &amp; Garden Almanac</span><span class="short">Lawn Almanac</span></span>
           <span class="brand-sub">${sub}</span>
         </span>
       </a>
@@ -108,8 +111,8 @@ export function mountChrome(page) {
   footer.className = 'site-footer';
   render(footer, html`<div class="container footer-grid">
       <div>
-        <p><strong>KC Lawn &amp; Garden Almanac</strong>: a free month-by-month plan for rain-fed tall fescue lawns, flower beds and vegetable gardens around Kansas City.</p>
-        <p>It summarizes University of Missouri and K-State Extension guidance plus peer-reviewed research. Always read and follow the product label; the label is the law. Your checkmarks, notes and journal are stored only in this browser.</p>
+        <p><strong>Lawn &amp; Garden Almanac</strong>: a free month-by-month plan for your lawn, flower beds and vegetable garden, fitted to your ZIP code anywhere in the United States.</p>
+        <p>It summarizes university Extension guidance plus peer-reviewed research. Always read and follow the product label; the label is the law. Your checkmarks, notes and journal are stored only in this browser.</p>
       </div>
       <div><ul class="footer-links">
         <li><a href="library.html">Sources &amp; research</a></li>
@@ -172,16 +175,15 @@ function mountLocBar(header) {
   bar.className = 'locbar no-print';
   const s = store.settings;
   const L = activeLocal();
-  const home = isHome(s.location);
-  const name = L ? L.name : (s.location && s.location.name) || DEFAULT_LOCATION.name;
-  const warn = L && L.fit && L.fit.length;
-  render(bar, html`<div class="container locbar-inner">
-      <p class="loc-now">${icon('pin')}<span>Plan for <strong>${name}</strong>${L ? html` · Zone ${L.zone}${L.zoneEst ? ' (est.)' : ''}<span class="loc-extra"> · ${frostWords(L)}</span>` : home ? ' · Zone 6b' : html`<span class="loc-extra"> · weather only; dates are Kansas City's</span>`}${warn ? html` <a class="loc-warn" href="index.html#place">${icon('alert')}${L.fit.some((x) => x.level === 'high') ? 'Poor fit' : 'Partial fit'}</a>` : ''}</span></p>
+  const has = !!(s.location && s.location.name);
+  render(bar, html`<div class="container locbar-inner ${has ? '' : 'is-unset'}">
+      <p class="loc-now">${icon('pin')}<span>${L ? html`Plan for <strong>${L.name}</strong> · Zone ${L.zone}${L.zoneEst ? ' (est.)' : ''}<span class="loc-extra"> · ${frostWords(L)} · ${grassOf().short || grassOf().name} lawn</span>`
+        : has ? html`Weather for <strong>${s.location.name}</strong><span class="loc-extra"> · dates not fitted yet; enter your ZIP again to retry</span>`
+        : html`<strong>Where do you garden?</strong> Enter your ZIP code to fit every date, the weather and the lawn plan to your area.`}</span></p>
       <form class="loc-form" data-zip-form novalidate>
-        <label for="loc-zip">${home ? 'Somewhere else?' : 'Change'}</label>
-        <input id="loc-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="ZIP code" autocomplete="postal-code" value="${(!home && s.location.zip) || ''}">
+        <label for="loc-zip">${has ? 'Change' : 'ZIP code'}</label>
+        <input id="loc-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="ZIP code" autocomplete="postal-code" value="${(has && s.location.zip) || ''}">
         <button type="submit" class="btn btn-sm btn-primary">Go</button>
-        ${home ? '' : html`<button type="button" class="btn btn-sm btn-ghost" data-loc-reset title="Back to the Kansas City plan">Reset</button>`}
       </form>
       <p class="loc-status" role="status" aria-live="polite" hidden></p>
     </div>`);
@@ -200,7 +202,6 @@ function mountLocBar(header) {
     if (!/^\d{5}$/.test(zip)) { setStatus('Enter a 5-digit US ZIP code.', true); $('#loc-zip', bar).focus(); return; }
     changePlace(() => setPlaceByZip(zip), setStatus);
   });
-  on(bar, 'click', '[data-loc-reset]', () => { resetPlace(); setFlash('Back to the Kansas City plan.'); location.reload(); });
 
   const flash = takeFlash();
   if (flash) setTimeout(() => toast(flash, { timeout: 7000 }), 300);
@@ -279,11 +280,12 @@ function openMore(page) {
 
 /* ---------------- Settings ---------------- */
 const REGION_HELP = {
-  central: 'University of Missouri "Central" planting dates. They fit the Kansas City metro (the Missouri River runs along the North/Central line), with an average last frost around April 15.',
-  north: 'MU "North" dates, about a week later in spring and earlier in fall. Use them if your yard is a cold, low spot or you want a safety margin.',
+  central: 'Enter your ZIP code in the bar at the top and every task and planting window moves to your local frost dates. Or type your own frost dates here.',
   custom: 'Enter your own average frost dates and every task and planting window shifts to match.',
 };
-const localHelp = (L) => L.frostFree ? `Estimated for ${L.name}, where freezes are rare. Dates shift as far as the plan stretches (6 weeks), so treat them as rough.` : `Frost dates estimated for ${L.name}: last spring frost about ${fmtMMDD(L.lastFrost)} (${shiftWords(L.dSpring)}), first fall frost about ${fmtMMDD(L.firstFrost)} (${shiftWords(L.dFall)}). Every task and planting window shifts to match.`;
+const localHelp = (L) => (L.frostFree ? `Estimated for ${L.name}, where freezes are rare, so the plan runs on its longest growing season.` : `Frost dates estimated for ${L.name}: last spring frost about ${fmtMMDD(L.lastFrost)}, first fall frost about ${fmtMMDD(L.firstFrost)}. Every task and planting window follows them.`);
+const planKey = (s) => JSON.stringify([s.region, s.lastFrost, s.firstFrost, s.grass, s.watering, s.showOptional]);
+let planAtOpen = '';
 
 export function openSettings() {
   const dlg = makeDialog('settings-dlg');
@@ -308,7 +310,7 @@ export function openSettings() {
 
         <fieldset>
           <legend>Planting dates</legend>
-          ${seg('region', [...(s.local ? [['local', s.local.name]] : []), ['central', 'MU Central (KC)'], ['north', 'MU North (cautious)'], ['custom', 'My frost dates']])}
+          ${seg('region', [...(s.local ? [['local', s.local.name]] : []), ['custom', 'My frost dates']])}
           <p class="subtle" style="margin:8px 0 0">${s.region === 'local' && s.local ? localHelp(s.local) : REGION_HELP[s.region] || ''}</p>
           ${s.region === 'custom' ? html`<div class="field-row" style="margin-top:10px">
             <div class="field"><label for="s-lf">Average last spring frost</label><input id="s-lf" type="date" data-frost="lastFrost" value="${dateVal(s.lastFrost)}"></div>
@@ -320,17 +322,24 @@ export function openSettings() {
           <legend>Your area</legend>
           <p class="subtle" style="margin:0 0 8px">Sets the live weather and works out local frost dates, so the whole plan shifts to fit.</p>
           <div class="field"><label for="s-place">Find a town or ZIP</label>
-            <div class="row" style="flex-wrap:nowrap"><input id="s-place" type="search" placeholder="e.g. Overland Park, KS" autocomplete="off"><button type="button" class="btn" data-geo-search>${icon('search')}<span class="sr-only">Search</span></button></div>
+            <div class="row" style="flex-wrap:nowrap"><input id="s-place" type="search" placeholder="e.g. Austin, TX or 78701" autocomplete="off"><button type="button" class="btn" data-geo-search>${icon('search')}<span class="sr-only">Search</span></button></div>
           </div>
           <ul class="list-plain stack-sm" data-geo-results style="margin-top:8px"></ul>
-          <p class="subtle" style="margin:8px 0">Now using <strong>${s.location.name}</strong> (${Number(s.location.lat).toFixed(3)}, ${Number(s.location.lon).toFixed(3)}).</p>
-          <div class="btn-group"><button type="button" class="btn btn-sm" data-geo-me>${icon('pin')}Use my location</button><button type="button" class="btn btn-sm btn-ghost" data-geo-reset>Reset to Kansas City</button></div>
+          ${s.location ? html`<p class="subtle" style="margin:8px 0">Now using <strong>${s.location.name}</strong> (${Number(s.location.lat).toFixed(3)}, ${Number(s.location.lon).toFixed(3)}).</p>` : ''}
+          <div class="btn-group"><button type="button" class="btn btn-sm" data-geo-me>${icon('pin')}Use my location</button></div>
         </fieldset>
 
         <fieldset>
-          <legend>Lawn program</legend>
-          <p class="subtle" style="margin:0 0 8px">Yearly nitrogen for tall fescue, in lb N per 1,000 sq ft. MU recommends 3–4 lb, mostly in fall.</p>
-          ${seg('nTarget', [[2, '2 lb · low input'], [3, '3 lb · standard'], [4, '4 lb · max']])}
+          <legend>Your lawn</legend>
+          <div class="field"><label for="s-grass">Grass type</label>
+            <select id="s-grass" data-grass>${GRASS_ORDER.map((g) => html`<option value="${g}" ${attr(g === grassId(s), 'selected')}>${GRASSES[g].name} (${GRASSES[g].group}-season)</option>`)}</select>
+          </div>
+          <p class="subtle" style="margin:8px 0">${s.grassChosen ? 'The lawn tasks, guide and alerts follow this grass.' : 'Picked from your climate. Change it if your lawn is something else; the lawn tasks, guide and alerts follow it.'} Mow at ${grassOf(s).mow}.</p>
+          <p class="subtle" style="margin:0 0 8px">Yearly nitrogen, in lb N per 1,000 sq ft. ${grassOf(s).nNote}</p>
+          ${seg('nTarget', grassOf(s).n.map((n, i, all) => [n, `${n} lb${i === 0 ? ' · low input' : i === all.length - 1 ? ' · max' : ' · standard'}`]))}
+          <div class="field" style="margin-top:12px"><span class="toolbar-label" style="min-width:0">Watering</span>
+            ${seg('watering', [['rain', 'Rain-fed (soak only to save it)'], ['irrigate', 'I water regularly']])}
+          </div>
         </fieldset>
 
         <fieldset>
@@ -362,7 +371,11 @@ export function openSettings() {
       const key = b.dataset.seg;
       let v = b.dataset.val;
       if (key === 'nTarget') v = Number(v);
-      store.setSettings({ [key]: v });
+      store.setSettings({ [key]: v, ...(key === 'watering' ? { wateringChosen: true } : {}) });
+      draw();
+    });
+    on(dlg, 'change', '[data-grass]', (e, el) => {
+      store.setSettings({ grass: el.value, grassChosen: true, nTarget: GRASSES[el.value].nDefault });
       draw();
     });
     on(dlg, 'change', '[data-setting]', (e, el) => {
@@ -390,7 +403,7 @@ export function openSettings() {
         const j = await r.json();
         const res = (j.results || []);
         if (!res.length) { render(list, html`<li class="subtle">No places found. Try "Town, State".</li>`); return; }
-        render(list, res.map((p) => html`<li><button type="button" class="btn btn-sm" style="width:100%;justify-content:flex-start" data-pick='${JSON.stringify({ name: `${p.name}${p.admin1 ? ', ' + p.admin1 : ''}`, lat: p.latitude, lon: p.longitude })}'>${icon('pin')}${p.name}${p.admin1 ? `, ${p.admin1}` : ''}${p.country_code && p.country_code !== 'US' ? ` (${p.country_code})` : ''}</button></li>`));
+        render(list, res.map((p) => html`<li><button type="button" class="btn btn-sm" style="width:100%;justify-content:flex-start" data-pick='${JSON.stringify({ name: `${p.name}${p.admin1 ? ', ' + p.admin1 : ''}`, lat: p.latitude, lon: p.longitude, state: p.admin1 || null })}'>${icon('pin')}${p.name}${p.admin1 ? `, ${p.admin1}` : ''}${p.country_code && p.country_code !== 'US' ? ` (${p.country_code})` : ''}</button></li>`));
       } catch (err) {
         render(list, html`<li class="subtle">Couldn't reach the place search. Check your connection.</li>`);
       }
@@ -412,16 +425,13 @@ export function openSettings() {
         { timeout: 10000 },
       );
     });
-    on(dlg, 'click', '[data-geo-reset]', () => {
-      resetPlace();
-      setFlash('Back to the Kansas City plan.');
-      location.reload();
-    });
     dlg.addEventListener('close', () => {
-      // let pages re-render with new settings
+      // Dates and lawn content are baked in at load, so a change to them needs a fresh page.
+      if (planKey(store.settings) !== planAtOpen) { location.reload(); return; }
       document.dispatchEvent(new CustomEvent('settings-closed'));
     });
   }
+  planAtOpen = planKey(store.settings);
   dlg.showModal();
 }
 
@@ -542,7 +552,7 @@ function goTo(href) {
 }
 
 /* ---------------- misc helpers ---------------- */
-export function setTitle(t) { document.title = `${t} · KC Lawn & Garden Almanac`; }
+export function setTitle(t) { document.title = `${t} · ${SITE}`; }
 
 export function loadingBlock(msg = 'Loading…') {
   return html`<div class="loading"><span class="spinner"></span>${msg}</div>`;

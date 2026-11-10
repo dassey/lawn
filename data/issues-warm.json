@@ -1,0 +1,161 @@
+[
+ {
+  "id": "large-patch",
+  "group": "disease",
+  "name": "Large patch",
+  "aka": [
+   "Zoysia patch",
+   "Brown patch of warm-season grass"
+  ],
+  "type": "Fungal disease",
+  "months": [
+   4,
+   5,
+   9,
+   10,
+   11
+  ],
+  "grass": "warm",
+  "symptoms": "Circles of thin, tan turf 2–20 ft across, often with an orange or bronze edge in cool, wet weather. Leaves pull easily from the runner and are rotted at the base.",
+  "when": "Fall as soil cools below 70°F, and again at spring green-up.",
+  "cultural": "No nitrogen in fall or early spring. Improve drainage, water only in the morning, and relieve compaction.",
+  "control": "Most lawns grow out of it in summer. For lawns hit every year, apply a preventive fungicide (azoxystrobin or propiconazole) in fall when soil reaches 70°F and repeat per the label.",
+  "products": [
+   "diseaseex",
+   "bioadvanced-fungus"
+  ],
+  "sources": [
+   "ncsu-turffiles",
+   "clemson-hgic-lawns"
+  ]
+ },
+ {
+  "id": "spring-dead-spot",
+  "group": "disease",
+  "name": "Spring dead spot",
+  "aka": [],
+  "type": "Fungal root disease",
+  "months": [
+   3,
+   4,
+   5
+  ],
+  "grass": [
+   "bermuda",
+   "zoysia"
+  ],
+  "symptoms": "Round, sunken, straw-colored patches 6 in to 3 ft across that stay dead while the rest of the bermudagrass greens up. They return in the same spots each year.",
+  "when": "Shows at spring green-up; the infection happens the fall before.",
+  "cultural": "Avoid nitrogen after late summer, keep potassium adequate, core aerate in early summer and raise the mowing height in fall.",
+  "control": "The grass creeps back in over summer. Fall fungicides help only on lawns with a long history of it.",
+  "products": [],
+  "sources": [
+   "ncsu-turffiles"
+  ]
+ },
+ {
+  "id": "chinch-bugs",
+  "group": "insect",
+  "name": "Southern chinch bug",
+  "aka": [
+   "Chinch bugs"
+  ],
+  "type": "Sap-sucking insect",
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "grass": "staug",
+  "id_tips": "Irregular yellow, then straw-brown patches in the hottest, sunniest parts of a St. Augustine lawn, often along pavement. Tiny black bugs with white wings at the edge of the damage.",
+  "when": "Hot, dry weather from late spring through summer.",
+  "cultural": "Avoid heavy nitrogen, water deeply when the lawn is dry, and keep thatch down. Some St. Augustine varieties are more resistant.",
+  "control": "Confirm with the flotation test (a bottomless can pushed into the soil and filled with water). Spot-treat affected areas and a few feet beyond with a labeled insecticide.",
+  "products": [
+   "bonide-eight"
+  ],
+  "sources": [
+   "uf-lawns",
+   "aggieturf"
+  ]
+ },
+ {
+  "id": "take-all-root-rot",
+  "group": "disease",
+  "name": "Take-all root rot",
+  "aka": [
+   "Take-all patch"
+  ],
+  "type": "Fungal root disease",
+  "months": [
+   4,
+   5,
+   6,
+   9,
+   10
+  ],
+  "grass": [
+   "staug",
+   "bermuda",
+   "zoysia",
+   "centipede"
+  ],
+  "symptoms": "Yellow, thinning irregular patches; roots short, dark and rotted; runners pull up easily. Common in St. Augustinegrass in high-pH soil.",
+  "when": "Spring and fall, in wet weather and stressed lawns.",
+  "cultural": "Water deeply and seldom, avoid heavy nitrogen, and topdress affected areas with acidic sphagnum peat moss to lower the surface pH.",
+  "control": "Good care matters more than fungicide. Azoxystrobin in spring and fall can help.",
+  "products": [
+   "diseaseex"
+  ],
+  "sources": [
+   "aggieturf"
+  ]
+ },
+ {
+  "id": "centipede-decline",
+  "group": "other",
+  "name": "Centipede decline",
+  "aka": [],
+  "type": "Cultural problem",
+  "months": [
+   4,
+   5,
+   6
+  ],
+  "grass": "centipede",
+  "id_tips": "Centipedegrass that greens up in spring, then yellows and dies in patches. Usually follows years of too much nitrogen, high pH, or mowing too high.",
+  "when": "Spring green-up into early summer.",
+  "cultural": "Limit nitrogen to ½–1 lb a year, keep pH at 5.0–6.0, mow at 1.5–2 in, and water during drought.",
+  "control": "Correct the care and replug dead areas. There is nothing to spray.",
+  "products": [],
+  "sources": [
+   "clemson-hgic-lawns"
+  ]
+ },
+ {
+  "id": "mole-crickets",
+  "group": "insect",
+  "name": "Mole crickets",
+  "aka": [],
+  "type": "Root-feeding insect",
+  "months": [
+   6,
+   7,
+   8,
+   9
+  ],
+  "grass": "warm",
+  "id_tips": "Spongy turf with small raised tunnels, and grass dying in patches, mostly in sandy soil along the Gulf and south Atlantic coasts.",
+  "when": "Young crickets feed in early to midsummer; damage shows in late summer and fall.",
+  "cultural": "Keep the lawn healthy and watered so it tolerates feeding.",
+  "control": "A soap flush (2 tablespoons of dish soap in a gallon of water over a square yard) brings them up. Treat in early summer when the nymphs are small.",
+  "products": [
+   "bonide-eight"
+  ],
+  "sources": [
+   "uf-lawns"
+  ]
+ }
+]

@@ -73,9 +73,9 @@ function shell() {
   const s = store.settings;
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Vegetable garden · MU planting calendar</span>
+      <span class="eyebrow">Vegetable garden · planting calendar</span>
       <h1>Veggie garden planner</h1>
-      <p class="lede">What grows well around Kansas City, when to plant it, which varieties hold up to our heat and clay, and how to rotate beds. Dates follow University of Missouri Extension (G6201).</p>
+      <p class="lede">What to grow, when to plant it in your area, which varieties hold up to heat and clay, and how to rotate beds. Planting windows are counted from your local frost dates.</p>
     </section>
     <div class="toolbar" style="margin-top:12px">
       <div class="toolbar-row">
@@ -114,8 +114,8 @@ function shell() {
 
 function draw() {
   const s = store.settings;
-  render($('#region-seg'), html`${[...(s.local ? [['local', s.local.name]] : []), ['central', 'MU Central (KC)'], ['north', 'MU North'], ['custom', 'My frost dates']].map(([v, l]) => html`<button type="button" data-region="${v}" aria-pressed="${String(s.region === v)}">${l}</button>`)}`);
-  render($('#region-note'), s.region === 'local' && s.local ? `Shifted to your area: ${frostWords(s.local)}.` : s.region === 'custom' ? html`Last frost ${fmtMMDD(s.lastFrost)} · first frost ${fmtMMDD(s.firstFrost)} <button type="button" class="btn btn-sm btn-ghost" data-action="settings">Edit</button>` : s.region === 'north' ? 'Cautious dates, about a week later in spring.' : 'Best fit for the Kansas City metro.');
+  render($('#region-seg'), html`${[...(s.local ? [['local', s.local.name]] : []), ['custom', 'My frost dates']].map(([v, l]) => html`<button type="button" data-region="${v}" aria-pressed="${String(s.region === v)}">${l}</button>`)}`);
+  render($('#region-note'), s.region === 'local' && s.local ? `Fitted to your area: ${frostWords(s.local)}.` : s.region === 'custom' ? html`Last frost ${fmtMMDD(s.lastFrost)} · first frost ${fmtMMDD(s.firstFrost)} <button type="button" class="btn btn-sm btn-ghost" data-action="settings">Edit</button>` : 'Enter your ZIP code at the top to fit these dates to your area.');
   $$('[data-tab]', app).forEach((b) => b.setAttribute('aria-selected', String(b.dataset.tab === ui.tab)));
   drawPanelBody();
 }
@@ -198,7 +198,7 @@ function drawTimeline(p) {
         </div>
       </div>`)}
     </div></div>` : html`<div class="empty">No crops match. ${ui.filter === 'mine' ? 'Star crops on the Crops tab to build your list.' : ''}</div>`}
-    <p class="subtle" style="margin-top:10px">Tap a bar for exact dates. Windows are University of Missouri planting dates (G6201); harvest bars are typical. Seasons vary ±2 weeks, so watch soil temperature and the forecast (the Today page does this for you).</p>`);
+    <p class="subtle" style="margin-top:10px">Tap a bar for exact dates. Planting windows are counted from your frost dates; harvest bars are typical. Seasons vary ±2 weeks, so watch soil temperature and the forecast (the Today page does this for you).</p>`);
 }
 
 function wireTooltip() {
@@ -321,7 +321,7 @@ function drawSeeds(p) {
       <div>
         <div class="row-between" style="margin-bottom:10px"><h2 style="margin:0">Seed-starting schedule · ${YEAR}</h2>
           <button type="button" class="btn btn-sm" data-ics-seeds>${icon('calendar')}Add to calendar</button></div>
-        <p class="subtle">Counted back from ${frostSetting(store.settings) ? 'your frost dates' : 'MU planting dates'}. ★ = in your garden list.</p>
+        <p class="subtle">Counted back from ${frostSetting(store.settings) ? 'your frost dates' : 'a mid-April last frost'}. ★ = in your garden list.</p>
         <div class="table-wrap"><table>
           <thead><tr><th>Done</th><th>Crop</th><th>Sow indoors</th><th>Plant out</th></tr></thead>
           <tbody>${rows.map((r) => {

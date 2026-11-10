@@ -6,7 +6,7 @@ import { loadData, byId } from '../core/data.js';
 import { store, isDone, uid } from '../core/store.js';
 import { today, monthName, monthShort, MON, toISO, fromISO, mmdd, fromMMDD } from '../core/dates.js';
 import {
-  taskCard, wireTasks, visibleTasks, sortTasks, taskMonths, datedWindows, revealTask, PRIORITY, CATS, CAT_ORDER,
+  taskCard, wireTasks, visibleTasks, sortTasks, taskMonths, datedWindows, revealTask, PRIORITY, CATS, CAT_ORDER, monthBrief,
 } from '../core/tasks.js';
 import { taskEvents, downloadICS } from '../core/ics.js';
 import { climateFor } from '../core/place.js';
@@ -92,7 +92,7 @@ function drawShell() {
     <section class="page-head">
       <span class="eyebrow">Month-by-month plan</span>
       <h1>Calendar</h1>
-      <p class="lede">Every lawn, bed, vegetable and yard task for the Kansas City area, with the cue that tells you when. Check tasks off as you go; your progress is saved in this browser and resets each year.</p>
+      <p class="lede">Every lawn, bed, vegetable and yard task for your area, with the cue that tells you when. Check tasks off as you go; your progress is saved in this browser and resets each year.</p>
     </section>
     <div id="cal"></div>`);
   wireTasks(app, ctx, () => draw());
@@ -162,7 +162,8 @@ function draw() {
   if (ui.view === 'year') { drawYear(el); return; }
   const m = ui.month;
   const mo = D.months.months.find((x) => x.m === m);
-  const cl = D.climate.monthly[m - 1];
+  const cl = D.climate ? D.climate.monthly[m - 1] : null;
+  const brief = monthBrief(D.tasks, m);
   const isNow = m === NOW.getMonth() + 1 && ui.year === NOW.getFullYear();
   const years = [NOW.getFullYear() - 1, NOW.getFullYear(), NOW.getFullYear() + 1];
   const mc = monthCounts(m);
@@ -190,20 +191,18 @@ function draw() {
     </div>
 
     <section class="section">
-      <div class="hero cat-${mo?.accent || 'lawn'}" style="padding:18px">
+      <div class="hero cat-${brief.accent}" style="padding:18px">
         <div class="row-between" style="align-items:flex-start">
           <div style="flex:1;min-width:240px">
-            <span class="eyebrow">${isNow ? 'This month' : monthName(m)} · ${mo?.headline || ''}</span>
-            <div class="bottom-line">${icon('sparkle')}<div><b>Bottom line</b><span>${mo?.bottomLine || ''}</span></div></div>
-            ${mo?.summary ? html`<p style="margin:12px 0 0;color:var(--ink-2)">${mo.summary}</p>` : ''}
+            <span class="eyebrow">${isNow ? 'This month' : monthName(m)}</span>
+            <div class="bottom-line">${icon('sparkle')}<div><b>Key jobs</b><span>${brief.text}</span></div></div>
           </div>
           <div class="ring" style="--p:${pct};--size:72px" role="img" aria-label="${mc.done} of ${mc.total} tasks done"><span>${pct}%</span></div>
         </div>
         <div class="hero-stats">
-          <span class="pill" title="KCI 1991–2020 normal">${icon('thermo')}Avg ${cl.hi}° / ${cl.lo}°F</span>
-          <span class="pill" title="KCI 1991–2020 normal">${icon('rain')}${cl.precip} in rain</span>
-          ${cl.days90 ? html`<span class="pill">${icon('flame')}~${cl.days90} days ≥90°F</span>` : ''}
-          ${mo?.frost ? html`<span class="pill">${icon('snow')}${mo.frost}</span>` : ''}
+          ${cl ? html`<span class="pill" title="Local normal (estimate)">${icon('thermo')}Avg ${Math.round(cl.hi)}° / ${Math.round(cl.lo)}°F</span>
+          <span class="pill" title="Local normal (estimate)">${icon('rain')}${cl.precip.toFixed(1)} in rain</span>` : ''}
+          ${cl && cl.days90 ? html`<span class="pill">${icon('flame')}~${cl.days90} days ≥90°F</span>` : ''}
           <label class="pill" style="gap:4px">Year <select data-year aria-label="Checklist year" style="min-height:0;padding:0 4px;border:0;background:transparent;font:inherit;width:auto">${years.map((y) => html`<option ${y === ui.year ? raw('selected') : ''}>${y}</option>`)}</select></label>
         </div>
       </div>
@@ -307,7 +306,6 @@ function drawYear(el) {
           const crit = sortTasks(all.filter((t) => inMonth(t, mo.m) && t.priority === 'critical'), ui.year, store.settings);
           return html`<article class="card card-tight ${mo.m === nowM ? '' : 'is-flat'}" style="${mo.m === nowM ? 'border-color:var(--brand)' : ''}">
             <h3 style="margin:0 0 4px"><a href="#/month/${mo.m}">${monthName(mo.m)}</a></h3>
-            <p class="subtle" style="margin:0 0 8px">${mo.bottomLine}</p>
             ${crit.length ? html`<ul class="list-check" style="font-size:.9rem">${crit.map((t) => html`<li class="${isDone(ui.year, t.id) ? 'muted' : ''}"><a href="#/task/${t.id}">${t.title}</a></li>`)}</ul>` : html`<p class="subtle" style="margin:0">No key tasks; a light month.</p>`}
           </article>`;
         })}
@@ -318,12 +316,12 @@ function drawYear(el) {
 /* ---------- export / print ---------- */
 function icsMonth() {
   const list = filtered(ui.month);
-  downloadICS(`kc-yard-${MON[ui.month - 1].toLowerCase()}.ics`, taskEvents(list, ui.year, store.settings), `KC yard: ${monthName(ui.month)}`);
+  downloadICS(`yard-${MON[ui.month - 1].toLowerCase()}.ics`, taskEvents(list, ui.year, store.settings), `Yard: ${monthName(ui.month)}`);
   toast(`${list.length} reminders exported. Open the file to add them (they repeat yearly).`);
 }
 function icsYear() {
   const list = allTasks().filter((t) => ui.cats.has(t.category) && ui.pris.has(t.priority));
-  downloadICS('kc-lawn-garden-year.ics', taskEvents(list, ui.year, store.settings), 'KC Lawn & Garden Almanac');
+  downloadICS('lawn-garden-year.ics', taskEvents(list, ui.year, store.settings), 'Lawn & Garden Almanac');
   toast(`${list.length} yearly reminders exported.`);
 }
 function printMonth() {
@@ -339,7 +337,7 @@ function printYear() {
   const all = allTasks();
   render(holder, html`${D.months.months.map((mo) => {
     const list = sortTasks(all.filter((t) => inMonth(t, mo.m) && ui.cats.has(t.category) && ui.pris.has(t.priority)), ui.year, store.settings);
-    return html`<section class="print-month"><h2>${monthName(mo.m)}: ${mo.bottomLine}</h2><div class="task-list">${list.map((t) => taskCard(t, { ...c, compact: true, showCat: true }))}</div></section>`;
+    return html`<section class="print-month"><h2>${monthName(mo.m)}</h2><div class="task-list">${list.map((t) => taskCard(t, { ...c, compact: true, showCat: true }))}</div></section>`;
   })}`);
   const cal = $('#cal');
   cal.style.display = 'none';

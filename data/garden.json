@@ -35,9 +35,9 @@
   },
   "guides": [
     {
-      "title": "Beating KC clay", "icon": "soil",
+      "title": "Beating heavy clay", "icon": "soil",
       "points": [
-        "Raised beds 8–12 in tall warm up and drain faster in April. Fill them with a topsoil–compost blend (local yards like Missouri Organic sell one).",
+        "Raised beds 8–12 in tall warm up and drain faster in {{m:4}}. Fill them with a topsoil–compost blend (many landscape-supply yards sell one).",
         "In-ground beds: work in 2–3 in of compost every year, but only when a squeezed handful crumbles. Wet clay makes clods that last all season.",
         "Never add sand to clay; it sets up like concrete.",
         "Top beds with compost or shredded leaves every fall, and keep them mulched in summer."
@@ -47,9 +47,9 @@
       "title": "Watering without a sprinkler system", "icon": "drop",
       "points": [
         "Soaker hose or drip line under the mulch, on a hose timer, is the easiest system.",
-        "About 1 in of water per week total (rain + watering); tomatoes and melons want up to 1.5 inches a week in July.",
+        "About 1 in of water per week total (rain + watering); tomatoes and melons want up to 1.5 inches a week in {{m:7}}.",
         "Water deeply twice a week in the morning, at the base, rather than a little every day.",
-        "Mulch 2–3 in with straw or shredded leaves once soil warms (late May). It halves watering and prevents blossom-end rot."
+        "Mulch 2–3 in with straw or shredded leaves once soil warms ({{p:late:5}}). It halves watering and prevents blossom-end rot."
       ]
     },
     {
@@ -66,19 +66,19 @@
       "title": "Succession & the fall garden", "icon": "calendar",
       "points": [
         "Sow lettuce, radishes and beans every 2–3 weeks through their windows for a steady harvest.",
-        "Plant a second squash and cucumber round in late June–early July to dodge the first wave of pests.",
-        "The fall garden (planted late July–August) is often better than spring for broccoli, cabbage, carrots, lettuce and spinach, because they mature in cool weather.",
+        "Plant a second squash and cucumber round in {{p:late:6}} to {{p:early:7}} to dodge the first wave of pests.",
+        "The fall garden (planted {{p:late:7}} through {{m:8}}) is often better than spring for broccoli, cabbage, carrots, lettuce and spinach, because they mature in cool weather.",
         "Shade new fall seedlings from afternoon sun for their first week."
       ],
       "sources": ["mu-g6201"]
     },
     {
-      "title": "KC summer heat", "icon": "flame",
+      "title": "Summer heat", "icon": "flame",
       "points": [
-        "Tomatoes stop setting fruit when nights stay above ~75°F and resume in September. Keep them watered; don't pull them.",
+        "Tomatoes stop setting fruit when nights stay above ~75°F and resume in {{m:9}}. Keep them watered; don't pull them.",
         "Heat-set tomatoes (Florida 91, Sun Leaper, Sunmaster) keep producing through hot spells.",
-        "Lettuce bolts in heat, so grow heat-tolerant Muir or Jericho and finish harvesting by early June.",
-        "Okra, sweet potatoes, peppers and southern peas love July."
+        "Lettuce bolts in heat, so grow heat-tolerant Muir or Jericho and finish harvesting by {{p:early:6}}.",
+        "Okra, sweet potatoes, peppers and southern peas love {{m:7}} heat."
       ],
       "sources": ["kstate-l41"]
     },
@@ -95,8 +95,8 @@
   "pests": [
     {
       "id": "squash-vine-borer", "name": "Squash vine borer", "crops": "zucchini, summer squash, pumpkins",
-      "signs": "A vigorous plant suddenly wilts in late June–July; sawdust-like frass at the base of the stem; red-and-black clearwing moths hovering around plants in June.",
-      "fix": "Keep row cover on until flowering (then remove for pollination). Border the patch with Blue Hubbard squash as a trap crop. Grow butternut or Tromboncino (C. moschata), which are far less affected, and plant a second round in early July. If you spray, use a product whose label lists squash vine borer, on the lower stems every 7 days while moths fly; once larvae are inside, sprays don't work (MU IPM). An infested stem can be slit lengthwise to remove the grub, then buried in moist soil.",
+      "signs": "A vigorous plant suddenly wilts in {{p:late:6}} or {{m:7}}; sawdust-like frass at the base of the stem; red-and-black clearwing moths hovering around plants in {{m:6}}.",
+      "fix": "Keep row cover on until flowering (then remove for pollination). Border the patch with Blue Hubbard squash as a trap crop. Grow butternut or Tromboncino (C. moschata), which are far less affected, and plant a second round in {{p:early:7}}. If you spray, use a product whose label lists squash vine borer, on the lower stems every 7 days while moths fly; once larvae are inside, sprays don't work (MU IPM). An infested stem can be slit lengthwise to remove the grub, then buried in moist soil.",
       "products": ["row-cover"], "sources": ["mu-ipm-svb", "mu-ipm-trapcrop"]
     },
     {
@@ -113,7 +113,7 @@
     },
     {
       "id": "hornworm", "name": "Tomato hornworm", "crops": "tomato, pepper, eggplant",
-      "signs": "Leaves stripped overnight in July; big dark droppings on lower leaves.",
+      "signs": "Leaves stripped overnight in {{m:7}}; big dark droppings on lower leaves.",
       "fix": "Hand-pick (they're easy to spot at dusk); Bt while they're small. Leave any covered in white cocoons, since parasitic wasps are finishing them.",
       "products": ["bt"]
     },
@@ -125,14 +125,14 @@
     },
     {
       "id": "early-blight", "name": "Early blight & Septoria leaf spot", "crops": "tomato, potato",
-      "signs": "Early blight: brown spots with target-like rings on lower leaves, yellowing upward from June on. Septoria: many small spots with gray centers.",
+      "signs": "Early blight: brown spots with target-like rings on lower leaves, yellowing upward from {{m:6}} on. Septoria: many small spots with gray centers.",
       "fix": "Remove spotted leaves, mulch to stop soil splash, water at the base in the morning, cage or stake for airflow, and rotate on a 3-year cycle. If it's severe, a protectant (chlorothalonil or copper) every 7–10 days per label.",
       "products": ["daconil", "copper", "straw-mulch"]
     },
     {
       "id": "blossom-end-rot", "name": "Blossom-end rot", "crops": "tomato, pepper, watermelon",
       "signs": "A leathery dark patch on the blossom end of the fruit, often on the first fruits.",
-      "fix": "Mulch and water evenly, and don't overdo nitrogen. K-State says low soil calcium is rare in Kansas, and the usual cause is moisture swings that block uptake. MU's tomato guide frames it as calcium plus moisture swings. Only add calcium if a soil test calls for it.",
+      "fix": "Mulch and water evenly, and don't overdo nitrogen. K-State says the usual cause is moisture swings that block calcium uptake, not low soil calcium. MU's tomato guide frames it as calcium plus moisture swings. Only add calcium if a soil test calls for it.",
       "products": ["straw-mulch", "soaker-drip"], "sources": ["kstate-ber", "mu-g6461"]
     },
     {
@@ -148,7 +148,7 @@
     },
     {
       "id": "japanese-beetle", "name": "Japanese beetles", "crops": "beans, grapes, raspberries, roses, basil",
-      "signs": "Metallic green-and-copper beetles skeletonizing leaves in June–July.",
+      "signs": "Metallic green-and-copper beetles skeletonizing leaves in {{mr:6:7}}.",
       "fix": "Knock them into soapy water in the cool morning. Don't use traps; they attract more beetles than they catch.",
       "sources": ["uky-japanese-beetle", "mu-japanese-beetle"]
     },

@@ -11,6 +11,8 @@ import { sourceItems, EVIDENCE } from '../core/tasks.js';
 import { fetchWeather, analyze } from '../core/weather.js';
 import { openLogDialog } from '../core/logdlg.js';
 import { climateFor } from '../core/place.js';
+import { grassOf, grassId, isWarm } from '../core/grass.js';
+import { whenLabel, datedWindows, kcDateFor } from '../core/windows.js';
 
 mountChrome('lawn');
 setTitle('Lawn guide');
@@ -32,15 +34,37 @@ const GROUPS = [
 ];
 
 async function main() {
-  D = await loadData('lawn', 'issues', 'products', 'sources', 'climate');
+  D = await loadData('lawn', 'issues', 'products', 'sources', 'climate', 'tasks');
   D.climate = climateFor(D.climate);
   P = byId(D.products);
   S = byId(D.sources);
   const L = D.lawn;
+  const G = grassOf();
+  const warm = isWarm();
+  const irrigate = store.settings.watering === 'irrigate';
+  const year = NOW.getFullYear();
+  const T = byId(D.tasks);
+  // Nitrogen by month, from this lawn's own feeding tasks on the local calendar.
+  const nByMonth = Array(12).fill(0);
+  const nOptional = new Set();
+  for (const t of D.tasks) {
+    if (t.category !== 'lawn' || !t.nitrogen) continue;
+    const m = datedWindows(t, year)[0].start.getMonth();
+    nByMonth[m] += t.nitrogen;
+    if (t.priority === 'optional') nOptional.add(m);
+  }
+  // Mowing height by local month: the guide's reference month for this point in the season.
+  const mowTop = G.mowSeg[G.mowSeg.length - 1];
+  const mowByMonth = MON.map((x, i) => {
+    const ref = L.mowing[kcDateFor(new Date(year, i, 15)).getMonth()].h;
+    if (!ref) return 0;
+    return warm ? G.mowSeg[Math.floor(G.mowSeg.length / 2)] : Math.max(2, ref - (grassId() === 'coolmix' ? 0.5 : 0));
+  });
+  const seedProducts = D.products.filter((p) => p.type === 'seed');
 
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Tall fescue · no sprinkler system</span>
+      <span class="eyebrow">${G.name} · ${irrigate ? 'watered lawn' : 'rain-fed lawn'}</span>
       <h1>Lawn guide</h1>
       <p class="lede">${L.intro}</p>
     </section>
@@ -60,25 +84,25 @@ async function main() {
       <div class="grid-2 section">
         <article class="card">
           <div class="card-head"><h3>${icon('sprout')}Nitrogen by month (lb N / 1,000 sq ft)</h3></div>
-          ${barChart({ labels: MON.map((x) => x[0]), values: L.nSchedule.map((x) => x.n), highlight: M - 1, faded: new Set(L.nSchedule.filter((x) => x.optional).map((x) => x.m - 1)), fmt: (v) => (v ? String(v) : ''), max: 1.5, ariaLabel: 'Nitrogen schedule: optional half pound in April, one pound each in September, October and November.' })}
+          ${barChart({ labels: MON.map((x) => x[0]), values: nByMonth, highlight: M - 1, faded: nOptional, fmt: (v) => (v ? String(v) : ''), max: 1.5, ariaLabel: `Nitrogen schedule by month for a ${G.name} lawn.` })}
           <p class="subtle" style="margin:6px 0 0">${L.nNote}</p>
         </article>
         <article class="card">
           <div class="card-head"><h3>${icon('mower')}Mowing height by month (inches)</h3></div>
-          ${barChart({ labels: MON.map((x) => x[0]), values: L.mowing.map((x) => x.h), highlight: M - 1, fmt: (v) => (v ? String(v) : ''), max: 4.5, barClass: 'bar', ariaLabel: 'Mowing height: about 3 to 3.5 inches in spring and fall, 4 inches in summer.' })}
-          <p class="subtle" style="margin:6px 0 0">${L.mowNote}</p>
+          ${barChart({ labels: MON.map((x) => x[0]), values: mowByMonth, highlight: M - 1, fmt: (v) => (v ? String(v) : ''), max: 4.5, barClass: 'bar', ariaLabel: `Mowing height by month for a ${G.name} lawn.` })}
+          <p class="subtle" style="margin:6px 0 0">${G.name}: mow at ${G.mow}. ${L.mowNote}</p>
         </article>
       </div>
       <div class="table-wrap section">
         <table>
           <thead><tr><th>When</th><th>What</th><th>Why</th></tr></thead>
-          <tbody>${L.keyDates.map((k) => html`<tr><td class="nowrap"><strong>${k.when}</strong></td><td>${md(k.what)}</td><td class="muted">${md(k.why)}</td></tr>`)}</tbody>
+          <tbody>${L.keyDates.filter((k) => !k.task || T[k.task]).map((k) => html`<tr><td><strong>${k.task ? whenLabel(T[k.task], year) : k.when}</strong>${k.task && k.when ? html`<br><span class="subtle">${k.when}</span>` : ''}</td><td>${md(k.what)}</td><td class="muted">${md(k.why)}</td></tr>`)}</tbody>
         </table>
       </div>
     </section>
 
     <section class="section" id="water">
-      <div class="section-head"><h2>Watering without a sprinkler system</h2></div>
+      <div class="section-head"><h2>${irrigate ? 'Watering' : 'Watering without a sprinkler system'}</h2></div>
       <div class="layout-main">
         <div class="stack">
           <div class="callout callout-water">${icon('drop')}<div><strong>The short version</strong><p>${md(L.water.short)}</p></div></div>
@@ -99,7 +123,7 @@ async function main() {
     </section>
 
     <section class="section" id="seed">
-      <div class="section-head"><h2>Grass seed: what to buy</h2><a href="tools.html#seed">Seed calculator ${icon('arrowRight')}</a></div>
+      <div class="section-head"><h2>${warm ? 'Establishing and repairing' : 'Grass seed: what to buy'}</h2><a href="tools.html#seed">Seed calculator ${icon('arrowRight')}</a></div>
       <div class="grid-2">
         <article class="card">
           <h3>${icon('seed')}${L.seed.blend.title}</h3>
@@ -118,8 +142,8 @@ async function main() {
       </div>
       <div class="grid-2 section">
         <article class="card">
-          <h3>${icon('bag')}Blends you can buy in KC</h3>
-          <ul class="list-plain stack-sm">${D.products.filter((p) => p.type === 'seed').map((p) => html`<li><a href="products.html#p-${p.id}"><strong>${p.name}</strong></a>${p.brand ? html` <span class="subtle">· ${p.brand}</span>` : ''}<br><span class="subtle">${p.use}</span>${p.evidence === 'vendor' ? html` <span class="ev ev-vendor">Vendor claim</span>` : ''}</li>`)}</ul>
+          <h3>${icon('bag')}${seedProducts.length ? 'Seed blends to look for' : 'Starter products'}</h3>
+          <ul class="list-plain stack-sm">${(seedProducts.length ? seedProducts : D.products.filter((p) => p.id === 'scotts-starter')).map((p) => html`<li><a href="products.html#p-${p.id}"><strong>${p.name}</strong></a>${p.brand ? html` <span class="subtle">· ${p.brand}</span>` : ''}<br><span class="subtle">${p.use}</span>${p.evidence === 'vendor' ? html` <span class="ev ev-vendor">Vendor claim</span>` : ''}</li>`)}</ul>
         </article>
         <article class="card">
           <h3>${icon('x')}Skip these</h3>
@@ -128,7 +152,7 @@ async function main() {
           <div class="table-wrap"><table class="table-compact"><tbody>${L.seed.rates.map((r) => html`<tr><td>${r.what}</td><td class="nowrap"><strong>${r.rate}</strong></td></tr>`)}</tbody></table></div>
         </article>
       </div>
-      <article class="card section" id="tag">
+      <article class="card section" id="tag" ${warm ? raw('hidden') : ''}>
         <div class="card-head"><h3>${icon('search')}Seed tag checker</h3></div>
         <p class="subtle">Type in what the bag's label (the "seed tag") says. The checker flags forage fescue, ryegrass-heavy mixes, old tests and weedy lots.</p>
         <form id="tag-form" class="stack" onsubmit="return false">
@@ -155,7 +179,7 @@ async function main() {
         <article class="card">
           <h3>${icon('ruler')}The ⅓ rule</h3>
           <p class="subtle">Never cut off more than a third of the blade at once. Pick your height:</p>
-          <div class="seg" role="group" aria-label="Mowing height" id="third-seg">${[3, 3.5, 4].map((h) => html`<button type="button" data-h="${h}" aria-pressed="${String(h === 4)}">${h} in</button>`)}</div>
+          <div class="seg" role="group" aria-label="Mowing height" id="third-seg">${G.mowSeg.map((h) => html`<button type="button" data-h="${h}" aria-pressed="${String(h === mowTop)}">${h} in</button>`)}</div>
           <div class="calc-result" style="margin-top:12px" id="third-out"></div>
         </article>
       </div>
@@ -198,12 +222,12 @@ async function main() {
   on(app, 'click', '[data-log-soil]', () => openLogDialog({ type: 'soil', cat: 'lawn', title: 'Soil test' }));
   document.addEventListener('journal-changed', drawSoil);
 
-  drawThird(4);
+  drawThird(mowTop);
   drawTag();
   drawIssues();
   drawSoil();
   drawDecide();
-  if (store.settings.weather) {
+  if (store.settings.weather && store.settings.location) {
     try {
       const res = await fetchWeather(store.settings.location);
       wx = analyze(res.data, { climate: D.climate });
@@ -260,13 +284,13 @@ function decide() {
   const how = timer ? 'Use your hose timer early in the morning (4–10 a.m.): two runs 30 minutes apart so clay can soak it up.' : 'Water early in the morning (4–10 a.m.). On clay, split it into two runs 30 minutes apart so it soaks in instead of running off.';
   if (look === 'seed') {
     if (rainSoon) return { cls: 'wait', icon: 'rain', title: 'Let the rain do it, but don\'t let seed dry out', text: 'If the top ½ in of soil is still damp, skip watering and let the forecast rain handle it. If it dries before the rain comes, give it a light sprinkle.' };
-    return { cls: 'urgent', icon: 'seed', title: 'Yes: keep new seed moist', text: `Water lightly **2–3 times a day** (about 5–10 minutes each) so the top ½ in never dries out, until seedlings are up (tall fescue takes about 7–14 days). After that, water every few days and more deeply. ${timer ? 'Set the timer for 3 short cycles a day.' : 'A $30–60 hose-end sprinkler on a timer makes this easy.'}` };
+    return { cls: 'urgent', icon: 'seed', title: 'Yes: keep new seed moist', text: `Water lightly **2–3 times a day** (about 5–10 minutes each) so the top ½ in never dries out, until seedlings are up (usually 1–3 weeks, depending on the grass). After that, water every few days and more deeply. ${timer ? 'Set the timer for 3 short cycles a day.' : 'A $30–60 hose-end sprinkler on a timer makes this easy.'}` };
   }
   if (rainSoon && look !== 'dormant') return { cls: 'wait', icon: 'rain', title: 'Wait for the rain', text: 'Rain is likely soon. Skip watering and check again in a couple of days.' };
   if (look === 'green') {
     return days >= 14 && hot
       ? { cls: 'wait', icon: 'eye', title: 'Not yet, but watch closely', text: 'It\'s still green, but it has been dry and hot. Water only when you see a blue-gray color or footprints that stay, then give it one deep soak (½–1 in).' }
-      : { cls: 'wait', icon: 'check', title: 'No water needed', text: 'Deep-rooted tall fescue is fine. Mow high (4 inches in summer) and let rain do the work.' };
+      : { cls: 'wait', icon: 'check', title: 'No water needed', text: `An established lawn is fine. Mow at the top of your range (${grassOf().mow}) and let rain do the work.` };
   }
   if (look === 'wilt') {
     return (days >= 10 || hot)
@@ -275,9 +299,9 @@ function decide() {
   }
   // dormant
   if (days >= 21 || (days >= 14 && hot)) {
-    return { cls: 'water', icon: 'drop', title: 'Yes: a crown-saver soak (½–1 in)', text: `Dormant tall fescue survives about 3–4 weeks of heat (above 80°F). Past that, crowns start to die. Give **½–1 in** now and every 2–3 weeks until rain returns. (UNL says ¼–½ in keeps crowns hydrated without greening the lawn; MU's lawn manual says at least 1 in every 2–3 weeks prevents turf loss.) ${how}` };
+    return { cls: 'water', icon: 'drop', title: 'Yes: a crown-saver soak (½–1 in)', text: `A dormant lawn survives about 3–4 weeks of heat (above 80°F). Past that, crowns start to die. Give **½–1 in** now and every 2–3 weeks until rain returns. (UNL says ¼–½ in keeps crowns hydrated without greening the lawn; MU's lawn manual says at least 1 in every 2–3 weeks prevents turf loss.) ${how}` };
   }
-  return { cls: 'wait', icon: 'check', title: 'Let it stay dormant', text: 'Brown, dormant fescue is protecting itself. Don\'t water it green and let it go dormant again, because each cycle drains its reserves. Keep traffic off it, and start crown-saver watering after about 3 weeks without rain.' };
+  return { cls: 'wait', icon: 'check', title: 'Let it stay dormant', text: 'A brown, dormant lawn is protecting itself. Don\'t water it green and let it go dormant again, because each cycle drains its reserves. Keep traffic off it, and start crown-saver watering after about 3 weeks without rain.' };
 }
 
 /* ---------- seed tag checker ---------- */
@@ -288,12 +312,12 @@ function drawTag() {
   const checks = [];
   const add = (ok, text, lvl) => checks.push({ ok, text, lvl: lvl || (ok ? 'good' : 'bad') });
   const species = n('tf') + n('kbg') + n('prg') + n('arg') + n('ff');
-  add(n('tf') >= 80, `Tall fescue is ${n('tf')}% of the bag. ${n('tf') >= 80 ? 'Good.' : 'Aim for 85–90%+ for a KC lawn.'}`);
+  add(n('tf') >= 80, `Tall fescue is ${n('tf')}% of the bag. ${n('tf') >= 80 ? 'Good.' : 'Aim for 85–90%+ for a tall fescue lawn.'}`);
   if (n('kbg') > 0) add(n('kbg') <= 20, `Kentucky bluegrass ${n('kbg')}%: ${n('kbg') <= 20 ? 'about 10% helps fill gaps.' : 'more than ~20% struggles without irrigation.'}`, n('kbg') <= 20 ? 'good' : 'warn');
-  if (n('prg') > 0) add(n('prg') <= 10, `Perennial ryegrass ${n('prg')}%: ${n('prg') <= 10 ? 'acceptable as a quick "nurse" grass.' : 'too much. MU warns ryegrass often won\'t survive a Missouri summer.'}`, n('prg') <= 10 ? 'warn' : 'bad');
-  if (n('arg') > 0) add(false, `Annual ryegrass ${n('arg')}%: MU says it's "not a suitable turfgrass species in Missouri." Skip this bag.`);
+  if (n('prg') > 0) add(n('prg') <= 10, `Perennial ryegrass ${n('prg')}%: ${n('prg') <= 10 ? 'acceptable as a quick "nurse" grass.' : 'too much. Ryegrass often dies out in a hot, humid summer.'}`, n('prg') <= 10 ? 'warn' : 'bad');
+  if (n('arg') > 0) add(false, `Annual ryegrass ${n('arg')}%: it dies after one season and is not a lawn grass. Skip this bag.`);
   if (n('ff') > 20) add(false, `Fine fescue is ${n('ff')}%. That's fine for shade, but it means you can't use Tenacity (mesotrione) at seeding (label limit is 20%).`, 'warn');
-  if (v.ky31) add(false, '"Kentucky 31" or "variety not stated" usually means forage-type tall fescue: coarse, clumpy and pale. MU restricts it to roadsides.');
+  if (v.ky31) add(false, '"Kentucky 31" or "variety not stated" usually means forage-type tall fescue: coarse, clumpy and pale. It belongs on roadsides and pastures.');
   add(n('germ') >= 85, `Germination ${n('germ')}%: ${n('germ') >= 85 ? 'good.' : 'low. Look for 85–90% or more.'}`, n('germ') >= 85 ? 'good' : 'warn');
   add(n('weed') <= 0.1, `Weed seed ${n('weed')}%: ${n('weed') === 0 ? 'perfect.' : n('weed') <= 0.1 ? 'OK, but 0% is available.' : 'too weedy for a lawn. Pick a bag with 0–0.1%.'}`, n('weed') <= 0.1 ? 'good' : 'bad');
   add(n('crop') <= 0.5, `Other crop seed ${n('crop')}%: ${n('crop') <= 0.5 ? 'fine.' : 'high. "Crop" can include unwanted grasses like orchardgrass or timothy.'}`, n('crop') <= 0.5 ? 'good' : 'warn');
@@ -366,7 +390,7 @@ function openIssue(id) {
 function drawSoil() {
   const tests = store.state.journal.filter((j) => j.type === 'soil').sort((a, b) => b.date.localeCompare(a.date));
   const t = tests[0];
-  const phNote = (ph) => (ph == null ? '' : ph < 5.8 ? 'Low. Lime per your report (≤50 lb/1,000 sq ft per application, fall or winter).' : ph <= 7.3 ? 'Fine for tall fescue. No lime needed.' : 'High (alkaline). Don\'t lime. Iron may look pale; ask Extension.');
+  const phNote = (ph) => (ph == null ? '' : ph < 5.8 ? 'Low. Lime per your report (≤50 lb/1,000 sq ft per application, fall or winter).' : ph <= 7.3 ? 'Fine for most lawn grasses. No lime needed.' : 'High (alkaline). Don\'t lime. Iron may look pale; ask Extension.');
   render($('#soil-results'), html`
     <div class="card-head"><h3>${icon('journal')}Your soil tests</h3><button type="button" class="btn btn-sm" data-log-soil>${icon('plus')}Add results</button></div>
     ${t ? html`
@@ -378,10 +402,10 @@ function drawSoil() {
         <div class="stat"><span class="stat-label">Org. matter</span><span class="stat-value">${t.om != null ? `${t.om}%` : '—'}</span></div>
       </div>
       ${t.ph != null ? html`<p style="margin-top:10px">${phNote(t.ph)}</p>` : ''}
-      <p class="subtle">Your MU report gives exact fertilizer and lime amounts; those numbers beat any rule of thumb. ${Number(t.date.slice(0, 4)) <= NOW.getFullYear() - 3 ? html`<strong>This test is 3+ years old. Time to retest.</strong>` : ''}</p>
+      <p class="subtle">Your lab report gives exact fertilizer and lime amounts; those numbers beat any rule of thumb. ${Number(t.date.slice(0, 4)) <= NOW.getFullYear() - 3 ? html`<strong>This test is 3+ years old. Time to retest.</strong>` : ''}</p>
       ${tests.length > 1 ? html`<details class="acc"><summary>Earlier tests (${tests.length - 1})</summary><div class="acc-body"><ul class="list-plain">${tests.slice(1).map((x) => html`<li>${x.date}: pH ${x.ph ?? '—'}, P ${x.p ?? '—'}, K ${x.k ?? '—'}, OM ${x.om ?? '—'}%</li>`)}</ul></div></details>` : ''}`
-    : html`<p>No soil test logged yet. When your MU results come back, add pH, phosphorus, potassium and organic matter here to track them over time.</p>
-      <p class="subtle">Most KC lawns never need phosphorus once established, and don't need lime unless the test says so.</p>`}`);
+    : html`<p>No soil test logged yet. When your results come back, add pH, phosphorus, potassium and organic matter here to track them over time.</p>
+      <p class="subtle">Most lawns never need phosphorus once established, and don't need lime unless the test says so.</p>`}`);
 }
 
 main().catch((err) => { console.error(err); render(app, errorBlock(err)); });
