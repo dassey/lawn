@@ -7,6 +7,7 @@ import { loadData, byId } from '../core/data.js';
 import { store, isDone } from '../core/store.js';
 import { today, MON, monthName } from '../core/dates.js';
 import { activeLocal, zoneNumber } from '../core/place.js';
+import { thumb, photo } from '../core/photos.js';
 import { sourceItems, taskMonths, visibleTasks, whenLabel } from '../core/tasks.js';
 
 mountChrome('beds');
@@ -23,7 +24,7 @@ const pf = { type: 'all', sun: 'all', moist: 'all', bloom: 0, native: false, cla
 let pruneQ = '';
 
 async function main() {
-  D = await loadData('beds', 'plants', 'pruning', 'tasks', 'sources');
+  D = await loadData('beds', 'plants', 'pruning', 'tasks', 'sources', 'photos');
   S = byId(D.sources);
   const B = D.beds;
   render(app, html`
@@ -160,7 +161,8 @@ function drawPFList() {
   const sunL = { full: 'Full sun', part: 'Part shade', shade: 'Shade' };
   render($('#pf-list'), html`<p class="subtle">${list.length} plant${list.length === 1 ? '' : 's'}</p>
     ${list.length ? html`<div class="rows">${list.map((p) => html`<details class="row item-card" id="plant-${p.id}">
-      <summary><span class="row-name">${p.name}</span><span class="row-sub"><i>${p.latin}</i> · ${p.type}${p.zones ? ` · zones ${p.zones[0]}–${p.zones[1]}` : ''}${p.native ? ' · native' : ''}</span></summary>
+      <summary class="has-thumb">${thumb(D.photos, `plant-${p.id}`)}<span class="row-name">${p.name}</span><span class="row-sub"><i>${p.latin}</i> · ${p.type}${p.zones ? ` · zones ${p.zones[0]}–${p.zones[1]}` : ''}${p.native ? ' · native' : ''}</span></summary>
+      ${photo(D.photos, `plant-${p.id}`, p.name)}
       <div class="tags">
         ${(p.sun || []).map((s) => html`<span class="tag">${sunL[s] || s}</span>`)}
         ${p.clay ? html`<span class="tag">clay OK</span>` : ''}${p.deer ? html`<span class="tag">deer resistant</span>` : ''}

@@ -12,6 +12,7 @@ import { fetchWeather, analyze } from '../core/weather.js';
 import { openLogDialog } from '../core/logdlg.js';
 import { climateFor } from '../core/place.js';
 import { grassOf, grassId, isWarm } from '../core/grass.js';
+import { thumb, photo } from '../core/photos.js';
 import { whenLabel, datedWindows, kcDateFor } from '../core/windows.js';
 
 mountChrome('lawn');
@@ -34,7 +35,7 @@ const GROUPS = [
 ];
 
 async function main() {
-  D = await loadData('lawn', 'issues', 'products', 'sources', 'climate', 'tasks');
+  D = await loadData('lawn', 'issues', 'products', 'sources', 'climate', 'tasks', 'photos');
   D.climate = climateFor(D.climate);
   P = byId(D.products);
   S = byId(D.sources);
@@ -348,8 +349,9 @@ function monthStrip(ms) {
 function issueCard(i) {
   const prods = (i.products || []).map((id) => P[id]).filter(Boolean);
   return html`<details class="acc" id="issue-${i.id}">
-    <summary><span style="display:inline-flex;flex-direction:column;gap:4px"><span>${i.name}${i.aka && i.aka.length ? html`<span class="subtle">${i.aka.join(', ')}</span>` : ''}</span><span class="row" style="gap:6px">${i.type ? html`<span class="tag">${i.type}</span>` : ''}${monthStrip(i.months)}</span></span></summary>
+    <summary class="has-thumb">${thumb(D.photos, `issue-${i.id}`)}<span style="display:inline-flex;flex-direction:column;gap:4px"><span>${i.name}${i.aka && i.aka.length ? html`<span class="subtle">${i.aka.join(', ')}</span>` : ''}</span><span class="row" style="gap:6px">${i.type ? html`<span class="tag">${i.type}</span>` : ''}${monthStrip(i.months)}</span></span></summary>
     <div class="acc-body stack-sm">
+      ${photo(D.photos, `issue-${i.id}`, i.name)}
       ${i.id_tips ? html`<p><strong>How to spot it:</strong> ${md(i.id_tips)}</p>` : ''}
       ${i.symptoms ? html`<p><strong>Symptoms:</strong> ${md(i.symptoms)}</p>` : ''}
       ${i.when ? html`<p><strong>When to act:</strong> ${md(i.when)}</p>` : ''}

@@ -1076,3 +1076,12 @@ article.calc.fold { border: 0; border-bottom: 1px solid var(--line); padding: 0;
 .grid-2:has(> .fold) { display: block; border-top: 1px solid var(--line); }
 article.calc.fold > .fold-body { display: flex; flex-direction: column; gap: 14px; }
 article.calc.fold > .fold-body[hidden] { display: none; }
+
+/* ---------- Identification photos ---------- */
+.ph-thumb { width: 56px; height: 56px; object-fit: cover; border-radius: var(--radius-xs); background: var(--bg-sunk); flex-shrink: 0; }
+summary.has-thumb { display: grid !important; grid-template-columns: 56px minmax(0, 1fr); column-gap: 12px; align-items: center; }
+summary.has-thumb > .ph-thumb { grid-row: span 2; }
+summary.has-thumb > :not(.ph-thumb):only-child, summary.has-thumb > :first-child:not(.ph-thumb) { grid-column: 1 / -1; }
+.ph { margin: 0 0 10px; max-width: 480px; }
+.ph img { display: block; width: 100%; height: auto; border-radius: var(--radius-xs); background: var(--bg-sunk); }
+.ph figcaption { margin-top: 4px; font-size: 0.78rem; color: var(--ink-3); }
