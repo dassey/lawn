@@ -1,6 +1,6 @@
 // Library: research highlights, extension guides, local help, local climate,
 // myths vs facts, glossary, credits and the full source list.
-import { mountChrome, setTitle, loadingBlock, errorBlock, foldSections, openSearch } from '../core/ui.js';
+import { mountChrome, setTitle, loadingBlock, errorBlock, foldSections, openFold, openSearch } from '../core/ui.js';
 import { html, md, render, $, $$, on, debounce, fmtNum } from '../core/dom.js';
 import { icon } from '../core/icons.js';
 import { loadData, byId } from '../core/data.js';
@@ -157,14 +157,24 @@ async function main() {
   drawGlossary();
   drawSources();
   foldSections(app);
-  const h = location.hash.slice(1);
-  if (h.startsWith('src-') || h.startsWith('g-')) {
+  // A source that has no card of its own lives only in the "All sources" table,
+  // so open that section and point at its row.
+  const showSource = () => {
+    const h = location.hash.slice(1);
+    if (!h.startsWith('src-') && !h.startsWith('g-')) return;
     setTimeout(() => {
       let el = document.getElementById(h);
-      if (!el && h.startsWith('src-')) { srcFilter = 'all'; drawSources(); el = document.querySelector(`#sources [data-sid="${h.slice(4)}"]`); }
-      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.outline = '3px solid var(--brand)'; setTimeout(() => { el.style.outline = ''; }, 2500); }
+      if (!el && h.startsWith('src-')) {
+        srcFilter = 'all';
+        drawSources();
+        openFold('sources');
+        el = document.querySelector(`#sources [data-sid="${h.slice(4)}"]`);
+      }
+      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.outline = '3px solid var(--sun)'; setTimeout(() => { el.style.outline = ''; }, 2500); }
     }, 80);
-  } else if (h) setTimeout(() => document.getElementById(h)?.scrollIntoView({ behavior: 'smooth' }), 60);
+  };
+  window.addEventListener('hashchange', showSource);
+  showSource();
 }
 
 function drawGlossary() {
