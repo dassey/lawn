@@ -18,6 +18,12 @@ export async function mountWeatherCard(el, { compact = false, onAnalysis, onErro
       onError?.('off');
       return;
     }
+    if (!s.location) {
+      render(el, html`<div class="card-head"><h2>${icon('cloud')}Conditions</h2></div>
+        <p class="subtle">Enter your ZIP code in the bar at the top of the page for your local forecast, soil temperature, and drought, frost and planting alerts.</p>`);
+      onError?.('off');
+      return;
+    }
     if (!el.dataset.loaded) render(el, html`<div class="card-head"><h2>${icon('cloud')}Conditions</h2></div><div class="loading"><span class="spinner"></span>Checking the weather for ${s.location.name}…</div>`);
     try {
       const [res, climate] = await Promise.all([fetchWeather(s.location, { force }), loadJSON('climate').then(climateFor).catch(() => null)]);

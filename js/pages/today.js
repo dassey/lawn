@@ -8,10 +8,11 @@ import { loadData, byId } from '../core/data.js';
 import { store, isDone } from '../core/store.js';
 import { today, fmtDate, monthName, season, diffDays, fromMMDD, shiftMMDD, fmtMMDD, previewDate } from '../core/dates.js';
 import {
-  taskCard, wireTasks, visibleTasks, taskStatus, taskMonths, PRIORITY, CATS, CAT_ORDER, nitrogenForYear,
+  taskCard, wireTasks, visibleTasks, taskStatus, taskMonths, PRIORITY, CATS, CAT_ORDER, nitrogenForYear, monthBrief,
 } from '../core/tasks.js';
-import { regionShiftDays, frostSetting } from '../core/windows.js';
-import { climateFor, activeLocal, shiftWords } from '../core/place.js';
+import { regionShiftDays, frostSetting, datedWindows } from '../core/windows.js';
+import { climateFor, activeLocal } from '../core/place.js';
+import { grassOf, isWarm } from '../core/grass.js';
 import { mountWeatherCard } from '../core/wxcard.js';
 import { openLogDialog } from '../core/logdlg.js';
 import { planWeek, planEvents, fmtIn } from '../core/planner.js';
@@ -48,6 +49,8 @@ function phase(date) {
 }
 
 function frostLine() {
+  if (!frostSetting(store.settings)) return 'Enter your ZIP code above for local dates';
+  if (activeLocal()?.frostFree) return 'Freezes are rare here';
   const { last, first } = frostDates();
   const lastD = fromMMDD(last, YEAR);
   const firstD = fromMMDD(first, YEAR);
@@ -63,16 +66,13 @@ function frostLine() {
   return `Frost season · ${diffDays(NOW, nextLast)} days to the average last frost`;
 }
 
-/** Says what changed, and what didn't, when the plan is shifted away from KC. */
+/** First visit: ask for a ZIP before showing a plan as if it were local. */
 function placeNote() {
-  const L = activeLocal();
-  if (!L) return '';
-  const bad = (L.fit || []).some((x) => x.level === 'high');
+  if (store.settings.location || frostSetting(store.settings)) return '';
   return html`<section class="section" id="place">
-    <div class="callout ${bad ? 'callout-warn' : ''}">${icon(bad ? 'alert' : 'pin')}<div>
-      <strong>Adjusted for ${L.name} · Zone ${L.zone}${L.zoneEst ? ' (estimated)' : ''}</strong>
-      <p>${L.frostFree ? 'Freezes are rare here, so dates are moved as far as the plan stretches (6 weeks).' : html`Your last spring frost comes about ${fmtMMDD(L.lastFrost)} (${shiftWords(L.dSpring)}) and your first fall frost about ${fmtMMDD(L.firstFrost)} (${shiftWords(L.dFall)}).`} Task dates, planting windows, the forecast and weather alerts all follow your area. The how-to text was written for Kansas City, so it still names KC stores and Missouri and Kansas Extension offices; your own state's Extension is the local authority.</p>
-      ${(L.fit || []).map((x) => html`<p><strong>${x.level === 'high' ? 'Poor fit: ' : 'Heads up: '}</strong>${x.text}</p>`)}
+    <div class="callout">${icon('pin')}<div>
+      <strong>Start with your ZIP code</strong>
+      <p>Type it in the bar at the top. The almanac then works out your frost dates, hardiness zone and usual lawn grass, moves every task and planting date to your seasons, and switches on your local forecast. Until then you are looking at a sample plan for a tall fescue lawn with a last frost in mid-April.</p>
     </div>
   </section>`;
 }
@@ -95,7 +95,7 @@ async function main() {
         <span class="eyebrow">Today in the yard</span>
         <h1 class="hero-date">${fmtDate(NOW, { weekday: 'long', month: 'long', day: 'numeric' })}</h1>
         <p class="hero-season">${phase(NOW)} · ${frostLine()}</p>
-        <div class="bottom-line">${icon('sparkle')}<div><b>Bottom line for ${monthName(M)}</b><span>${month ? month.bottomLine : ''}</span></div></div>
+        <div class="bottom-line">${icon('sparkle')}<div><b>Key jobs for ${monthName(M)}</b><span>${monthBrief(D.tasks, M).text}</span></div></div>
         <div class="hero-stats" id="hero-stats"></div>
       </div>
     </section>
@@ -132,15 +132,15 @@ async function main() {
 
     <section class="section" aria-labelledby="year-h">
       <div class="section-head"><h2 id="year-h">The year at a glance</h2><a href="calendar.html#/year">Year view ${icon('arrowRight')}</a></div>
-      <div class="ribbon">${D.months.months.map((mo) => html`<a href="calendar.html#/month/${mo.m}" class="${mo.m === M ? 'is-now' : ''}"><span class="rm">${monthName(mo.m)}</span><span class="rl">${mo.bottomLine}</span></a>`)}</div>
+      <div class="ribbon">${D.months.months.map((mo) => html`<a href="calendar.html#/month/${mo.m}" class="${mo.m === M ? 'is-now' : ''}"><span class="rm">${monthName(mo.m)}</span><span class="rl">${monthBrief(D.tasks, mo.m).text}</span></a>`)}</div>
     </section>
 
     <section class="section" aria-labelledby="seasons-h">
       <div class="section-head"><h2 id="seasons-h">Seasons</h2></div>
       <div class="seasons-grid">${D.months.seasons.map((s) => html`<article class="card season season-${s.id}">
-        <h3>${s.name} <span class="subtle">${s.span}</span></h3>
+        <h3>${s.name}</h3>
         <dl>
-          <dt>${icon('lawn')}Lawn</dt><dd>${s.lawn}</dd>
+          <dt>${icon('lawn')}Lawn</dt><dd>${isWarm() && s.lawnWarm ? s.lawnWarm : s.lawn}</dd>
           <dt>${icon('beds')}Beds</dt><dd>${s.beds}</dd>
           <dt>${icon('veg')}Veggies</dt><dd>${s.veg}</dd>
           <dt>${icon('yard')}Yard</dt><dd>${s.yard}</dd>
@@ -259,6 +259,7 @@ function drawList(withStatus, inCat, wantPlan) {
 
   const note = !wantPlan ? ''
     : wxFail === 'preview' ? html`${icon('info')}<span>You're previewing another date, and the day-by-day plan needs a live forecast, so here is everything in season.</span>`
+      : wxFail === 'off' && !store.settings.location ? html`${icon('info')}<span>Enter your ZIP code at the top of the page to get a day-by-day plan built around your forecast. Here is everything in season on the sample plan.</span>`
       : wxFail === 'off' ? html`${icon('info')}<span>Turn on live weather in <button type="button" class="btn-link" data-action="settings">Settings</button> to get a day-by-day plan built around the forecast. Here is everything in season.</span>`
         : html`${icon('cloud')}<span>The forecast didn't load, so here is everything in season. The day-by-day plan comes back once the weather does.</span>`;
   render($('#week'), note ? html`<p class="week-note">${note}</p>` : '');
@@ -364,12 +365,11 @@ function drawPlan(plan, inCat) {
 function drawNitro(nit) {
   const s = store.settings;
   const pct = Math.min(100, (nit.n / (s.nTarget || 3)) * 100);
-  const plan = [
-    ['lawn-apr-light-feed', 'Apr', '½ (optional)'],
-    ['lawn-sep-fertilize', 'Sep', '1'],
-    ['lawn-oct-fertilize', 'Oct', '1'],
-    ['lawn-nov-fertilize', 'Nov', '1'],
-  ];
+  // This lawn's own feedings, in local calendar order.
+  const plan = D.tasks.filter((t) => t.category === 'lawn' && t.nitrogen)
+    .map((t) => ({ t, at: datedWindows(t, YEAR, s)[0].start }))
+    .sort((x, y) => x.at - y.at)
+    .map(({ t, at }) => [t.id, fmtDate(at, { month: 'short' }), `${t.nitrogen === 0.5 ? '½' : fmtNum(t.nitrogen)}${t.priority === 'optional' ? ' (optional)' : ''}`]);
   render($('#nitro'), html`
     <div class="card-head"><h2>${icon('sprout')}Lawn nitrogen · ${YEAR}</h2></div>
     <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="${s.nTarget}" aria-valuenow="${nit.n}" aria-label="Nitrogen applied this year"><i style="width:${pct}%"></i></div>
@@ -378,7 +378,7 @@ function drawNitro(nit) {
       ${plan.map(([id, mo, amt]) => html`<a class="pill" href="calendar.html#/task/${id}" style="${isDone(YEAR, id) ? 'border-color:var(--ok);color:var(--ok)' : ''}">${isDone(YEAR, id) ? icon('check') : icon('calendar')}${mo}: ${amt} lb</a>`)}
     </div>
     ${nit.parts.length ? html`<ul class="list-plain stack-sm subtle" style="margin-top:10px">${nit.parts.map((p) => html`<li>${p.date}: ${fmtNum(p.n, 2)} lb N · ${p.label}</li>`)}</ul>` : ''}
-    <p class="subtle" style="margin:10px 0 0">Tall fescue does best on 3–4 lb N a year, most of it Sep–Nov (MU). Without irrigation, skip May–August feeding.</p>
+    <p class="subtle" style="margin:10px 0 0">${grassOf().nNote}</p>
     <div class="btn-group" style="margin-top:12px">
       <button type="button" class="btn btn-sm" data-quick="fertilize" data-qcat="lawn">${icon('plus')}Log fertilizer</button>
       <a class="btn btn-sm btn-ghost" href="tools.html#fertilizer">${icon('calculator')}How much to buy</a>
@@ -402,8 +402,13 @@ function drawQuick() {
 function drawFrost() {
   const cl = D.climate;
   const { last, first } = frostDates();
-  const region = { central: 'MU Central (KC metro)', north: 'MU North (cautious)', custom: 'your frost dates', local: activeLocal()?.name }[store.settings.region];
-  const f = cl.frost || {};
+  if (!frostSetting(store.settings)) {
+    render($('#frost'), html`<div class="card-head"><h2>${icon('snow')}Frost dates</h2></div>
+      <p class="subtle" style="margin:0">Enter your ZIP code at the top of the page to see your local frost dates. Every task and planting window follows them.</p>`);
+    return;
+  }
+  const region = store.settings.region === 'custom' ? 'your frost dates' : activeLocal()?.name;
+  const f = (cl && cl.frost) || {};
   const doy = (mmdd) => { const d = fromMMDD(mmdd, 2001); return (d - new Date(2001, 0, 1)) / 864e5; };
   const pos = (mmdd) => `${(doy(mmdd) / 365) * 100}%`;
   const todayPos = `${((NOW - new Date(YEAR, 0, 1)) / 864e5 / 365) * 100}%`;

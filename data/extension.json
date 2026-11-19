@@ -1,0 +1,206 @@
+{
+ "Alabama": {
+  "name": "Alabama Cooperative Extension System",
+  "url": "https://www.aces.edu/"
+ },
+ "Alaska": {
+  "name": "University of Alaska Fairbanks Cooperative Extension",
+  "url": "https://www.uaf.edu/ces/"
+ },
+ "Arizona": {
+  "name": "University of Arizona Cooperative Extension",
+  "url": "https://extension.arizona.edu/"
+ },
+ "Arkansas": {
+  "name": "University of Arkansas Cooperative Extension",
+  "url": "https://www.uaex.uada.edu/"
+ },
+ "California": {
+  "name": "UC Agriculture and Natural Resources",
+  "url": "https://ucanr.edu/"
+ },
+ "Colorado": {
+  "name": "Colorado State University Extension",
+  "url": "https://extension.colostate.edu/"
+ },
+ "Connecticut": {
+  "name": "UConn Extension",
+  "url": "https://extension.uconn.edu/"
+ },
+ "Delaware": {
+  "name": "University of Delaware Cooperative Extension",
+  "url": "https://www.udel.edu/canr/cooperative-extension/"
+ },
+ "District of Columbia": {
+  "name": "UDC Cooperative Extension",
+  "url": "https://www.udc.edu/causes/land-grant/"
+ },
+ "Florida": {
+  "name": "UF/IFAS Extension",
+  "url": "https://sfyl.ifas.ufl.edu/"
+ },
+ "Georgia": {
+  "name": "University of Georgia Extension",
+  "url": "https://extension.uga.edu/"
+ },
+ "Hawaii": {
+  "name": "University of Hawaii CTAHR Extension",
+  "url": "https://cms.ctahr.hawaii.edu/ce/"
+ },
+ "Idaho": {
+  "name": "University of Idaho Extension",
+  "url": "https://www.uidaho.edu/extension"
+ },
+ "Illinois": {
+  "name": "University of Illinois Extension",
+  "url": "https://extension.illinois.edu/"
+ },
+ "Indiana": {
+  "name": "Purdue Extension",
+  "url": "https://extension.purdue.edu/"
+ },
+ "Iowa": {
+  "name": "Iowa State University Extension and Outreach",
+  "url": "https://www.extension.iastate.edu/"
+ },
+ "Kansas": {
+  "name": "K-State Research and Extension",
+  "url": "https://www.ksre.k-state.edu/"
+ },
+ "Kentucky": {
+  "name": "University of Kentucky Cooperative Extension",
+  "url": "https://extension.ca.uky.edu/"
+ },
+ "Louisiana": {
+  "name": "LSU AgCenter",
+  "url": "https://www.lsuagcenter.com/"
+ },
+ "Maine": {
+  "name": "University of Maine Cooperative Extension",
+  "url": "https://extension.umaine.edu/"
+ },
+ "Maryland": {
+  "name": "University of Maryland Extension",
+  "url": "https://extension.umd.edu/"
+ },
+ "Massachusetts": {
+  "name": "UMass Extension",
+  "url": "https://ag.umass.edu/"
+ },
+ "Michigan": {
+  "name": "Michigan State University Extension",
+  "url": "https://www.canr.msu.edu/outreach/"
+ },
+ "Minnesota": {
+  "name": "University of Minnesota Extension",
+  "url": "https://extension.umn.edu/"
+ },
+ "Mississippi": {
+  "name": "Mississippi State University Extension",
+  "url": "https://extension.msstate.edu/"
+ },
+ "Missouri": {
+  "name": "University of Missouri Extension",
+  "url": "https://extension.missouri.edu/"
+ },
+ "Montana": {
+  "name": "Montana State University Extension",
+  "url": "https://www.montana.edu/extension/"
+ },
+ "Nebraska": {
+  "name": "Nebraska Extension",
+  "url": "https://extension.unl.edu/"
+ },
+ "Nevada": {
+  "name": "University of Nevada, Reno Extension",
+  "url": "https://extension.unr.edu/"
+ },
+ "New Hampshire": {
+  "name": "UNH Extension",
+  "url": "https://extension.unh.edu/"
+ },
+ "New Jersey": {
+  "name": "Rutgers Cooperative Extension",
+  "url": "https://njaes.rutgers.edu/extension/"
+ },
+ "New Mexico": {
+  "name": "New Mexico State University Extension",
+  "url": "https://extension.nmsu.edu/"
+ },
+ "New York": {
+  "name": "Cornell Cooperative Extension",
+  "url": "https://cals.cornell.edu/cornell-cooperative-extension"
+ },
+ "North Carolina": {
+  "name": "NC State Extension",
+  "url": "https://www.ces.ncsu.edu/"
+ },
+ "North Dakota": {
+  "name": "NDSU Extension",
+  "url": "https://www.ndsu.edu/agriculture/extension"
+ },
+ "Ohio": {
+  "name": "Ohio State University Extension",
+  "url": "https://extension.osu.edu/"
+ },
+ "Oklahoma": {
+  "name": "Oklahoma State University Extension",
+  "url": "https://extension.okstate.edu/"
+ },
+ "Oregon": {
+  "name": "Oregon State University Extension",
+  "url": "https://extension.oregonstate.edu/"
+ },
+ "Pennsylvania": {
+  "name": "Penn State Extension",
+  "url": "https://extension.psu.edu/"
+ },
+ "Rhode Island": {
+  "name": "URI Cooperative Extension",
+  "url": "https://web.uri.edu/coopext/"
+ },
+ "South Carolina": {
+  "name": "Clemson Cooperative Extension",
+  "url": "https://www.clemson.edu/extension/"
+ },
+ "South Dakota": {
+  "name": "SDSU Extension",
+  "url": "https://extension.sdstate.edu/"
+ },
+ "Tennessee": {
+  "name": "UT Extension",
+  "url": "https://utextension.tennessee.edu/"
+ },
+ "Texas": {
+  "name": "Texas A&M AgriLife Extension",
+  "url": "https://agrilifeextension.tamu.edu/"
+ },
+ "Utah": {
+  "name": "Utah State University Extension",
+  "url": "https://extension.usu.edu/"
+ },
+ "Vermont": {
+  "name": "UVM Extension",
+  "url": "https://www.uvm.edu/extension"
+ },
+ "Virginia": {
+  "name": "Virginia Cooperative Extension",
+  "url": "https://ext.vt.edu/"
+ },
+ "Washington": {
+  "name": "WSU Extension",
+  "url": "https://extension.wsu.edu/"
+ },
+ "West Virginia": {
+  "name": "WVU Extension",
+  "url": "https://extension.wvu.edu/"
+ },
+ "Wisconsin": {
+  "name": "UW–Madison Extension",
+  "url": "https://extension.wisc.edu/"
+ },
+ "Wyoming": {
+  "name": "University of Wyoming Extension",
+  "url": "https://www.uwyo.edu/uwe/"
+ }
+}

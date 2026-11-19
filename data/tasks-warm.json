@@ -1,0 +1,631 @@
+[
+ {
+  "id": "lawn-warm-dormant",
+  "title": "Leave the dormant lawn alone",
+  "category": "lawn",
+  "subcategory": "maintenance",
+  "months": [
+   12,
+   1,
+   2
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "wx": "watch",
+  "summary": "Tan, dormant warm-season grass is alive but not growing. It needs no fertilizer and very little else until it greens up.",
+  "details": "Keep heavy traffic off it, and water about once a month only if the winter is dry and windy. Dormant turf is the easiest time to see winter weeds, so note where they are.",
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-winter-weeds",
+  "title": "Spot-spray winter weeds before green-up",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   2,
+   3
+  ],
+  "window": {
+   "start": "02-15",
+   "end": "03-20"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "wx": "spray",
+  "trigger": {
+   "type": "airTemp",
+   "text": "A calm day at 50°F or warmer"
+  },
+  "summary": "Henbit, chickweed and annual bluegrass stand out in dormant turf. Treat them before the lawn starts to green.",
+  "details": "Use a broadleaf product labeled for your grass. **St. Augustinegrass and centipedegrass are easily injured by 2,4-D mixes**, so choose a product that names them on the label and use the low rate. Stop once the lawn begins to green up, when all warm-season grasses are more sensitive.",
+  "safety": "Read the label for your grass type before you spray. The wrong product can thin St. Augustine and centipede lawns for a season.",
+  "logType": "weed",
+  "products": [
+   "speedzone-ew",
+   "weedbgon-ccox"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-no-early-n",
+  "title": "Hold the fertilizer until the lawn is fully green",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   3,
+   4
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "wx": "watch",
+  "summary": "Feeding warm-season grass before it is growing feeds the weeds instead, and tender new growth is hurt by a late frost.",
+  "details": "Wait until the lawn is completely green and you have mowed it two or three times, usually 2 to 3 weeks after the last frost. A soil test now tells you whether it needs phosphorus, potassium or lime before the first feeding.",
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-scalp",
+  "title": "Mow low once to clear the dead top growth",
+  "category": "lawn",
+  "subcategory": "mow",
+  "months": [
+   4
+  ],
+  "window": {
+   "start": "04-01",
+   "end": "04-25"
+  },
+  "priority": "optional",
+  "effort": "medium",
+  "wx": "mow",
+  "trigger": {
+   "type": "growth",
+   "text": "First green shoots at the soil line"
+  },
+  "summary": "One low cut just as bermudagrass or zoysiagrass starts to green removes the tan thatch and lets the sun warm the soil.",
+  "details": "Drop the mower one or two notches below your normal height and bag the clippings. Do it once, after the last hard frost and before the lawn is fully green. Do not scalp St. Augustinegrass or centipedegrass; they spread by above-ground runners and a low cut sets them back.",
+  "logType": "mow",
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": [
+   "bermuda",
+   "zoysia"
+  ]
+ },
+ {
+  "id": "lawn-warm-broadleaf",
+  "title": "Spray broadleaf weeds once the lawn is green",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   5,
+   6
+  ],
+  "window": {
+   "start": "05-10",
+   "end": "06-10"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "wx": "spray",
+  "trigger": {
+   "type": "airTemp",
+   "text": "Below 85°F, dry for 24 hours, light wind"
+  },
+  "summary": "A thick lawn is the best weed control. Spot-spray what is left after the lawn is fully green and growing.",
+  "details": "Spray on a calm day below 85°F; most herbicides injure warm-season grass in the heat. Use a product labeled for your grass, and the low rate on St. Augustinegrass and centipedegrass.",
+  "logType": "weed",
+  "products": [
+   "speedzone-ew",
+   "weedbgon-ccox"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-feed-1",
+  "title": "First feeding, once the lawn is fully green",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   5
+  ],
+  "window": {
+   "start": "05-05",
+   "end": "05-31"
+  },
+  "priority": "critical",
+  "effort": "medium",
+  "wx": "granular",
+  "trigger": {
+   "type": "growth",
+   "text": "Fully green and mowed 2–3 times"
+  },
+  "summary": "Warm-season grass does its growing in the heat, so the feeding year starts in late spring, not fall.",
+  "details": "Apply about **1 lb of nitrogen per 1,000 sq ft** (½ lb for centipedegrass) once the lawn is fully green and has been mowed two or three times. Use a slow-release lawn fertilizer and water it in. Follow your soil test for phosphorus and potassium; many lawns need none.",
+  "howTo": [
+   "Measure the lawn and work out the amount with the fertilizer calculator.",
+   "Spread half in one direction and half at right angles for even cover.",
+   "Water with about ¼ in, or spread just before a light rain.",
+   "Sweep granules off the driveway and sidewalk back onto the lawn."
+  ],
+  "rate": "1 lb N per 1,000 sq ft (centipedegrass: ½ lb)",
+  "nitrogen": 1,
+  "nitrogenBy": {
+   "centipede": 0.5
+  },
+  "logType": "fertilize",
+  "calc": "fertilizer",
+  "products": [
+   "scotts-turf-builder",
+   "lesco-28-0-12",
+   "milorganite"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-mow",
+  "title": "Mow often at your grass's height",
+  "category": "lawn",
+  "subcategory": "mow",
+  "months": [
+   5,
+   6,
+   7,
+   8,
+   9
+  ],
+  "priority": "recommended",
+  "effort": "medium",
+  "wx": "mow",
+  "summary": "Bermudagrass 1–2 in, zoysiagrass 1–2.5 in, centipedegrass 1.5–2 in, St. Augustinegrass 2.5–4 in. Never remove more than a third of the blade.",
+  "details": "Warm-season grass grows fast in summer, so that can mean mowing every 5 to 7 days. Keep the blade sharp, leave the clippings, and raise the height half an inch in shade or during drought.",
+  "logType": "mow",
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season",
+   "mowing"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-plant",
+  "title": "Sod, plug or seed bare areas",
+  "category": "lawn",
+  "subcategory": "renovation",
+  "months": [
+   5,
+   6,
+   7
+  ],
+  "window": {
+   "start": "05-15",
+   "end": "07-15"
+  },
+  "priority": "recommended",
+  "effort": "high",
+  "wx": "plant",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil at 65–70°F and rising"
+  },
+  "summary": "Late spring through midsummer is the time to establish warm-season grass, while soil is warm and the lawn has months to root.",
+  "details": "Bermudagrass, centipedegrass and some zoysiagrass can be seeded. St. Augustinegrass and most zoysiagrass are planted as sod or plugs. Keep new sod or seed moist until it roots, then water deeply and less often. Skip pre-emergent in areas you plan to seed.",
+  "logType": "seed",
+  "products": [
+   "scotts-starter"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-aerate",
+  "title": "Core aerate and dethatch while the lawn is growing fast",
+  "category": "lawn",
+  "subcategory": "soil",
+  "months": [
+   6,
+   7
+  ],
+  "window": {
+   "start": "05-25",
+   "end": "07-15"
+  },
+  "priority": "optional",
+  "effort": "high",
+  "wx": "outdoor",
+  "summary": "Warm-season lawns recover from aeration and dethatching in a few weeks in early summer. In fall they would not.",
+  "details": "Core aerate compacted clay or high-traffic areas when the soil is moist. Dethatch only if the spongy layer is more than ½ in thick; zoysiagrass and bermudagrass build thatch fastest, usually from too much nitrogen.",
+  "products": [
+   "aerator-rental"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-feed-2",
+  "title": "Second feeding in early summer",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   6,
+   7
+  ],
+  "window": {
+   "start": "06-15",
+   "end": "07-10"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "wx": "granular",
+  "summary": "A second pound of nitrogen keeps bermudagrass and St. Augustinegrass dense through summer. For zoysiagrass this is the last feeding of the year.",
+  "details": "Apply about 1 lb of nitrogen per 1,000 sq ft, 6 to 8 weeks after the first feeding. Skip it if the lawn is drought-stressed and you are not watering; fertilizer on dry, dormant turf does harm.",
+  "rate": "1 lb N per 1,000 sq ft",
+  "nitrogen": 1,
+  "logType": "fertilize",
+  "calc": "fertilizer",
+  "products": [
+   "scotts-turf-builder",
+   "lesco-28-0-12",
+   "milorganite"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": [
+   "bermuda",
+   "zoysia",
+   "staug"
+  ]
+ },
+ {
+  "id": "lawn-warm-iron",
+  "title": "Pale lawn? Try iron, not more nitrogen",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   6,
+   7
+  ],
+  "priority": "optional",
+  "effort": "low",
+  "wx": "granular",
+  "summary": "Yellowing centipedegrass or St. Augustinegrass in summer is usually iron chlorosis, common in high-pH soil.",
+  "details": "An iron sulfate or chelated iron spray greens it up in days without the surge of growth and disease that extra nitrogen brings. If it keeps coming back, check the soil pH; centipedegrass wants 5.0–6.0.",
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": [
+   "centipede",
+   "staug"
+  ]
+ },
+ {
+  "id": "lawn-warm-water",
+  "title": "Water deeply, and only when the lawn asks",
+  "category": "lawn",
+  "subcategory": "water",
+  "months": [
+   6,
+   7,
+   8
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "wx": "watch",
+  "trigger": {
+   "type": "weather",
+   "text": "Blue-gray color; footprints that stay"
+  },
+  "summary": "Wait for a blue-gray color, folded blades or footprints that stay. Then put down about 1 in at once.",
+  "details": "Deep, infrequent watering grows deep roots; light daily sprinkling grows shallow roots and disease. Water early in the morning. Bermudagrass and zoysiagrass can go dormant in a long drought and recover when rain returns; St. Augustinegrass and centipedegrass need a soak every 2 to 3 weeks to survive one.",
+  "logType": "water",
+  "calc": "water",
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-chinch",
+  "title": "Check sunny hot spots for chinch bugs",
+  "category": "lawn",
+  "subcategory": "pest",
+  "months": [
+   6,
+   7,
+   8
+  ],
+  "window": {
+   "start": "06-15",
+   "end": "08-31"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "wx": "watch",
+  "trigger": {
+   "type": "pest",
+   "text": "Spreading yellow patches in full sun during hot, dry weather"
+  },
+  "summary": "Yellow, then straw-brown patches spreading in the sunniest, driest parts of a St. Augustine lawn are the classic sign.",
+  "details": "Part the grass at the edge of a patch and look for tiny black bugs with white wings. Or push a bottomless can into the soil, fill it with water and watch for bugs floating up. Treat only the affected areas plus a few feet around them with a labeled insecticide, and avoid heavy nitrogen, which makes it worse.",
+  "logType": "pest",
+  "products": [
+   "bonide-eight"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "staug"
+ },
+ {
+  "id": "lawn-warm-feed-3",
+  "title": "Last nitrogen of the year",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   8
+  ],
+  "window": {
+   "start": "08-01",
+   "end": "08-25"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "wx": "granular",
+  "summary": "The final feeding for bermudagrass and St. Augustinegrass goes down 6 to 8 weeks before the first frost. Later nitrogen delays dormancy and invites winter injury.",
+  "details": "Apply up to 1 lb of nitrogen per 1,000 sq ft. If a soil test shows low potassium, a fall potassium application helps winter hardiness. Zoysiagrass and centipedegrass get no nitrogen now.",
+  "rate": "Up to 1 lb N per 1,000 sq ft",
+  "nitrogen": 1,
+  "logType": "fertilize",
+  "calc": "fertilizer",
+  "products": [
+   "scotts-turf-builder",
+   "lesco-28-0-12"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": [
+   "bermuda",
+   "staug"
+  ]
+ },
+ {
+  "id": "lawn-warm-armyworm",
+  "title": "Fall armyworm watch",
+  "category": "lawn",
+  "subcategory": "pest",
+  "months": [
+   7,
+   8,
+   9,
+   10
+  ],
+  "window": {
+   "start": "07-15",
+   "end": "10-10"
+  },
+  "priority": "optional",
+  "effort": "low",
+  "wx": "watch",
+  "trigger": {
+   "type": "pest",
+   "text": "Patches brown out almost overnight; birds flock to the lawn"
+  },
+  "summary": "Armyworms can strip a bermudagrass lawn in a few days. Birds feeding in the lawn and ragged, brown patches are the first signs.",
+  "details": "Pour a gallon of soapy water (2 tablespoons of dish soap) on a square yard at the edge of the damage. Caterpillars come up within minutes. More than about three per square foot is worth treating with Bt or spinosad in the evening. Healthy bermudagrass regrows from the damage.",
+  "logType": "pest",
+  "products": [
+   "bt",
+   "spinosad"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-fall-pre",
+  "title": "Fall pre-emergent for annual bluegrass and winter weeds",
+  "category": "lawn",
+  "subcategory": "weed",
+  "months": [
+   9
+  ],
+  "window": {
+   "start": "09-01",
+   "end": "09-25"
+  },
+  "priority": "recommended",
+  "effort": "medium",
+  "wx": "granular",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil cooling to about 70°F"
+  },
+  "summary": "Annual bluegrass, henbit and chickweed sprout as soil cools toward 70°F. A fall pre-emergent stops them before they show in the dormant lawn.",
+  "details": "Apply prodiamine or dithiopyr and water it in with ¼ in. Skip it anywhere you plan to overseed with ryegrass.",
+  "logType": "weed",
+  "products": [
+   "prodiamine-65wdg",
+   "barricade-4fl",
+   "dimension-granular"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-stop-n",
+  "title": "No more nitrogen until next spring",
+  "category": "lawn",
+  "subcategory": "fertilize",
+  "months": [
+   9,
+   10
+  ],
+  "priority": "recommended",
+  "effort": "low",
+  "wx": "watch",
+  "summary": "Nitrogen in fall keeps warm-season grass soft and growing when it should be hardening off, and it feeds large patch disease.",
+  "details": "Keep mowing while the grass grows, and raise the height half an inch for the last few cuts so the lawn goes into winter with more leaf.",
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "warm"
+ },
+ {
+  "id": "lawn-warm-large-patch",
+  "title": "Large patch watch",
+  "category": "lawn",
+  "subcategory": "disease",
+  "months": [
+   9,
+   10
+  ],
+  "window": {
+   "start": "09-15",
+   "end": "10-31"
+  },
+  "priority": "recommended",
+  "effort": "low",
+  "wx": "watch",
+  "trigger": {
+   "type": "soilTemp",
+   "text": "Soil cooling to about 70°F with wet weather"
+  },
+  "summary": "Large patch shows as circles of thin, orange-brown turf from 2 to 20 ft across in cool, wet weather in fall and again at spring green-up.",
+  "details": "It is worst on zoysiagrass, St. Augustinegrass and centipedegrass. Avoid fall nitrogen, improve drainage and water only in the morning. Lawns hit every year can be treated with a preventive fungicide (azoxystrobin or propiconazole) when soil cools to 70°F in fall; spraying after patches appear does little.",
+  "logType": "pest",
+  "products": [
+   "diseaseex",
+   "bioadvanced-fungus"
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": [
+   "zoysia",
+   "staug",
+   "centipede"
+  ]
+ },
+ {
+  "id": "lawn-warm-overseed-rye",
+  "title": "Overseed with ryegrass for winter green (optional)",
+  "category": "lawn",
+  "subcategory": "renovation",
+  "months": [
+   10
+  ],
+  "window": {
+   "start": "10-01",
+   "end": "10-25"
+  },
+  "priority": "optional",
+  "effort": "high",
+  "wx": "seed",
+  "summary": "Perennial ryegrass sown into bermudagrass gives a green winter lawn, at the cost of slower bermuda green-up in spring.",
+  "details": "Mow low, then sow 5–10 lb of perennial ryegrass per 1,000 sq ft and keep it moist until it sprouts. Do not overseed zoysiagrass, St. Augustinegrass or centipedegrass, and do not overseed where you applied a fall pre-emergent.",
+  "logType": "seed",
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "evidence": "extension",
+  "tags": [
+   "warm-season"
+  ],
+  "grass": "bermuda"
+ }
+]

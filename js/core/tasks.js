@@ -7,7 +7,7 @@ import { fmtDate } from './dates.js';
 import { toast } from './ui.js';
 import { downloadICS, taskEvents } from './ics.js';
 import { openLogDialog } from './logdlg.js';
-import { datedWindows, taskStatus, whenLabel } from './windows.js';
+import { datedWindows, taskStatus, whenLabel, taskMonths } from './windows.js';
 
 export {
   regionShiftDays, baseWindows, mmddWindows, taskMonths, datedWindows, taskStatus, whenLabel,
@@ -59,6 +59,17 @@ export function sortTasks(list, year, s = store.settings) {
     const sb = b.window ? wb.start.getTime() : 0;
     return sa - sb || pa - pb || a.title.localeCompare(b.title);
   });
+}
+
+/** One-line summary of a month: its key jobs, taken from the visitor's own plan. */
+export function monthBrief(tasks, m, s = store.settings) {
+  const rank = { critical: 0, recommended: 1 };
+  const list = sortTasks(visibleTasks(tasks, s).filter((t) => t.priority in rank && taskMonths(t, s).includes(m)), new Date().getFullYear(), s)
+    .sort((a, b) => rank[a.priority] - rank[b.priority]);
+  const picks = [];
+  for (const t of list) { if (picks.length < 3 && !picks.some((p) => p.category === t.category && p.priority !== 'critical' && t.priority !== 'critical')) picks.push(t); }
+  if (!picks.length) return { text: 'A light month. Catch up, plan ahead and enjoy the yard.', accent: 'yard' };
+  return { text: `${picks.map((t) => t.title).join(' · ')}.`, accent: picks[0].category };
 }
 
 /* ---------------- nitrogen bookkeeping ---------------- */

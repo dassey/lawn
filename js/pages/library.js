@@ -1,4 +1,4 @@
-// Library: research highlights, extension guides, local help, KC climate,
+// Library: research highlights, extension guides, local help, local climate,
 // myths vs facts, glossary, credits and the full source list.
 import { mountChrome, setTitle, loadingBlock, errorBlock } from '../core/ui.js';
 import { html, md, render, $, $$, on, debounce, fmtNum } from '../core/dom.js';
@@ -8,6 +8,7 @@ import { today, MON } from '../core/dates.js';
 import { lineChart, barChart } from '../core/charts.js';
 import { EVIDENCE } from '../core/tasks.js';
 import { climateFor } from '../core/place.js';
+import { store } from '../core/store.js';
 
 mountChrome('library');
 setTitle('Library & sources');
@@ -21,12 +22,15 @@ let srcFilter = 'all';
 let gq = '';
 
 async function main() {
-  D = await loadData('sources', 'library', 'glossary', 'climate');
+  D = await loadData('sources', 'library', 'glossary', 'climate', 'extension');
   const L = D.library;
   const cl = climateFor(D.climate);
-  const where = cl.place || 'Kansas City';
-  const lo10 = Math.min(10, Math.floor(Math.min(...cl.monthly.map((x) => x.lo)) / 10) * 10);
-  const hi10 = Math.max(100, Math.ceil(Math.max(...cl.monthly.map((x) => x.hi)) / 10) * 10);
+  const where = cl ? cl.place : 'Your';
+  const lo10 = cl ? Math.min(10, Math.floor(Math.min(...cl.monthly.map((x) => x.lo)) / 10) * 10) : 10;
+  const hi10 = cl ? Math.max(100, Math.ceil(Math.max(...cl.monthly.map((x) => x.hi)) / 10) * 10) : 100;
+  const state = store.settings.location && store.settings.location.state;
+  const ext = state && D.extension[state];
+  const local = ext ? [{ name: ext.name, what: `The Extension service for ${state}. County offices run soil tests, answer lawn and garden questions, and publish planting calendars and pest alerts written for your state.`, where: state, url: ext.url }, ...L.local.slice(1)] : L.local;
   const research = D.sources.filter((s) => s.type === 'peer-reviewed').sort((a, b) => (b.year || 0) - (a.year || 0));
   const guides = D.sources.filter((s) => s.type === 'extension');
 
@@ -38,7 +42,7 @@ async function main() {
     </section>
     <nav class="subnav" aria-label="On this page"><ul>
       <li><a href="#research">Latest research</a></li><li><a href="#guides">Extension guides</a></li><li><a href="#local">Local help</a></li>
-      <li><a href="#buy">Where to buy</a></li><li><a href="#climate">${cl.local ? 'Local' : 'KC'} climate</a></li><li><a href="#myths">Myths</a></li>
+      <li><a href="#buy">Where to buy</a></li><li><a href="#climate">Local climate</a></li><li><a href="#myths">Myths</a></li>
       <li><a href="#glossary">Glossary</a></li><li><a href="#credits">Credits</a></li><li><a href="#sources">All sources</a></li>
     </ul></nav>
 
@@ -64,8 +68,8 @@ async function main() {
     </section>
 
     <section class="section" id="local">
-      <div class="section-head"><h2>Local help around Kansas City</h2></div>
-      <div class="grid-auto">${L.local.map((x) => html`<article class="card">
+      <div class="section-head"><h2>Local help</h2></div>
+      <div class="grid-auto">${local.map((x) => html`<article class="card">
         <h3 style="margin:0 0 4px">${x.name}</h3>
         <p style="margin:0 0 8px">${md(x.what)}</p>
         <ul class="list-plain stack-sm" style="font-size:.9rem">
@@ -84,17 +88,17 @@ async function main() {
       </table></div>
     </section>
 
-    <section class="section" id="climate">
+    ${cl ? html`<section class="section" id="climate">
       <div class="section-head"><h2>${where} climate</h2><span class="subtle">${cl.station}</span></div>
       <div class="grid-2">
         <article class="card">
           <h3>${icon('thermo')}Average high &amp; low (°F)</h3>
-          ${lineChart({ labels: MON.map((m) => m[0]), series: [{ values: cl.monthly.map((x) => x.hi), cls: 'line-hi', dotCls: 'dot-hi', name: 'High' }, { values: cl.monthly.map((x) => x.lo), cls: 'line-lo', dotCls: 'dot-lo', name: 'Low' }], min: lo10, max: hi10, unit: '°', highlight: M, ariaLabel: cl.local ? `Estimated monthly normal highs and lows for ${where}.` : 'Monthly normal highs and lows at Kansas City International Airport, 1991 to 2020.' })}
+          ${lineChart({ labels: MON.map((m) => m[0]), series: [{ values: cl.monthly.map((x) => x.hi), cls: 'line-hi', dotCls: 'dot-hi', name: 'High' }, { values: cl.monthly.map((x) => x.lo), cls: 'line-lo', dotCls: 'dot-lo', name: 'Low' }], min: lo10, max: hi10, unit: '°', highlight: M, ariaLabel: `Estimated monthly normal highs and lows for ${where}.` })}
           <div class="chart-legend"><span><i style="background:var(--veg)"></i>High</span><span><i style="background:var(--yard)"></i>Low</span></div>
         </article>
         <article class="card">
           <h3>${icon('rain')}Rain by month (in) · ${fmtNum(cl.annual.precip, 2)} in a year</h3>
-          ${barChart({ labels: MON.map((m) => m[0]), values: cl.monthly.map((x) => x.precip), highlight: M, barClass: 'bar-rain', fmt: (v) => v.toFixed(1), max: Math.max(6, Math.ceil(Math.max(...cl.monthly.map((x) => x.precip)))), ariaLabel: cl.local ? `Estimated monthly normal precipitation for ${where}.` : 'Monthly normal precipitation: wettest in May and June, driest in January.' })}
+          ${barChart({ labels: MON.map((m) => m[0]), values: cl.monthly.map((x) => x.precip), highlight: M, barClass: 'bar-rain', fmt: (v) => v.toFixed(1), max: Math.max(6, Math.ceil(Math.max(...cl.monthly.map((x) => x.precip)))), ariaLabel: `Estimated monthly normal precipitation for ${where}.` })}
           <p class="subtle" style="margin:6px 0 0">${md(cl.rainNote)}</p>
         </article>
       </div>
@@ -109,11 +113,14 @@ async function main() {
         </article>
         <article class="card">
           <h3>${icon('flame')}Heat &amp; what it means</h3>
-          ${barChart({ labels: MON.map((m) => m[0]), values: cl.monthly.map((x) => x.days90), highlight: M, barClass: 'bar', fmt: (v) => (v >= 1 ? v.toFixed(0) : ''), max: Math.max(15, Math.ceil(Math.max(...cl.monthly.map((x) => x.days90)))), ariaLabel: cl.local ? `Estimated average days at or above 90 degrees by month for ${where}.` : 'Average days at or above 90 degrees: about 7 in June, 13 in July, 12 in August.' })}
+          ${barChart({ labels: MON.map((m) => m[0]), values: cl.monthly.map((x) => x.days90), highlight: M, barClass: 'bar', fmt: (v) => (v >= 1 ? v.toFixed(0) : ''), max: Math.max(15, Math.ceil(Math.max(...cl.monthly.map((x) => x.days90)))), ariaLabel: `Estimated average days at or above 90 degrees by month for ${where}.` })}
           <p class="subtle" style="margin:6px 0 0">Average days at or above 90°F (${fmtNum(cl.annual.days90, 1)} a year). ${md(cl.heatNote)}</p>
         </article>
       </div>
-    </section>
+    </section>` : html`<section class="section" id="climate">
+      <div class="section-head"><h2>Local climate</h2></div>
+      <p class="subtle">Enter your ZIP code in the bar at the top of the page to see normal temperatures, rainfall, heat and freeze dates for your area.</p>
+    </section>`}
 
     <section class="section" id="myths">
       <div class="section-head"><h2>Myths &amp; costly mistakes</h2></div>

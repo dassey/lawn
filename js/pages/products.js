@@ -1,5 +1,6 @@
 // Products: specific recommendations with rates & timing, season kits and a
 // shopping list sized to your yard.
+import { grassMatch } from '../core/grass.js';
 import { mountChrome, setTitle, loadingBlock, errorBlock, toast } from '../core/ui.js';
 import { html, raw, md, render, $, $$, on, fmtNum, debounce } from '../core/dom.js';
 import { icon } from '../core/icons.js';
@@ -62,7 +63,7 @@ async function main() {
     <section class="page-head">
       <span class="eyebrow">Specific picks, with the why</span>
       <h1>Products &amp; shopping list</h1>
-      <p class="lede">Named products for each job, with active ingredient, rate, timing and where to find them around Kansas City. Quantities are sized to your yard (${fmtNum(store.settings.lawnSqFt, 0)} sq ft lawn). Prices are rough 2026 estimates, so check locally. <strong>Read and follow the label.</strong></p>
+      <p class="lede">Named products for each job, with active ingredient, rate, timing and where to find them. Quantities are sized to your yard (${fmtNum(store.settings.lawnSqFt, 0)} sq ft lawn). Prices are rough 2026 estimates, so check locally. <strong>Read and follow the label.</strong></p>
     </section>
     <div class="layout-main">
       <div>
@@ -123,9 +124,9 @@ async function main() {
 }
 
 const KITS = [
-  { id: 'fall-lawn', name: 'Fall lawn renovation kit', icon: 'seed', desc: 'Seed, starter fertilizer, the two fall feedings, and a timer for watering new seed.', items: ['kc-marathon', 'scotts-starter', 'scotts-turf-builder', 'urea-46', 'aerator-rental', 'hose-timer', 'oscillating-sprinkler'] },
+  { id: 'fall-lawn', grass: 'cool', name: 'Fall lawn renovation kit', icon: 'seed', desc: 'Seed, starter fertilizer, the two fall feedings, and a timer for watering new seed.', items: ['fescue-bluegrass-blend', 'scotts-starter', 'scotts-turf-builder', 'urea-46', 'aerator-rental', 'hose-timer', 'oscillating-sprinkler'] },
   { id: 'spring-lawn', name: 'Spring lawn kit', icon: 'shield', desc: 'Season-long crabgrass preventer, a spreader, and a broadleaf spot spray.', items: ['dimension-granular', 'spreader', 'weedbgon-ccox', 'sharpening'] },
-  { id: 'veg-start', name: 'Veggie garden starter kit', icon: 'veg', desc: 'Everything for a first KC vegetable garden that you water without a sprinkler system.', items: ['compost', 'espoma-garden-tone', 'soaker-drip', 'hose-timer', 'straw-mulch', 'row-cover', 'tomato-cage', 'bt', 'rabbit-fence'] },
+  { id: 'veg-start', name: 'Veggie garden starter kit', icon: 'veg', desc: 'Everything for a first vegetable garden that you water without a sprinkler system.', items: ['compost', 'espoma-garden-tone', 'soaker-drip', 'hose-timer', 'straw-mulch', 'row-cover', 'tomato-cage', 'bt', 'rabbit-fence'] },
   { id: 'measure', name: 'Measure-don\'t-guess kit', icon: 'target', desc: 'A rain gauge, soil thermometer and soil probe take the guesswork out of every alert on this site.', items: ['rain-gauge', 'soil-thermometer', 'soil-probe'] },
 ];
 
@@ -142,7 +143,7 @@ function drawBar() {
 
 function drawKits() {
   render($('#kits'), html`<div class="section-head" style="margin-top:4px"><h2>Ready-made kits</h2><span class="subtle">One tap adds everything, sized to your yard</span></div>
-  <div class="grid-auto" style="margin-bottom:20px">${KITS.map((k) => html`<article class="card card-tight">
+  <div class="grid-auto" style="margin-bottom:20px">${KITS.filter((k) => grassMatch(k.grass)).map((k) => html`<article class="card card-tight">
     <h3 style="display:flex;gap:8px;align-items:center;margin:0 0 4px">${icon(k.icon)}${k.name}</h3>
     <p class="subtle" style="margin:0 0 10px">${k.desc}</p>
     <button type="button" class="btn btn-sm" data-kit="${k.id}">${icon('cart')}Add kit to list</button>
@@ -212,7 +213,7 @@ const pkgLabel = (p) => (p.package && p.package.size && MEASURED.has(p.package.u
 
 function cartText() {
   const items = Object.entries(store.state.shopping).filter(([id]) => P[id]);
-  return ['KC Lawn & Garden shopping list', ...items.map(([id, q]) => `[ ] ${q} × ${P[id].name}${P[id].package ? ` (${P[id].package.label || P[id].package.size + ' ' + P[id].package.unit})` : ''}${P[id].where ? ` - ${P[id].where}` : ''}`)].join('\n');
+  return ['Lawn & Garden shopping list', ...items.map(([id, q]) => `[ ] ${q} × ${P[id].name}${P[id].package ? ` (${P[id].package.label || P[id].package.size + ' ' + P[id].package.unit})` : ''}${P[id].where ? ` - ${P[id].where}` : ''}`)].join('\n');
 }
 
 function drawCart() {

@@ -155,7 +155,7 @@ async function main() {
       <!-- LIME -->
       <article class="card calc" id="lime">
         <h2 class="display" style="font-size:1.3rem;margin:0">${icon('soil')} Lime from your soil test</h2>
-        <p class="subtle" style="margin:0">Only lime when your MU soil test calls for it (lawns: salt pH 5.8 or lower). Never put down more than 50 lb per 1,000 sq ft at once.</p>
+        <p class="subtle" style="margin:0">Only lime when your soil test calls for it (lawns: salt pH 5.8 or lower). Never put down more than 50 lb per 1,000 sq ft at once.</p>
         <div class="field-row">
           <div class="field"><label for="l-rec">Recommended (from report)</label><div class="input-affix"><input id="l-rec" type="number" min="0" step="5" value="75"><span class="affix">lb/1,000</span></div></div>
           <div class="field"><label for="l-area">Area</label><div class="input-affix"><input id="l-area" type="number" min="1" value="${s.lawnSqFt}"><span class="affix">sq ft</span></div></div>
@@ -350,7 +350,7 @@ function wireWater() {
     const gal = gallons(goal, val('w-area'));
     const cycles = rate > 0.5 ? Math.ceil(goal / 0.5) : 1;
     render($('#w-out'), html`<span class="big">${fmtNum(mins, 0)}<small> minutes</small></span>
-      <p>Your sprinkler puts down about <strong>${fmtNum(rate, 2)} in/hour</strong>. ${goal} in takes ${fmtNum(mins, 0)} minutes per spot${cycles > 1 ? html`. On clay, split that into <strong>${cycles} runs of ~${fmtNum(mins / cycles, 0)} min</strong>, 30 minutes apart (few Missouri lawn soils absorb more than ½ in/hour)` : ''}.</p>
+      <p>Your sprinkler puts down about <strong>${fmtNum(rate, 2)} in/hour</strong>. ${goal} in takes ${fmtNum(mins, 0)} minutes per spot${cycles > 1 ? html`. On clay, split that into <strong>${cycles} runs of ~${fmtNum(mins / cycles, 0)} min</strong>, 30 minutes apart (few clay lawn soils absorb more than ½ in/hour)` : ''}.</p>
       <p>${fmtNum(gal, 0)} gallons for ${fmtNum(val('w-area'), 0)} sq ft. Water between 4 and 10 a.m.</p>`);
   };
   card.addEventListener('input', draw);

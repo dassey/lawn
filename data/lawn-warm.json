@@ -1,0 +1,397 @@
+{
+ "intro": "Warm-season grasses (bermudagrass, zoysiagrass, St. Augustinegrass and centipedegrass) grow in the heat and go tan and dormant after frost. Almost all the work happens while the lawn is green: prevent crabgrass before it sprouts, feed from full green-up to late summer, mow often, and stop nitrogen well before the first frost.",
+ "principles": [
+  {
+   "title": "Feed only while it's green",
+   "icon": "sprout",
+   "text": "The feeding year runs from full spring green-up to about 6–8 weeks before the first frost. Fertilizer on dormant or half-green turf feeds weeds, and late nitrogen invites winter injury and large patch.",
+   "sources": [
+    "ncsu-turffiles",
+    "clemson-hgic-lawns"
+   ]
+  },
+  {
+   "title": "Match nitrogen to the grass",
+   "icon": "ruler",
+   "text": "Bermudagrass and St. Augustinegrass use 2–4 lb N per 1,000 sq ft a year. Zoysiagrass needs 1–2 lb. Centipedegrass needs only ½–1 lb, and more than that is the usual cause of centipede decline.",
+   "sources": [
+    "clemson-hgic-lawns",
+    "uf-lawns"
+   ]
+  },
+  {
+   "title": "Mow at the right height, often",
+   "icon": "mower",
+   "text": "Bermudagrass 1–2 in, zoysiagrass 1–2.5 in, centipedegrass 1.5–2 in, St. Augustinegrass 2.5–4 in. Mowing too high builds thatch in bermuda and zoysia; mowing St. Augustine too low thins it and lets weeds in.",
+   "sources": [
+    "ncsu-turffiles"
+   ]
+  },
+  {
+   "title": "Water deeply, not daily",
+   "icon": "drop",
+   "text": "Water when the lawn shows stress (blue-gray color, folded leaves, footprints that stay), then apply about 1 in. Bermudagrass and zoysiagrass ride out drought by going dormant; St. Augustinegrass and centipedegrass need a soak every 2–3 weeks to survive one.",
+   "sources": [
+    "aggieturf"
+   ]
+  },
+  {
+   "title": "Stop weeds before they sprout",
+   "icon": "shield",
+   "text": "A spring pre-emergent stops crabgrass and a fall one stops annual bluegrass and winter weeds. For anything sprayed on the leaves, check the label for your grass: St. Augustinegrass and centipedegrass are injured by products that are safe on bermudagrass.",
+   "sources": [
+    "ncsu-turffiles",
+    "uf-lawns"
+   ]
+  },
+  {
+   "title": "Repair in early summer",
+   "icon": "seed",
+   "text": "Sod, plug, seed, aerate and dethatch from late spring to midsummer, when the grass is growing fastest and has months to recover before dormancy.",
+   "sources": [
+    "aggieturf"
+   ]
+  }
+ ],
+ "nSchedule": [
+  {
+   "m": 1,
+   "n": 0
+  },
+  {
+   "m": 2,
+   "n": 0
+  },
+  {
+   "m": 3,
+   "n": 0
+  },
+  {
+   "m": 4,
+   "n": 0
+  },
+  {
+   "m": 5,
+   "n": 0
+  },
+  {
+   "m": 6,
+   "n": 0
+  },
+  {
+   "m": 7,
+   "n": 0
+  },
+  {
+   "m": 8,
+   "n": 0
+  },
+  {
+   "m": 9,
+   "n": 0
+  },
+  {
+   "m": 10,
+   "n": 0
+  },
+  {
+   "m": 11,
+   "n": 0
+  },
+  {
+   "m": 12,
+   "n": 0
+  }
+ ],
+ "nNote": "All nitrogen goes on between full green-up and late summer. The bars show this plan's feedings for your grass, moved to your local calendar.",
+ "mowing": [
+  {
+   "m": 1,
+   "h": 0
+  },
+  {
+   "m": 2,
+   "h": 0
+  },
+  {
+   "m": 3,
+   "h": 0
+  },
+  {
+   "m": 4,
+   "h": 1
+  },
+  {
+   "m": 5,
+   "h": 1
+  },
+  {
+   "m": 6,
+   "h": 1
+  },
+  {
+   "m": 7,
+   "h": 1
+  },
+  {
+   "m": 8,
+   "h": 1
+  },
+  {
+   "m": 9,
+   "h": 1
+  },
+  {
+   "m": 10,
+   "h": 1
+  },
+  {
+   "m": 11,
+   "h": 0
+  },
+  {
+   "m": 12,
+   "h": 0
+  }
+ ],
+ "mowNote": "Mow whenever the grass is growing, at the height for your grass. Raise it half an inch in shade, in drought, and for the last few cuts before dormancy.",
+ "keyDates": [
+  {
+   "task": "lawn-apr-preemergent",
+   "when": "Before soil holds 55°F",
+   "what": "Crabgrass pre-emergent, watered in",
+   "why": "Crabgrass sprouts once the soil warms. A pre-emergent only works if it is down first."
+  },
+  {
+   "task": "lawn-warm-feed-1",
+   "when": "Fully green, mowed 2–3 times",
+   "what": "First feeding: 1 lb N per 1,000 sq ft (½ lb for centipedegrass)",
+   "why": "Roots take up nitrogen only once the grass is actively growing."
+  },
+  {
+   "task": "lawn-warm-plant",
+   "when": "Soil 65–70°F",
+   "what": "Sod, plug or seed bare areas; aerate and dethatch if needed",
+   "why": "Warm soil and a long season ahead give the fastest establishment and recovery."
+  },
+  {
+   "task": "lawn-warm-feed-2",
+   "when": "",
+   "what": "Second feeding for bermudagrass, zoysiagrass and St. Augustinegrass",
+   "why": "Keeps the lawn dense enough to crowd out summer weeds."
+  },
+  {
+   "task": "lawn-warm-feed-3",
+   "when": "6–8 weeks before first frost",
+   "what": "Last nitrogen for bermudagrass and St. Augustinegrass",
+   "why": "Later nitrogen delays dormancy and raises the risk of winter injury."
+  },
+  {
+   "task": "lawn-warm-fall-pre",
+   "when": "Soil cooling to 70°F",
+   "what": "Fall pre-emergent for annual bluegrass and winter weeds",
+   "why": "Winter weeds sprout in fall and take over the dormant lawn if nothing stops them."
+  },
+  {
+   "task": "lawn-warm-large-patch",
+   "when": "Cool, wet weather",
+   "what": "Watch for large patch; preventive fungicide only for lawns hit every year",
+   "why": "The fungus is active as soil cools; treating after patches show does little."
+  }
+ ],
+ "water": {
+  "short": "Wait for the lawn to ask: a blue-gray color, folded leaves or footprints that stay. Then put down about **1 in** early in the morning. In most of the Southeast, rain covers much of what the lawn needs; in dry climates, plan on watering every week in summer.",
+  "tunaCan": [
+   "Set out 4–6 straight-sided cans across the area your sprinkler covers.",
+   "Run the sprinkler for 30 minutes.",
+   "Measure the water depth in each can and average them.",
+   "Double it for your sprinkler's rate in inches per hour, and save that in the Tools page."
+  ],
+  "facts": [
+   {
+    "text": "Warm-season lawns use roughly 1 in of water a week in summer heat, less in spring and fall, and almost none when dormant.",
+    "sources": [
+     "aggieturf"
+    ]
+   },
+   {
+    "text": "Light daily watering keeps the surface wet, which grows shallow roots and favors disease. One or two deep soakings a week are better.",
+    "sources": [
+     "ncsu-turffiles"
+    ]
+   },
+   {
+    "text": "Bermudagrass and zoysiagrass survive long droughts by going dormant and green up within a couple of weeks of rain.",
+    "sources": [
+     "ncsu-turffiles"
+    ]
+   },
+   {
+    "text": "St. Augustinegrass and centipedegrass have shallow, above-ground runners and can die in a long drought without an occasional soak.",
+    "sources": [
+     "uf-lawns"
+    ]
+   },
+   {
+    "text": "On clay or slopes, split the watering into two runs 30 minutes apart so it soaks in instead of running off.",
+    "sources": [
+     "aggieturf"
+    ]
+   }
+  ]
+ },
+ "seed": {
+  "blend": {
+   "title": "Sod, plugs or seed?",
+   "text": "How you establish a warm-season lawn depends on the grass. Plant from late spring to midsummer, when soil is 65°F or warmer.",
+   "points": [
+    "**Bermudagrass:** seed (common types) or sod (hybrid types). Fastest to fill in.",
+    "**Zoysiagrass:** sod or plugs; a few varieties come as seed. Slow to spread, so plugs take two seasons.",
+    "**St. Augustinegrass:** sod or plugs only. There is no seed.",
+    "**Centipedegrass:** seed, sod or plugs. Seed is slow: allow a full season."
+   ]
+  },
+  "cultivarsIntro": "Each grass has a place. Pick by your sun, traffic and how much work you want.",
+  "cultivars": [
+   {
+    "name": "Bermudagrass",
+    "why": "Full sun only. Tough, fast to recover, drought-hardy. Needs the most mowing and feeding, and creeps into beds."
+   },
+   {
+    "name": "Zoysiagrass",
+    "why": "Sun to light shade. Dense, soft, low on fertilizer. Slow to establish and slow to recover from damage."
+   },
+   {
+    "name": "St. Augustinegrass",
+    "why": "The best warm-season grass for shade. Coarse and lush. Tender in cold winters; watch for chinch bugs."
+   },
+   {
+    "name": "Centipedegrass",
+    "why": "The low-maintenance choice for acid, sandy soil. Light green by nature. Dislikes heavy feeding, traffic and high pH."
+   }
+  ],
+  "cultivarSources": [
+   "ncsu-turffiles",
+   "aggieturf",
+   "uf-lawns"
+  ],
+  "avoid": [
+   "Seeding or sodding in fall: the grass goes dormant before it roots.",
+   "Fertilizing a new lawn heavily. A starter fertilizer at planting is enough until it is mowed.",
+   "Mixing grass types. They differ in color, texture and care, and the mix looks patchy.",
+   "Putting down pre-emergent where you plan to seed within 2–4 months."
+  ],
+  "rates": [
+   {
+    "what": "Bermudagrass seed (hulled)",
+    "rate": "1–2 lb / 1,000 sq ft"
+   },
+   {
+    "what": "Centipedegrass seed",
+    "rate": "¼–½ lb / 1,000 sq ft"
+   },
+   {
+    "what": "Zoysiagrass seed",
+    "rate": "1–2 lb / 1,000 sq ft"
+   },
+   {
+    "what": "Plugs",
+    "rate": "6–12 in apart"
+   },
+   {
+    "what": "Sod",
+    "rate": "Edge to edge, seams staggered"
+   }
+  ]
+ },
+ "mowTips": [
+  "Follow the ⅓ rule: never remove more than a third of the blade in one mowing.",
+  "In peak summer growth, that means mowing bermudagrass every 4–7 days.",
+  "Leave the clippings. They return nitrogen and do not cause thatch.",
+  "Sharpen the blade at least twice a season; a dull blade leaves a gray, frayed lawn.",
+  "Mow when the grass is dry, and change direction each time.",
+  "A reel mower gives the best cut on bermudagrass and zoysiagrass kept below 1.5 in.",
+  "Raise the height half an inch in shade and during drought.",
+  "Stop mowing when the lawn goes dormant; do not scalp it in fall."
+ ],
+ "soil": {
+  "howTo": [
+   "Take 10–15 cores or trowel slices, 3–4 in deep, from across the lawn.",
+   "Mix them in a clean plastic bucket and remove grass and roots.",
+   "Let the soil air-dry, then fill the lab's sample bag or box.",
+   "Send it to your state Extension soil lab or drop it at your county Extension office.",
+   "Retest every 3 years, or before a renovation."
+  ],
+  "sources": [
+   "ncsu-turffiles"
+  ],
+  "notes": [
+   {
+    "title": "pH matters most for centipedegrass",
+    "text": "Centipedegrass wants acid soil, pH 5.0–6.0. Lime it only if a test calls for it. Bermudagrass, zoysiagrass and St. Augustinegrass are happy at 6.0–7.0."
+   },
+   {
+    "title": "Phosphorus",
+    "text": "Many established lawns need none, and several states restrict it. Apply phosphorus only when a soil test shows a shortage or when planting."
+   },
+   {
+    "title": "Potassium",
+    "text": "Potassium helps with drought and winter hardiness. If your test shows it low, apply it with the last feeding of the year."
+   },
+   {
+    "title": "Compaction",
+    "text": "Clay and high-traffic lawns benefit from core aeration in early summer. Sandy soil rarely needs it."
+   }
+  ]
+ },
+ "more": [
+  {
+   "title": "Shade",
+   "icon": "leaf",
+   "text": "Bermudagrass thins quickly with less than 6–8 hours of sun. St. Augustinegrass and some zoysiagrass varieties handle light shade. Under dense trees, mulch or a groundcover does better than any grass.",
+   "sources": [
+    "ncsu-turffiles"
+   ]
+  },
+  {
+   "title": "Thatch",
+   "icon": "lawn",
+   "text": "A spongy layer more than ½ in thick blocks water and roots. It comes from heavy nitrogen and mowing too high, not from clippings. Dethatch in early summer.",
+   "sources": [
+    "clemson-hgic-lawns"
+   ]
+  },
+  {
+   "title": "Winter color",
+   "icon": "snow",
+   "text": "Dormant tan is normal and healthy. Overseeding bermudagrass with ryegrass gives winter green but slows spring green-up; do not overseed the other warm-season grasses.",
+   "sources": [
+    "aggieturf"
+   ]
+  },
+  {
+   "title": "Leaves",
+   "icon": "leaf",
+   "text": "Mulch-mow light leaf cover into the lawn. Rake or bag heavy layers so they do not smother the grass going into dormancy.",
+   "sources": [
+    "ncsu-turffiles"
+   ]
+  },
+  {
+   "title": "Spring dead spot",
+   "icon": "alert",
+   "text": "Round dead patches in bermudagrass at green-up are spring dead spot, a root disease that infects in fall. Avoid late nitrogen, relieve compaction, and let the grass creep back in.",
+   "sources": [
+    "ncsu-turffiles"
+   ]
+  },
+  {
+   "title": "Edges and beds",
+   "icon": "beds",
+   "text": "Bermudagrass and zoysiagrass invade flower beds by runners. A spade-cut edge or buried edging 6 in deep slows them down.",
+   "sources": [
+    "clemson-hgic-lawns"
+   ]
+  }
+ ]
+}

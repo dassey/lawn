@@ -1,7 +1,7 @@
 {
-  "name": "KC Lawn & Garden Almanac",
+  "name": "Lawn & Garden Almanac",
   "short_name": "Lawn Almanac",
-  "description": "Month-by-month lawn, flower bed and vegetable garden plan for the Kansas City area — rain-fed tall fescue, live weather alerts, checklists and calculators.",
+  "description": "Month-by-month lawn, flower bed and vegetable garden plan fitted to your ZIP code anywhere in the U.S., with live weather alerts, checklists and calculators.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

@@ -5,17 +5,20 @@
 const KEY = 'kcAlmanac.v1';
 const VERSION = 1;
 
-export const DEFAULT_LOCATION = { name: 'Kansas City, MO', lat: 39.0997, lon: -94.5786 };
 
 export const DEFAULT_SETTINGS = {
   lawnSqFt: 5000,
   bedSqFt: 300,
   vegSqFt: 128,
-  region: 'central',          // central | north | custom | local (worked out from a ZIP)
+  region: 'central',          // central (the unshifted reference calendar) | custom | local (worked out from a ZIP)
   lastFrost: '04-15',         // used when region === 'custom'
   firstFrost: '10-25',
-  local: null,                // used when region === 'local': frost dates, zone and climate normals (see place.js)
-  location: { ...DEFAULT_LOCATION },
+  local: null,                // used when region === 'local': frost dates, zone, climate normals, suggested grass (see place.js)
+  location: null,             // { name, lat, lon, zip?, state? } once the visitor enters a ZIP
+  grass: 'tallfescue',        // lawn grass (see grass.js); follows the climate until grassChosen
+  grassChosen: false,
+  watering: 'rain',           // rain (water only to save the lawn) | irrigate (water weekly); follows the climate until wateringChosen
+  wateringChosen: false,
   hoseTimer: false,           // owns a hose-end sprinkler + timer
   sprinklerRate: null,        // in/hr from the tuna-can test (Tools)
   nTarget: 3,                 // lb N per 1,000 sq ft per year
@@ -48,7 +51,8 @@ function migrate(s) {
   if (!s || typeof s !== 'object') return d;
   const out = { ...d, ...s };
   out.settings = { ...d.settings, ...(s.settings || {}) };
-  out.settings.location = { ...d.settings.location, ...((s.settings || {}).location || {}) };
+  out.settings.location = (s.settings || {}).location || null;
+  if (out.settings.region === 'north') out.settings.region = 'central';
   if (out.settings.region === 'local' && !out.settings.local) out.settings.region = 'central';
   out.garden = { ...d.garden, ...(s.garden || {}) };
   for (const k of ['done', 'notes', 'shopping']) if (!out[k] || typeof out[k] !== 'object' || Array.isArray(out[k])) out[k] = {};

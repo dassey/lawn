@@ -6,6 +6,7 @@ import { icon } from '../core/icons.js';
 import { loadData, byId } from '../core/data.js';
 import { store, isDone } from '../core/store.js';
 import { today, MON, monthName } from '../core/dates.js';
+import { activeLocal, zoneNumber } from '../core/place.js';
 import { sourceItems, taskMonths, visibleTasks, whenLabel } from '../core/tasks.js';
 
 mountChrome('beds');
@@ -17,7 +18,8 @@ const NOW = today();
 const YEAR = NOW.getFullYear();
 const M = NOW.getMonth() + 1;
 let D, S;
-const pf = { type: 'all', sun: 'all', moist: 'all', bloom: 0, native: false, clay: false, deer: false, q: '' };
+const ZONE = zoneNumber(activeLocal()?.zone);
+const pf = { type: 'all', sun: 'all', moist: 'all', bloom: 0, native: false, clay: false, deer: false, zone: ZONE != null, q: '' };
 let pruneQ = '';
 
 async function main() {
@@ -53,7 +55,7 @@ async function main() {
     </section>
 
     <section class="section" id="plants">
-      <div class="section-head"><h2>Plant finder</h2><span class="subtle">Proven performers for KC clay, heat and cold</span></div>
+      <div class="section-head"><h2>Plant finder</h2><span class="subtle">Proven performers for clay, heat and cold</span></div>
       <div class="toolbar" id="pf-bar"></div>
       <div id="pf-list"></div>
     </section>
@@ -90,7 +92,7 @@ async function main() {
   on(app, 'input', '#prune-q', debounce((e) => { pruneQ = e.target.value; drawPrune(); }, 120));
   on(app, 'click', '[data-pf]', (e, b) => {
     const [k, v] = b.dataset.pf.split(':');
-    if (['native', 'clay', 'deer'].includes(k)) pf[k] = !pf[k];
+    if (['native', 'clay', 'deer', 'zone'].includes(k)) pf[k] = !pf[k];
     else pf[k] = v;
     drawPF();
   });
@@ -140,7 +142,7 @@ function drawPF() {
     <div class="toolbar-row"><span class="toolbar-label">Type</span><div class="chips">${chip('type', 'all', 'All')}${chip('type', 'perennial', 'Perennials')}${chip('type', 'grass', 'Grasses')}${chip('type', 'shrub', 'Shrubs')}${chip('type', 'tree', 'Trees')}${chip('type', 'groundcover', 'Groundcovers')}</div></div>
     <div class="toolbar-row"><span class="toolbar-label">Sun</span><div class="chips">${chip('sun', 'all', 'Any')}${chip('sun', 'full', 'Full sun')}${chip('sun', 'part', 'Part shade')}${chip('sun', 'shade', 'Shade')}</div></div>
     <div class="toolbar-row"><span class="toolbar-label">Soil</span><div class="chips">${chip('moist', 'all', 'Any')}${chip('moist', 'dry', 'Dry')}${chip('moist', 'medium', 'Average')}${chip('moist', 'wet', 'Wet')}</div></div>
-    <div class="toolbar-row"><span class="toolbar-label">Must be</span><div class="chips">${tog('native', 'Missouri native')}${tog('clay', 'Clay tolerant')}${tog('deer', 'Deer resistant')}</div>
+    <div class="toolbar-row"><span class="toolbar-label">Must be</span><div class="chips">${ZONE != null ? tog('zone', `Hardy in zone ${ZONE}`) : ''}${tog('native', 'U.S. native')}${tog('clay', 'Clay tolerant')}${tog('deer', 'Deer resistant')}</div>
       <select id="pf-bloom" style="width:auto" aria-label="Blooms in"><option value="0">Blooms: any month</option>${MON.map((mn, i) => html`<option value="${i + 1}" ${pf.bloom === i + 1 ? raw('selected') : ''}>Blooms in ${monthName(i + 1)}</option>`)}</select>
       <div class="search-input" style="flex:1;min-width:160px">${icon('search')}<input type="search" id="pf-q" placeholder="Search plants…" value="${pf.q}" aria-label="Search plants"></div></div>`);
   drawPFList();
@@ -153,11 +155,12 @@ function drawPFList() {
     && (pf.moist === 'all' || (p.moisture || []).includes(pf.moist))
     && (!pf.bloom || (p.bloom || []).includes(pf.bloom))
     && (!pf.native || p.native) && (!pf.clay || p.clay) && (!pf.deer || p.deer)
+    && (!pf.zone || ZONE == null || !p.zones || (ZONE >= p.zones[0] && ZONE <= p.zones[1]))
     && (!q || [p.name, p.latin, p.notes, p.color].join(' ').toLowerCase().includes(q)));
   const sunL = { full: 'Full sun', part: 'Part shade', shade: 'Shade' };
   render($('#pf-list'), html`<p class="subtle">${list.length} plant${list.length === 1 ? '' : 's'}</p>
     ${list.length ? html`<div class="grid-auto">${list.map((p) => html`<article class="card item-card cat-beds" id="plant-${p.id}">
-      <div class="ic-head"><div style="flex:1"><h3>${p.name}</h3><div class="ic-sub">${p.latin}</div></div>${p.native ? html`<span class="badge badge-organic" title="Native to Missouri">${icon('leaf')}MO native</span>` : ''}</div>
+      <div class="ic-head"><div style="flex:1"><h3>${p.name}</h3><div class="ic-sub">${p.latin}${p.zones ? ` · Zones ${p.zones[0]}–${p.zones[1]}` : ''}</div></div>${p.native ? html`<span class="badge badge-organic" title="Native to the central or eastern United States">${icon('leaf')}Native</span>` : ''}</div>
       <div class="tags">
         <span class="tag">${p.type}</span>${(p.sun || []).map((s) => html`<span class="tag">${sunL[s] || s}</span>`)}
         ${p.clay ? html`<span class="tag">clay OK</span>` : ''}${p.deer ? html`<span class="tag">deer resistant</span>` : ''}
