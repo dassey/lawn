@@ -7,7 +7,7 @@ import { store } from './store.js';
 import { localizeData } from './windows.js';
 import { grassMatch, grassId, isWarm } from './grass.js';
 
-export const DATA_VERSION = '2026-11-11';
+export const DATA_VERSION = '2026-11-19';
 
 const rawCache = new Map();
 const cache = new Map();
@@ -45,6 +45,8 @@ async function prepare(name) {
     data = clone(base.concat(warm)).filter((i) => grassMatch(i.grass, s));
   } else if (name === 'products') {
     data = clone(await loadRaw(name)).filter((p) => grassMatch(p.grass, s));
+    // Wording written for the other grass group is swapped for this lawn's.
+    if (isWarm(s)) for (const p of data) for (const k of ['use', 'rate']) if (p[`${k}Warm`]) p[k] = p[`${k}Warm`];
   } else {
     data = clone(await loadRaw(name));
   }

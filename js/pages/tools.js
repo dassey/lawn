@@ -1,6 +1,6 @@
 // Calculators: lawn area, fertilizer, seed & mixes, sprinkler run time,
 // spray mix, mulch/compost, lime, garden fertilizer, unit conversions.
-import { mountChrome, setTitle, loadingBlock, errorBlock, toast } from '../core/ui.js';
+import { mountChrome, setTitle, loadingBlock, errorBlock, toast, foldSections } from '../core/ui.js';
 import { html, raw, render, $, $$, on, fmtNum } from '../core/dom.js';
 import { icon } from '../core/icons.js';
 import { loadData } from '../core/data.js';
@@ -39,7 +39,6 @@ async function main() {
   const seeds = D.products.filter((p) => p.type === 'seed');
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Do the math once</span>
       <h1>Calculators</h1>
       <p class="lede">Every calculator starts from your lawn size (${fmtNum(s.lawnSqFt, 0)} sq ft; <button type="button" class="btn-link" data-action="settings">change</button>). Rates are per 1,000 sq ft, the way labels and Extension write them.</p>
     </section>
@@ -48,7 +47,7 @@ async function main() {
     <div class="grid-2 section">
       <!-- AREA -->
       <article class="card calc" id="area">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('ruler')} Measure your lawn</h2>
+        <h2>Measure your lawn</h2>
         <p class="subtle" style="margin:0">Break the yard into rectangles, circles and triangles. Subtract the house, driveway and beds. Pacing works: one normal adult step is about 2.5 ft. Or use Google Maps on a computer: right-click, choose "Measure distance," and click around your lawn.</p>
         <div class="area-rows" id="area-rows"></div>
         <div class="btn-group"><button type="button" class="btn btn-sm" data-area-add="rect">${icon('plus')}Rectangle</button><button type="button" class="btn btn-sm" data-area-add="circle">${icon('plus')}Circle</button><button type="button" class="btn btn-sm" data-area-add="tri">${icon('plus')}Triangle</button></div>
@@ -57,7 +56,7 @@ async function main() {
 
       <!-- FERTILIZER -->
       <article class="card calc" id="fertilizer">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('sprout')} Fertilizer: how much product?</h2>
+        <h2>Fertilizer: how much product?</h2>
         <div class="field"><label for="f-prod">Product</label>
           <select id="f-prod"><option value="">Custom analysis…</option>${ferts.map((p) => html`<option value="${p.id}" ${p.id === 'scotts-turf-builder' ? raw('selected') : ''}>${p.name} (${p.analysis})</option>`)}</select></div>
         <div class="field-row">
@@ -76,7 +75,7 @@ async function main() {
 
       <!-- SEED -->
       <article class="card calc" id="seed">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('seed')} Grass seed: how much?</h2>
+        <h2>Grass seed: how much?</h2>
         <div class="field"><label for="sd-mode">Job</label>
           <select id="sd-mode">
             <option value="4.5">Overseed a thin lawn (4–5 lb/1,000)</option>
@@ -104,7 +103,7 @@ async function main() {
 
       <!-- WATER -->
       <article class="card calc" id="water">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('drop')} Sprinkler run time (tuna-can test)</h2>
+        <h2>Sprinkler run time (tuna-can test)</h2>
         <p class="subtle" style="margin:0">Set 4–6 straight-sided cans around the spray pattern, run the sprinkler, and measure the average depth.</p>
         <div class="field-row">
           <div class="field"><label for="w-in">Water collected</label><div class="input-affix"><input id="w-in" type="number" min="0.01" step="0.05" value="0.25"><span class="affix">in</span></div></div>
@@ -120,7 +119,7 @@ async function main() {
 
       <!-- SPRAY -->
       <article class="card calc" id="spray">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('spray')} Spray mix</h2>
+        <h2>Spray mix</h2>
         <p class="subtle" style="margin:0">Enter the label rate. Labels list it per 1,000 sq ft or per acre.</p>
         <div class="field-row">
           <div class="field"><label for="sp-rate">Label rate</label><input id="sp-rate" type="number" min="0" step="any" value="1"></div>
@@ -138,7 +137,7 @@ async function main() {
 
       <!-- MULCH -->
       <article class="card calc" id="mulch">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('leaf')} Mulch, compost &amp; soil</h2>
+        <h2>Mulch, compost &amp; soil</h2>
         <div class="field"><label for="m-mode">Job</label><select id="m-mode">
           <option value="2.5|bed">Bed mulch (2–3 in)</option>
           <option value="0.25|lawn">Compost topdressing after aeration (¼ in)</option>
@@ -154,7 +153,7 @@ async function main() {
 
       <!-- LIME -->
       <article class="card calc" id="lime">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('soil')} Lime from your soil test</h2>
+        <h2>Lime from your soil test</h2>
         <p class="subtle" style="margin:0">Only lime when your soil test calls for it (lawns: salt pH 5.8 or lower). Never put down more than 50 lb per 1,000 sq ft at once.</p>
         <div class="field-row">
           <div class="field"><label for="l-rec">Recommended (from report)</label><div class="input-affix"><input id="l-rec" type="number" min="0" step="5" value="75"><span class="affix">lb/1,000</span></div></div>
@@ -166,7 +165,7 @@ async function main() {
 
       <!-- GARDEN FERT -->
       <article class="card calc" id="garden-fert">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('veg')} Vegetable garden fertilizer</h2>
+        <h2>Vegetable garden fertilizer</h2>
         <p class="subtle" style="margin:0">With no soil test, MU's default is about 3 lb of 10-10-10 per 100 sq ft worked in before planting. Organic options need more product for the same nitrogen.</p>
         <div class="field-row">
           <div class="field"><label for="g-area">Garden area</label><div class="input-affix"><input id="g-area" type="number" min="1" value="${s.vegSqFt}"><span class="affix">sq ft</span></div></div>
@@ -177,7 +176,7 @@ async function main() {
 
       <!-- CONVERT -->
       <article class="card calc" id="convert">
-        <h2 class="display" style="font-size:1.3rem;margin:0">${icon('calculator')} Conversions</h2>
+        <h2>Conversions</h2>
         <div class="field-row">
           <div class="field"><label for="c-acre">Per acre</label><input id="c-acre" type="number" step="any" value="8"></div>
           <div class="field"><label for="c-k">= per 1,000 sq ft</label><input id="c-k" type="number" step="any"></div>
@@ -204,8 +203,7 @@ async function main() {
   wireGarden();
   wireConvert();
 
-  const h = location.hash.slice(1);
-  if (h) setTimeout(() => document.getElementById(h)?.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+  foldSections(app, 'article.calc[id]');
 }
 
 /* ---------- area ---------- */

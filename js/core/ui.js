@@ -11,16 +11,24 @@ import { GRASSES, GRASS_ORDER, grassId, grassOf } from './grass.js';
 export const SITE = 'Lawn & Garden Almanac';
 
 export const NAV = [
-  { id: 'today', href: 'index.html', label: 'Today', icon: 'home', tab: true },
-  { id: 'calendar', href: 'calendar.html', label: 'Calendar', icon: 'calendar', tab: true },
-  { id: 'lawn', href: 'lawn.html', label: 'Lawn', icon: 'lawn', tab: true },
-  { id: 'beds', href: 'beds.html', label: 'Beds', icon: 'beds' },
-  { id: 'garden', href: 'garden.html', label: 'Veggies', icon: 'veg', tab: true },
-  { id: 'tools', href: 'tools.html', label: 'Tools', icon: 'calculator' },
-  { id: 'products', href: 'products.html', label: 'Products', icon: 'bag' },
+  { id: 'today', href: 'index.html', label: 'Today', icon: 'home' },
+  { id: 'calendar', href: 'calendar.html', label: 'Calendar', icon: 'calendar' },
+  { id: 'lawn', href: 'lawn.html', label: 'Lawn', icon: 'lawn', guide: true },
+  { id: 'beds', href: 'beds.html', label: 'Beds', icon: 'beds', guide: true },
+  { id: 'garden', href: 'garden.html', label: 'Veggies', icon: 'veg', guide: true },
+  { id: 'tools', href: 'tools.html', label: 'Calculators', icon: 'calculator', ref: true },
+  { id: 'products', href: 'products.html', label: 'Products', icon: 'bag', ref: true },
   { id: 'journal', href: 'journal.html', label: 'Journal', icon: 'journal' },
-  { id: 'library', href: 'library.html', label: 'Library', icon: 'book' },
+  { id: 'library', href: 'library.html', label: 'Library', icon: 'book', ref: true },
 ];
+// Four tabs. "Guides" covers lawn, beds and veggies, plus the reference pages reached from them.
+const TABS = [
+  { id: 'today', href: 'index.html', label: 'Today', icon: 'home' },
+  { id: 'calendar', href: 'calendar.html', label: 'Calendar', icon: 'calendar' },
+  { id: 'guides', href: 'lawn.html', label: 'Guides', icon: 'book' },
+  { id: 'journal', href: 'journal.html', label: 'Journal', icon: 'journal' },
+];
+const tabOf = (page) => (NAV.find((n) => n.id === page && (n.guide || n.ref)) ? 'guides' : page);
 
 const attr = (cond, a) => (cond ? raw(a) : '');
 
@@ -31,7 +39,7 @@ export function applyTheme(t = store.settings.theme) {
   else delete root.dataset.theme;
   const dark = t === 'dark' || (t !== 'light' && matchMedia('(prefers-color-scheme: dark)').matches);
   const meta = $('meta[name="theme-color"]');
-  if (meta) meta.content = dark ? '#111510' : '#f6f4ee';
+  if (meta) meta.content = dark ? '#141a16' : '#fbfcf8';
 }
 
 /* ---------------- chrome ---------------- */
@@ -39,7 +47,7 @@ export function mountChrome(page) {
   applyTheme();
   const loc = store.settings.location || {};
   const local = activeLocal();
-  const sub = local ? `${local.name} · Zone ${local.zone}` : loc.name ? `${loc.name}` : 'Fitted to your ZIP code';
+  const sub = local ? `${local.name} · ${local.zone}` : loc.name || '';
 
   let header = $('#site-header');
   if (!header) {
@@ -48,17 +56,16 @@ export function mountChrome(page) {
     document.body.prepend(header);
   }
   header.className = 'site-header';
+  const tab = tabOf(page);
   render(header, html`
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Lawn and Garden Almanac, home">
         ${brandMark()}
-        <span class="brand-text">
-          <span class="brand-name"><span class="long">Lawn &amp; Garden Almanac</span><span class="short">Lawn Almanac</span></span>
-          <span class="brand-sub">${sub}</span>
-        </span>
+        <span class="brand-name"><span class="long">Lawn &amp; Garden Almanac</span><span class="short">Almanac</span></span>
       </a>
+      ${loc.name ? html`<button type="button" class="place-btn" data-action="place" aria-expanded="false" aria-controls="locbar" title="Change your area">${sub}</button>` : ''}
       <nav class="main-nav" aria-label="Main">
-        <ul>${NAV.map((n) => html`<li><a href="${n.href}" ${attr(n.id === page, 'aria-current="page"')}>${icon(n.icon)}${n.label}</a></li>`)}</ul>
+        <ul>${TABS.map((n) => html`<li><a href="${n.href}" ${attr(n.id === tab, 'aria-current="page"')}>${n.label}</a></li>`)}</ul>
       </nav>
       <div class="header-actions">
         <button type="button" class="icon-btn" data-action="search" aria-label="Search the almanac" title="Search ( / )">${icon('search')}</button>
@@ -99,11 +106,19 @@ export function mountChrome(page) {
   const tabbar = document.createElement('nav');
   tabbar.className = 'tabbar';
   tabbar.setAttribute('aria-label', 'Main');
-  const inMore = !NAV.find((n) => n.id === page && n.tab);
   render(tabbar, html`<ul>
-    ${NAV.filter((n) => n.tab).map((n) => html`<li><a href="${n.href}" ${attr(n.id === page, 'aria-current="page"')}><span class="tab-ico">${icon(n.icon)}</span>${n.label}</a></li>`)}
-    <li><button type="button" data-action="more" aria-haspopup="dialog" ${attr(inMore, 'aria-current="page"')}><span class="tab-ico">${icon('more')}</span>More</button></li>
+    ${TABS.map((n) => html`<li><a href="${n.href}" ${attr(n.id === tab, 'aria-current="page"')}>${icon(n.icon)}${n.label}</a></li>`)}
   </ul>`);
+
+  // Lawn, beds and veggies share one switch; the reference pages hang off it.
+  if (tab === 'guides') {
+    const sw = document.createElement('nav');
+    sw.className = 'guide-switch container no-print';
+    sw.setAttribute('aria-label', 'Guides');
+    render(sw, html`<div class="seg">${NAV.filter((n) => n.guide).map((n) => html`<a href="${n.href}" ${attr(n.id === page, 'aria-current="page"')}>${n.label}</a>`)}</div>
+      <p>${NAV.filter((n) => n.ref).map((n, i) => html`${i ? ' · ' : ''}<a href="${n.href}" ${attr(n.id === page, 'aria-current="page"')}>${n.label}</a>`)}</p>`);
+    ($('main') || header).before(sw);
+  }
   document.body.appendChild(tabbar);
 
   // Footer
@@ -115,6 +130,8 @@ export function mountChrome(page) {
         <p>It summarizes university Extension guidance plus peer-reviewed research. Always read and follow the product label; the label is the law. Your checkmarks, notes and journal are stored only in this browser.</p>
       </div>
       <div><ul class="footer-links">
+        <li><a href="tools.html">Calculators</a></li>
+        <li><a href="products.html">Products &amp; shopping list</a></li>
         <li><a href="library.html">Sources &amp; research</a></li>
         <li><a href="library.html#local">Local help</a></li>
         <li><a href="journal.html#data">Backup &amp; restore</a></li>
@@ -132,7 +149,7 @@ export function mountChrome(page) {
     const a = el.dataset.action;
     if (a === 'settings') { e.preventDefault(); openSettings(); }
     else if (a === 'search') { e.preventDefault(); openSearch(); }
-    else if (a === 'more') { e.preventDefault(); openMore(page); }
+    else if (a === 'place') { e.preventDefault(); const bar = $('#locbar'); bar.hidden = !bar.hidden; el.setAttribute('aria-expanded', String(!bar.hidden)); if (!bar.hidden) $('#loc-zip', bar).focus(); }
   });
   document.addEventListener('keydown', (e) => {
     const typing = e.target.closest && e.target.closest('input, textarea, select, [contenteditable]');
@@ -173,6 +190,7 @@ async function changePlace(run, setStatus) {
 function mountLocBar(header) {
   const bar = document.createElement('div');
   bar.className = 'locbar no-print';
+  bar.id = 'locbar';
   const s = store.settings;
   const L = activeLocal();
   const has = !!(s.location && s.location.name);
@@ -181,13 +199,14 @@ function mountLocBar(header) {
         : has ? html`Weather for <strong>${s.location.name}</strong><span class="loc-extra"> · dates not fitted yet; enter your ZIP again to retry</span>`
         : html`<strong>Where do you garden?</strong> Enter your ZIP code to fit every date, the weather and the lawn plan to your area.`}</span></p>
       <form class="loc-form" data-zip-form novalidate>
-        <label for="loc-zip">${has ? 'Change' : 'ZIP code'}</label>
+        <label for="loc-zip">${has ? 'New ZIP code' : 'ZIP code'}</label>
         <input id="loc-zip" name="zip" type="text" inputmode="numeric" maxlength="5" placeholder="ZIP code" autocomplete="postal-code" value="${(has && s.location.zip) || ''}">
         <button type="submit" class="btn btn-sm btn-primary">Go</button>
       </form>
       <p class="loc-status" role="status" aria-live="polite" hidden></p>
     </div>`);
   header.after(bar);
+  bar.hidden = has;
 
   const status = $('.loc-status', bar);
   const setStatus = (msg, bad = false) => {
@@ -259,23 +278,6 @@ export function confirmDialog(message, { ok = 'OK', danger = false } = {}) {
     dlg.addEventListener('close', () => resolve(dlg.returnValue === 'ok'), { once: true });
     dlg.showModal();
   });
-}
-
-/* ---------------- More sheet (mobile) ---------------- */
-function openMore(page) {
-  const dlg = makeDialog('more-dlg', 'sheet');
-  render(dlg, html`
-    <div class="dlg-head"><h2>More</h2><button type="button" class="icon-btn" data-close aria-label="Close">${icon('x')}</button></div>
-    <div class="dlg-body">
-      <div class="more-grid">
-        ${NAV.map((n) => html`<a href="${n.href}" ${attr(n.id === page, 'aria-current="page"')}>${icon(n.icon)}${n.label}</a>`)}
-        <button type="button" data-action="search">${icon('search')}Search</button>
-        <button type="button" data-action="settings">${icon('settings')}Settings</button>
-      </div>
-    </div>`);
-  $('[data-close]', dlg).addEventListener('click', () => dlg.close());
-  $$('[data-action]', dlg).forEach((b) => b.addEventListener('click', () => dlg.close()));
-  dlg.showModal();
 }
 
 /* ---------------- Settings ---------------- */
@@ -549,6 +551,55 @@ function goTo(href) {
   } else {
     location.href = pd ? href.replace(/(\.html)/, `$1?date=${pd}`) : href;
   }
+}
+
+/* ---------------- folding sections ---------------- */
+function setFold(sec, open) {
+  const body = sec.querySelector(':scope > .fold-body');
+  if (!body) return;
+  body.hidden = !open;
+  sec.querySelector('.fold-btn').setAttribute('aria-expanded', String(open));
+}
+/** Open the folded section that holds an element (or the section itself), by id. */
+export function openFold(id) {
+  const el = document.getElementById(id);
+  const sec = el && el.closest('.fold');
+  if (sec) setFold(sec, true);
+  if (el && el.tagName === 'DETAILS') el.open = true;
+  return el;
+}
+/**
+ * Turn a long page into an index: every titled section folds under its
+ * heading and opens on tap, or when a link points inside it.
+ */
+export function foldSections(root, selector = 'section.section[id]') {
+  for (const sec of $$(selector, root)) {
+    const head = sec.querySelector(':scope > .section-head') || sec.querySelector(':scope > h2');
+    const h2 = head && (head.matches('h2') ? head : head.querySelector('h2'));
+    if (!h2) continue;
+    const body = document.createElement('div');
+    body.className = 'fold-body';
+    while (head.nextSibling) body.appendChild(head.nextSibling);
+    sec.appendChild(body);
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'fold-btn';
+    while (h2.firstChild) btn.appendChild(h2.firstChild);
+    h2.appendChild(btn);
+    sec.classList.add('fold');
+    setFold(sec, false);
+    btn.addEventListener('click', () => setFold(sec, body.hidden));
+  }
+  const nav = $('.subnav', root);
+  if (nav) nav.hidden = true;
+  const reveal = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id || id.startsWith('/')) return;
+    const el = openFold(id);
+    if (el) setTimeout(() => el.scrollIntoView({ block: 'start' }), 60);
+  };
+  window.addEventListener('hashchange', reveal);
+  reveal();
 }
 
 /* ---------------- misc helpers ---------------- */

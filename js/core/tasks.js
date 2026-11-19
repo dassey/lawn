@@ -93,12 +93,6 @@ export function nitrogenForYear(year, tasks) {
 }
 
 /* ---------------- rendering ---------------- */
-function effortDots(e) {
-  const n = { low: 1, medium: 2, high: 3 }[e] || 0;
-  if (!n) return '';
-  return html`<span class="mi" title="Effort: ${e}">${'●'.repeat(n)}${'○'.repeat(3 - n)} <span class="sr-only">effort ${e}</span></span>`;
-}
-
 function productChips(ids, ctx) {
   const P = ctx.P || {};
   let list = (ids || []).map((id) => P[id]).filter(Boolean);
@@ -115,7 +109,7 @@ export function sourceItems(ids, S) {
 
 /** "Why this day" line from the week planner. */
 function whyLine(w) {
-  return html`<p class="task-why ${w.forced ? 'is-forced' : ''}">${icon(w.icon || 'sparkle')}<span>${w.text}</span></p>`;
+  return html`<p class="task-why ${w.forced ? 'is-forced' : ''}">${w.text}</p>`;
 }
 
 export function taskCard(t, ctx) {
@@ -146,26 +140,16 @@ export function taskCard(t, ctx) {
         <span class="check-box" aria-hidden="true">${icon('check')}</span>
       </label>
       <div class="task-body">
-        <div class="task-top">
-          <h3 class="task-title"><button type="button" data-expand="${t.id}" aria-controls="${detailsId}">${t.title}</button></h3>
-          ${t.priority !== 'recommended' ? html`<span class="badge ${pr.cls}">${pr.label}</span>` : ''}
-        </div>
-        <div class="task-meta">
-          <span class="mi">${icon('calendar')}${when}${rel ? html` · <strong>${rel}</strong>` : ''}</span>
-          ${tr ? html`<span class="mi trigger">${icon(TRIGGER_ICON[tr.type] || 'info')}${tr.text}</span>` : ''}
-          ${ctx.showCat ? html`<span class="badge badge-cat">${cat.label}</span>` : ''}
-          ${t.noIrrigationNote ? html`<span class="mi" title="Has a no-sprinkler tip" style="color:var(--water)">${icon('drop')}<span class="sr-only">No-sprinkler tip</span></span>` : ''}
-          ${conflicts.length ? html`<span class="mi" title="Timing conflict" style="color:var(--warn)">${icon('alert')}<span class="sr-only">Timing conflict</span></span>` : ''}
-          ${t.custom ? html`<span class="badge badge-outline">My task</span>` : ''}
-          ${effortDots(t.effort)}
-        </div>
+        <h3 class="task-title"><button type="button" data-expand="${t.id}" aria-controls="${detailsId}">${t.title}</button>${t.priority === 'critical' ? html` <span class="badge ${pr.cls}">Key</span>` : ''}</h3>
+        <p class="task-when">${when}${rel ? html` · <strong>${rel}</strong>` : ''}${t.priority === 'optional' ? ' · optional' : ''}${ctx.showCat ? ` · ${cat.label}` : ''}${t.custom ? ' · my task' : ''}</p>
         ${ctx.why && ctx.why[t.id] && !done ? whyLine(ctx.why[t.id]) : ''}
-        ${t.summary ? html`<p class="task-summary">${md(t.summary)}</p>` : ''}
         ${done && info ? html`<div class="done-stamp">${icon('check')} Done ${fmtDate(new Date(info.at))}</div>` : ''}
       </div>
       <button type="button" class="icon-btn task-expand" data-expand="${t.id}" aria-expanded="false" aria-controls="${detailsId}" aria-label="Show details">${icon('chevronDown')}</button>
     </div>
     <div class="task-details" id="${detailsId}" hidden>
+      ${t.summary ? html`<p>${md(t.summary)}</p>` : ''}
+      <p class="subtle" style="margin:0 0 8px">${cat.label}${t.effort ? ` · ${t.effort} effort` : ''}</p>
       ${t.details ? html`<p>${md(t.details)}</p>` : ''}
       ${t.howTo && t.howTo.length ? html`<h4>How to</h4><ol>${t.howTo.map((x) => html`<li>${md(x)}</li>`)}</ol>` : ''}
       ${t.rate || tr ? html`<dl class="kv">
