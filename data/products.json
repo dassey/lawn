@@ -25,7 +25,8 @@
    "Reformulated in April 2026 from 32-0-4 to 38-0-4. Older 32-0-4 bags (5,000 / 15,000 sq ft) are still on some shelves, so set the calculator to the analysis on your bag.",
    "Apply when temperatures are 60–90°F, not right before heavy rain; sweep granules off pavement."
   ],
-  "url": "https://scottsmiraclegro.com/en-us/brands/scotts/products/fertilizer/scotts-turf-builder-lawn-food-usa/23500.html"
+  "url": "https://scottsmiraclegro.com/en-us/brands/scotts/products/fertilizer/scotts-turf-builder-lawn-food-usa/23500.html",
+  "useWarm": "Everyday lawn food for the feedings from full green-up to late summer. Widely stocked at home centers and hardware stores."
  },
  {
   "id": "scotts-winterguard",
@@ -52,7 +53,8 @@
   "cautions": [
    "Keep granules off driveways and sidewalks (sweep back onto the lawn)."
   ],
-  "url": "https://scottsmiraclegro.com/en-us/brands/scotts/products/fertilizer/scotts-turf-builder-winterguard-fall-lawn-food/22343.html"
+  "url": "https://scottsmiraclegro.com/en-us/brands/scotts/products/fertilizer/scotts-turf-builder-winterguard-fall-lawn-food/22343.html",
+  "grass": "cool"
  },
  {
   "id": "lesco-28-0-12",
@@ -112,7 +114,8 @@
   "sources": [
    "kstate-lawn-calendar"
   ],
-  "url": "https://www.siteone.com/en/001638-lesco-46-0-0-urea-turfgrass-granular-fertilizer-50-lb-bag/p/3034"
+  "url": "https://www.siteone.com/en/001638-lesco-46-0-0-urea-turfgrass-granular-fertilizer-50-lb-bag/p/3034",
+  "useWarm": "Cheap, all quick-release nitrogen for the summer feedings. Water it in right away and never apply it to a dry, stressed lawn."
  },
  {
   "id": "milorganite",
@@ -142,7 +145,8 @@
    "Made from Milwaukee wastewater biosolids. Some dogs love the smell and will roll in or eat it; sweep it off hard surfaces.",
    "Low analysis means many bags for a full feeding; cost per pound of N is high."
   ],
-  "url": "https://www.milorganite.com/what-is-milorganite/products"
+  "url": "https://www.milorganite.com/what-is-milorganite/products",
+  "useWarm": "Slow-release, non-burning organic nitrogen: forgiving for beginners, and a safe choice for summer feedings in the heat."
  },
  {
   "id": "scotts-starter",
@@ -689,7 +693,8 @@
    "Label wait before overseeding: 16 fl oz/acre → 4 months; 21 fl oz/acre → 4–5 months; 24 fl oz/acre → 5–6 months.",
    "On new seedings, wait 60 days or until after the 2nd mowing, whichever is longer."
   ],
-  "url": "https://assets.syngenta-us.com/pdf/labels/SCP%201139A-L10C%200121.pdf"
+  "url": "https://assets.syngenta-us.com/pdf/labels/SCP%201139A-L10C%200121.pdf",
+  "rateWarm": "Label maximums differ by grass. Find the rate for your grass on the label, use the spray-mix calculator, and water it in."
  },
  {
   "id": "prodiamine-65wdg",
@@ -716,7 +721,8 @@
    "Overseeding delay of 4–6 months depending on rate.",
    "Keep the powder away from kids and pets; label PPE applies."
   ],
-  "url": "https://www.domyown.com/prodiamine-65-wdg-generic-barricade-p-2495.html"
+  "url": "https://www.domyown.com/prodiamine-65-wdg-generic-barricade-p-2495.html",
+  "rateWarm": "Label maximums differ by grass. Find the rate for your grass on the label and weigh it on a kitchen scale."
  },
  {
   "id": "dimension-2ew",
@@ -781,7 +787,8 @@
    "purdue-seeding-delays",
    "sousek-2014"
   ],
-  "url": "https://assets.syngenta-us.com/pdf/labels/SCP%201267A-L1D%200922.pdf"
+  "url": "https://assets.syngenta-us.com/pdf/labels/SCP%201267A-L1D%200922.pdf",
+  "grass": "cool"
  },
  {
   "id": "preen-garden",
@@ -871,7 +878,8 @@
   "sources": [
    "kstate-lawn-calendar"
   ],
-  "url": "https://www.pbigordonturf.com/products/herbicides/selective-herbicides/speedzone-ew-lawn-weed-killer/"
+  "url": "https://www.pbigordonturf.com/products/herbicides/selective-herbicides/speedzone-ew-lawn-weed-killer/",
+  "rateWarm": "Warm-season lawns take a lower rate than cool-season lawns. Use the rate the label gives for your grass, and do not spray above 85°F."
  },
  {
   "id": "weedbgon-ccox",
@@ -926,7 +934,12 @@
    "Max 2 applications a year, 21+ days apart, at 45–90°F. Don't use treated clippings as garden mulch.",
    "Renamed from \"Weed B Gon Plus Crabgrass Control.\""
   ],
-  "url": "https://scottsmiraclegro.com/en-us/brands/ortho/products/weed-control/ortho-weed-b-gon-lawn-weed-killer-crabgrass-control/9915110.html"
+  "url": "https://scottsmiraclegro.com/en-us/brands/ortho/products/weed-control/ortho-weed-b-gon-lawn-weed-killer-crabgrass-control/9915110.html",
+  "grass": [
+   "cool",
+   "bermuda",
+   "zoysia"
+  ]
  },
  {
   "id": "drive-xlr8",
@@ -954,7 +967,13 @@
   "cautions": [
    "**No tomatoes or carrots for 24 months (eggplant 12 months) in treated soil.** Tomatoes are extremely sensitive; keep it away from the garden."
   ],
-  "url": "https://www3.epa.gov/pesticides/chem_search/ppls/007969-00272-20190607.pdf"
+  "url": "https://www3.epa.gov/pesticides/chem_search/ppls/007969-00272-20190607.pdf",
+  "grass": [
+   "cool",
+   "bermuda",
+   "zoysia"
+  ],
+  "useWarm": "Pro crabgrass killer that also hits clover. Labeled for bermudagrass and zoysiagrass; do not use it on St. Augustinegrass or centipedegrass."
  },
  {
   "id": "sedgehammer",
@@ -1327,7 +1346,9 @@
   "sources": [
    "kstate-brown-patch"
   ],
-  "url": "https://scottsmiraclegro.com/en-us/brands/scotts/products/fertilizer/37610C.html"
+  "url": "https://scottsmiraclegro.com/en-us/brands/scotts/products/fertilizer/37610C.html",
+  "useWarm": "Preventive large patch control, only for lawns that get hit every year. Spraying after patches appear does little.",
+  "rateWarm": "Preventive: 2 lb per 1,000 sq ft in fall when soil cools to 70°F; repeat at 14–28 days per label."
  },
  {
   "id": "bioadvanced-fungus",
@@ -1789,7 +1810,8 @@
   "cost": "$80–120 half-day; hire-out often $100–200",
   "cautions": [
    "Heavy (~200 lb): bring a helper and a truck. Mark sprinkler heads, invisible-fence wires and shallow cables first; call 811 if you're unsure."
-  ]
+  ],
+  "useWarm": "Pulls cores from compacted clay so water and air reach the roots. Do it in early summer, while the grass is growing fast, with 2 passes."
  },
  {
   "id": "sharpening",

@@ -1,6 +1,6 @@
 // Garden beds: care calendar, pruning guide, native plant finder, trees,
 // invasives, bulbs & mulch.
-import { mountChrome, setTitle, loadingBlock, errorBlock } from '../core/ui.js';
+import { mountChrome, setTitle, loadingBlock, errorBlock, foldSections, openFold } from '../core/ui.js';
 import { html, raw, md, render, $, $$, on, debounce } from '../core/dom.js';
 import { icon } from '../core/icons.js';
 import { loadData, byId } from '../core/data.js';
@@ -28,7 +28,6 @@ async function main() {
   const B = D.beds;
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Flower beds, shrubs &amp; trees</span>
       <h1>Garden beds</h1>
       <p class="lede">${B.intro}</p>
     </section>
@@ -39,7 +38,7 @@ async function main() {
 
     <section class="section">
       <div class="section-head"><h2>Six habits of easy beds</h2></div>
-      <div class="grid-auto">${B.principles.map((p) => html`<article class="card"><h3 style="display:flex;gap:8px;align-items:center">${icon(p.icon || 'beds')}${p.title}</h3><p style="margin:0">${md(p.text)}</p>${p.sources ? html`<div style="margin-top:8px">${sourceItems(p.sources, S)}</div>` : ''}</article>`)}</div>
+      <ol class="points">${B.principles.map((p) => html`<li><strong>${p.title}.</strong> ${md(p.text)}</li>`)}</ol>
     </section>
 
     <section class="section" id="care">
@@ -102,11 +101,12 @@ async function main() {
   drawCare();
   drawPrune();
   drawPF();
+  foldSections(app);
   const h = location.hash.slice(1);
   if (h.startsWith('prune-') || h.startsWith('plant-')) {
     setTimeout(() => {
-      const el = document.getElementById(h);
-      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.outline = '3px solid var(--beds)'; setTimeout(() => { el.style.outline = ''; }, 2500); }
+      const el = openFold(h);
+      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.outline = '3px solid var(--sun)'; setTimeout(() => { el.style.outline = ''; }, 2500); }
     }, 80);
   }
   store.subscribe((s, r) => { if (r === 'done' || r === 'replace') drawCare(); });
@@ -159,10 +159,10 @@ function drawPFList() {
     && (!q || [p.name, p.latin, p.notes, p.color].join(' ').toLowerCase().includes(q)));
   const sunL = { full: 'Full sun', part: 'Part shade', shade: 'Shade' };
   render($('#pf-list'), html`<p class="subtle">${list.length} plant${list.length === 1 ? '' : 's'}</p>
-    ${list.length ? html`<div class="grid-auto">${list.map((p) => html`<article class="card item-card cat-beds" id="plant-${p.id}">
-      <div class="ic-head"><div style="flex:1"><h3>${p.name}</h3><div class="ic-sub">${p.latin}${p.zones ? ` · Zones ${p.zones[0]}–${p.zones[1]}` : ''}</div></div>${p.native ? html`<span class="badge badge-organic" title="Native to the central or eastern United States">${icon('leaf')}Native</span>` : ''}</div>
+    ${list.length ? html`<div class="rows">${list.map((p) => html`<details class="row item-card" id="plant-${p.id}">
+      <summary><span class="row-name">${p.name}</span><span class="row-sub"><i>${p.latin}</i> · ${p.type}${p.zones ? ` · zones ${p.zones[0]}–${p.zones[1]}` : ''}${p.native ? ' · native' : ''}</span></summary>
       <div class="tags">
-        <span class="tag">${p.type}</span>${(p.sun || []).map((s) => html`<span class="tag">${sunL[s] || s}</span>`)}
+        ${(p.sun || []).map((s) => html`<span class="tag">${sunL[s] || s}</span>`)}
         ${p.clay ? html`<span class="tag">clay OK</span>` : ''}${p.deer ? html`<span class="tag">deer resistant</span>` : ''}
       </div>
       <dl>
@@ -171,8 +171,8 @@ function drawPFList() {
         ${p.moisture ? html`<dt>Soil</dt><dd>${p.moisture.join(' to ')}</dd>` : ''}
         ${p.wildlife ? html`<dt>Wildlife</dt><dd>${p.wildlife}</dd>` : ''}
       </dl>
-      ${p.notes ? html`<p style="margin:0;font-size:.9rem">${md(p.notes)}</p>` : ''}
-    </article>`)}</div>` : html`<div class="empty">No plants match all of those filters. Loosen one.</div>`}`);
+      ${p.notes ? html`<p style="margin:0">${md(p.notes)}</p>` : ''}
+    </details>`)}</div>` : html`<div class="empty">No plants match all of those filters. Loosen one.</div>`}`);
 }
 
 main().catch((err) => { console.error(err); render(app, errorBlock(err)); });

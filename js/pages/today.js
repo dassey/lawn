@@ -6,13 +6,13 @@ import { html, raw, render, $, on, fmtNum } from '../core/dom.js';
 import { icon, wxIcon } from '../core/icons.js';
 import { loadData, byId } from '../core/data.js';
 import { store, isDone } from '../core/store.js';
-import { today, fmtDate, monthName, season, diffDays, fromMMDD, shiftMMDD, fmtMMDD, previewDate } from '../core/dates.js';
+import { today, fmtDate, monthName, diffDays, fromMMDD, shiftMMDD, fmtMMDD, previewDate } from '../core/dates.js';
 import {
   taskCard, wireTasks, visibleTasks, taskStatus, taskMonths, PRIORITY, CATS, CAT_ORDER, nitrogenForYear, monthBrief,
 } from '../core/tasks.js';
 import { regionShiftDays, frostSetting, datedWindows } from '../core/windows.js';
 import { climateFor, activeLocal } from '../core/place.js';
-import { grassOf, isWarm } from '../core/grass.js';
+import { grassOf } from '../core/grass.js';
 import { mountWeatherCard } from '../core/wxcard.js';
 import { openLogDialog } from '../core/logdlg.js';
 import { planWeek, planEvents, fmtIn } from '../core/planner.js';
@@ -40,12 +40,6 @@ function frostDates() {
   const last = shiftMMDD('04-15', regionShiftDays('spring', s));
   const first = shiftMMDD('10-25', regionShiftDays('fall', s));
   return { last, first };
-}
-
-function phase(date) {
-  const d = date.getDate();
-  const p = d <= 10 ? 'Early' : d <= 20 ? 'Mid' : 'Late';
-  return `${p} ${monthName(date.getMonth() + 1)}`;
 }
 
 function frostLine() {
@@ -86,17 +80,13 @@ async function main() {
   S = byId(D.sources);
   T = byId(D.tasks);
   const month = D.months.months.find((x) => x.m === M);
-  const seasonId = season(M);
-  const seasonCls = { winter: 'cat-yard', spring: 'cat-lawn', summer: 'cat-veg', fall: 'cat-veg' }[seasonId];
 
   render(app, html`
     <section class="section">
-      <div class="hero ${seasonCls}">
-        <span class="eyebrow">Today in the yard</span>
+      <div class="hero">
         <h1 class="hero-date">${fmtDate(NOW, { weekday: 'long', month: 'long', day: 'numeric' })}</h1>
-        <p class="hero-season">${phase(NOW)} · ${frostLine()}</p>
-        <div class="bottom-line">${icon('sparkle')}<div><b>Key jobs for ${monthName(M)}</b><span>${monthBrief(D.tasks, M).text}</span></div></div>
-        <div class="hero-stats" id="hero-stats"></div>
+        <p class="hero-season"><span id="hero-wx"></span>${frostLine()}.</p>
+        <p class="hero-alert" id="hero-alert" hidden></p>
       </div>
     </section>
     ${placeNote()}
@@ -104,23 +94,27 @@ async function main() {
     <div class="layout-main section">
       <div class="stack-lg">
         <section aria-labelledby="now-h">
-          <div class="section-head">
-            <h2 id="now-h">This week</h2>
+          <h2 id="now-h">Do today</h2>
+          <div id="today-jobs"></div>
+          <div id="week"></div>
+          <div id="now"></div>
+          <div id="week-tools"></div>
+          <div class="view-tools">
+            <div class="chips" id="cat-chips" role="group" aria-label="Show only one area"></div>
             <div class="seg view-seg" role="group" aria-label="Arrange tasks">
-              <button type="button" data-view="plan">${icon('calendar')}By day</button>
-              <button type="button" data-view="list">${icon('list')}List</button>
+              <button type="button" data-view="plan">By day</button>
+              <button type="button" data-view="list">One list</button>
             </div>
           </div>
-          <div id="week"></div>
-          <div class="chips" id="cat-chips" role="group" aria-label="Filter by area" style="margin-bottom:12px"></div>
-          <div id="now"></div>
-          <p class="section-foot"><a href="calendar.html#/month/${M}">All of ${monthName(M)} ${icon('arrowRight')}</a></p>
         </section>
-        <section aria-labelledby="soon-h">
-          <div class="section-head"><h2 id="soon-h">Coming up</h2><span class="subtle">Next 3 weeks</span></div>
-          <div id="soon"></div>
-        </section>
+        <section id="soon"></section>
         <section id="missed-wrap"></section>
+        <section aria-labelledby="month-h">
+          <h2 id="month-h">${monthName(M)} so far</h2>
+          <p style="margin:0 0 10px">Key jobs this month: ${monthBrief(D.tasks, M).text}</p>
+          <p id="hero-stats" style="margin:0"></p>
+          <p class="section-foot"><a href="calendar.html#/month/${M}">All of ${monthName(M)}</a> · <a href="calendar.html#/year">The whole year</a></p>
+        </section>
       </div>
       <aside class="stack" aria-label="Conditions and progress">
         <section class="card" id="wx"></section>
@@ -130,22 +124,10 @@ async function main() {
       </aside>
     </div>
 
-    <section class="section" aria-labelledby="year-h">
-      <div class="section-head"><h2 id="year-h">The year at a glance</h2><a href="calendar.html#/year">Year view ${icon('arrowRight')}</a></div>
-      <div class="ribbon">${D.months.months.map((mo) => html`<a href="calendar.html#/month/${mo.m}" class="${mo.m === M ? 'is-now' : ''}"><span class="rm">${monthName(mo.m)}</span><span class="rl">${monthBrief(D.tasks, mo.m).text}</span></a>`)}</div>
-    </section>
+`);
 
-    <section class="section" aria-labelledby="seasons-h">
-      <div class="section-head"><h2 id="seasons-h">Seasons</h2></div>
-      <div class="seasons-grid">${D.months.seasons.map((s) => html`<article class="card season season-${s.id}">
-        <h3>${s.name}</h3>
-        <dl>
-          <dt>${icon('lawn')}Lawn</dt><dd>${isWarm() && s.lawnWarm ? s.lawnWarm : s.lawn}</dd>
-          <dt>${icon('beds')}Beds</dt><dd>${s.beds}</dd>
-          <dt>${icon('veg')}Veggies</dt><dd>${s.veg}</dd>
-          <dt>${icon('yard')}Yard</dt><dd>${s.yard}</dd>
-        </dl></article>`)}</div>
-    </section>`);
+  // A day tapped in the week strip opens that day's jobs.
+  on(app, 'click', '.wk-day[href]', (e, a) => { const d = document.getElementById(a.getAttribute('href').slice(1)); if (d && d.tagName === 'DETAILS') d.open = true; });
 
   wireTasks(app, ctx, drawTasks);
   on(app, 'click', '[data-cat]', (e, b) => { catFilter = b.dataset.cat; drawTasks(); });
@@ -198,7 +180,8 @@ function drawTasks() {
   if (wantPlan && WX) {
     try { PLAN = planWeek({ tasks: all, analysis: WX, settings: s, year: YEAR }); } catch (err) { console.error(err); }
   }
-  $('#now-h').textContent = wantPlan && (PLAN || !wxFail) ? 'This week' : 'Do now';
+  $('#now-h').textContent = wantPlan && (PLAN || !wxFail) ? 'Do today' : 'In season now';
+  if (!PLAN) render($('#today-jobs'), '');
   app.querySelectorAll('[data-view]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.view === (wantPlan ? 'plan' : 'list'))));
 
   if (PLAN) drawPlan(PLAN, inCat);
@@ -211,12 +194,19 @@ function drawTasks() {
   const missed = withStatus.filter((x) => x.st.state === 'out' && x.st.daysSincePrev != null && x.st.daysSincePrev <= 14 && x.st.prev.end.getFullYear() === YEAR && !isDone(YEAR, x.t.id) && x.t.priority !== 'optional' && inCat(x));
 
   const c = ctx();
-  render($('#soon'), soon.length
-    ? html`<div class="task-list">${soon.slice(0, 12).map((x) => taskCard(x.t, { ...c, compact: true }))}</div>`
-    : html`<div class="empty"><p style="margin:0">Nothing new starts in the next 3 weeks.</p></div>`);
+  render($('#soon'), soon.length ? html`<details class="acc">
+      <summary>Coming up in the next 3 weeks <span class="subtle">(${Math.min(12, soon.length)})</span></summary>
+      <div class="acc-body"><div class="task-list">${soon.slice(0, 12).map((x) => taskCard(x.t, { ...c, compact: true }))}</div></div>
+    </details>` : '');
+
+  // The most pressing weather alert sits under the date, where it gets read.
+  const top = WX && WX.alerts.find((x) => x.level === 'high' || x.level === 'med');
+  const ha = $('#hero-alert');
+  ha.hidden = !top;
+  if (top) { ha.className = `hero-alert lvl-${top.level}`; render(ha, html`<strong>${top.title}.</strong> <a href="#wx">Details</a>`); }
 
   render($('#missed-wrap'), missed.length ? html`<details class="acc">
-      <summary>${icon('clock')} Recently closed and not checked off <span class="subtle">(${missed.length})</span></summary>
+      <summary>Recently closed and not checked off <span class="subtle">(${missed.length})</span></summary>
       <div class="acc-body"><p class="subtle">These windows closed in the last 2 weeks. Check them off if you did them, or read the notes for a late fallback.</p>
       <div class="task-list">${missed.map((x) => taskCard(x.t, { ...c, compact: true }))}</div></div>
     </details>` : '');
@@ -226,10 +216,7 @@ function drawTasks() {
   const doneM = monthTasks.filter((t) => isDone(YEAR, t.id)).length;
   const keyLeft = monthTasks.filter((t) => t.priority === 'critical' && !isDone(YEAR, t.id)).length;
   const nit = nitrogenForYear(YEAR, D.tasks);
-  render($('#hero-stats'), html`
-    <a class="pill" href="calendar.html#/month/${M}">${icon('check')}${doneM} of ${monthTasks.length} ${monthName(M)} tasks done</a>
-    ${keyLeft ? html`<span class="pill is-warn">${icon('alert')}${keyLeft} key task${keyLeft === 1 ? '' : 's'} left this month</span>` : ''}
-    <a class="pill" href="#nitro">${icon('sprout')}${fmtNum(nit.n, 2)} / ${s.nTarget} lb N this year</a>`);
+  render($('#hero-stats'), html`${doneM} of ${monthTasks.length} ${monthName(M)} tasks done${keyLeft ? html`, with <strong>${keyLeft} key task${keyLeft === 1 ? '' : 's'} still to do</strong>` : ''}. Lawn nitrogen this year: <a href="#nitro">${fmtNum(nit.n, 2)} of ${s.nTarget} lb</a>.`);
 
   drawNitro(nit);
 }
@@ -279,7 +266,7 @@ function drawList(withStatus, inCat, wantPlan) {
 /* ---------- plan view: each task on its best day of the forecast ---------- */
 function drawPlanLoading() {
   render($('#week'), html`<div class="week" aria-busy="true">
-    <p class="week-lede">${icon('sparkle')}<span>Planning your week around the forecast…</span></p>
+    <p class="week-lede">Planning your week around the forecast…</p>
     <ol class="week-strip is-loading" aria-hidden="true">${Array.from({ length: 7 }, () => html`<li><div class="wk-day"></div></li>`)}</ol>
   </div>`);
   render($('#cat-chips'), '');
@@ -324,40 +311,50 @@ function drawPlan(plan, inCat) {
   const c = { ...ctx(), why };
 
   render($('#week'), html`<div class="week">
-    <p class="week-lede">${icon('sparkle')}<span>${plan.headline.join(' ')}</span></p>
+    <h2>This week</h2>
+    <p class="week-lede">${plan.headline.join(' ')}</p>
     <ol class="week-strip" aria-label="The next 7 days">${plan.days.map((d) => stripDay(d, d.items.filter((it) => !it.done && show(it)).length))}</ol>
-    <div class="week-tools">
-      <div class="row"><span class="toolbar-label">Plan around</span>
+  </div>`);
+  render($('#week-tools'), html`<div class="week-tools">
+      <div class="row"><span class="toolbar-label">Plan yard work for</span>
         <div class="seg" role="group" aria-label="When you do yard work">
           <button type="button" data-yard-days="any" aria-pressed="${String(s.yardDays !== 'weekends')}">Any day</button>
           <button type="button" data-yard-days="weekends" aria-pressed="${String(s.yardDays === 'weekends')}">Weekends</button>
         </div>
       </div>
-      <button type="button" class="btn btn-sm btn-ghost" data-week-ics>${icon('download')}Add week to calendar</button>
-    </div>
-  </div>`);
+      <button type="button" class="btn btn-sm btn-ghost" data-week-ics>Add this week to my calendar</button>
+    </div>`);
 
   const groups = plan.days.map((d) => ({ d, items: d.items.filter(show) })).filter((g) => g.items.length);
   const waiting = plan.waiting.filter(show);
   const ongoing = plan.ongoing.filter((t) => show({ t }));
   const waitCtx = { ...c, compact: true, why: Object.fromEntries(waiting.map((w) => [w.t.id, { text: w.why, icon: 'clock', forced: true }])) };
 
+  // Today's jobs lead the page; the other days fold up under the week strip.
+  const todayGroup = groups.find((g) => g.d.i === 0);
+  const later = groups.filter((g) => g.d.i !== 0);
+  const t0 = plan.days[0];
+  if (t0) render($('#hero-wx'), `${t0.verdict.label}, ${Math.round(t0.hi)}°${rainText(t0) ? ` with ${rainText(t0)} of rain` : ''}. `);
+  render($('#today-jobs'), todayGroup
+    ? html`<div class="task-list" id="day-${todayGroup.d.iso}">${todayGroup.items.map((it) => taskCard(it.t, c))}</div>`
+    : html`<p class="subtle" style="margin:0 0 8px">Nothing is planned for today${catFilter === 'all' ? '' : ' in this area'}.${later.length ? ` Next up: ${dayTitle(later[0].d).toLowerCase()}.` : ''}</p>`);
+
   render($('#now'), html`
-    ${groups.length ? groups.map(({ d, items }) => html`<section class="day-group" id="day-${d.iso}" aria-labelledby="dh-${d.iso}">
-      <div class="day-head">
-        <h3 id="dh-${d.iso}">${dayTitle(d)} <span class="day-date">${fmtDate(d.dt, d.i < 2 ? { weekday: 'short', month: 'short', day: 'numeric' } : { month: 'short', day: 'numeric' })}</span></h3>
-        <span class="day-wx tone-${d.verdict.tone}">${icon(wxIcon(d.code))}<b>${d.verdict.label}</b><span>${Math.round(d.hi)}° / ${Math.round(d.lo)}°${rainText(d) ? ` · ${rainText(d)}` : ''}</span></span>
-      </div>
-      <div class="task-list">${items.map((it) => taskCard(it.t, { ...c, compact: it.done || it.t.priority === 'optional' }))}</div>
-    </section>`)
-    : html`<div class="empty">${icon('check')}<p style="margin:0">Nothing needs doing this week${catFilter === 'all' ? '' : ' in this area'}. Enjoy the yard.</p></div>`}
+    ${later.map(({ d, items }, i) => html`<details class="day-group" id="day-${d.iso}" ${!todayGroup && i === 0 ? raw('open') : ''}>
+      <summary class="day-head">
+        <span class="day-name">${dayTitle(d)} <span class="day-date">${fmtDate(d.dt, { month: 'short', day: 'numeric' })}</span></span>
+        <span class="day-wx">${d.verdict.label}, ${Math.round(d.hi)}°${rainText(d) ? ` · ${rainText(d)}` : ''} · ${items.filter((it) => !it.done).length} job${items.filter((it) => !it.done).length === 1 ? '' : 's'}</span>
+      </summary>
+      <div class="task-list">${items.map((it) => taskCard(it.t, c))}</div>
+    </details>`)}
+    ${!groups.length ? html`<p class="subtle">Nothing needs doing this week${catFilter === 'all' ? '' : ' in this area'}. Enjoy the yard.</p>` : ''}
     ${waiting.length ? html`<details class="acc" style="margin-top:18px" ${waiting.some((w) => w.t.priority === 'critical') ? raw('open') : ''}>
-      <summary>${icon('clock')} Waiting on the weather <span class="subtle">(${waiting.length})</span></summary>
+      <summary>Waiting on the weather <span class="subtle">(${waiting.length})</span></summary>
       <div class="acc-body"><p class="subtle">In season, but nothing in the 7-day forecast suits them yet. The plan updates as the forecast changes.</p>
       <div class="task-list">${waiting.map((w) => taskCard(w.t, waitCtx))}</div></div>
     </details>` : ''}
     ${ongoing.length ? html`<details class="acc" style="margin-top:${waiting.length ? 8 : 18}px">
-      <summary>${icon('eye')} Ongoing and things to watch for <span class="subtle">(${ongoing.length})</span></summary>
+      <summary>Ongoing and things to watch for <span class="subtle">(${ongoing.length})</span></summary>
       <div class="acc-body"><div class="task-list">${ongoing.map((t) => taskCard(t, { ...c, compact: true }))}</div></div>
     </details>` : ''}`);
 }

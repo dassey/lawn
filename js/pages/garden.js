@@ -73,7 +73,6 @@ function shell() {
   const s = store.settings;
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Vegetable garden · planting calendar</span>
       <h1>Veggie garden planner</h1>
       <p class="lede">What to grow, when to plant it in your area, which varieties hold up to heat and clay, and how to rotate beds. Planting windows are counted from your local frost dates.</p>
     </section>

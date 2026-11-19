@@ -90,7 +90,6 @@ async function main() {
 function drawShell() {
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Month-by-month plan</span>
       <h1>Calendar</h1>
       <p class="lede">Every lawn, bed, vegetable and yard task for your area, with the cue that tells you when. Check tasks off as you go; your progress is saved in this browser and resets each year.</p>
     </section>
@@ -194,8 +193,7 @@ function draw() {
       <div class="hero cat-${brief.accent}" style="padding:18px">
         <div class="row-between" style="align-items:flex-start">
           <div style="flex:1;min-width:240px">
-            <span class="eyebrow">${isNow ? 'This month' : monthName(m)}</span>
-            <div class="bottom-line">${icon('sparkle')}<div><b>Key jobs</b><span>${brief.text}</span></div></div>
+            <p class="bottom-line"><b>Key jobs</b>${brief.text}</p>
           </div>
           <div class="ring" style="--p:${pct};--size:72px" role="img" aria-label="${mc.done} of ${mc.total} tasks done"><span>${pct}%</span></div>
         </div>

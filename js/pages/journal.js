@@ -25,7 +25,6 @@ async function main() {
   C = byId(D.crops);
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Your record</span>
       <h1>Yard journal</h1>
       <p class="lede">Log what you did and what happened: fertilizer (it feeds the nitrogen tracker), seeding, sprays, rain-gauge readings (they feed the drought alerts), harvests and soil tests. Checked-off tasks show up here too.</p>
       <div class="btn-group" style="margin-top:14px">

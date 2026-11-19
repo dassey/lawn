@@ -1,6 +1,6 @@
 // Lawn guide: program, watering decision tool, seed guide + tag checker,
 // mowing, weeds/diseases/insects reference, soil tests.
-import { mountChrome, setTitle, loadingBlock, errorBlock } from '../core/ui.js';
+import { mountChrome, setTitle, loadingBlock, errorBlock, foldSections, openFold } from '../core/ui.js';
 import { html, raw, md, render, $, $$, on, fmtNum, debounce } from '../core/dom.js';
 import { icon } from '../core/icons.js';
 import { loadData, byId } from '../core/data.js';
@@ -64,7 +64,6 @@ async function main() {
 
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">${G.name} · ${irrigate ? 'watered lawn' : 'rain-fed lawn'}</span>
       <h1>Lawn guide</h1>
       <p class="lede">${L.intro}</p>
     </section>
@@ -76,11 +75,7 @@ async function main() {
 
     <section class="section" id="program">
       <div class="section-head"><h2>The year-round program</h2><a href="calendar.html">Month by month ${icon('arrowRight')}</a></div>
-      <div class="grid-auto">${L.principles.map((p) => html`<article class="card">
-        <h3 style="display:flex;gap:8px;align-items:center">${icon(p.icon || 'check')}${p.title}</h3>
-        <p style="margin:0">${md(p.text)}</p>
-        ${p.sources ? html`<div style="margin-top:10px">${sourceItems(p.sources, S)}</div>` : ''}
-      </article>`)}</div>
+      <ol class="points">${L.principles.map((p) => html`<li><strong>${p.title}.</strong> ${md(p.text)}</li>`)}</ol>
       <div class="grid-2 section">
         <article class="card">
           <div class="card-head"><h3>${icon('sprout')}Nitrogen by month (lb N / 1,000 sq ft)</h3></div>
@@ -222,6 +217,7 @@ async function main() {
   on(app, 'click', '[data-log-soil]', () => openLogDialog({ type: 'soil', cat: 'lawn', title: 'Soil test' }));
   document.addEventListener('journal-changed', drawSoil);
 
+  foldSections(app);
   drawThird(mowTop);
   drawTag();
   drawIssues();
@@ -379,6 +375,7 @@ function openIssue(id) {
   issueQ = '';
   const qi = $('#issue-q');
   if (qi) qi.value = '';
+  openFold('weeds');
   issueGroup = i.group;
   $$('[data-group]', app).forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.group === i.group)));
   drawIssues();

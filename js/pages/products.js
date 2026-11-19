@@ -61,7 +61,6 @@ async function main() {
 
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Specific picks, with the why</span>
       <h1>Products &amp; shopping list</h1>
       <p class="lede">Named products for each job, with active ingredient, rate, timing and where to find them. Quantities are sized to your yard (${fmtNum(store.settings.lawnSqFt, 0)} sq ft lawn). Prices are rough 2026 estimates, so check locally. <strong>Read and follow the label.</strong></p>
     </section>
@@ -118,7 +117,7 @@ async function main() {
     if (p) { f.type = 'all'; f.q = ''; drawBar(); drawList(); }
     setTimeout(() => {
       const el = document.getElementById(h);
-      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.boxShadow = '0 0 0 3px var(--brand)'; setTimeout(() => { el.style.boxShadow = ''; }, 2500); }
+      if (el) { el.open = true; el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     }, 80);
   }
 }
@@ -142,12 +141,13 @@ function drawBar() {
 }
 
 function drawKits() {
-  render($('#kits'), html`<div class="section-head" style="margin-top:4px"><h2>Ready-made kits</h2><span class="subtle">One tap adds everything, sized to your yard</span></div>
-  <div class="grid-auto" style="margin-bottom:20px">${KITS.filter((k) => grassMatch(k.grass)).map((k) => html`<article class="card card-tight">
-    <h3 style="display:flex;gap:8px;align-items:center;margin:0 0 4px">${icon(k.icon)}${k.name}</h3>
-    <p class="subtle" style="margin:0 0 10px">${k.desc}</p>
-    <button type="button" class="btn btn-sm" data-kit="${k.id}">${icon('cart')}Add kit to list</button>
-  </article>`)}</div>`);
+  render($('#kits'), html`<div class="rows" style="margin:16px 0"><details class="row group">
+    <summary><span class="row-name">Ready-made kits</span><span class="row-sub">One tap adds everything, sized to your yard</span></summary>
+    ${KITS.filter((k) => grassMatch(k.grass)).map((k) => html`<div class="kit">
+      <p style="margin:0"><strong>${k.name}.</strong> ${k.desc}</p>
+      <button type="button" class="btn btn-sm" data-kit="${k.id}">Add kit to list</button>
+    </div>`)}
+  </details></div>`);
 }
 
 function matches(p) {
@@ -163,12 +163,9 @@ function card(p) {
   const tasks = TASKS_BY_PRODUCT[p.id] || [];
   const sq = suggestQty(p);
   const typeLabel = (TYPES.find(([k]) => k === p.type) || [, p.type])[1];
-  return html`<article class="card item-card" id="p-${p.id}">
-    <div class="ic-head">
-      <div style="flex:1"><h3>${p.name}</h3>${p.brand ? html`<div class="ic-sub" style="font-style:normal">${p.brand}</div>` : ''}</div>
-      ${p.organic ? html`<span class="badge badge-organic">${icon('leaf')}Organic</span>` : ''}
-    </div>
-    <div class="tags"><span class="tag">${typeLabel}</span>${p.tier === 'pro' ? html`<span class="tag" title="Professional product sold to homeowners online or at SiteOne">pro product</span>` : ''}${p.evidence === 'vendor' ? html`<span class="ev ev-vendor">Vendor claim</span>` : ''}</div>
+  return html`<details class="row item-card" id="p-${p.id}">
+    <summary><span class="row-name">${p.name}</span><span class="row-sub">${p.brand ? `${p.brand} · ` : ''}${typeLabel}${p.organic ? ' · organic' : ''}${p.cost ? ` · ${p.cost}` : ''}</span></summary>
+    <div class="tags">${p.tier === 'pro' ? html`<span class="tag" title="Professional product sold to homeowners online or at SiteOne">pro product</span>` : ''}${p.evidence === 'vendor' ? html`<span class="ev ev-vendor">Vendor claim</span>` : ''}</div>
     <p style="margin:0">${md(p.use)}</p>
     <dl>
       ${p.activeIngredient ? html`<dt>Active</dt><dd>${p.activeIngredient}</dd>` : ''}
@@ -187,15 +184,18 @@ function card(p) {
       ${p.url ? html`<a class="btn btn-sm btn-ghost" href="${p.url}" target="_blank" rel="noopener">${icon('external')}Label / info</a>` : ''}
       ${sq.why ? html`<span class="subtle" style="font-size:.78rem">${sq.why}</span>` : ''}
     </div>
-  </article>`;
+  </details>`;
 }
 
 function drawList() {
   const list = D.products.filter(matches);
   const groups = TYPES.filter(([k]) => k !== 'all').map(([k, l, ic]) => ({ k, l, ic, items: list.filter((p) => p.type === k) })).filter((g) => g.items.length);
-  render($('#plist'), list.length ? html`${groups.map((g) => html`<section class="section" style="margin-top:20px">
-    <div class="section-head"><h2 style="display:flex;gap:8px;align-items:center">${icon(g.ic)}${g.l}</h2><span class="subtle">${g.items.length}</span></div>
-    <div class="grid-auto">${g.items.map(card)}</div></section>`)}` : html`<div class="empty">No products match those filters.</div>`);
+  // Browsing everything: each group folds. Once a filter or search narrows it, show the matches.
+  const browsing = f.type === 'all' && !f.q;
+  const target = location.hash.startsWith('#p-') ? P[location.hash.slice(3)] : null;
+  render($('#plist'), list.length ? html`<div class="rows">${groups.map((g) => html`<details class="row group" ${!browsing || (target && target.type === g.k) ? raw('open') : ''}>
+    <summary><span class="row-name">${g.l}</span><span class="row-sub">${g.items.length} product${g.items.length === 1 ? '' : 's'}</span></summary>
+    <div class="rows">${g.items.map(card)}</div></details>`)}</div>` : html`<p class="subtle">No products match those filters.</p>`);
 }
 
 /** Price range for one package. Prices quoted per lb (bulk seed) are scaled to the package. */
