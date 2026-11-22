@@ -8,6 +8,7 @@ import { store, uid } from '../core/store.js';
 import { today, MON, monthName, fromMMDD, fmtMMDD, addDays, toISO, fmtDate, diffDays, doyMMDD, doy, mmdd, fromISO } from '../core/dates.js';
 import { cropWindow, cropHarvestWindow, frostSetting } from '../core/windows.js';
 import { frostWords } from '../core/place.js';
+import { photo } from '../core/photos.js';
 import { sourceItems, EVIDENCE } from '../core/tasks.js';
 import { downloadICS, simpleEvents } from '../core/ics.js';
 import { openLogDialog } from '../core/logdlg.js';
@@ -55,7 +56,7 @@ function route() {
 }
 
 async function main() {
-  D = await loadData('crops', 'garden', 'sources', 'products');
+  D = await loadData('crops', 'garden', 'sources', 'products', 'photos');
   C = byId(D.crops);
   S = byId(D.sources);
   P = byId(D.products);
@@ -73,7 +74,6 @@ function shell() {
   const s = store.settings;
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Vegetable garden · planting calendar</span>
       <h1>Veggie garden planner</h1>
       <p class="lede">What to grow, when to plant it in your area, which varieties hold up to heat and clay, and how to rotate beds. Planting windows are counted from your local frost dates.</p>
     </section>
@@ -242,6 +242,7 @@ function cropCard(c) {
       <span class="tag">${{ cool: 'Cool season', warm: 'Warm season', perennial: 'Perennial', herb: 'Herb' }[c.season] || c.season}</span>
       ${c.difficulty ? html`<span class="tag">${c.difficulty}</span>` : ''}
     </div>
+    ${photo(D.photos, `crop-${c.id}`, c.name)}
     ${c.kcNote ? html`<p style="margin:0">${md(c.kcNote)}</p>` : ''}
     <dl>
       ${c.spring ? html`<dt>Spring</dt><dd>${windowText(c, 'spring')} · ${c.spring.method}</dd>` : ''}

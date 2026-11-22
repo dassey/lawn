@@ -1,6 +1,6 @@
 // Library: research highlights, extension guides, local help, local climate,
 // myths vs facts, glossary, credits and the full source list.
-import { mountChrome, setTitle, loadingBlock, errorBlock } from '../core/ui.js';
+import { mountChrome, setTitle, loadingBlock, errorBlock, foldSections, openFold, openSearch } from '../core/ui.js';
 import { html, md, render, $, $$, on, debounce, fmtNum } from '../core/dom.js';
 import { icon } from '../core/icons.js';
 import { loadData, byId } from '../core/data.js';
@@ -36,9 +36,9 @@ async function main() {
 
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">Why the plan says what it says</span>
       <h1>Library</h1>
       <p class="lede">The research, Extension guides, local experts and climate data behind every task, plus myths to skip and a glossary. Evidence badges show where each recommendation comes from.</p>
+      <p style="margin:12px 0 0"><button type="button" class="btn" data-lib-search>${icon('search')}Search the almanac</button></p>
     </section>
     <nav class="subnav" aria-label="On this page"><ul>
       <li><a href="#research">Latest research</a></li><li><a href="#guides">Extension guides</a></li><li><a href="#local">Local help</a></li>
@@ -49,22 +49,21 @@ async function main() {
     <section class="section" id="research">
       <div class="section-head"><h2>Latest research, in plain English</h2><span class="subtle">${research.length} papers</span></div>
       <div class="callout" style="margin-bottom:14px">${icon('flask')}<div>${md(L.researchIntro)}</div></div>
-      <div class="grid-2">${research.map((s) => html`<article class="card" id="src-${s.id}">
-        <div class="row" style="margin-bottom:6px"><span class="ev ev-peer-reviewed">Peer-reviewed</span>${s.year ? html`<span class="badge">${s.year}</span>` : ''}${s.local ? html`<span class="badge badge-recommended">${s.local}</span>` : ''}${s.status ? html`<span class="badge badge-warn">${s.status}</span>` : ''}</div>
-        <h3 style="margin:0 0 4px">${s.url ? html`<a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>` : s.title}</h3>
-        <p class="subtle" style="margin:0 0 8px">${s.authors}${s.journal ? html` · <em>${s.journal}</em>` : ''}</p>
+      <div class="rows">${research.map((s) => html`<details class="row" id="src-${s.id}">
+        <summary><span class="row-name">${s.title}</span><span class="row-sub">${s.year || ''}${s.journal ? ` · ${s.journal}` : ''}${s.status ? ` · ${s.status}` : ''}</span></summary>
+        <p class="subtle" style="margin:0 0 8px">${s.authors}${s.url ? html` · <a href="${s.url}" target="_blank" rel="noopener">Read the paper</a>` : ''}</p>
         <p style="margin:0 0 6px"><strong>Finding:</strong> ${md(s.takeaway)}</p>
         ${s.caveat ? html`<p class="subtle" style="margin:0"><strong>Caveat:</strong> ${md(s.caveat)}</p>` : ''}
-      </article>`)}</div>
+      </details>`)}</div>
     </section>
 
     <section class="section" id="guides">
       <div class="section-head"><h2>Extension guides this plan follows</h2></div>
-      <div class="grid-auto">${guides.map((s) => html`<article class="card card-tight" id="src-${s.id}">
-        <span class="subtle" style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em">${s.org}</span>
-        <h3 style="margin:2px 0 6px">${s.url ? html`<a href="${s.url}" target="_blank" rel="noopener">${s.title}</a>` : s.title}</h3>
-        <p style="margin:0;font-size:.9rem">${md(s.takeaway)}</p>
-      </article>`)}</div>
+      <div class="rows">${guides.map((s) => html`<details class="row" id="src-${s.id}">
+        <summary><span class="row-name">${s.title}</span><span class="row-sub">${s.org}</span></summary>
+        <p style="margin:0 0 6px">${md(s.takeaway)}</p>
+        ${s.url ? html`<p style="margin:0"><a href="${s.url}" target="_blank" rel="noopener">Open the guide</a></p>` : ''}
+      </details>`)}</div>
     </section>
 
     <section class="section" id="local">
@@ -154,16 +153,28 @@ async function main() {
 
   $('#g-q').addEventListener('input', debounce((e) => { gq = e.target.value; drawGlossary(); }, 120));
   on(app, 'click', '[data-src]', (e, b) => { srcFilter = b.dataset.src; drawSources(); });
+  on(app, 'click', '[data-lib-search]', () => openSearch());
   drawGlossary();
   drawSources();
-  const h = location.hash.slice(1);
-  if (h.startsWith('src-') || h.startsWith('g-')) {
+  foldSections(app);
+  // A source that has no card of its own lives only in the "All sources" table,
+  // so open that section and point at its row.
+  const showSource = () => {
+    const h = location.hash.slice(1);
+    if (!h.startsWith('src-') && !h.startsWith('g-')) return;
     setTimeout(() => {
       let el = document.getElementById(h);
-      if (!el && h.startsWith('src-')) { srcFilter = 'all'; drawSources(); el = document.querySelector(`#sources [data-sid="${h.slice(4)}"]`); }
-      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.outline = '3px solid var(--brand)'; setTimeout(() => { el.style.outline = ''; }, 2500); }
+      if (!el && h.startsWith('src-')) {
+        srcFilter = 'all';
+        drawSources();
+        openFold('sources');
+        el = document.querySelector(`#sources [data-sid="${h.slice(4)}"]`);
+      }
+      if (el) { el.scrollIntoView({ behavior: 'smooth', block: 'center' }); el.style.outline = '3px solid var(--sun)'; setTimeout(() => { el.style.outline = ''; }, 2500); }
     }, 80);
-  } else if (h) setTimeout(() => document.getElementById(h)?.scrollIntoView({ behavior: 'smooth' }), 60);
+  };
+  window.addEventListener('hashchange', showSource);
+  showSource();
 }
 
 function drawGlossary() {

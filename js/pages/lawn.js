@@ -1,6 +1,6 @@
 // Lawn guide: program, watering decision tool, seed guide + tag checker,
 // mowing, weeds/diseases/insects reference, soil tests.
-import { mountChrome, setTitle, loadingBlock, errorBlock } from '../core/ui.js';
+import { mountChrome, setTitle, loadingBlock, errorBlock, foldSections, openFold } from '../core/ui.js';
 import { html, raw, md, render, $, $$, on, fmtNum, debounce } from '../core/dom.js';
 import { icon } from '../core/icons.js';
 import { loadData, byId } from '../core/data.js';
@@ -12,6 +12,7 @@ import { fetchWeather, analyze } from '../core/weather.js';
 import { openLogDialog } from '../core/logdlg.js';
 import { climateFor } from '../core/place.js';
 import { grassOf, grassId, isWarm } from '../core/grass.js';
+import { thumb, photo } from '../core/photos.js';
 import { whenLabel, datedWindows, kcDateFor } from '../core/windows.js';
 
 mountChrome('lawn');
@@ -34,7 +35,7 @@ const GROUPS = [
 ];
 
 async function main() {
-  D = await loadData('lawn', 'issues', 'products', 'sources', 'climate', 'tasks');
+  D = await loadData('lawn', 'issues', 'products', 'sources', 'climate', 'tasks', 'photos');
   D.climate = climateFor(D.climate);
   P = byId(D.products);
   S = byId(D.sources);
@@ -64,7 +65,6 @@ async function main() {
 
   render(app, html`
     <section class="page-head">
-      <span class="eyebrow">${G.name} · ${irrigate ? 'watered lawn' : 'rain-fed lawn'}</span>
       <h1>Lawn guide</h1>
       <p class="lede">${L.intro}</p>
     </section>
@@ -76,11 +76,7 @@ async function main() {
 
     <section class="section" id="program">
       <div class="section-head"><h2>The year-round program</h2><a href="calendar.html">Month by month ${icon('arrowRight')}</a></div>
-      <div class="grid-auto">${L.principles.map((p) => html`<article class="card">
-        <h3 style="display:flex;gap:8px;align-items:center">${icon(p.icon || 'check')}${p.title}</h3>
-        <p style="margin:0">${md(p.text)}</p>
-        ${p.sources ? html`<div style="margin-top:10px">${sourceItems(p.sources, S)}</div>` : ''}
-      </article>`)}</div>
+      <ol class="points">${L.principles.map((p) => html`<li><strong>${p.title}.</strong> ${md(p.text)}</li>`)}</ol>
       <div class="grid-2 section">
         <article class="card">
           <div class="card-head"><h3>${icon('sprout')}Nitrogen by month (lb N / 1,000 sq ft)</h3></div>
@@ -222,6 +218,7 @@ async function main() {
   on(app, 'click', '[data-log-soil]', () => openLogDialog({ type: 'soil', cat: 'lawn', title: 'Soil test' }));
   document.addEventListener('journal-changed', drawSoil);
 
+  foldSections(app);
   drawThird(mowTop);
   drawTag();
   drawIssues();
@@ -352,8 +349,9 @@ function monthStrip(ms) {
 function issueCard(i) {
   const prods = (i.products || []).map((id) => P[id]).filter(Boolean);
   return html`<details class="acc" id="issue-${i.id}">
-    <summary><span style="display:inline-flex;flex-direction:column;gap:4px"><span>${i.name}${i.aka && i.aka.length ? html`<span class="subtle">${i.aka.join(', ')}</span>` : ''}</span><span class="row" style="gap:6px">${i.type ? html`<span class="tag">${i.type}</span>` : ''}${monthStrip(i.months)}</span></span></summary>
+    <summary class="has-thumb">${thumb(D.photos, `issue-${i.id}`)}<span style="display:inline-flex;flex-direction:column;gap:4px"><span>${i.name}${i.aka && i.aka.length ? html`<span class="subtle">${i.aka.join(', ')}</span>` : ''}</span><span class="row" style="gap:6px">${i.type ? html`<span class="tag">${i.type}</span>` : ''}${monthStrip(i.months)}</span></span></summary>
     <div class="acc-body stack-sm">
+      ${photo(D.photos, `issue-${i.id}`, i.name)}
       ${i.id_tips ? html`<p><strong>How to spot it:</strong> ${md(i.id_tips)}</p>` : ''}
       ${i.symptoms ? html`<p><strong>Symptoms:</strong> ${md(i.symptoms)}</p>` : ''}
       ${i.when ? html`<p><strong>When to act:</strong> ${md(i.when)}</p>` : ''}
@@ -379,6 +377,7 @@ function openIssue(id) {
   issueQ = '';
   const qi = $('#issue-q');
   if (qi) qi.value = '';
+  openFold('weeds');
   issueGroup = i.group;
   $$('[data-group]', app).forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.group === i.group)));
   drawIssues();
